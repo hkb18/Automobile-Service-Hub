@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/home"
+        android:icon="@drawable/home_icon"
+        android:title="Home"/>
+
+    <item android:id="@+id/service"
+        android:icon="@drawable/service_icon"
+        android:title="Services"
+        />
+
+    <item android:id="@+id/workshop"
+        android:icon="@drawable/car_repair_icon"
+        android:title="Manage Workshop"
+        />
+
+    <item android:id="@+id/profile"
+        android:icon="@drawable/profile_icon"
+        android:title="My Profile"
+        />
+</menu>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Auton"
+        tools:targetApi="31">
+
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD1fv0PFvzXQizpdj2Z6hLjVnfiNL8SPhU" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".user_View_Service"
+            android:exported="false" />
+        <activity
+            android:name=".workshop_Mechanic_Del_Layout"
+            android:exported="false" />
+        <activity
+            android:name=".workshop_Mechanic_layout"
+            android:exported="false" />
+        <activity
+            android:name=".workshop_View_Mechanic"
+            android:exported="false" />
+        <activity
+            android:name=".workshop_AddMechanic"
+            android:exported="false" />
+        <activity
+            android:name=".workshop_Update_passwd"
+            android:exported="false" />
+        <activity
+            android:name=".admin_User_Layout"
+            android:exported="false" />
+        <activity
+            android:name=".admin_View_Users"
+            android:exported="false" />
+        <activity
+            android:name=".admin_Add_Workshop"
+            android:exported="false" />
+        <activity
+            android:name=".admin_HomePage"
+            android:exported="false" />
+        <activity
+            android:name=".workshop_HomePage"
+            android:exported="false" />
+        <activity
+            android:name=".user_Book_Service"
+            android:exported="false" />
+        <activity
+            android:name=".user_Update_Password"
+            android:exported="false" />
+        <activity
+            android:name=".user_HomePage"
+            android:exported="false" />
+        <activity
+            android:name=".workshop_Login"
+            android:exported="false" />
+        <activity
+            android:name=".user_Login"
+            android:exported="false" />
+        <activity
+            android:name=".worker_Registration"
+            android:exported="false" />
+        <activity
+            android:name=".splashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".user_Registration"
+            android:exported="true" />
+        <activity
+            android:name=".starting_page"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/theme_bg"
+    tools:context=".worshop_Manage_Mechanic_Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_marginTop="290dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:id="@+id/imageviewAdd_mech"
+        android:padding="5dp"
+        android:layout_marginLeft="140dp"
+        android:src="@drawable/add_account_icon"/>
+
+        <TextView
+            android:id="@+id/textviewAdd_mech"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="Add Mechanic"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageviewDel_mech"
+            android:padding="5dp"
+            android:layout_marginLeft="140dp"
+            android:src="@drawable/delete_user_icon"/>
+
+        <TextView
+            android:id="@+id/textviewDel_mech"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="Delete Mechanic"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="370dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageview_mech"
+            android:padding="5dp"
+            android:layout_marginLeft="140dp"
+            android:src="@drawable/view"/>
+
+        <TextView
+            android:id="@+id/textview_mech"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="View Mechanic"/>
+    </LinearLayout>
+</FrameLayout>

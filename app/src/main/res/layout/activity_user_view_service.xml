@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/theme_bg"
+    android:orientation="vertical"
+    tools:context=".user_View_Service">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="MANAGE SERVICE"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        android:textColor="#0E1B65"
+        android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:text="CAR BRAND :"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:id="@+id/tv_CarBrand"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:text="CAR MODEL :"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:id="@+id/tv_CarModel"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:text="SERVICE TYPE :"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:id="@+id/tv_ServiceType"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:text="SERVICE DATE :"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_ServiceDate"
+            android:textSize="16dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:text="SERVICE TIME :"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:id="@+id/tv_ServiceTime"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:text="USER LOCATION :"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:id="@+id/tv_UserLocation"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:text="PAYMENT BY :"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:id="@+id/tv_Payment"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_EditService"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/summersky"
+        android:layout_gravity="center"
+        android:text="EDIT SERVICE"/>
+<!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text="CAR BRAND"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="@color/black">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="24dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <EditText
+            android:id="@+id/manageBrand"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text=""
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="#7C0404">
+
+        </EditText>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text="CAR MODEL"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="@color/black">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="24dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <EditText
+            android:id="@+id/manageModel"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text=""
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="#7C0404">
+
+        </EditText>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text="SERVICE TYPE"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="@color/black">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="24dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <EditText
+            android:id="@+id/manageType"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text=""
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="#7C0404">
+
+        </EditText>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text="SERVICE DATE"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="@color/black">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="24dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <EditText
+            android:id="@+id/manageDate"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text=""
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="#7C0404">
+
+        </EditText>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text="SERVICE TIME"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="@color/black">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="24dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <EditText
+            android:id="@+id/manageTime"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text=""
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="#7C0404">
+
+        </EditText>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text="USER LOCATION"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="@color/black">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="24dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <EditText
+            android:id="@+id/manageLocation"
+            android:layout_width="210dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text=""
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="#7C0404">
+
+        </EditText>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text="PAYMENT BY"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="@color/black">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="24dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <EditText
+            android:id="@+id/manageMode"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:text=""
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="#7C0404">
+
+        </EditText>
+
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/editServicebtn"
+        android:layout_width="260dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="19dp"
+        android:text="EDIT SERVICE"
+        android:textColor="#08B7CD"
+        android:backgroundTint="@color/black">
+
+    </Button>
+-->
+
+</LinearLayout>

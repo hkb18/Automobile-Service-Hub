@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/theme_bg"
+    tools:context=".user_Book_Service">
+
+    <TextView
+        android:id="@+id/servicebuktopic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="SERVICE BOOKING"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#710900"
+        android:gravity="center">
+
+    </TextView>
+<!-- SELECT CAR BRAND -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="10dp"
+            android:text="Select Your Car Brand"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/white">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:textColor="@color/white"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="18dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <Spinner
+            android:id="@+id/carBrand"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="8dp">
+
+        </Spinner>
+  <!--      <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/carBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:smsp_errorText="This is error text. You can show it as single line or multiple lines using attr smsp_multilineError"
+            app:smsp_floatingLabelColor="#1976D2"
+            app:smsp_floatingLabelText="Floating Label Text"
+            app:smsp_hint="Select Item"
+            app:smsp_hintColor="@color/white"
+            app:smsp_itemColor="#512DA8"
+            app:smsp_itemListColor="#7C4DFF"
+            app:smsp_itemListHintBackgroundColor="#808080"
+            app:smsp_itemListHintColor="#FFFFFF"
+            app:smsp_multilineError="false"
+            app:smsp_selectedItemListColor="#FF5252" />
+
+        -->
+
+    </LinearLayout>
+<!-- SELECT CAR MODEL -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="10dp"
+            android:text="Select Your Car Model"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/white">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:textColor="@color/white"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="18dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <Spinner
+            android:id="@+id/carModel"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="8dp"
+            >
+
+        </Spinner>
+
+
+    </LinearLayout>
+    <!-- SELECT SERVICE TYPE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="10dp"
+            android:text="Select Service Type"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/white">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:textColor="@color/white"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="18dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <Spinner
+            android:id="@+id/serviceType"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="8dp">
+
+        </Spinner>
+
+
+    </LinearLayout>
+    <!-- SELECT DATE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonDate"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:text="Select Date"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/summersky"
+            android:layout_marginStart="8dp">
+
+        </Button>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:textColor="@color/white"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="18dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <EditText
+            android:id="@+id/edittextDate"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/black">
+        </EditText>
+
+    </LinearLayout>
+    <!-- SELECT LOCATION -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonLocation"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="10dp"
+            android:text="Your Location"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/summersky"
+            android:textSize="14dp"
+            android:textStyle="bold">
+        </Button>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:textColor="@color/white"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="18dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <EditText
+            android:id="@+id/edittextLocation"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/white"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="8dp">
+
+        </EditText>
+
+
+    </LinearLayout>
+    <!-- SELECT SERVICE TIME -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="10dp"
+            android:text="Select Service Time"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/white">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+            android:textColor="@color/white"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="18dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <Spinner
+            android:id="@+id/serviceTime"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="8dp"
+            >
+
+        </Spinner>
+
+
+    </LinearLayout>
+    <!-- SELECT PAYMENT METHOD -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="10dp"
+            android:text="Payment Method"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/white">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=":"
+
+            android:textColor="@color/white"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="6dp"
+            android:textSize="18dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <Spinner
+            android:id="@+id/paymentMode"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="8dp">
+
+        </Spinner>
+
+
+
+    </LinearLayout>
+
+    <!-- BOOK SERVICE -->
+    <Button
+        android:id="@+id/btn_BookService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:text="BOOK SERVICE"
+        android:backgroundTint="@color/summersky">
+
+    </Button>
+
+
+</LinearLayout>

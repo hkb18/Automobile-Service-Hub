@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/theme_bg"
+    android:gravity="center"
+    tools:context=".admin_ManageWorkshop_Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <ImageView
+        android:id="@+id/image_viewAdd"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="100dp"
+        android:src="@drawable/add_account_icon"/>
+    <TextView
+        android:id="@+id/admin_Add_workshop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Add Workshop"
+        android:textSize="22dp"
+        android:gravity="center"
+        android:textColor="@color/black"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        >
+        <ImageView
+            android:id="@+id/image_viewDel"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/delete_user_icon"/>
+        <TextView
+            android:id="@+id/admin_Del_workshop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Delete Workshop"
+            android:textSize="22dp"
+            android:gravity="center"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+</LinearLayout>

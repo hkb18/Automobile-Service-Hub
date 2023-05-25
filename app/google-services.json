@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "579478161825",
+    "firebase_url": "https://auton-648f3-default-rtdb.firebaseio.com",
+    "project_id": "auton-648f3",
+    "storage_bucket": "auton-648f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579478161825:android:877479d0ecfb74b33563e0",
+        "android_client_info": {
+          "package_name": "com.example.auton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "579478161825-143f4vohk0krbmb118e0jtb9n0nsbkcn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi9R2-MW3NAbuphcRzKhil3BeBnpOyHx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "579478161825-143f4vohk0krbmb118e0jtb9n0nsbkcn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
