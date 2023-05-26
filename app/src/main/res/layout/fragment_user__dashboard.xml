@@ -23,7 +23,6 @@
         app:iss_period="1000"
         app:iss_auto_cycle="true"
         app:iss_delay="1000"
-
         app:iss_corner_radius="10">
 
     </com.denzcoskun.imageslider.ImageSlider>

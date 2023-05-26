@@ -139,7 +139,7 @@ public class user_MyProfile_Fragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(s1)){
                     fullnameStr=snapshot.child(s1).child("Name").getValue(String.class);
-                    emailStr=snapshot.child(s1).child("Email_Id").getValue(String.class);
+                    emailStr=snapshot.child(s1).child("EmailId").getValue(String.class);
                     contactStr=snapshot.child(s1).child("ContactNo").getValue(String.class);
 
                     newname.setText(fullnameStr);
@@ -166,7 +166,7 @@ public class user_MyProfile_Fragment extends Fragment {
                             contactStr=newcontactno.getText().toString();
 
                             databaseReference.child("Profile").child(s1).child("Name").setValue(fullnameStr);
-                            databaseReference.child("Profile").child(s1).child("Email_Id").setValue(emailStr);
+                            databaseReference.child("Profile").child(s1).child("EmailId").setValue(emailStr);
                             databaseReference.child("Profile").child(s1).child("ContactNo").setValue(contactStr);
                             Toast.makeText(getContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
                         }
