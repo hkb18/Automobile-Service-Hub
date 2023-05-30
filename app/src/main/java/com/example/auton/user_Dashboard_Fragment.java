@@ -103,8 +103,9 @@ public class user_Dashboard_Fragment extends Fragment {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Intent intent=new Intent(getContext(),);
-               // startActivity(i);
+                Intent intent=new Intent(getContext(),user_View_Service.class);
+                intent.putExtra("Username",mParam2);
+                startActivity(intent);
             }
         });
         cancel=v.findViewById(R.id.btn_CancelService);

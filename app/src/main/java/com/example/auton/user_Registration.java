@@ -59,13 +59,8 @@ public class user_Registration extends AppCompatActivity {
                 password=textInputEditText5.getText().toString();
                 confirmpassword=textInputEditText6.getText().toString();
 
-
-                //if(!TextUtils.isEmpty(fullname)|| !emailid.isEmpty() || !contactno.isEmpty() || !username.isEmpty() || !password.isEmpty() || !confirmpassword.isEmpty() ) {
                 if(TextUtils.isEmpty(fullname)|| emailid.isEmpty() || contactno.isEmpty() || username.isEmpty() || password.isEmpty() || confirmpassword.isEmpty() ) {
-
                     Toast.makeText(user_Registration.this, "Please enter all details", Toast.LENGTH_SHORT).show();
-                    //  Toast.makeText(user_Registration.this,password,Toast.LENGTH_SHORT).show();
-                    // Toast.makeText(user_Registration.this,confirmpassword,Toast.LENGTH_SHORT).show();
                 }
                    else if(password.equals(confirmpassword)){
                         databaseReference.child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {

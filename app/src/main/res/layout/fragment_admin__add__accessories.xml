@@ -11,13 +11,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:id="@+id/imageviewAdd_screenSpeaker"
             android:padding="5dp"
-            android:layout_marginLeft="140dp"
             android:src="@drawable/add_account_icon"/>
 
         <TextView
@@ -34,13 +34,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:id="@+id/imageviewAdd_carCare"
             android:padding="5dp"
-            android:layout_marginLeft="140dp"
             android:src="@drawable/add_account_icon"/>
 
         <TextView
@@ -57,13 +57,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:id="@+id/imageviewAdd_floormatCushion"
             android:padding="5dp"
-            android:layout_marginLeft="140dp"
+
             android:src="@drawable/add_account_icon"/>
 
         <TextView
@@ -80,13 +81,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:id="@+id/imageviewAdd_homeProtectives"
             android:padding="5dp"
-            android:layout_marginLeft="140dp"
             android:src="@drawable/add_account_icon"/>
 
         <TextView
@@ -103,13 +104,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:id="@+id/imageviewAdd_lightsChargers"
             android:padding="5dp"
-            android:layout_marginLeft="140dp"
             android:src="@drawable/add_account_icon"/>
 
         <TextView
@@ -126,13 +127,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:id="@+id/imageviewAdd_roadsideAssistance"
             android:padding="5dp"
-            android:layout_marginLeft="140dp"
             android:src="@drawable/add_account_icon"/>
 
         <TextView

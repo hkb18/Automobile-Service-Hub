@@ -81,7 +81,14 @@ public class admin_Add_Accessories extends Fragment {
         ivscreenSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getContext(), MapsActivity2.class);
+                Intent i=new Intent(getContext(), admin_add_AndroidScreen.class);
+                startActivity(i);
+            }
+        });
+        tvscreenSpeaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getContext(), admin_add_AndroidScreen.class);
                 startActivity(i);
             }
         });

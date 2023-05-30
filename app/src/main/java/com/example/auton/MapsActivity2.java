@@ -117,7 +117,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
 //            }
             Address address = addresses.get(0);
             //LatLng london = new LatLng(address.getLatitude(), address.getLongitude());
-                          LatLng london = new LatLng(Double.parseDouble(latitudeStr),Double.parseDouble(longitudeStr));
+            LatLng london = new LatLng(Double.parseDouble(latitudeStr),Double.parseDouble(longitudeStr));
 
             MarkerOptions markerOptions = new MarkerOptions().position(london).title("location");
             mMap.addMarker(markerOptions);
