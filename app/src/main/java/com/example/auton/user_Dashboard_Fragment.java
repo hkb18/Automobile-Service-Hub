@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -93,7 +94,8 @@ public class user_Dashboard_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), user_Book_Service.class);
-                i.putExtra("Username",mParam2); //
+                i.putExtra("Username",mParam2);
+                //Toast.makeText(getActivity(), ""+mParam2, Toast.LENGTH_SHORT).show();
                 startActivity(i);
             }
         });

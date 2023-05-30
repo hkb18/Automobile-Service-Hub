@@ -73,8 +73,7 @@ public class worshop_Manage_Mechanic_Fragment extends Fragment {
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         addTextView=v.findViewById(R.id.textviewAdd_mech);
         addImageView=v.findViewById(R.id.imageviewAdd_mech);
-        delImageView=v.findViewById(R.id.imageviewDel_mech);
-        delTextView=v.findViewById(R.id.textviewDel_mech);
+
         viewTextView=v.findViewById(R.id.textview_mech);
         ViewImage=v.findViewById(R.id.imageview_mech);
 

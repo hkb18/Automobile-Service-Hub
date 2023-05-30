@@ -32,7 +32,7 @@ public class admin_HomePage extends AppCompatActivity {
             startActivity(i);
             //selectedFragment=new admin_ManageWorkshop_Fragment();
         }else if (itemId==R.id.service) {
-           // selectedFragment = new admin_ManageWorkshop_Fragment();
+            selectedFragment = new admin_ManageWorkshop_Fragment();
         }
         if(selectedFragment!=null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_admin,selectedFragment).commit();

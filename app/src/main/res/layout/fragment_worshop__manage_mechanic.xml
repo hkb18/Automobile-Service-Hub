@@ -30,7 +30,7 @@
             android:textSize="15dp"
             android:text="Add Mechanic"/>
     </LinearLayout>
-    <LinearLayout
+  <!--  <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="330dp"
@@ -52,11 +52,11 @@
             android:gravity="center"
             android:textSize="15dp"
             android:text="Delete Mechanic"/>
-    </LinearLayout>
+    </LinearLayout> -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="330dp"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"

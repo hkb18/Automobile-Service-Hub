@@ -62,7 +62,7 @@ TextView notRegistered;
                                 //  USER LOGIN
                                 else if (getPassword.equals(passwordStr)){
                                     Intent i=new Intent(getApplicationContext(),user_HomePage.class);
-                                    i.putExtra("username", usernameStr);// username passing
+                                    i.putExtra("Username", usernameStr);// username passing
                                     startActivity(i);
                                     Toast.makeText(user_Login.this, "Login Successfull", Toast.LENGTH_SHORT).show();
                                 }else {

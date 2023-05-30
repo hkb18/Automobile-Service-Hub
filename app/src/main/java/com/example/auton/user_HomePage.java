@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -16,12 +17,13 @@ public class user_HomePage extends AppCompatActivity {
 
         //GETTING username
         Bundle extras=getIntent().getExtras();
-        username= extras.getString("username");
+        username= extras.getString("Username");
+        //Toast.makeText(this, ""+username, Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new user_Dashboard_Fragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new user_Dashboard_Fragment().newInstance("",username)).commit();
     }
       private final  BottomNavigationView.OnNavigationItemSelectedListener navListener= item -> {
             Fragment selectedFragment = null;

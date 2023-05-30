@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/theme_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin_Add_Accessories">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageviewAdd_screenSpeaker"
+            android:padding="5dp"
+            android:layout_marginLeft="140dp"
+            android:src="@drawable/add_account_icon"/>
+
+        <TextView
+            android:id="@+id/textviewAdd_screenSpeaker"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="Add Screens &amp; Speakers"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageviewAdd_carCare"
+            android:padding="5dp"
+            android:layout_marginLeft="140dp"
+            android:src="@drawable/add_account_icon"/>
+
+        <TextView
+            android:id="@+id/textviewAdd_carCare"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="Add Car Care &amp; Purifiers"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageviewAdd_floormatCushion"
+            android:padding="5dp"
+            android:layout_marginLeft="140dp"
+            android:src="@drawable/add_account_icon"/>
+
+        <TextView
+            android:id="@+id/textviewAdd_floormatCushion"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="Add Floor Mats &amp; Cushions"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageviewAdd_homeProtectives"
+            android:padding="5dp"
+            android:layout_marginLeft="140dp"
+            android:src="@drawable/add_account_icon"/>
+
+        <TextView
+            android:id="@+id/textviewAdd_homeProtectives"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="Add Home &amp; Protectives"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageviewAdd_lightsChargers"
+            android:padding="5dp"
+            android:layout_marginLeft="140dp"
+            android:src="@drawable/add_account_icon"/>
+
+        <TextView
+            android:id="@+id/textviewAdd_lightsChargers"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="Add Lights &amp; Chargers"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageviewAdd_roadsideAssistance"
+            android:padding="5dp"
+            android:layout_marginLeft="140dp"
+            android:src="@drawable/add_account_icon"/>
+
+        <TextView
+            android:id="@+id/textviewAdd_roadsideAssistance"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="Add Roadside Assistance"/>
+    </LinearLayout>
+
+</LinearLayout>
