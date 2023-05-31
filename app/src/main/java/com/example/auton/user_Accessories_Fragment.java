@@ -2,6 +2,7 @@ package com.example.auton;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class user_Accessories_Fragment extends Fragment {
+    CardView cvScreen_Speaker,cvCarcare_Purifier,cvFloormat_Cushion,cvHorn_Protectives,cvLights_Chargers,cvRoadsideAssistance;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +61,56 @@ public class user_Accessories_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user__accessories, container, false);
+        View v=inflater.inflate(R.layout.fragment_user__accessories, container, false);
+
+        cvScreen_Speaker=v.findViewById(R.id.screens_Speakers);
+        cvCarcare_Purifier=v.findViewById(R.id.carCare_Purifier);
+        cvFloormat_Cushion=v.findViewById(R.id.floorMat_Cushion);
+        cvHorn_Protectives=v.findViewById(R.id.horns_Protectives);
+        cvLights_Chargers=v.findViewById(R.id.lights_Chargers);
+        cvRoadsideAssistance=v.findViewById(R.id.roadsideAssistance);
+
+        cvScreen_Speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        cvCarcare_Purifier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        cvFloormat_Cushion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        cvHorn_Protectives.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        cvLights_Chargers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        cvRoadsideAssistance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        return v;
     }
 }

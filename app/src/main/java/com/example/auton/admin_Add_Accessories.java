@@ -81,17 +81,33 @@ public class admin_Add_Accessories extends Fragment {
         ivscreenSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getContext(), admin_add_AndroidScreen.class);
+                Intent i=new Intent(getContext(), admin_add_ScreenSpeaker.class);
                 startActivity(i);
             }
         });
         tvscreenSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getContext(), admin_add_AndroidScreen.class);
+                Intent i=new Intent(getContext(), admin_add_ScreenSpeaker.class);
                 startActivity(i);
             }
         });
+        ivcarcarePurifier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getContext(),admin_add_Carcare_Purifier.class);
+                startActivity(i);
+            }
+        });
+        tvcarcarePurifier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getContext(),admin_add_Carcare_Purifier.class);
+                startActivity(i);
+            }
+        });
+
+
         return v;
     }
 }

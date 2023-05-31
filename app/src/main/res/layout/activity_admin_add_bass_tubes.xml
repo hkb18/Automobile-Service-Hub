@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/theme_bg"
+    android:orientation="vertical"
+    tools:context=".admin_add_BassTubes">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="BASS TUBES"
+                android:textSize="20dp"/>
+
+            <!-- MODEL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Model"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_Model"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- DIMENSIONS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Dimensions"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_Dimensions"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- POWER O/P -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Power Output"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_PowerOutput"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- FREQUENCY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Frequency"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_Frequency"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- SALIENT FEATURES -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Salient Feature"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_SalientFeature"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- SENSITIVITY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Sensitivity"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_Sensitivity"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- COLOR -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Color"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_Color"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- WEIGHT -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Weight"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_Weight"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Manufacturer -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Manufacturer"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_Manufacturer"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- DESIGN -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Design"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_Design"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <!-- Price -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Amount"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_Price"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- QTY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Quantity"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/basstubes_Quantity"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_bass"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/summersky"
+                android:text="ADD"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class admin_add_AndroidScreen extends AppCompatActivity {
+
     DatabaseReference databaseReference;
     Button add;
     TextInputEditText textInputEditTextModel,textInputEditTextDimension,textInputEditTextRAM,textInputEditTextROM,textInputEditTextDisplayType,
@@ -27,6 +28,7 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_android_screen);
+
 
         add=findViewById(R.id.btn_addAndroidScreens);
         textInputEditTextModel=findViewById(R.id.screenModel);
@@ -80,6 +82,7 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
                             databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
                             databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Price").setValue(priceStr);
                             databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Quantity").setValue(quantityStr);
+//                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Image").setValue();
                             Toast.makeText(admin_add_AndroidScreen.this, "Value Entered", Toast.LENGTH_SHORT).show();
                             Intent i=new Intent(getApplicationContext(),admin_Add_Accessories.class);
                             startActivity(i);

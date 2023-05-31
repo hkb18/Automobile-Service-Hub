@@ -19,6 +19,15 @@
         android:theme="@style/Theme.Auton"
         tools:targetApi="31">
         <activity
+            android:name=".admin_add_Carcare_Purifier"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_BassTubes"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_ScreenSpeaker"
+            android:exported="false" />
+        <activity
             android:name=".admin_add_AndroidScreen"
             android:exported="false" />
         <!--

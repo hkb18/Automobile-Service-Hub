@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/theme_bg"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".admin_add_AndroidScreen">
     <ScrollView
         android:layout_width="match_parent"
@@ -265,6 +266,20 @@
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
+    <!-- Image -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layout_marginBottom="5dp">
+       <ImageView
+           android:layout_width="80dp"
+           android:layout_height="80dp"
+           android:id="@+id/image_view"
+
+/>    </LinearLayout>
+
     <Button
         android:id="@+id/btn_addAndroidScreens"
         android:layout_marginTop="5dp"
@@ -277,4 +292,5 @@
         android:text="ADD"/>
 </LinearLayout>
     </ScrollView>
+
 </LinearLayout>
