@@ -23,6 +23,7 @@
         app:menu="@menu/screen_speaker_nav"
         app:labelVisibilityMode="labeled"
         android:animateLayoutChanges="true"
+
         />
 
 </FrameLayout>

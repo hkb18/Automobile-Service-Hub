@@ -1,35 +1,60 @@
 package com.example.auton;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.auton.databinding.ActivityMainBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class admin_add_AndroidScreen extends AppCompatActivity {
 
     DatabaseReference databaseReference;
-    Button add;
+    Button add,upload,select;
+    ProgressDialog progressDialog;
+    ImageView imageView;
+
+    StorageReference storageReference;
+    Uri imageUri;
     TextInputEditText textInputEditTextModel,textInputEditTextDimension,textInputEditTextRAM,textInputEditTextROM,textInputEditTextDisplayType,
         textInputEditTextOSType,textInputEditTextWeight,textInputEditTextScreenSize,textInputEditTextManufacturer,textInputEditTextPrice,textInputEditTextQuantity;
     String modelStr,dimensionStr,ramStr,romStr,displaytypeStr,ostypeStr,weightStr,screensizeStr,manufacturerStr,priceStr,quantityStr;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_android_screen);
 
 
+
+        imageView=findViewById(R.id.image_view);
+        select=findViewById(R.id.btn_selectImg);
+        upload=findViewById(R.id.btn_uploadImg);
         add=findViewById(R.id.btn_addAndroidScreens);
         textInputEditTextModel=findViewById(R.id.screenModel);
         textInputEditTextDimension=findViewById(R.id.screenDimensions);
@@ -96,6 +121,74 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
                     });
 
                 }
+            }
+        });
+
+        //      IMG UPLOAD
+        select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                selectImage();
+
+            }
+        });
+
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                uploadImage();
+            }
+        });
+
+    }
+    private void selectImage(){
+        Intent intent=new Intent();
+        intent.setType("image/+");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,100);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode==100 && data != null && data.getData() != null){
+            imageUri=data.getData();
+            imageView.setImageURI(imageUri);
+        }
+    }
+
+    private void uploadImage(){
+
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setTitle("Uploading File...");
+        progressDialog.show();
+
+        SimpleDateFormat formatter=new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
+        Date now=new Date();
+        String fileName=formatter.format(now);
+        storageReference=FirebaseStorage.getInstance().getReference("images/"+fileName);
+
+        storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                imageView.setImageURI(null);
+                Toast.makeText(admin_add_AndroidScreen.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+
+                Toast.makeText(admin_add_AndroidScreen.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

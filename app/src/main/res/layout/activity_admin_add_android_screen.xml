@@ -274,11 +274,20 @@
         android:gravity="center"
         android:layout_marginBottom="5dp">
        <ImageView
-           android:layout_width="80dp"
-           android:layout_height="80dp"
-           android:id="@+id/image_view"
-
-/>    </LinearLayout>
+           android:layout_width="120dp"
+           android:layout_height="120dp"
+           android:id="@+id/image_view"/>
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/btn_selectImg"
+           android:text="SELECT IMAGE"/>
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/btn_uploadImg"
+           android:text="UPLOAD IMAGE"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_addAndroidScreens"

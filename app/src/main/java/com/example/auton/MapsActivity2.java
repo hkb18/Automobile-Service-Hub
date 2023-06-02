@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -16,6 +17,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityMaps2Binding;
@@ -41,9 +44,9 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private ActivityMaps2Binding binding;
     private int ACCESS_LOCATION_REQUEST_CODE = 100;
-    String longitudeStr,latitudeStr;
-
-
+    String longitudeStr,latitudeStr,username;
+    Button currentlocation;
+    public static mapinterface mapinterface;
     FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
@@ -51,7 +54,6 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
 
         binding= ActivityMaps2Binding.inflate(getLayoutInflater());
-      //  binding = ActivityMaps2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -60,11 +62,15 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
+
+        currentlocation=findViewById(R.id.btn);
+
         geocoder = new Geocoder(this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         Bundle extras=getIntent().getExtras();
         longitudeStr=extras.getString("longitude");
         latitudeStr=extras.getString("latitude");
+        username=extras.getString("Username");
         Toast.makeText(this, "LONG"+longitudeStr, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "LAT"+latitudeStr, Toast.LENGTH_SHORT).show();
     }
@@ -93,7 +99,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
 
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             enableUserLocation();
-            zooToUserLocation();
+            //zooToUserLocation();
         } else {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
                 //we can show user a dialog why this permission is necessary
@@ -118,11 +124,23 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
             Address address = addresses.get(0);
             //LatLng london = new LatLng(address.getLatitude(), address.getLongitude());
             LatLng london = new LatLng(Double.parseDouble(latitudeStr),Double.parseDouble(longitudeStr));
-
-            MarkerOptions markerOptions = new MarkerOptions().position(london).title("location");
+            Log.e("", "location: "+london);
+            MarkerOptions markerOptions = new MarkerOptions().position(london).title("Your location");
             mMap.addMarker(markerOptions);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(london, 16));
 
+            currentlocation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    user_Book_Service.mapinterface.location(latitudeStr,longitudeStr);
+                  /*  Intent i = new Intent(getApplicationContext(),user_Book_Service.class);
+                    i.putExtra("Username",username);
+                    i.putExtra("location",london);
+                    startActivity(i);
+                    Toast.makeText(MapsActivity2.this, "Location:"+london, Toast.LENGTH_SHORT).show();*/
+                    finish();
+                }
+            });
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -132,12 +150,17 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onMapLongClick(@NonNull LatLng latLng) {
         Log.d(TAG, "onMapLongClick: "+ latLng.toString());
+        mMap.clear();
         try {
             List<Address> addresses=geocoder.getFromLocation(latLng.latitude,latLng.longitude,1);
             if(addresses.size() > 0) {
                 Address address=addresses.get(0);
                 String streetAddress = address.getAddressLine(0);
                 mMap.addMarker(new MarkerOptions().position(latLng).title(streetAddress).draggable(true));
+                Log.e("", "latLang: "+latLng.latitude);
+                Log.e("", "latLang: "+latLng.longitude);
+                latitudeStr=String.valueOf(latLng.latitude);
+                longitudeStr=String.valueOf(latLng.longitude);
 
             }
         } catch (IOException e) {
@@ -205,5 +228,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         });
 
     }
+
+
+
 
 }

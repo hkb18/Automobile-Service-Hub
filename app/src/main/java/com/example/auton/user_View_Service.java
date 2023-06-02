@@ -70,4 +70,7 @@ public class user_View_Service extends AppCompatActivity {
             }
         });
     }
+    public void location(String location){
+
+    }
 }
