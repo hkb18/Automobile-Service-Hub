@@ -164,15 +164,12 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_book_service);
 
-        mapinterface=this;
-
         // MAP
+        mapinterface=this;
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
         if (checkLocation()) {
             toggleBestUpdates();
         }
-
         resolutionForResult = registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), result -> {
                     if (result.getResultCode() == RESULT_OK) {
                         if (checkLocation()) {
@@ -188,7 +185,6 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         edittextdate=findViewById(R.id.edittextDate);
         carmodel=findViewById(R.id.carModel);
         carmodel.setOnItemSelectedListener(this);
-
         carbrand=findViewById(R.id.carBrand);
         carbrand.setOnItemSelectedListener(this);
         ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, brand);
@@ -244,7 +240,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                         Intent i = new Intent(getApplicationContext(), MapsActivity2.class);
                         i.putExtra("longitude", String.valueOf(longitudeBest));
                         i.putExtra("latitude", String.valueOf(latitudeBest));
-                        i.putExtra("Username", username);
+                        i.putExtra("Username",username);
                         startActivity(i);
 
                         Bundle extras=getIntent().getExtras();
@@ -302,29 +298,32 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                 if (datestr.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Enter date", Toast.LENGTH_SHORT).show();
                 }
-
-               /* if(!locationstr.isEmpty())
-                {
-                    Toast.makeText(getApplicationContext(), "LOCATION:"+locationstr, Toast.LENGTH_SHORT).show();
-                }*/
-
                 Log.e("TAG", "Username: "+username+""+brandStr+""+modelstr+""+typestr+""+datestr+""+timestr+""+latitudeStr+""+longitudeStr+""+modestr);
-
-
                     databaseReference.child("Service").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Handler handler;
+                            handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent i = new Intent(getApplicationContext(), user_View_Service.class);
 
-                           /* final String geti=snapshot.child(username).child(String.valueOf(i)).getValue(String.class);
-                            int i=Integer.parseInt(geti);
+                                    i.putExtra("Username", username);
+                                    startActivity(i);
+                                }
+                            }, 3000);
 
 
 
-                            if (geti.isEmpty()) {
+
+//                            final String geti=snapshot.child(username).child(String.valueOf(i)).getValue(String.class);
+//                            int i=Integer.parseInt(geti);
+                            if (snapshot.child(username).child(String.valueOf(i)).getValue(String.class).isEmpty()) {
                                 //enter data
 
-                               i++;*/
-                                //passing to Users
+                               i++;
+                                //passing to User
                                 databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).setValue(i);
                                 databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("Username").setValue(username);
                                 databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("CarBrand").setValue(brandStr);
@@ -353,10 +352,10 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                 Toast.makeText(getApplicationContext(), "Service Succesfully Booked", Toast.LENGTH_SHORT).show();
                                // Toast.makeText(user_Book_Service.this, "ALREADY A SERVICE", Toast.LENGTH_SHORT).show();
 
-                            /*} else {
+                            } else {
                                 //enter data
 
-                                i++;*/
+                                i++;
                                 //passing to Users
                                 databaseReference.child("Users").child(username).child("Service").child("Username").setValue(username);
                                 databaseReference.child("Users").child(username).child("Service").child("CarBrand").setValue(brandStr);
@@ -382,20 +381,10 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                 databaseReference.child("Service").child(username).child("Longitude").setValue(longitudeStr);
                                 databaseReference.child("Service").child(username).child("PaymentMode").setValue(modestr);
                                 Toast.makeText(getApplicationContext(), "Service Sussecfully Booked", Toast.LENGTH_SHORT).show();
-                       //     }
+                            }
 
 
-                            Handler handler;
-                            handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Intent i = new Intent(getApplicationContext(), user_View_Service.class);
 
-                                    i.putExtra("Username", username);
-                                    startActivity(i);
-                                }
-                            }, 3000);
                         }
 
                         @Override
@@ -486,25 +475,6 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         longitudeStr=longitude;
         Log.e("", "latitude: "+latitude+"  Longitude:"+longitude );
         getAddress( Double.parseDouble(latitude) ,Double.parseDouble(longitude) );
-      /*  databaseReference.child("Service").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                final String geti=snapshot.child(username).child(String.valueOf(i)).getValue(String.class);
-                int i=Integer.parseInt(geti);
-                if (geti.isEmpty()) {
-
-                    i++;
-                    databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("Location").setValue(location);
-                    databaseReference.child("Service").child(username).child("Location").setValue(location);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
     }
 
     ///to get place details from lat n log

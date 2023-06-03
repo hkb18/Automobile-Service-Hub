@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     android:background="@drawable/theme_bg"
     tools:context=".user_Book_Service">
 
@@ -12,21 +13,34 @@
         android:id="@+id/servicebuktopic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:text="SERVICE BOOKING"
         android:textSize="30dp"
         android:textStyle="bold"
         android:textColor="#710900"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginBottom="15dp"/>
 
-    </TextView>
 <!-- SELECT CAR BRAND -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Your Car Brand :"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingRight="15dp"
+            android:textColor="@color/white"/>
+        <Spinner
+            android:id="@+id/carBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           />
+        <!--<TextView
 
             android:layout_width="180dp"
             android:layout_height="50dp"
@@ -55,7 +69,7 @@
             android:layout_marginTop="19dp"
             android:layout_marginLeft="8dp">
 
-        </Spinner>
+        </Spinner>-->
   <!--      <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
             android:id="@+id/carBrand"
             android:layout_width="match_parent"
@@ -79,10 +93,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Your Car Model :"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingRight="12dp"
+            android:textColor="@color/white"/>
+        <Spinner
+            android:id="@+id/carModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
+
+       <!-- <TextView
             android:layout_width="180dp"
             android:layout_height="50dp"
             android:layout_marginTop="19dp"
@@ -111,7 +140,7 @@
             android:layout_marginLeft="8dp"
             >
 
-        </Spinner>
+        </Spinner>-->
 
 
     </LinearLayout>
@@ -119,9 +148,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Service Type :"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingRight="35dp"
+            android:textColor="@color/white"/>
+        <Spinner
+            android:id="@+id/serviceType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+       <!-- <TextView
 
             android:layout_width="180dp"
             android:layout_height="50dp"
@@ -150,7 +193,7 @@
             android:layout_marginTop="19dp"
             android:layout_marginLeft="8dp">
 
-        </Spinner>
+        </Spinner>-->
 
 
     </LinearLayout>
@@ -158,42 +201,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
         <Button
             android:id="@+id/buttonDate"
-            android:layout_width="180dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="19dp"
             android:text="Select Date"
-            android:textSize="14dp"
+            android:textSize="16dp"
+            android:gravity="center"
             android:textColor="@color/white"
             android:backgroundTint="@color/summersky"
-            android:layout_marginStart="8dp">
+            android:layout_marginStart="8dp"/>
 
-        </Button>
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:text=":"
             android:textColor="@color/white"
-            android:layout_marginTop="19dp"
             android:layout_marginLeft="6dp"
             android:textSize="18dp"
-            android:textStyle="bold">
+            android:textStyle="bold"/>
 
-        </TextView>
         <EditText
             android:id="@+id/edittextDate"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:backgroundTint="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:textColor="@color/black">
-        </EditText>
+            android:textColor="@color/black"/>
+
 
     </LinearLayout>
 
@@ -202,17 +243,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
         <Button
             android:id="@+id/buttonLocation"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="View Your Location"
             android:textColor="@color/white"
             android:backgroundTint="@color/summersky"
-            android:textSize="14dp"
+            android:textSize="16dp"
             android:textStyle="bold"/>
         <!--  <TextView
               android:layout_width="180dp"
@@ -226,24 +266,22 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:text=":"
             android:textColor="@color/white"
-            android:layout_marginTop="19dp"
             android:layout_marginLeft="6dp"
             android:textSize="18dp"
-            android:textStyle="bold">
+            android:textStyle="bold"/>
 
-        </TextView>
+
         <EditText
             android:id="@+id/edittextLocation"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="8dp">
+            android:layout_marginLeft="8dp"/>
 
-        </EditText>
+
 
 
     </LinearLayout>
@@ -251,9 +289,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Service Time :"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingRight="30dp"
+            android:textColor="@color/white"/>
+        <Spinner
+            android:id="@+id/serviceTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <!--<TextView
 
             android:layout_width="180dp"
             android:layout_height="50dp"
@@ -283,7 +334,7 @@
             android:layout_marginLeft="8dp"
             >
 
-        </Spinner>
+        </Spinner>-->
 
 
     </LinearLayout>
@@ -291,9 +342,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Method :"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingRight="52dp"
+            android:textColor="@color/white"/>
+        <Spinner
+            android:id="@+id/paymentMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <!--<TextView
 
             android:layout_width="180dp"
             android:layout_height="50dp"
@@ -323,7 +387,7 @@
             android:layout_marginTop="19dp"
             android:layout_marginLeft="8dp">
 
-        </Spinner>
+        </Spinner>-->
 
 
 
@@ -337,9 +401,8 @@
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:text="BOOK SERVICE"
-        android:backgroundTint="@color/summersky">
-
-    </Button>
+        android:backgroundTint="@color/summersky"
+        android:layout_marginTop="15dp"/>
 
 
 </LinearLayout>

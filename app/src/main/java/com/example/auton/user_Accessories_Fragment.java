@@ -1,5 +1,6 @@
 package com.example.auton;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -73,7 +74,8 @@ public class user_Accessories_Fragment extends Fragment {
         cvScreen_Speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getContext(), user_View_Screens_Speakers.class);
+                startActivity(i);
             }
         });
 
