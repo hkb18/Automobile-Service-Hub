@@ -2,6 +2,7 @@ package com.example.auton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,19 +27,22 @@ public class admin_add_Carcare_Purifier extends AppCompatActivity {
         airpurifier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getApplicationContext(),admin_add_AirPurifier.class);
+                startActivity(i);
             }
         });
         cleaningkit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getApplicationContext(),admin_add_CleaningKit.class);
+                startActivity(i);
             }
         });
         microfibers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getApplicationContext(),admin_add_MicroFibres.class);
+                startActivity(i);
             }
         });
         wiperblades.setOnClickListener(new View.OnClickListener() {

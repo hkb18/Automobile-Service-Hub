@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/theme_bg"
+    tools:context=".admin_add_Speakers">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="SPEAKERS"
+                android:textSize="20dp"/>
+
+            <!-- SPEAKER TYPE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Speaker Type"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/speakerType"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- POWER OUTPUT -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Power Output"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/powerOutput"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- FREQUENCY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Frequency"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/frequency"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- SENSITIVITY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Sensitivity"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sensitivity"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- DIAMETER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Diameter"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/diameter"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- COLOR -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Color"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/color"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Manufacturer -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Manufacturer"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/speakerManufacturer"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Price -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Amount"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/speakerPrice"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- QTY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Quantity"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/speakerQuantity"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Image -->
+         <!--   <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:layout_marginBottom="5dp">
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:id="@+id/image_view"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_selectImg"
+                    android:text="SELECT IMAGE"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_uploadImg"
+                    android:text="UPLOAD IMAGE"/>
+            </LinearLayout>-->
+
+            <Button
+                android:id="@+id/btn_addSpeaker"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/summersky"
+                android:text="ADD"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

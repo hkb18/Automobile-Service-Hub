@@ -36,5 +36,29 @@ public class admin_add_ScreenSpeaker extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        speakers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),admin_add_Speakers.class);
+                startActivity(i);
+            }
+        });
+
+        vacuumcleaner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),admin_add_VacuumCleaners.class);
+                startActivity(i);
+            }
+        });
+
+        amplifier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),admin_add_Amplifiers.class);
+                startActivity(i);
+            }
+        });
     }
 }

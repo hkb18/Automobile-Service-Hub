@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -17,7 +17,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Auton"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".admin_add_MicroFibres"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_CleaningKit"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_AirPurifier"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_Amplifiers"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_VacuumCleaners"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_Speakers"
+            android:exported="false" />
         <activity
             android:name=".user_View_Screens_Speakers"
             android:exported="false" />
@@ -109,7 +127,7 @@
             android:exported="false" />
         <activity
             android:name=".splashScreen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

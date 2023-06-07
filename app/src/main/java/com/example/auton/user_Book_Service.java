@@ -43,6 +43,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -50,6 +51,8 @@ import java.util.Locale;
 public class user_Book_Service extends AppCompatActivity implements AdapterView.OnItemSelectedListener,mapinterface {
     Button date,location,booking;
     int i=0;
+
+    String sysTime;
 
     private static final int PERMISSIONS_REQUEST_LOCATION = 123;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
@@ -315,73 +318,32 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                             }, 3000);
 
 
-
-
-//                            final String geti=snapshot.child(username).child(String.valueOf(i)).getValue(String.class);
-//                            int i=Integer.parseInt(geti);
-                            if (snapshot.child(username).child(String.valueOf(i)).getValue(String.class).isEmpty()) {
-                                //enter data
-
-                               i++;
-                                //passing to User
-                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).setValue(i);
-                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("Username").setValue(username);
-                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("CarBrand").setValue(brandStr);
-                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("CarModel").setValue(modelstr);
-                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("ServiceType").setValue(typestr);
-                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("Date").setValue(datestr);
-                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("ServiceTime").setValue(timestr);
-//                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("Location").setValue(locationstr);
-                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("Latitude").setValue(latitudeStr);
-                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("Longitude").setValue(longitudeStr);
-                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(i)).child("PaymentMode").setValue(modestr);
-
+                                sysTime=String.valueOf(System.currentTimeMillis());
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Username").setValue(username);
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("CarBrand").setValue(brandStr);
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("CarModel").setValue(modelstr);
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("ServiceType").setValue(typestr);
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Date").setValue(datestr);
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("ServiceTime").setValue(timestr);
+//                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(System.currentTimeMillis())).child("Location").setValue(locationstr);
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Latitude").setValue(latitudeStr);
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Longitude").setValue(longitudeStr);
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("PaymentMode").setValue(modestr);
 
 
                                 //passing to service table
-                                databaseReference.child("Service").child(username).child(String.valueOf(i)).child("Username").setValue(username);
-                                databaseReference.child("Service").child(username).child(String.valueOf(i)).child("CarBrand").setValue(brandStr);
-                                databaseReference.child("Service").child(username).child(String.valueOf(i)).child("CarModel").setValue(modelstr);
-                                databaseReference.child("Service").child(username).child(String.valueOf(i)).child("ServiceType").setValue(typestr);
-                                databaseReference.child("Service").child(username).child(String.valueOf(i)).child("Date").setValue(datestr);
-                                databaseReference.child("Service").child(username).child(String.valueOf(i)).child("ServiceTime").setValue(timestr);
-//                                databaseReference.child("Service").child(username).child(String.valueOf(i)).child("Location").setValue(locationstr);
-                                databaseReference.child("Service").child(username).child(String.valueOf(i)).child("Latitude").setValue(latitudeStr);
-                                databaseReference.child("Service").child(username).child(String.valueOf(i)).child("Longitude").setValue(longitudeStr);
-                                databaseReference.child("Service").child(username).child(String.valueOf(i)).child("PaymentMode").setValue(modestr);
-                                Toast.makeText(getApplicationContext(), "Service Succesfully Booked", Toast.LENGTH_SHORT).show();
-                               // Toast.makeText(user_Book_Service.this, "ALREADY A SERVICE", Toast.LENGTH_SHORT).show();
-
-                            } else {
-                                //enter data
-
-                                i++;
-                                //passing to Users
-                                databaseReference.child("Users").child(username).child("Service").child("Username").setValue(username);
-                                databaseReference.child("Users").child(username).child("Service").child("CarBrand").setValue(brandStr);
-                                databaseReference.child("Users").child(username).child("Service").child("CarModel").setValue(modelstr);
-                                databaseReference.child("Users").child(username).child("Service").child("ServiceType").setValue(typestr);
-                                databaseReference.child("Users").child(username).child("Service").child("Date").setValue(datestr);
-                                databaseReference.child("Users").child(username).child("Service").child("ServiceTime").setValue(timestr);
-//                                databaseReference.child("Users").child(username).child("Service").child("Location").setValue(locationstr);
-                                databaseReference.child("Users").child(username).child("Service").child("Latitude").setValue(latitudeStr);
-                                databaseReference.child("Users").child(username).child("Service").child("Longitude").setValue(longitudeStr);
-                                databaseReference.child("Users").child(username).child("Service").child("PaymentMode").setValue(modestr);
-
-
-                                //passing to service table
-                                databaseReference.child("Service").child(username).child("Username").setValue(username);
-                                databaseReference.child("Service").child(username).child("CarBrand").setValue(brandStr);
-                                databaseReference.child("Service").child(username).child("CarModel").setValue(modelstr);
-                                databaseReference.child("Service").child(username).child("ServiceType").setValue(typestr);
-                                databaseReference.child("Service").child(username).child("Date").setValue(datestr);
-                                databaseReference.child("Service").child(username).child("ServiceTime").setValue(timestr);
-//                                databaseReference.child("Service").child(username).child("Location").setValue(longitudeStr);
-                                databaseReference.child("Service").child(username).child("Latitude").setValue(latitudeBest);
-                                databaseReference.child("Service").child(username).child("Longitude").setValue(longitudeStr);
-                                databaseReference.child("Service").child(username).child("PaymentMode").setValue(modestr);
+                                databaseReference.child("Service").child(username).child(sysTime).child("Username").setValue(username);
+                                databaseReference.child("Service").child(username).child(sysTime).child("CarBrand").setValue(brandStr);
+                                databaseReference.child("Service").child(username).child(sysTime).child("CarModel").setValue(modelstr);
+                                databaseReference.child("Service").child(username).child(sysTime).child("ServiceType").setValue(typestr);
+                                databaseReference.child("Service").child(username).child(sysTime).child("Date").setValue(datestr);
+                                databaseReference.child("Service").child(username).child(sysTime).child("ServiceTime").setValue(timestr);
+//                                databaseReference.child("Service").child(username).child(String.valueOf(System.currentTimeMillis())).child("Location").setValue(longitudeStr);
+                                databaseReference.child("Service").child(username).child(sysTime).child("Latitude").setValue(latitudeBest);
+                                databaseReference.child("Service").child(username).child(sysTime).child("Longitude").setValue(longitudeStr);
+                                databaseReference.child("Service").child(username).child(sysTime).child("PaymentMode").setValue(modestr);
                                 Toast.makeText(getApplicationContext(), "Service Sussecfully Booked", Toast.LENGTH_SHORT).show();
-                            }
+                           // }
 
 
 
