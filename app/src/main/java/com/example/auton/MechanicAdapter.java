@@ -49,25 +49,8 @@ public class MechanicAdapter extends RecyclerView.Adapter<MechanicAdapter.MyView
 
         Mechanic mechanic=list.get(position);
 
-  /*      databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String name=snapshot.child("Name").getValue().toString();
-                String contactno=snapshot.child("ContactNo").getValue().toString();
-                String email=snapshot.child("Email").getValue().toString();
-                String username=snapshot.child("Workshop").getValue().toString();
-                holder.username.setText(username);
-                holder.fullName.setText(name);
-                holder.emailid.setText(email);
-                holder.contactno.setText(contactno);
-                Toast.makeText(context, ""+username, Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(context, ""+error.getMessage().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });*/
+
 
         holder.username.setText(mechanic.getWorkshop());
         holder.fullName.setText(mechanic.getName());

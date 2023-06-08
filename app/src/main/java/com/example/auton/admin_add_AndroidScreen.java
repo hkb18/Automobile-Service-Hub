@@ -6,13 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityMainBinding;
@@ -25,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -37,10 +42,12 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
     DatabaseReference databaseReference;
     Button add,upload,select;
     ProgressDialog progressDialog;
+    ProgressBar progressBar;
     ImageView imageView;
-
     StorageReference storageReference;
     Uri imageUri;
+    String imageURL;
+    String fileName;
     TextInputEditText textInputEditTextModel,textInputEditTextDimension,textInputEditTextRAM,textInputEditTextROM,textInputEditTextDisplayType,
         textInputEditTextOSType,textInputEditTextWeight,textInputEditTextScreenSize,textInputEditTextManufacturer,textInputEditTextPrice,textInputEditTextQuantity;
     String modelStr,dimensionStr,ramStr,romStr,displaytypeStr,ostypeStr,weightStr,screensizeStr,manufacturerStr,priceStr,quantityStr;
@@ -51,7 +58,7 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
         setContentView(R.layout.activity_admin_add_android_screen);
 
 
-
+        progressBar = new ProgressBar(this);
         imageView=findViewById(R.id.image_view);
         select=findViewById(R.id.btn_selectImg);
         upload=findViewById(R.id.btn_uploadImg);
@@ -96,20 +103,12 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
                                 startActivity(i);
                             }
                             else {
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Model").setValue(modelStr);
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Dimension").setValue(dimensionStr);
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("RAM").setValue(ramStr);
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("ROM").setValue(romStr);
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("DisplayType").setValue(displaytypeStr);
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("OSType").setValue(ostypeStr);
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Weight").setValue(weightStr);
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("ScreenSize").setValue(screensizeStr);
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Price").setValue(priceStr);
-                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Quantity").setValue(quantityStr);
+
+                                Log.e("", "onDataChange: "+modelStr+""+dimensionStr+""+ramStr+""+romStr+""+displaytypeStr+""+ostypeStr+""+weightStr+""+screensizeStr+""+manufacturerStr+""+priceStr+""+quantityStr );
+                            uploadImage();
 //                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Image").setValue();
                             Toast.makeText(admin_add_AndroidScreen.this, "Value Entered", Toast.LENGTH_SHORT).show();
-                            Intent i=new Intent(getApplicationContext(),admin_Add_Accessories.class);
+                            Intent i=new Intent(getApplicationContext(),admin_add_ScreenSpeaker.class);
                             startActivity(i);
                         }}
 
@@ -128,19 +127,16 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 selectImage();
-
             }
         });
 
-        upload.setOnClickListener(new View.OnClickListener() {
+     /*   upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 uploadImage();
             }
-        });
+        });*/
 
     }
     private void selectImage(){
@@ -160,36 +156,96 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
         }
     }
 
-    private void uploadImage(){
+    private void uploadImage() {
+        if (imageUri != null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading File...");
+            progressDialog.show();
 
-        progressDialog=new ProgressDialog(this);
-        progressDialog.setTitle("Uploading File...");
-        progressDialog.show();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
+            Date now = new Date();
+            fileName = formatter.format(now);
+            storageReference = FirebaseStorage.getInstance().getReference("images/" + fileName);
 
-        SimpleDateFormat formatter=new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
-        Date now=new Date();
-        String fileName=formatter.format(now);
-        storageReference=FirebaseStorage.getInstance().getReference("images/"+fileName);
+            storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    imageView.setImageURI(null);
+                    Toast.makeText(admin_add_AndroidScreen.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
+                    if (progressDialog.isShowing())
+                        progressDialog.dismiss();
 
-        storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                    if (progressDialog.isShowing())
+                        progressDialog.dismiss();
+
+                    Toast.makeText(admin_add_AndroidScreen.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+            uploadtoFirebase(imageUri);
+        }
+        else {
+            Toast.makeText(this, "Please select Image", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void uploadtoFirebase(Uri uri) {
+
+
+        //storageReference= storageReference.child(System.currentTimeMillis()+"."+getFileExtension(uri));
+        storageReference=storageReference.child("images/").child(fileName);
+        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                imageView.setImageURI(null);
-                Toast.makeText(admin_add_AndroidScreen.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
-                if (progressDialog.isShowing())
-                    progressDialog.dismiss();
+                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        AndroidScreen_Model model= new AndroidScreen_Model(uri.toString());
+//                        String modelid=databaseReference.push().getKey();//to generate random key
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Image").setValue(uri.toString());
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Model").setValue(modelStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Dimension").setValue(dimensionStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("RAM").setValue(ramStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("ROM").setValue(romStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("DisplayType").setValue(displaytypeStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("OSType").setValue(ostypeStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Weight").setValue(weightStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("ScreenSize").setValue(screensizeStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Price").setValue(priceStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Quantity").setValue(quantityStr);
+//                        databaseReference.child(modelid).setValue(model);
+                        Log.e("", "Img: "+model);
+                        Toast.makeText(admin_add_AndroidScreen.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                progressBar.setVisibility(View.VISIBLE);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
-                if (progressDialog.isShowing())
-                    progressDialog.dismiss();
-
-                Toast.makeText(admin_add_AndroidScreen.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
-
+                progressBar.setVisibility(View.INVISIBLE);
+                Toast.makeText(admin_add_AndroidScreen.this, "Uploading Failed !!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private String getFileExtension(Uri mUri){
+        ContentResolver cr=getContentResolver();
+        MimeTypeMap mime= MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cr.getType(mUri));
     }
 }

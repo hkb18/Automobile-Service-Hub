@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.denzcoskun.imageslider.adapters.ViewPagerAdapter;
@@ -29,7 +30,10 @@ public class user_View_Screens_Speakers extends AppCompatActivity {
     private ActivityUserViewScreensSpeakersBinding binding; //no need for findviewbyid
     private  ScreensSpeakersAdapter adapter;
     private ArrayList<materialButton> list;
+    private ArrayList<ScreensSpeakers_ModelClass> ssList;
+    private ScreenSpeaker_ItemAdapter ssAdapter;
     DatabaseReference databaseReference;
+    public static ScreeenSpeakerInterface ScreeenSpeakerInterface;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -44,7 +48,6 @@ public class user_View_Screens_Speakers extends AppCompatActivity {
         binding.rvScreensSpeakers.setAdapter(adapter);
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-
         databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -62,6 +65,35 @@ public class user_View_Screens_Speakers extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        binding.rvItems.setAdapter(ssAdapter);
+        ssList=new ArrayList<>();
+
+        binding.rvItems.setHasFixedSize(true);
+        binding.rvItems.setLayoutManager(new LinearLayoutManager(this));
+
+        ssAdapter =new ScreenSpeaker_ItemAdapter(this,ssList);
+        binding.rvItems.setAdapter(ssAdapter);
+
+        //ScreeenSpeakerInterface=this;
+
+        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ssList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                    ScreensSpeakers_ModelClass ss = dataSnapshot1.getValue(ScreensSpeakers_ModelClass.class);
+                    ssList.add(ss);
+                }}
+                ssAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
     }

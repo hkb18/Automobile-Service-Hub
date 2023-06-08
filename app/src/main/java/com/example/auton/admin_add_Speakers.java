@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class admin_add_Speakers extends AppCompatActivity {
     TextInputEditText textInputEditTextSpeakerType,textInputEditTextPowerOutput,textInputEditTextFrequency,textInputEditTextSensitivity,textInputEditTextDiameter,textInputEditTextManufacturer,textInputEditTextColor,textInputEditTextPrice,textInputEditTextQuantity;
     Button add;
-    String SpeakerTypeStr,PowerOutputStr,FrequencyStr,SensitivityStr,DiameterStr,ColorStr,ManufacturerStr,PriceStr,QuantityStr;
+    String SpeakerTypeStr,PowerOutputStr,FrequencyStr,SensitivityStr,DiameterStr,ColorStr,ManufacturerStr,PriceStr,QuantityStr,sysTime;
     DatabaseReference databaseReference;
 
     @SuppressLint("MissingInflatedId")
@@ -62,15 +62,16 @@ public class admin_add_Speakers extends AppCompatActivity {
                     databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            databaseReference.child("Accessories").child("Speakers").child(ManufacturerStr).child("SpeakerType").setValue(SpeakerTypeStr);
-                            databaseReference.child("Accessories").child("Speaker").child(ManufacturerStr).child("PowerOutput").setValue(PowerOutputStr);
-                            databaseReference.child("Accessories").child("Speaker").child(ManufacturerStr).child("Frequency").setValue(FrequencyStr);
-                            databaseReference.child("Accessories").child("Speaker").child(ManufacturerStr).child("Sensitivity").setValue(SensitivityStr);
-                            databaseReference.child("Accessories").child("Speaker").child(ManufacturerStr).child("Diameter").setValue(DiameterStr);
-                            databaseReference.child("Accessories").child("Speaker").child(ManufacturerStr).child("Manufacturer").setValue(ManufacturerStr);
-                            databaseReference.child("Accessories").child("Speaker").child(ManufacturerStr).child("Color").setValue(ColorStr);
-                            databaseReference.child("Accessories").child("Speaker").child(ManufacturerStr).child("Price").setValue(PriceStr);
-                            databaseReference.child("Accessories").child("Speaker").child(ManufacturerStr).child("Quantity").setValue(QuantityStr);
+                            sysTime=String.valueOf(System.currentTimeMillis());
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(sysTime).child("SpeakerType").setValue(SpeakerTypeStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(sysTime).child("PowerOutput").setValue(PowerOutputStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(sysTime).child("Frequency").setValue(FrequencyStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(sysTime).child("Sensitivity").setValue(SensitivityStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(sysTime).child("Diameter").setValue(DiameterStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(sysTime).child("Manufacturer").setValue(ManufacturerStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(sysTime).child("Color").setValue(ColorStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(sysTime).child("Price").setValue(PriceStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(sysTime).child("Quantity").setValue(QuantityStr);
 
 //                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Image").setValue();
                             Toast.makeText(admin_add_Speakers.this, "Value Entered", Toast.LENGTH_SHORT).show();

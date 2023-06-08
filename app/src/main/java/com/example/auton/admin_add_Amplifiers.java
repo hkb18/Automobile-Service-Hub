@@ -60,15 +60,15 @@ public class admin_add_Amplifiers extends AppCompatActivity {
                     databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            databaseReference.child("Accessories").child("Amplifiers").child(modelStr).child("Model").setValue(modelStr);
-                            databaseReference.child("Accessories").child("Amplifiers").child(modelStr).child("MaxVoltage").setValue(maxVoltageStr);
-                            databaseReference.child("Accessories").child("Amplifiers").child(modelStr).child("MountingHardware").setValue(mountingHardwareStr);
-                            databaseReference.child("Accessories").child("Amplifiers").child(modelStr).child("Dimenension").setValue(dimensionStr);
-                            databaseReference.child("Accessories").child("Amplifiers").child(modelStr).child("Channel").setValue(channelStr);
-                            databaseReference.child("Accessories").child("Amplifiers").child(modelStr).child("Weight").setValue(weightStr);
-                            databaseReference.child("Accessories").child("Amplifiers").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
-                            databaseReference.child("Accessories").child("Amplifiers").child(modelStr).child("Price").setValue(priceStr);
-                            databaseReference.child("Accessories").child("Amplifiers").child(modelStr).child("Quantity").setValue(quantityStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Model").setValue(modelStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("MaxVoltage").setValue(maxVoltageStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("MountingHardware").setValue(mountingHardwareStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Dimenension").setValue(dimensionStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Channel").setValue(channelStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Weight").setValue(weightStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Price").setValue(priceStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Quantity").setValue(quantityStr);
 
 //                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Image").setValue();
                             Toast.makeText(admin_add_Amplifiers.this, "Value Entered", Toast.LENGTH_SHORT).show();

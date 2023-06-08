@@ -60,15 +60,15 @@ public class admin_add_VacuumCleaners extends AppCompatActivity {
                     databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            databaseReference.child("Accessories").child("VacuumCleaners").child(modelStr).child("Model").setValue(modelStr);
-                            databaseReference.child("Accessories").child("VacuumCleaners").child(modelStr).child("OperatingVoltage").setValue(operatingVoltageStr);
-                            databaseReference.child("Accessories").child("VacuumCleaners").child(modelStr).child("Color").setValue(colorStr);
-                            databaseReference.child("Accessories").child("VacuumCleaners").child(modelStr).child("Dimension").setValue(dimensionStr);
-                            databaseReference.child("Accessories").child("VacuumCleaners").child(modelStr).child("Weight").setValue(weightStr);
-                            databaseReference.child("Accessories").child("VacuumCleaners").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
-                            databaseReference.child("Accessories").child("VacuumCleaners").child(modelStr).child("ItemsIncluded").setValue(itemsIncludedStr);
-                            databaseReference.child("Accessories").child("VacuumCleaners").child(modelStr).child("Price").setValue(priceStr);
-                            databaseReference.child("Accessories").child("VacuumCleaners").child(modelStr).child("Quantity").setValue(quantityStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Model").setValue(modelStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("OperatingVoltage").setValue(operatingVoltageStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Color").setValue(colorStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Dimension").setValue(dimensionStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Weight").setValue(weightStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("ItemsIncluded").setValue(itemsIncludedStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Price").setValue(priceStr);
+                            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Quantity").setValue(quantityStr);
 
 //                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Image").setValue();
                             Toast.makeText(admin_add_VacuumCleaners.this, "Value Entered", Toast.LENGTH_SHORT).show();

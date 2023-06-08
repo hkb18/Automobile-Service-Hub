@@ -74,17 +74,17 @@ public class admin_add_BassTubes extends AppCompatActivity {
                                 startActivity(i);
                             }
                             else {
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("Model").setValue(modelStr);
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("Dimension").setValue(dimensionStr);
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("PowerOutput").setValue(poweroutputStr);
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("Frequency").setValue(frequencyStr);
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("SalientFeature").setValue(salientfeatureStr);
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("Sensitivity").setValue(sensitivityStr);
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("Weight").setValue(weightStr);
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("Color").setValue(colorStr);
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("Design").setValue(designStr);
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
-                                databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("Price").setValue(priceStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Model").setValue(modelStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Dimension").setValue(dimensionStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("PowerOutput").setValue(poweroutputStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Frequency").setValue(frequencyStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("SalientFeature").setValue(salientfeatureStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Sensitivity").setValue(sensitivityStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Weight").setValue(weightStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Color").setValue(colorStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Design").setValue(designStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
+                                databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Price").setValue(priceStr);
                                 databaseReference.child("Accessories").child("BassTubes").child(modelStr).child("Quantity").setValue(quantityStr);
                                 Toast.makeText(admin_add_BassTubes.this, "Value Entered", Toast.LENGTH_SHORT).show();
                                 Intent i=new Intent(getApplicationContext(),admin_Add_Accessories.class);

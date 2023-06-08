@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Auton"
         tools:targetApi="31">
         <activity
+            android:name=".user_View_Booked_Service"
+            android:exported="false" />
+        <activity
             android:name=".admin_add_MicroFibres"
             android:exported="false" />
         <activity
