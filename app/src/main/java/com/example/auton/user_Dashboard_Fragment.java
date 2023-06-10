@@ -103,7 +103,7 @@ public class user_Dashboard_Fragment extends Fragment {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(),user_View_Service.class);
+                Intent intent=new Intent(getContext(),user_View_Booked_Service.class);
                 intent.putExtra("Username",mParam2);
                 startActivity(intent);
             }

@@ -25,11 +25,8 @@ public class workshop_View_Mechanic extends AppCompatActivity implements OnClick
     MechanicAdapter myAdapter;
     ArrayList<Mechanic> list;
     SearchView searchView;
-
-
     public static OnClickInterface onClickInterface;
-
- String s1="";
+    String s1="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

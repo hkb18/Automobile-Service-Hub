@@ -70,6 +70,7 @@ public class ScreensSpeakersAdapter extends RecyclerView.Adapter<ScreensSpeakers
 
     }
 
+
     @Override
     public int getItemCount() {
         return dataList.size();

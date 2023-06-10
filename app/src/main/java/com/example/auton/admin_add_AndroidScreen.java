@@ -40,13 +40,12 @@ import java.util.Locale;
 public class admin_add_AndroidScreen extends AppCompatActivity {
 
     DatabaseReference databaseReference;
-    Button add,upload,select;
+    Button add,select;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
     ImageView imageView;
     StorageReference storageReference;
     Uri imageUri;
-    String imageURL;
     String fileName;
     TextInputEditText textInputEditTextModel,textInputEditTextDimension,textInputEditTextRAM,textInputEditTextROM,textInputEditTextDisplayType,
         textInputEditTextOSType,textInputEditTextWeight,textInputEditTextScreenSize,textInputEditTextManufacturer,textInputEditTextPrice,textInputEditTextQuantity;
@@ -61,7 +60,6 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
         progressBar = new ProgressBar(this);
         imageView=findViewById(R.id.image_view);
         select=findViewById(R.id.btn_selectImg);
-        upload=findViewById(R.id.btn_uploadImg);
         add=findViewById(R.id.btn_addAndroidScreens);
         textInputEditTextModel=findViewById(R.id.screenModel);
         textInputEditTextDimension=findViewById(R.id.screenDimensions);
@@ -103,15 +101,13 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
                                 startActivity(i);
                             }
                             else {
-
                                 Log.e("", "onDataChange: "+modelStr+""+dimensionStr+""+ramStr+""+romStr+""+displaytypeStr+""+ostypeStr+""+weightStr+""+screensizeStr+""+manufacturerStr+""+priceStr+""+quantityStr );
                             uploadImage();
-//                            databaseReference.child("Accessories").child("AndroidScreens").child(modelStr).child("Image").setValue();
+//
                             Toast.makeText(admin_add_AndroidScreen.this, "Value Entered", Toast.LENGTH_SHORT).show();
                             Intent i=new Intent(getApplicationContext(),admin_add_ScreenSpeaker.class);
                             startActivity(i);
                         }}
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                             Toast.makeText(admin_add_AndroidScreen.this, "error"+error.getMessage().toString(), Toast.LENGTH_SHORT).show();
@@ -130,14 +126,6 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
                 selectImage();
             }
         });
-
-     /*   upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImage();
-            }
-        });*/
-
     }
     private void selectImage(){
         Intent intent=new Intent();

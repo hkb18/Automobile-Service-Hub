@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.SearchView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -33,6 +34,7 @@ public class user_View_Screens_Speakers extends AppCompatActivity {
     private ArrayList<ScreensSpeakers_ModelClass> ssList;
     private ScreenSpeaker_ItemAdapter ssAdapter;
     DatabaseReference databaseReference;
+    SearchView searchView;
     public static ScreeenSpeakerInterface ScreeenSpeakerInterface;
 
     @SuppressLint("MissingInflatedId")
@@ -96,5 +98,40 @@ public class user_View_Screens_Speakers extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+        //  SEARCH
+/*
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // creating a new array list to filter our data.
+                ArrayList<ScreensSpeakers_ModelClass> filteredlist = new ArrayList<>();
+
+                // running a for loop to compare elements.
+                for (ScreensSpeakers_ModelClass item : ssList ) {
+                    // checking if the entered string matched with any item of our recycler view.
+                    if (item.getModel().toLowerCase().contains(newText.toLowerCase())) {
+                        // if the item is matched we are
+                        // adding it to our filtered list.
+                        filteredlist.add(item);
+                    }
+                }
+                if (filteredlist.isEmpty()) {
+                    // if no item is added in filtered list we are
+                    // displaying a toast message as no data found.
+                    Toast.makeText(getApplicationContext(), "No Data Found..", Toast.LENGTH_SHORT).show();
+                } else {
+                    // at last we are passing that filtered
+                    // list to our adapter class.
+                    ssAdapter.filterList(filteredlist);
+                }
+                return false;
+            }
+        });
+*/
     }
 }

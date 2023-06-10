@@ -282,11 +282,6 @@
            android:layout_height="wrap_content"
            android:id="@+id/btn_selectImg"
            android:text="SELECT IMAGE"/>
-       <Button
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:id="@+id/btn_uploadImg"
-           android:text="UPLOAD IMAGE"/>
     </LinearLayout>
 
     <Button

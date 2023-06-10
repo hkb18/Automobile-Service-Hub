@@ -27,8 +27,6 @@ import java.util.ArrayList;
 public class MechanicAdapter extends RecyclerView.Adapter<MechanicAdapter.MyViewHolder> {
     Context context;
     ArrayList<Mechanic> list;
-    DatabaseReference databaseReference;
-
     public MechanicAdapter(Context context, ArrayList<Mechanic> list) {
         this.context = context;
         this.list = list;
@@ -44,14 +42,7 @@ public class MechanicAdapter extends RecyclerView.Adapter<MechanicAdapter.MyView
         SharedPreferences sh= context.getSharedPreferences("MySharedPreferences1", MODE_PRIVATE);
         String s1=sh.getString("Username","");
 
-
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-
         Mechanic mechanic=list.get(position);
-
-
-
-
         holder.username.setText(mechanic.getWorkshop());
         holder.fullName.setText(mechanic.getName());
         holder.emailid.setText(mechanic.getEmail());
@@ -67,8 +58,6 @@ public class MechanicAdapter extends RecyclerView.Adapter<MechanicAdapter.MyView
 
             }
         });
-
-
     }
     public void filterList(ArrayList<Mechanic> filteredlist) {
         // below line is to add our filtered

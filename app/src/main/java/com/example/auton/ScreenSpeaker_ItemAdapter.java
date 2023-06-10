@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeaker_ItemAdapter.ViewHold> {
-    private final ArrayList<ScreensSpeakers_ModelClass> dataList;
+    private ArrayList<ScreensSpeakers_ModelClass> dataList;
     private final Context context;
     DatabaseReference databaseReference;
 
@@ -52,7 +52,14 @@ public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeake
 
     }
 
-
+    public void filterList(ArrayList<ScreensSpeakers_ModelClass> filteredlist) {
+        // below line is to add our filtered
+        // list in our course array list.
+        dataList = filteredlist;
+        // below line is to notify our adapter
+        // as change in recycler view data.
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getItemCount() {

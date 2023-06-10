@@ -3,6 +3,7 @@ package com.example.auton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ public class user_View_Service extends AppCompatActivity {
     Button Edit;
     String carbrandStr,carmodelStr,servicetypeStr,servicedateStr,servicetimeStr,userlocationStr,paymentbyStr;
     DatabaseReference databaseReference;
-
+    SharedPreferences sh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,9 @@ public class user_View_Service extends AppCompatActivity {
 
         Bundle extras=getIntent().getExtras();
         String username= extras.getString("Username");
+        sh=getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
+        String s1=sh.getString("Username","");
+
 
         textViewCarBrand=findViewById(R.id.tv_CarBrand);
         textViewCarModel=findViewById(R.id.tv_CarModel);
@@ -37,7 +41,7 @@ public class user_View_Service extends AppCompatActivity {
         textViewUserLocation=findViewById(R.id.tv_UserLocation);
         textViewPaymentBy=findViewById(R.id.tv_Payment);
 
-        databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Service") .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(username)){
@@ -46,7 +50,7 @@ public class user_View_Service extends AppCompatActivity {
                     servicetypeStr=snapshot.child(username).child("Service").child("ServiceType").getValue(String.class);
                     servicedateStr=snapshot.child(username).child("Service").child("Date").getValue(String.class);
                     servicetimeStr=snapshot.child(username).child("Service").child("ServiceTime").getValue(String.class);
-                    userlocationStr=snapshot.child(username).child("Service").child("Location").getValue(String.class);
+                    userlocationStr=snapshot.child(username).child("Service").child("Latitude").getValue(String.class);
                     paymentbyStr=snapshot.child(username).child("Service").child("PaymentMode").getValue(String.class);
 
                     textViewCarBrand.setText(carbrandStr);
@@ -54,12 +58,9 @@ public class user_View_Service extends AppCompatActivity {
                     textViewServiceType.setText(servicetypeStr);
                     textViewServiceDate.setText(servicedateStr);
                     textViewServiceTime.setText(servicetimeStr);
-                    if(userlocationStr.isEmpty()){                  //      ERROR  null obj ref
-                        String alert="Location While Booking";
-                        textViewUserLocation.setText(alert);
-                    }else {
+
                         textViewUserLocation.setText(userlocationStr);
-                    }
+
                     textViewPaymentBy.setText(paymentbyStr);
                 }
             }

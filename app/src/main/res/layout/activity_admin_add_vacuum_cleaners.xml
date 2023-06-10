@@ -223,7 +223,7 @@
             </LinearLayout>
 
             <!-- Image -->
-        <!--    <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -232,18 +232,13 @@
                 <ImageView
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:id="@+id/image_view"/>
+                    android:id="@+id/ivVacuumCleaner"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btn_selectImg"
+                    android:id="@+id/btn_selectVacuumCleaner"
                     android:text="SELECT IMAGE"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btn_uploadImg"
-                    android:text="UPLOAD IMAGE"/>
-            </LinearLayout>-->
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_add_VacuumCleaners"

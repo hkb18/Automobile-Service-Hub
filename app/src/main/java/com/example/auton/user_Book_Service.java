@@ -329,6 +329,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Latitude").setValue(latitudeStr);
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Longitude").setValue(longitudeStr);
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("PaymentMode").setValue(modestr);
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("SYSTIME").setValue(sysTime);
 
 
                                 //passing to service table
@@ -342,6 +343,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                 databaseReference.child("Service").child(username).child(sysTime).child("Latitude").setValue(latitudeBest);
                                 databaseReference.child("Service").child(username).child(sysTime).child("Longitude").setValue(longitudeStr);
                                 databaseReference.child("Service").child(username).child(sysTime).child("PaymentMode").setValue(modestr);
+                                databaseReference.child("Service").child(username).child(sysTime).child("SYSTIME").setValue(sysTime);
                                 Toast.makeText(getApplicationContext(), "Service Sussecfully Booked", Toast.LENGTH_SHORT).show();
                            // }
 
