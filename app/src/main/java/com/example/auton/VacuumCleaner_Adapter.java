@@ -1,8 +1,6 @@
 package com.example.auton;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,42 +9,37 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.button.MaterialButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeaker_ItemAdapter.ViewHold> {
-    private ArrayList<ScreensSpeakers_ModelClass> dataList;
+public class VacuumCleaner_Adapter extends RecyclerView.Adapter<VacuumCleaner_Adapter.ViewHold>{
+    private ArrayList<VacuumCleaner_ModelClass> dataList;
     private final Context context;
 
 
-    public ScreenSpeaker_ItemAdapter(Context fragment, ArrayList<ScreensSpeakers_ModelClass> dataList) {
+    public VacuumCleaner_Adapter(Context fragment, ArrayList<VacuumCleaner_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
 
     }
     @NonNull
     @Override
-    public ScreenSpeaker_ItemAdapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.screen_speaker_items_layout, parent, false);
-        return new ScreenSpeaker_ItemAdapter.ViewHold(view);
+    public VacuumCleaner_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vacuumcleaner_layout, parent, false);
+        return new VacuumCleaner_Adapter.ViewHold(view);
     }
 
-    public void onBindViewHolder(ScreenSpeaker_ItemAdapter.ViewHold holder,int position){
-        ScreensSpeakers_ModelClass ss=dataList.get(position);
-        Log.e("", "DATALIST: "+ss );
+    public void onBindViewHolder(VacuumCleaner_Adapter.ViewHold holder,int position){
+        VacuumCleaner_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
-        holder.desc.setText(ss.getScreenSize()+ss.getDisplayType());
+        holder.desc.setText(ss.getModel());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
     }
 
-    public void filterList(ArrayList<ScreensSpeakers_ModelClass> filteredlist) {
+    public void filterList(ArrayList<VacuumCleaner_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;
@@ -69,5 +62,4 @@ public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeake
             desc=itemView.findViewById(R.id.tvDesc);
             productImg=itemView.findViewById(R.id.itemImage);
         }
-    }
-}
+    }}

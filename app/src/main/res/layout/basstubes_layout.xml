@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/theme_bg"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/theme_bg">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -30,18 +30,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:layout_gravity="center"
-                    android:id="@+id/itemImage"/>
+                    android:id="@+id/basstubesImg"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:id="@+id/tvManufacturer"/>
+                    android:id="@+id/basstubesManufacturer"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:id="@+id/tvDesc"/>
+                    android:id="@+id/basstubesDesc"/>
             </LinearLayout>
 
 

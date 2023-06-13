@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -19,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class user_View_Booked_Service extends AppCompatActivity implements ViewBookedService_Interface{
+public class user_View_Booked_Service extends AppCompatActivity implements ViewBookedService_Interface {
     private ActivityUserViewBookedServiceBinding binding;
     DatabaseReference databaseReference;
     BookedService_Adapter myAdapter;
@@ -31,32 +32,29 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityUserViewBookedServiceBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_user_view_booked_service);
+        setContentView(binding.getRoot());
 
         viewBookedService_interface=this;
 
-        SharedPreferences sh= getSharedPreferences("MySharedPreferences1", MODE_PRIVATE);
+        SharedPreferences sh= getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
         s1=sh.getString("Username","");
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-
-        binding.rvBookedService.setHasFixedSize(true);
-        binding.rvBookedService.setLayoutManager(new LinearLayoutManager(this));
-
         list=new ArrayList<>();
+
+        binding.rvBookedService.setLayoutManager(new LinearLayoutManager(this));
         myAdapter =new BookedService_Adapter(this,list);
         binding.rvBookedService.setAdapter(myAdapter);
+
 
         databaseReference.child("Service").child(s1).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    for (DataSnapshot dataSnapshot2:dataSnapshot1.getChildren()){
-                    BookedService bookedService = dataSnapshot2.getValue(BookedService.class);
+                    BookedService bookedService = dataSnapshot.getValue(BookedService.class);
                     list.add(bookedService);
-                }}}
+                }
                 myAdapter.notifyDataSetChanged();
             }
 

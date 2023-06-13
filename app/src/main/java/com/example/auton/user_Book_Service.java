@@ -340,7 +340,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                 databaseReference.child("Service").child(username).child(sysTime).child("Date").setValue(datestr);
                                 databaseReference.child("Service").child(username).child(sysTime).child("ServiceTime").setValue(timestr);
 //                                databaseReference.child("Service").child(username).child(String.valueOf(System.currentTimeMillis())).child("Location").setValue(longitudeStr);
-                                databaseReference.child("Service").child(username).child(sysTime).child("Latitude").setValue(latitudeBest);
+                                databaseReference.child("Service").child(username).child(sysTime).child("Latitude").setValue(latitudeStr);
                                 databaseReference.child("Service").child(username).child(sysTime).child("Longitude").setValue(longitudeStr);
                                 databaseReference.child("Service").child(username).child(sysTime).child("PaymentMode").setValue(modestr);
                                 databaseReference.child("Service").child(username).child(sysTime).child("SYSTIME").setValue(sysTime);

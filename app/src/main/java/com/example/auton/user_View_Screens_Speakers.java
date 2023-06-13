@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
@@ -29,12 +30,21 @@ import java.util.List;
 
 public class user_View_Screens_Speakers extends AppCompatActivity {
     private ActivityUserViewScreensSpeakersBinding binding; //no need for findviewbyid
-    private  ScreensSpeakersAdapter adapter;
+
+
     private ArrayList<materialButton> list;
-    private ArrayList<ScreensSpeakers_ModelClass> ssList;
-    private ScreenSpeaker_ItemAdapter ssAdapter;
+    private ArrayList<ScreensSpeakers_ModelClass> ssList;   //ANDROID SCREEN
+    private ArrayList<Amplifier_ModelClass> ampList;
+    private ArrayList<BassTubes_ModelClass> basstubesList;
+    private ArrayList<Speaker_ModelClass> speakerList;
+    private ArrayList<VacuumCleaner_ModelClass> vacuumCleanerList;
+    private  ScreensSpeakersAdapter adapter;
+    private ScreenSpeaker_ItemAdapter ssAdapter;        //ANDROID SCREEN
+    private Amplifier_Adapter amplifierAdapter;
+    private BassTubes_Adapter basstubesAdapter;
+    private Speaker_Adapter speakerAdapter;
+    private VacuumCleaner_Adapter vacuumCleanerAdapter;
     DatabaseReference databaseReference;
-    SearchView searchView;
     public static ScreeenSpeakerInterface ScreeenSpeakerInterface;
 
     @SuppressLint("MissingInflatedId")
@@ -50,11 +60,11 @@ public class user_View_Screens_Speakers extends AppCompatActivity {
         binding.rvScreensSpeakers.setAdapter(adapter);
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-        databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Log.e("", "onDataChange: "+dataSnapshot );
+
                     materialButton button=new materialButton();
                     button.setName(dataSnapshot.getKey());
                     button.setSelected(false);
@@ -70,26 +80,28 @@ public class user_View_Screens_Speakers extends AppCompatActivity {
             }
         });
 
+
+        ////////////////////////    ANDROID SCREEN
+
         binding.rvItems.setAdapter(ssAdapter);
         ssList=new ArrayList<>();
 
         binding.rvItems.setHasFixedSize(true);
-        binding.rvItems.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvItems.setLayoutManager(new GridLayoutManager(this,2));
 
         ssAdapter =new ScreenSpeaker_ItemAdapter(this,ssList);
         binding.rvItems.setAdapter(ssAdapter);
 
         //ScreeenSpeakerInterface=this;
 
-        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ssList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-                    ScreensSpeakers_ModelClass ss = dataSnapshot1.getValue(ScreensSpeakers_ModelClass.class);
+                    ScreensSpeakers_ModelClass ss = dataSnapshot.getValue(ScreensSpeakers_ModelClass.class);
                     ssList.add(ss);
-                }}
+                }
                 ssAdapter.notifyDataSetChanged();
             }
 
@@ -98,40 +110,119 @@ public class user_View_Screens_Speakers extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
-        //  SEARCH
-/*
-        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+
+        ////////////////////////    AMPLIFIER
+        binding.rvItemsAmplifier.setAdapter(amplifierAdapter);
+        ampList=new ArrayList<>();
+
+        binding.rvItemsAmplifier.setHasFixedSize(true);
+        binding.rvItemsAmplifier.setLayoutManager(new LinearLayoutManager(this));
+
+        amplifierAdapter =new Amplifier_Adapter(this,ampList);
+        binding.rvItemsAmplifier.setAdapter(amplifierAdapter);
+
+        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").addValueEventListener(new ValueEventListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ampList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Amplifier_ModelClass ss = dataSnapshot.getValue(Amplifier_ModelClass.class);
+                    ampList.add(ss);
+                }
+                ssAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-                // creating a new array list to filter our data.
-                ArrayList<ScreensSpeakers_ModelClass> filteredlist = new ArrayList<>();
-
-                // running a for loop to compare elements.
-                for (ScreensSpeakers_ModelClass item : ssList ) {
-                    // checking if the entered string matched with any item of our recycler view.
-                    if (item.getModel().toLowerCase().contains(newText.toLowerCase())) {
-                        // if the item is matched we are
-                        // adding it to our filtered list.
-                        filteredlist.add(item);
-                    }
-                }
-                if (filteredlist.isEmpty()) {
-                    // if no item is added in filtered list we are
-                    // displaying a toast message as no data found.
-                    Toast.makeText(getApplicationContext(), "No Data Found..", Toast.LENGTH_SHORT).show();
-                } else {
-                    // at last we are passing that filtered
-                    // list to our adapter class.
-                    ssAdapter.filterList(filteredlist);
-                }
-                return false;
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
-*/
+
+        ////////////////////////    BASS TUBES
+        binding.rvItemsBassTubes.setAdapter(basstubesAdapter);
+        basstubesList=new ArrayList<>();
+
+        binding.rvItemsBassTubes.setHasFixedSize(true);
+        binding.rvItemsBassTubes.setLayoutManager(new LinearLayoutManager(this));
+
+        basstubesAdapter =new BassTubes_Adapter(this,basstubesList);
+        binding.rvItemsBassTubes.setAdapter(basstubesAdapter);
+
+        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                basstubesList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    BassTubes_ModelClass ss = dataSnapshot.getValue(BassTubes_ModelClass.class);
+                    basstubesList.add(ss);
+                }
+                basstubesAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        ////////////////////////    SPEAKERS
+        binding.rvItemsSpeaker.setAdapter(speakerAdapter);
+        speakerList=new ArrayList<>();
+
+        binding.rvItemsSpeaker.setHasFixedSize(true);
+        binding.rvItemsSpeaker.setLayoutManager(new LinearLayoutManager(this));
+
+        speakerAdapter =new Speaker_Adapter(this,speakerList);
+        binding.rvItemsSpeaker.setAdapter(speakerAdapter);
+
+        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                speakerList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Speaker_ModelClass ss = dataSnapshot.getValue(Speaker_ModelClass.class);
+                    speakerList.add(ss);
+                }
+                basstubesAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+        ////////////////////////    VACUUM  CLEANER
+        binding.rvItemsVacuumCleaner.setAdapter(vacuumCleanerAdapter);
+        vacuumCleanerList=new ArrayList<>();
+
+        binding.rvItemsVacuumCleaner.setHasFixedSize(true);
+        binding.rvItemsVacuumCleaner.setLayoutManager(new LinearLayoutManager(this));
+
+        vacuumCleanerAdapter =new VacuumCleaner_Adapter(this,vacuumCleanerList);
+        binding.rvItemsVacuumCleaner.setAdapter(vacuumCleanerAdapter);
+
+        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                vacuumCleanerList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Speaker_ModelClass ss = dataSnapshot.getValue(Speaker_ModelClass.class);
+                    speakerList.add(ss);
+                }
+                vacuumCleanerAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 }

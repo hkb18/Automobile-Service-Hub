@@ -3,9 +3,13 @@ package com.example.auton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
+import java.net.InetAddress;
+
 public class user_Login extends AppCompatActivity {
 Button login;
 TextInputEditText username,password;
@@ -28,6 +35,10 @@ TextView notRegistered;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
+
+        StrictMode.ThreadPolicy policy = new
+                StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         login=(Button) findViewById(R.id.button_UserLogin);
         username=findViewById(R.id.username);
         password=findViewById(R.id.password);
@@ -43,7 +54,9 @@ TextView notRegistered;
                 if(passwordStr.isEmpty() || usernameStr.isEmpty()){
                     Toast.makeText(user_Login.this, "Please Enter all details", Toast.LENGTH_SHORT).show();
                 }   else {
-                    databaseReference.child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
+                    databaseReference.child("Profile").addValueEventListener(new ValueEventListener() {
+
+
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.hasChild(usernameStr)){
@@ -90,15 +103,7 @@ TextView notRegistered;
             }
         });
     }
-    public void onResume(){
-        super.onResume();
-        SharedPreferences sh=getSharedPreferences("MySharedPreferences",MODE_PRIVATE);  // saves username
-        String s1=sh.getString("Username","");
-       // String s2=sh.getString("Password","");
-       // username.setText(s1); // if u wanna save it like cache..uncomment
-       // password.setText(s2);
 
-    }
     public void onPause(){
         super.onPause();
         SharedPreferences sharedPreferences=getSharedPreferences("MySharedPreferences",MODE_PRIVATE);
@@ -108,4 +113,6 @@ TextView notRegistered;
         //myEdit.putString("Password",password.getText().toString());
         myEdit.apply();
     }
+
+
 }
