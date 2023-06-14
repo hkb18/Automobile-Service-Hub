@@ -14,23 +14,23 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class Speaker_Adapter extends RecyclerView.Adapter<Speaker_Adapter.ViewHold>{
+public class Speaker_Adapter_2 extends RecyclerView.Adapter<Speaker_Adapter_2.ViewHold>{
     private ArrayList<Speaker_ModelClass> dataList;
     private final Context context;
 
-    public Speaker_Adapter(Context fragment, ArrayList<Speaker_ModelClass> dataList) {
+    public Speaker_Adapter_2(Context fragment, ArrayList<Speaker_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
 
     }
     @NonNull
     @Override
-    public Speaker_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Speaker_Adapter_2.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.speaker_layout_2, parent, false);
-        return new Speaker_Adapter.ViewHold(view);
+        return new Speaker_Adapter_2.ViewHold(view);
     }
 
-    public void onBindViewHolder(Speaker_Adapter.ViewHold holder,int position){
+    public void onBindViewHolder(Speaker_Adapter_2.ViewHold holder, int position){
 
         Speaker_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());

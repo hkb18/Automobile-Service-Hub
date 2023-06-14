@@ -64,6 +64,7 @@ public class ScreensSpeakersAdapter extends RecyclerView.Adapter<ScreensSpeakers
             dataList.get(position).setSelected(true);
             notifyDataSetChanged();
 
+            user_View_Screens_Speakers.androidScreen_interface.onClickItem(dataList.get(position).getName());
             // use interface and show data in recycler view
 
         });
@@ -83,6 +84,8 @@ public class ScreensSpeakersAdapter extends RecyclerView.Adapter<ScreensSpeakers
             androidScreen = itemView.findViewById(R.id.materialBtn);
         }
     }
+
+
 
 
 }

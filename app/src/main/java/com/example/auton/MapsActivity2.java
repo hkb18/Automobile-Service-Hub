@@ -46,7 +46,6 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     private int ACCESS_LOCATION_REQUEST_CODE = 100;
     String longitudeStr,latitudeStr,username;
     Button currentlocation;
-    public static mapinterface mapinterface;
     FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
@@ -122,26 +121,18 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
 //
 //            }
             Address address = addresses.get(0);
-            //LatLng london = new LatLng(address.getLatitude(), address.getLongitude());
             LatLng london = new LatLng(Double.parseDouble(latitudeStr),Double.parseDouble(longitudeStr));
             Log.e("", "location: "+london);
             MarkerOptions markerOptions = new MarkerOptions().position(london).title("Your location");
             mMap.addMarker(markerOptions);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(london, 16));
-
             currentlocation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    user_Book_Service.mapinterface.location(latitudeStr,longitudeStr);
-                  /*  Intent i = new Intent(getApplicationContext(),user_Book_Service.class);
-                    i.putExtra("Username",username);
-                    i.putExtra("location",london);
-                    startActivity(i);
-                    Toast.makeText(MapsActivity2.this, "Location:"+london, Toast.LENGTH_SHORT).show();*/
+                    user_Book_Service.mapinterface.location(latitudeStr,longitudeStr); //Interface
                     finish();
                 }
             });
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -161,7 +152,6 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
                 Log.e("", "latLang: "+latLng.longitude);
                 latitudeStr=String.valueOf(latLng.latitude);
                 longitudeStr=String.valueOf(latLng.longitude);
-
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -228,8 +218,4 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         });
 
     }
-
-
-
-
 }

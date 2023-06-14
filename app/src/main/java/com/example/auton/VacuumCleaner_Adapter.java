@@ -36,6 +36,7 @@ public class VacuumCleaner_Adapter extends RecyclerView.Adapter<VacuumCleaner_Ad
         VacuumCleaner_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getModel());
+        holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
     }
 
@@ -55,11 +56,12 @@ public class VacuumCleaner_Adapter extends RecyclerView.Adapter<VacuumCleaner_Ad
 
     public class ViewHold extends RecyclerView.ViewHolder {
         ImageView productImg;
-        TextView manufacturer,desc;
+        TextView manufacturer,desc,price;
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            manufacturer=itemView.findViewById(R.id.tvManufacturer);
-            desc=itemView.findViewById(R.id.tvDesc);
-            productImg=itemView.findViewById(R.id.itemImage);
+            manufacturer=itemView.findViewById(R.id.vacuumcleanerManufacturer);
+            desc=itemView.findViewById(R.id.vacuumcleanerDesc);
+            productImg=itemView.findViewById(R.id.vacuumcleanerImg);
+            price=itemView.findViewById(R.id.vacuumcleanerPrice);
         }
     }}

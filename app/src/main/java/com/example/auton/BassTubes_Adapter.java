@@ -35,6 +35,7 @@ public class BassTubes_Adapter extends RecyclerView.Adapter<BassTubes_Adapter.Vi
         BassTubes_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getModel());
+        holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
     }
 
@@ -54,12 +55,14 @@ public class BassTubes_Adapter extends RecyclerView.Adapter<BassTubes_Adapter.Vi
 
     public class ViewHold extends RecyclerView.ViewHolder {
         ImageView productImg;
-        TextView manufacturer,desc;
+        TextView manufacturer,desc,price;
         public ViewHold(@NonNull View itemView) {
             super(itemView);
             manufacturer=itemView.findViewById(R.id.basstubesManufacturer);
             desc=itemView.findViewById(R.id.basstubesDesc);
             productImg=itemView.findViewById(R.id.basstubesImg);
+            price=itemView.findViewById(R.id.basstubesPrice);
+
         }
     }
 }

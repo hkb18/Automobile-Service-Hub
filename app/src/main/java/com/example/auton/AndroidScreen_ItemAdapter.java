@@ -2,9 +2,6 @@ package com.example.auton;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,35 +10,27 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.button.MaterialButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeaker_ItemAdapter.ViewHold> {
+public class AndroidScreen_ItemAdapter extends RecyclerView.Adapter<AndroidScreen_ItemAdapter.ViewHold> {
     private ArrayList<ScreensSpeakers_ModelClass> dataList;
     private final Context context;
-
-
-    public ScreenSpeaker_ItemAdapter(Context fragment, ArrayList<ScreensSpeakers_ModelClass> dataList) {
+    public AndroidScreen_ItemAdapter(Context fragment, ArrayList<ScreensSpeakers_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
-
     }
     @NonNull
     @Override
-    public ScreenSpeaker_ItemAdapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.screen_speaker_items_layout, parent, false);
+    public AndroidScreen_ItemAdapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.androidscreen_layout, parent, false);
-        return new ScreenSpeaker_ItemAdapter.ViewHold(view);
+        return new AndroidScreen_ItemAdapter.ViewHold(view);
     }
 
-    public void onBindViewHolder(ScreenSpeaker_ItemAdapter.ViewHold holder,int position){
+    public void onBindViewHolder(AndroidScreen_ItemAdapter.ViewHold holder, int position){
         ScreensSpeakers_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getScreenSize()+ss.getDisplayType());
@@ -63,7 +52,7 @@ public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeake
     public void filterList(ArrayList<ScreensSpeakers_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
-        dataList = filteredlist;
+        //dataList = filteredlist;
         // below line is to notify our adapter
         // as change in recycler view data.
         notifyDataSetChanged();
