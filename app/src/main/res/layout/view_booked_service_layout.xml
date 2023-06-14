@@ -214,6 +214,7 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/Linear_btn"
     android:orientation="horizontal"
     android:layout_weight="2">
     <Button
@@ -235,6 +236,18 @@
         android:text="DELETE"
         android:id="@+id/btn_Delete"/>
 </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="service rejected"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:textColor="#D50000"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:id="@+id/tvStatus"
+                android:visibility="gone"/>
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

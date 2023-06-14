@@ -100,6 +100,16 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
     }
 
     @Override
+    public void accept(String username, String key, int position) {
+
+    }
+
+    @Override
+    public void delete(String username, String key, int position) {
+
+    }
+
+    @Override
     public void view(String key, int position) {
 
     }

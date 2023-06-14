@@ -44,7 +44,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private ActivityMaps2Binding binding;
     private int ACCESS_LOCATION_REQUEST_CODE = 100;
-    String longitudeStr,latitudeStr,username;
+    String longitudeStr,latitudeStr,activityStr;
     Button currentlocation;
     FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -69,7 +69,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         Bundle extras=getIntent().getExtras();
         longitudeStr=extras.getString("longitude");
         latitudeStr=extras.getString("latitude");
-        username=extras.getString("Username");
+        activityStr=extras.getString("activity");
+
         Toast.makeText(this, "LONG"+longitudeStr, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "LAT"+latitudeStr, Toast.LENGTH_SHORT).show();
     }
@@ -129,8 +130,13 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
             currentlocation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    user_Book_Service.mapinterface.location(latitudeStr,longitudeStr); //Interface
-                    finish();
+                    if (activityStr.equals("worker")){
+                        worker_Registration.mapinterface.location(latitudeStr,longitudeStr); //Interface
+                        finish();
+                    }else {
+                        user_Book_Service.mapinterface.location(latitudeStr,longitudeStr); //Interface
+                        finish();
+                    }
                 }
             });
         } catch (IOException e) {

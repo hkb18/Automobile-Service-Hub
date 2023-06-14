@@ -21,12 +21,7 @@
             app:lottie_autoPlay="true"
             app:lottie_rawRes="@raw/example" />
     </RelativeLayout>-->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
@@ -35,8 +30,7 @@
                 tools:itemCount="8"
                 android:background="@android:color/transparent"
                 tools:listitem="@layout/view_booked_service_layout"/>
-        </LinearLayout>
-    </ScrollView>
+
 
 
 </FrameLayout>

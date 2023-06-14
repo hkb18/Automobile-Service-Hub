@@ -2,11 +2,12 @@ package com.example.auton;
 
 public class Worshop_View_Service_modelClass {
     private String CarBrand, CarModel, Date, Latitude, Longitude, PaymentMode, ServiceTime, ServiceType, Username, SYSTIME;
+    boolean ACCEPT_SERVICE=true;
 
     public Worshop_View_Service_modelClass() {
     }
 
-    public Worshop_View_Service_modelClass(String carBrand, String carModel, String date, String latitude, String longitude, String paymentMode, String serviceTime, String serviceType, String username, String SYSTIME) {
+    public Worshop_View_Service_modelClass(String carBrand, String carModel, String date, String latitude, String longitude, String paymentMode, String serviceTime, String serviceType, String username, String SYSTIME ,boolean ACCEPT_SERVICE) {
         CarBrand = carBrand;
         CarModel = carModel;
         Date = date;
@@ -17,6 +18,15 @@ public class Worshop_View_Service_modelClass {
         ServiceType = serviceType;
         Username = username;
         this.SYSTIME = SYSTIME;
+        this.ACCEPT_SERVICE=ACCEPT_SERVICE;
+    }
+
+    public boolean isACCEPT_SERVICE() {
+        return ACCEPT_SERVICE;
+    }
+
+    public void setACCEPT_SERVICE(boolean ACCEPT_SERVICE) {
+        this.ACCEPT_SERVICE = ACCEPT_SERVICE;
     }
 
     public String getCarBrand() {

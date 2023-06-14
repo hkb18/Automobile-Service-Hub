@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,26 +18,25 @@ import java.util.ArrayList;
 public class Speaker_Adapter extends RecyclerView.Adapter<Speaker_Adapter.ViewHold>{
     private ArrayList<Speaker_ModelClass> dataList;
     private final Context context;
+    private String name;
 
-    public Speaker_Adapter(Context fragment, ArrayList<Speaker_ModelClass> dataList) {
+    public Speaker_Adapter(Context fragment, ArrayList<Speaker_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
-
+        name=key;
     }
     @NonNull
     @Override
     public Speaker_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.speaker_layout_2, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.speaker_layout, parent, false);
         return new Speaker_Adapter.ViewHold(view);
     }
 
     public void onBindViewHolder(Speaker_Adapter.ViewHold holder,int position){
+        holder.textView.setText(name);
+        holder.recyclerView.setLayoutManager(new GridLayoutManager(context,2));
+        holder.recyclerView.setAdapter(new Speaker_Adapter_2(context,dataList));
 
-        Speaker_ModelClass ss=dataList.get(position);
-        holder.manufacturer.setText(ss.getManufacturer());
-        holder.desc.setText(ss.getPowerOutput()+ss.getSpeakerType());
-        holder.price.setText(ss.getPrice());
-        Glide.with(context).load(ss.getImage()).into(holder.productImg);
     }
 
     public void filterList(ArrayList<Speaker_ModelClass> filteredlist) {
@@ -50,18 +50,16 @@ public class Speaker_Adapter extends RecyclerView.Adapter<Speaker_Adapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return 1;
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        ImageView productImg;
-        TextView manufacturer,desc,price;
+        TextView textView;
+        RecyclerView recyclerView;
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            manufacturer=itemView.findViewById(R.id.speakerManufacturer);
-            desc=itemView.findViewById(R.id.speakerDesc);
-            productImg=itemView.findViewById(R.id.speakerImg);
-            price=itemView.findViewById(R.id.speaker_Price);
+            textView=itemView.findViewById(R.id.tvTitle);
+            recyclerView=itemView.findViewById(R.id.rv);
         }
     }
 }

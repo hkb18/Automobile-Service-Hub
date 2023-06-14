@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,14 +44,26 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
         holder.paymentMethod.setText(bookedService.getPaymentMode());
 
         String key=bookedService.getSYSTIME();
+        String username=bookedService.getUsername();
+        if (bookedService.isACCEPT_SERVICE()){
+            holder.ServiceReject.setVisibility(View.GONE);
+            holder.linearLayout.setVisibility(View.VISIBLE);
+        }else {
+            holder.ServiceReject.setVisibility(View.VISIBLE);
+            holder.linearLayout.setVisibility(View.GONE);
+        }
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                workshop_Dashboard_Fragment.viewBookedService_interface.view(key,position);
+                workshop_Dashboard_Fragment.viewBookedService_interface.accept(username,key,position);
 
-                Toast.makeText(context, "KEY: "+key, Toast.LENGTH_SHORT).show();
 
             }
+        });
+        holder.delete.setOnClickListener(v -> {
+            workshop_Dashboard_Fragment.viewBookedService_interface.delete(username,key,position);
+
+
         });
 
 
@@ -71,9 +84,9 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        TextView carBrand,carModel,serviceType,date,latitude,longitude,servicetime,paymentMethod,username;
+        TextView carBrand,carModel,serviceType,date,latitude,longitude,servicetime,paymentMethod,username,ServiceReject;
         Button accept,delete;
-
+        LinearLayout linearLayout;
 
         public ViewHold(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +101,8 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
             paymentMethod= itemView.findViewById(R.id.getPaymentMode);
             accept= itemView.findViewById(R.id.btn_Accept);
             delete= itemView.findViewById(R.id.btn_Delete);
+            ServiceReject=itemView.findViewById(R.id.tvStatus);
+            linearLayout=itemView.findViewById(R.id.Linear_btn);
         }
     }
 }

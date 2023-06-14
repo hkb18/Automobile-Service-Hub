@@ -57,7 +57,6 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
     private static final int PERMISSIONS_REQUEST_LOCATION = 123;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
     LocationManager locationManager;
-    String provider;
     double longitudeBest=0.0, latitudeBest=0.0;
     private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
     String modelstr,typestr,datestr,timestr,modestr,locationstr,currentlocationstr;
@@ -243,14 +242,14 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                         Intent i = new Intent(getApplicationContext(), MapsActivity2.class);
                         i.putExtra("longitude", String.valueOf(longitudeBest));
                         i.putExtra("latitude", String.valueOf(latitudeBest));
-                        i.putExtra("Username",username);
+                        i.putExtra("activity","user");
                         startActivity(i);
 
-                        Bundle extras=getIntent().getExtras();
+                       /* Bundle extras=getIntent().getExtras();
                         currentlocationstr=extras.getString("location");
                         Toast.makeText(user_Book_Service.this, ""+currentlocationstr, Toast.LENGTH_SHORT).show();
                         Log.e("", "location= "+currentlocationstr );
-                        edittextlocation.setText(currentlocationstr);
+                        edittextlocation.setText(currentlocationstr);*/
                     }else {
                         Toast.makeText(user_Book_Service.this, "not able to get permission", Toast.LENGTH_SHORT).show();
                     }
@@ -310,7 +309,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent i = new Intent(getApplicationContext(), user_View_Service.class);
+                                    Intent i = new Intent(getApplicationContext(), user_View_Booked_Service.class);
 
                                     i.putExtra("Username", username);
                                     startActivity(i);
@@ -459,8 +458,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
             Log.v("IGA", "Address" + add);
 
             edittextlocation.setText(add);
-            // Toast.makeText(this, "Address=>" + add,
-            // Toast.LENGTH_SHORT).show();
+
 
             // TennisAppActivity.showDialog(add);
         } catch (IOException e) {

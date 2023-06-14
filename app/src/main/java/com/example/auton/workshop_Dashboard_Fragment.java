@@ -2,6 +2,7 @@ package com.example.auton;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -11,14 +12,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.auton.databinding.ActivityUserViewBookedServiceBinding;
 import com.example.auton.databinding.FragmentWorkshopDashboardBinding;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +47,7 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
     Workshop_BookedService_Adapter myAdapter;
     ArrayList<Worshop_View_Service_modelClass> list;
     String s1="";
-    RecyclerView recyclerView;
+    boolean yes=true,no=false;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,37 +92,36 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_workshop__dashboard, container, false);
+       // View v=inflater.inflate(R.layout.fragment_workshop__dashboard, container, false);
+
+         binding=FragmentWorkshopDashboardBinding.inflate(getLayoutInflater());
+
 
         viewBookedService_interface=this;
 
-        SharedPreferences sh= getContext().getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
+        SharedPreferences sh= getContext().getSharedPreferences("MySharedPreferences1", MODE_PRIVATE);
         s1=sh.getString("Username","");
-
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+
         list=new ArrayList<>();
 
-        recyclerView=v.findViewById(R.id.rvBookedService);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rvBookedService.setLayoutManager(new LinearLayoutManager(getContext()));
         myAdapter =new Workshop_BookedService_Adapter(getContext(),list);
-        recyclerView.setAdapter(myAdapter);
-
-
+        binding.rvBookedService.setAdapter(myAdapter);
         databaseReference.child("Service").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Worshop_View_Service_modelClass bookedService = dataSnapshot.getValue(Worshop_View_Service_modelClass.class);
-                    list.add(dataSnapshot.getValue(Worshop_View_Service_modelClass.class));
-                }
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Worshop_View_Service_modelClass bookedService = dataSnapshot1.getValue(Worshop_View_Service_modelClass.class);
+                    list.add(bookedService);
+                }}
                 myAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(v.getContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
        /* lottieAnimationView=v.findViewById(R.id.lottie);
@@ -128,11 +134,73 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
         */
 
 
-        return v;
+        return binding.getRoot();
+    }
+
+
+    @Override
+    public void accept(String username, String key, int position) {
+        databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(true);
+        myAdapter.notifyDataSetChanged();
+        showpopup();
+    }
+
+
+
+    @Override
+    public void delete(String username, String key, int position) {
+        databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(false);
+        myAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void view(String key, int position) {
 
+    }
+    private void showpopup() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("PLEASE SELECT A MECHANIC");
+
+        // set the custom layout
+        final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
+        builder.setView(customLayout);
+
+
+        ArrayList<Mechanic> mechanicList=new ArrayList<>();
+        databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mechanicList.clear();
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    Mechanic mechanic=dataSnapshot.getValue(Mechanic.class);
+                    mechanicList.add(mechanic);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        MaterialButton assign=customLayout.findViewById(R.id.btn_assignMechanic);
+        Spinner mechanic=customLayout.findViewById(R.id.spinnerMechanic);
+
+        ArrayAdapter<Mechanic> brandAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, mechanicList);
+        mechanic.setAdapter(brandAdapter);
+        mechanic.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

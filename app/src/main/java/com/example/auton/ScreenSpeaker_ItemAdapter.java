@@ -2,9 +2,6 @@ package com.example.auton;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,51 +10,38 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.button.MaterialButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
 
 public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeaker_ItemAdapter.ViewHold> {
     private ArrayList<ScreensSpeakers_ModelClass> dataList;
     private final Context context;
+    private String name;
 
 
-    public ScreenSpeaker_ItemAdapter(Context fragment, ArrayList<ScreensSpeakers_ModelClass> dataList) {
+    public ScreenSpeaker_ItemAdapter(Context fragment, ArrayList<ScreensSpeakers_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
+        name=key;
 
     }
     @NonNull
     @Override
     public ScreenSpeaker_ItemAdapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.screen_speaker_items_layout, parent, false);
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.androidscreen_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.screen_speaker_items_layout, parent, false);
         return new ScreenSpeaker_ItemAdapter.ViewHold(view);
     }
 
     public void onBindViewHolder(ScreenSpeaker_ItemAdapter.ViewHold holder,int position){
-        ScreensSpeakers_ModelClass ss=dataList.get(position);
-        holder.manufacturer.setText(ss.getManufacturer());
-        holder.desc.setText(ss.getScreenSize()+ss.getDisplayType());
-        holder.price.setText(ss.getPrice());
-        Glide.with(context).load(ss.getImage()).into(holder.productImg);
-        String model= ss.getModel();
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent i = new Intent(context.getApplicationContext(), fulldetails_AndroidScreen.class);
-             //   fulldetails_AndroidScreen.androidScreen_interface.details(model);
-                i.putExtra("key",model);
-                context.startActivity(i);
-            }
-        });
+        holder.textView.setText(name);
+        holder.recyclerView.setLayoutManager(new GridLayoutManager(context,2));
+        holder.recyclerView.setAdapter(new AndroidScreen_ItemAdapter(context,dataList));
     }
 
     public void filterList(ArrayList<ScreensSpeakers_ModelClass> filteredlist) {
@@ -71,20 +55,16 @@ public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeake
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return 1;
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        ImageView productImg;
-        CardView cardView;
-        TextView manufacturer,desc,price;
+        TextView textView;
+        RecyclerView recyclerView;
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            manufacturer=itemView.findViewById(R.id.tvManufacturer);
-            desc=itemView.findViewById(R.id.tvDesc);
-            productImg=itemView.findViewById(R.id.itemImage);
-            price=itemView.findViewById(R.id.tvPrice);
-            cardView=itemView.findViewById(R.id.cvAndroidScreen);
+            textView=itemView.findViewById(R.id.tvTitle);
+            recyclerView=itemView.findViewById(R.id.rv);
         }
     }
 }

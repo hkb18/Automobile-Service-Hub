@@ -190,7 +190,7 @@ public class user_MyProfile_Fragment extends Fragment {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                finish();
+                                requireActivity().finishAffinity(); //ADD TO WORKSHOP N ADMIN
                                 Toast.makeText(getContext(), "You have been Logged Out", Toast.LENGTH_SHORT).show();
                                 Intent i =new Intent(getContext(),user_Login.class);
                                 startActivity(i);
