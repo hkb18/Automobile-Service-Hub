@@ -9,21 +9,17 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.auton.databinding.ActivityUserViewBookedServiceBinding;
 import com.example.auton.databinding.FragmentWorkshopDashboardBinding;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
@@ -58,6 +54,7 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
     private String mParam1;
     private String mParam2;
 
+    String selName = "";
     public workshop_Dashboard_Fragment() {
         // Required empty public constructor
     }
@@ -96,10 +93,9 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
 
          binding=FragmentWorkshopDashboardBinding.inflate(getLayoutInflater());
 
-
         viewBookedService_interface=this;
 
-        SharedPreferences sh= getContext().getSharedPreferences("MySharedPreferences1", MODE_PRIVATE);
+        SharedPreferences sh= requireContext().getSharedPreferences("MySharedPreferences1", MODE_PRIVATE);
         s1=sh.getString("Username","");
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
@@ -132,8 +128,6 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
             }
         },5000);
         */
-
-
         return binding.getRoot();
     }
 
@@ -142,28 +136,6 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
     public void accept(String username, String key, int position) {
         databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(true);
         myAdapter.notifyDataSetChanged();
-        showpopup();
-    }
-
-
-
-    @Override
-    public void delete(String username, String key, int position) {
-        databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(false);
-        myAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void view(String key, int position) {
-
-    }
-    private void showpopup() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("PLEASE SELECT A MECHANIC");
-
-        // set the custom layout
-        final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
-        builder.setView(customLayout);
 
 
         ArrayList<Mechanic> mechanicList=new ArrayList<>();
@@ -175,32 +147,78 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
                     Mechanic mechanic=dataSnapshot.getValue(Mechanic.class);
                     mechanicList.add(mechanic);
                 }
+                showpopup(mechanicList,username,key);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
+
+    }
+        @Override
+    public void delete(String username, String key, int position) {
+        databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(false);
+        myAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void view(String key, int position) {
+
+    }
+    private void showpopup(ArrayList<Mechanic> mechanicList,String username, String key) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("PLEASE SELECT A MECHANIC");
+
+
+
+        // set the custom layout
+        final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
+        builder.setView(customLayout);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
         MaterialButton assign=customLayout.findViewById(R.id.btn_assignMechanic);
         Spinner mechanic=customLayout.findViewById(R.id.spinnerMechanic);
 
-        ArrayAdapter<Mechanic> brandAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, mechanicList);
+        ArrayList<String> name = new ArrayList<>();
+        for (int i=0; i<mechanicList.size(); i++){
+            name.add(mechanicList.get(i).getName());
+        }
+        ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item,name);
         mechanic.setAdapter(brandAdapter);
+
         mechanic.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-
+                selName = name.get(position);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
+        assign.setOnClickListener(v -> {
+            databaseReference.child("Service").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    databaseReference.child("Service").child(username).child(key).child("Workshop").setValue(s1);
+                    databaseReference.child("Service").child(username).child(key).child("AssignedMechanic").setValue(selName);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            builder.setCancelable(true);
+           dialog.dismiss();
+        });
+
         // create and show the alert dialog
-        AlertDialog dialog = builder.create();
-        dialog.show();
+
+
     }
 }

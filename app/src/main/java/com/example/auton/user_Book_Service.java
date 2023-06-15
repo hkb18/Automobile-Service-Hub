@@ -198,10 +198,8 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                 ArrayAdapter<String> modelAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, modelss);
                 carmodel.setAdapter(modelAdapter);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
