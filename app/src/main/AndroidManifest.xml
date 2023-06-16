@@ -28,6 +28,9 @@
         <activity
             android:name=".fulldetails_Amplifier"
             android:exported="false" />
+        <activity
+            android:name=".fulldetails_Basstubes"
+            android:exported="false" />
 
         <uses-library
             android:name="org.apache.http.legacy"

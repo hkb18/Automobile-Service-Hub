@@ -43,7 +43,6 @@ public class Amplifier_Adapter2 extends RecyclerView.Adapter<Amplifier_Adapter2.
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(context.getApplicationContext(), fulldetails_Amplifier.class);
                 i.putExtra("key",model);
                 context.startActivity(i);
