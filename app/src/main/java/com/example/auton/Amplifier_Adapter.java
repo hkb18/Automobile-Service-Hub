@@ -33,22 +33,9 @@ public class Amplifier_Adapter extends RecyclerView.Adapter<Amplifier_Adapter.Vi
     }
 
     public void onBindViewHolder(Amplifier_Adapter.ViewHold holder,int position){
-
-     /*   Amplifier_ModelClass ss=dataList.get(position);
-        holder.manufacturer.setText(ss.getManufacturer());
-        holder.desc.setText(ss.getChannel()+ss.getModel());
-        holder.price.setText(ss.getPrice());
-        Glide.with(context).load(ss.getImage()).into(holder.productImg);
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
-
         holder.textView.setText(title);
         holder.recyclerView.setLayoutManager(new GridLayoutManager(context,2));
-        holder.recyclerView.setAdapter(new AllItem_Adapter(context,dataList));
+        holder.recyclerView.setAdapter(new Amplifier_Adapter2(context,dataList));
     }
 
     public void filterList(ArrayList<Amplifier_ModelClass> filteredlist) {
@@ -64,7 +51,6 @@ public class Amplifier_Adapter extends RecyclerView.Adapter<Amplifier_Adapter.Vi
     public int getItemCount() {
         return 1;
     }
-
     public class ViewHold extends RecyclerView.ViewHolder {
         TextView textView;
         RecyclerView recyclerView;

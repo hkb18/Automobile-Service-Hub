@@ -2,7 +2,6 @@ package com.example.auton;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,24 +16,24 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class AllItem_Adapter extends RecyclerView.Adapter<AllItem_Adapter.ViewHold> {
+public class Amplifier_Adapter2 extends RecyclerView.Adapter<Amplifier_Adapter2.ViewHold> {
     private ArrayList<Amplifier_ModelClass> dataList;
     private final Context context;
 
 
-    public AllItem_Adapter(Context fragment, ArrayList<Amplifier_ModelClass> dataList) {
+    public Amplifier_Adapter2(Context fragment, ArrayList<Amplifier_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
 
     }
     @NonNull
     @Override
-    public AllItem_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Amplifier_Adapter2.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.amplifier_layout_2, parent, false);
-        return new AllItem_Adapter.ViewHold(view);
+        return new Amplifier_Adapter2.ViewHold(view);
     }
 
-    public void onBindViewHolder(AllItem_Adapter.ViewHold holder, int position){
+    public void onBindViewHolder(Amplifier_Adapter2.ViewHold holder, int position){
         Amplifier_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getModel());
@@ -45,7 +44,7 @@ public class AllItem_Adapter extends RecyclerView.Adapter<AllItem_Adapter.ViewHo
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(context.getApplicationContext(), fulldetails_AndroidScreen.class);
+                Intent i = new Intent(context.getApplicationContext(), fulldetails_Amplifier.class);
                 i.putExtra("key",model);
                 context.startActivity(i);
             }

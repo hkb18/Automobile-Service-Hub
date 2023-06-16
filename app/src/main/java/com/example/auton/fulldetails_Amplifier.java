@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.auton.databinding.ActivityFulldetailsAmplifierBinding;
 import com.example.auton.databinding.ActivityFulldetailsAndroidScreenBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,61 +15,53 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class fulldetails_Amplifier extends AppCompatActivity implements AndroidScreen_Interface{
-    String androidscreenModelStr;
-    private ActivityFulldetailsAndroidScreenBinding binding;
+    String amplifierModelStr;
+    private ActivityFulldetailsAmplifierBinding binding;
     static AndroidScreen_Interface androidScreen_interface;
     DatabaseReference databaseReference;
-    String key,dimensionStr,displaytypeStr,imageStr,manufacturerStr,modelStr,ostypeStr,priceStr,ramStr,romStr,screensizeStr,weightStr;
+    String key,modelStr,dimensionStr,maxvoltageStr,mountinghardwareStr,channelStr,imageStr,manufacturerStr,priceStr,weightStr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityFulldetailsAndroidScreenBinding.inflate(getLayoutInflater());
+        binding=ActivityFulldetailsAmplifierBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        androidScreen_interface=this;//interface
+        //androidScreen_interface=this;//interface
 
         Bundle extras=getIntent().getExtras();
         key= extras.getString("key");
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
                     modelStr=snapshot.child(key).child("Model").getValue(String.class);
-                    binding.androidscreenModel.setText(modelStr);
+                    binding.amplifierModel.setText(modelStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimension").getValue(String.class);
-                    binding.androidscreenDimension.setText(dimensionStr);
+                    maxvoltageStr=snapshot.child(key).child("MaxVoltage").getValue(String.class);
+                    binding.amplifierMaxVoltage.setText(maxvoltageStr);
 
-                    displaytypeStr=snapshot.child(key).child("DisplayType").getValue(String.class);
-                    binding.androidscreenDisplayType.setText(displaytypeStr);
+                    dimensionStr=snapshot.child(key).child("Dimenension").getValue(String.class);
+                    binding.amplifierDimension.setText(dimensionStr);
+
+                    mountinghardwareStr=snapshot.child(key).child("MountingHardware").getValue(String.class);
+                    binding.amplifierMountingHardware.setText(mountinghardwareStr);
+
+                    channelStr=snapshot.child(key).child("Channel").getValue(String.class);
+                    binding.amplifierChannels.setText(channelStr);
 
                     imageStr=snapshot.child(key).child("Image").getValue(String.class);
-                    Glide.with(getApplicationContext()).load(imageStr).into(binding.androidscreenImg);
+                    Glide.with(getApplicationContext()).load(imageStr).into(binding.amplifierImg);
 
                     manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
-                    binding.androidscreenManufacturer.setText(manufacturerStr);
-
-                    ostypeStr=snapshot.child(key).child("OSType").getValue(String.class);
-                    binding.androidscreenOSType.setText(ostypeStr);
+                    binding.amplifierManufacturer.setText(manufacturerStr);
 
                     priceStr=snapshot.child(key).child("Price").getValue(String.class);
-                    binding.androidscreenPrice.setText(priceStr);
-
-                    /*quantityStr=snapshot.child(key).child("Quantity").getValue(String.class);
-                    binding.androidscreen.setText(modelStr);*/
-                    ramStr=snapshot.child(key).child("RAM").getValue(String.class);
-                    binding.androidscreenRAM.setText(ramStr);
-
-                    romStr=snapshot.child(key).child("ROM").getValue(String.class);
-                    binding.androidscreenROM.setText(romStr);
-
-                    screensizeStr=snapshot.child(key).child("ScreenSize").getValue(String.class);
-                    binding.androidscreenScreenSize.setText(screensizeStr);
+                    binding.amplifierPrice.setText(priceStr);
 
                     weightStr=snapshot.child(key).child("Weight").getValue(String.class);
-                    binding.androidscreenWeight.setText(weightStr);
+                    binding.amplifierWeight.setText(weightStr);
                 }
             }
 
@@ -81,7 +74,7 @@ public class fulldetails_Amplifier extends AppCompatActivity implements AndroidS
 
     @Override
     public void details(String Model) {
-        androidscreenModelStr=Model;
+        amplifierModelStr=Model;
     }
 
     @Override

@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
-                    android:id="@+id/androidscreenImg"/>
+                    android:id="@+id/amplifierImg"/>
 
                 <!--MANUFACTURER-->
                 <LinearLayout
@@ -50,7 +50,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenManufacturer"/>
+                        android:id="@+id/amplifierManufacturer"/>
                 </LinearLayout>
 
                 <!--MODEL-->
@@ -68,61 +68,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenModel"/>
-                </LinearLayout>
-
-                <!--DIMENSION-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Dimenison:"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:id="@+id/androidscreenDimension"/>
-                </LinearLayout>
-
-                <!--CHANNELS-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Channels:"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:id="@+id/androidscreenDisplayType"/>
-                </LinearLayout>
-
-                <!--MAX VOLTAGE-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Max Voltage:"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:id="@+id/androidscreenRAM"/>
+                        android:id="@+id/amplifierModel"/>
                 </LinearLayout>
 
                 <!--Mounting HArdware-->
@@ -140,10 +86,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenROM"/>
+                        android:id="@+id/amplifierMountingHardware"/>
                 </LinearLayout>
 
-               <!-- OS TYPE
+                <!--MAX VOLTAGE-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -153,15 +99,15 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="OS Type:"/>
+                        android:text="Max Voltage:"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenOSType"/>
+                        android:id="@+id/amplifierMaxVoltage"/>
                 </LinearLayout>
 
-                &lt;!&ndash;SCREENSIZE&ndash;&gt;
+                <!--CHANNELS-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -171,13 +117,31 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="ScreenSize:"/>
+                        android:text="Channels:"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenScreenSize"/>
-                </LinearLayout>-->
+                        android:id="@+id/amplifierChannels"/>
+                </LinearLayout>
+
+                <!--DIMENSION-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Dimenison:"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:id="@+id/amplifierDimension"/>
+                </LinearLayout>
 
                 <!--WEIGHT-->
                 <LinearLayout
@@ -194,7 +158,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenWeight"/>
+                        android:id="@+id/amplifierWeight"/>
                 </LinearLayout>
 
                 <!--PRICE-->
@@ -212,8 +176,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenPrice"/>
+                        android:id="@+id/amplifierPrice"/>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -222,7 +187,7 @@
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/goBack"
+                        android:id="@+id/btn_amplifiergoBack"
                         android:layout_weight="1"
                         android:text="go back"
                         android:gravity="center"
@@ -232,7 +197,7 @@
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/BuyAccessories"
+                        android:id="@+id/btn_amplifierBuyNow"
                         android:layout_weight="1"
                         android:text="buy now"
                         android:gravity="center"
