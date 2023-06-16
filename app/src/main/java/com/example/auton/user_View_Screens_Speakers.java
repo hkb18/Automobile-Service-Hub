@@ -118,8 +118,6 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
         binding.rvItems.setHasFixedSize(true);
         binding.rvItems.setLayoutManager(new LinearLayoutManager(this));
 
-
-
         //ScreeenSpeakerInterface=this;
         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").addValueEventListener(new ValueEventListener() {
             @Override
@@ -147,8 +145,6 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
         binding.rvItemsBassTubes.setHasFixedSize(true);
         binding.rvItemsBassTubes.setLayoutManager(new LinearLayoutManager(this));
 
-
-
         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -174,8 +170,6 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
 
         binding.rvItemsSpeaker.setHasFixedSize(true);
         binding.rvItemsSpeaker.setLayoutManager(new LinearLayoutManager(this));
-
-
 
         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").addValueEventListener(new ValueEventListener() {
             @Override
@@ -204,8 +198,6 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
         binding.rvItemsVacuumCleaner.setHasFixedSize(true);
         binding.rvItemsVacuumCleaner.setLayoutManager(new LinearLayoutManager(this));
 
-
-
         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -224,8 +216,6 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
                 Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
     @Override
@@ -241,20 +231,13 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
         }else {
             binding.rv.setVisibility(View.VISIBLE);
             binding.scrollViewItems.setVisibility(View.GONE);
-
-
             binding.rv.setLayoutManager(new LinearLayoutManager(this));
-
-
 
             //ScreeenSpeakerInterface=this;
 
             databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child(Model).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
-
                     if (Model.equalsIgnoreCase("Amplifiers")){
                         ampList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -270,8 +253,6 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
                             ScreensSpeakers_ModelClass ss = dataSnapshot.getValue(ScreensSpeakers_ModelClass.class);
                             ssList.add(ss);
                         }
-
-
                         binding.rv.setAdapter(ssAdapter);
                         ssAdapter.notifyDataSetChanged();
                     }
@@ -302,9 +283,6 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
                         binding.rv.setAdapter(vacuumCleanerAdapter);
                         vacuumCleanerAdapter.notifyDataSetChanged();
                     }
-
-
-
                 }
 
                 @Override

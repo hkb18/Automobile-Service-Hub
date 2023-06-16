@@ -23,6 +23,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".fulldetails_Speaker"
+            android:exported="false" />
+        <activity
             android:name=".fulldetails_AndroidScreen"
             android:exported="false" />
         <activity

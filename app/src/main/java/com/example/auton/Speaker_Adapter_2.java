@@ -1,6 +1,7 @@
 package com.example.auton;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -37,6 +39,11 @@ public class Speaker_Adapter_2 extends RecyclerView.Adapter<Speaker_Adapter_2.Vi
         holder.desc.setText(ss.getPowerOutput()+ss.getSpeakerType());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
+        holder.cardView.setOnClickListener(v -> {
+            Intent i = new Intent(context.getApplicationContext(), fulldetails_Speaker.class);
+            i.putExtra("key",ss.getModel());
+            context.startActivity(i);
+        });
     }
 
     public void filterList(ArrayList<Speaker_ModelClass> filteredlist) {
@@ -56,12 +63,14 @@ public class Speaker_Adapter_2 extends RecyclerView.Adapter<Speaker_Adapter_2.Vi
     public class ViewHold extends RecyclerView.ViewHolder {
         ImageView productImg;
         TextView manufacturer,desc,price;
+        CardView cardView;
         public ViewHold(@NonNull View itemView) {
             super(itemView);
             manufacturer=itemView.findViewById(R.id.speakerManufacturer);
             desc=itemView.findViewById(R.id.speakerDesc);
             productImg=itemView.findViewById(R.id.speakerImg);
             price=itemView.findViewById(R.id.speaker_Price);
+            cardView=itemView.findViewById(R.id.cvSpeakers);
         }
     }
 }

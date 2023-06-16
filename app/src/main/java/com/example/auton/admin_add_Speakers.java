@@ -184,7 +184,7 @@ public class admin_add_Speakers extends AppCompatActivity {
 //                        String modelid=databaseReference.push().getKey();//to generate random key
                         //sysTime=String.valueOf(System.currentTimeMillis());
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(modelStr).child("Image").setValue(uri.toString());
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(modelStr).child("SpeakerType").setValue(modelStr);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(modelStr).child("Model").setValue(modelStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(modelStr).child("SpeakerType").setValue(SpeakerTypeStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(modelStr).child("PowerOutput").setValue(PowerOutputStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(modelStr).child("Frequency").setValue(FrequencyStr);
