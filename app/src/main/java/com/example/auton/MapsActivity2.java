@@ -3,6 +3,7 @@ package com.example.auton;
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityMaps2Binding;
@@ -44,16 +46,20 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private ActivityMaps2Binding binding;
     private int ACCESS_LOCATION_REQUEST_CODE = 100;
-    String longitudeStr,latitudeStr,activityStr;
+    String longitudeStr,latitudeStr,activityStr,workshopNameStr;
     Button currentlocation;
+    CardView cardView;
+    TextView textView;
     FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding= ActivityMaps2Binding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_maps2);
+       /* binding= ActivityMaps2Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());*/
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -61,7 +67,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
-
+        cardView=findViewById(R.id.textview);
+        textView=findViewById(R.id.textview1);
         currentlocation=findViewById(R.id.btn);
 
         geocoder = new Geocoder(this);
@@ -70,7 +77,12 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         longitudeStr=extras.getString("longitude");
         latitudeStr=extras.getString("latitude");
         activityStr=extras.getString("activity");
-
+        if (activityStr.equals("workshopMap")){
+            currentlocation.setVisibility(View.GONE);
+            cardView.setVisibility(View.GONE);
+           // binding.textview.setVisibility(View.GONE);
+            workshopNameStr=extras.getString("name");
+        }
         Toast.makeText(this, "LONG"+longitudeStr, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "LAT"+latitudeStr, Toast.LENGTH_SHORT).show();
     }

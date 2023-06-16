@@ -1,13 +1,22 @@
 package com.example.auton;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.IntentSenderRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class workshop_HomePage extends AppCompatActivity {
+
+    private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +27,21 @@ public class workshop_HomePage extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_workshop,new workshop_Dashboard_Fragment()).commit();
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Check Permissions Now
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+        }
+
+        resolutionForResult = registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+
+            } else {
+                /* permissions not Granted */
+                Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
     private final  BottomNavigationView.OnNavigationItemSelectedListener navListener= item -> {
         Fragment selectedFragment = null;

@@ -3,6 +3,7 @@ package com.example.auton;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -28,33 +29,36 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link workshop_Dashboard_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedService_Interface{
-    LottieAnimationView lottieAnimationView;
-    public static ViewBookedService_Interface viewBookedService_interface;
-    private FragmentWorkshopDashboardBinding binding;
-    DatabaseReference databaseReference;
-    Workshop_BookedService_Adapter myAdapter;
-    ArrayList<Worshop_View_Service_modelClass> list;
-    String s1="";
-    boolean yes=true,no=false;
-
+public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedService_Interface {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    public static ViewBookedService_Interface viewBookedService_interface;
+    LottieAnimationView lottieAnimationView;
+    DatabaseReference databaseReference;
+    Workshop_BookedService_Adapter myAdapter;
+    ArrayList<Worshop_View_Service_modelClass> list;
+    String s1 = "";
+    boolean yes = true, no = false;
+    String selName = "";
+    private FragmentWorkshopDashboardBinding binding;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    String selName = "";
     public workshop_Dashboard_Fragment() {
         // Required empty public constructor
     }
@@ -89,20 +93,20 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       // View v=inflater.inflate(R.layout.fragment_workshop__dashboard, container, false);
+        // View v=inflater.inflate(R.layout.fragment_workshop__dashboard, container, false);
 
-         binding=FragmentWorkshopDashboardBinding.inflate(getLayoutInflater());
+        binding = FragmentWorkshopDashboardBinding.inflate(getLayoutInflater());
 
-        viewBookedService_interface=this;
+        viewBookedService_interface = this;
 
-        SharedPreferences sh= requireContext().getSharedPreferences("MySharedPreferences1", MODE_PRIVATE);
-        s1=sh.getString("Username","");
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        SharedPreferences sh = requireContext().getSharedPreferences("MySharedPreferences1", MODE_PRIVATE);
+        s1 = sh.getString("Username", "");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
-        list=new ArrayList<>();
+        list = new ArrayList<>();
 
         binding.rvBookedService.setLayoutManager(new LinearLayoutManager(getContext()));
-        myAdapter =new Workshop_BookedService_Adapter(getContext(),list);
+        myAdapter = new Workshop_BookedService_Adapter(getContext(), list);
         binding.rvBookedService.setAdapter(myAdapter);
         databaseReference.child("Service").addValueEventListener(new ValueEventListener() {
             @Override
@@ -110,14 +114,32 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
                 list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    Worshop_View_Service_modelClass bookedService = dataSnapshot1.getValue(Worshop_View_Service_modelClass.class);
-                    list.add(bookedService);
-                }}
+                        Worshop_View_Service_modelClass bookedService = dataSnapshot1.getValue(Worshop_View_Service_modelClass.class);
+                        String dtStart = bookedService.getDate();
+                        Log.e("TAG", "onDataChange: " + dtStart);
+                        SimpleDateFormat format = new SimpleDateFormat("dd-M-yyyy");
+                        try {
+                            Date date = format.parse(dtStart);
+
+                            String date1 = new SimpleDateFormat("dd-M-yyyy", Locale.getDefault()).format(new Date());
+                            Date d = format.parse(date1);
+
+                            if (!date.before(d)) {
+                                list.add(bookedService);
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
                 myAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
        /* lottieAnimationView=v.findViewById(R.id.lottie);
@@ -131,31 +153,31 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
         return binding.getRoot();
     }
 
-
     @Override
-    public void accept(String username, String key, int position) {
+    public void accept(String username, String key, int position, String userLat, String userLong) {
         databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(true);
         myAdapter.notifyDataSetChanged();
 
 
-        ArrayList<Mechanic> mechanicList=new ArrayList<>();
+        ArrayList<Mechanic> mechanicList = new ArrayList<>();
         databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mechanicList.clear();
-                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Mechanic mechanic=dataSnapshot.getValue(Mechanic.class);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Mechanic mechanic = dataSnapshot.getValue(Mechanic.class);
                     mechanicList.add(mechanic);
                 }
-                showpopup(mechanicList,username,key);
+                showpopup(mechanicList, username, key, userLat, userLong);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
     }
-        @Override
+
+    @Override
     public void delete(String username, String key, int position) {
         databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(false);
         myAdapter.notifyDataSetChanged();
@@ -163,13 +185,11 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
 
     @Override
     public void view(String key, int position) {
-
     }
-    private void showpopup(ArrayList<Mechanic> mechanicList,String username, String key) {
+
+    private void showpopup(ArrayList<Mechanic> mechanicList, String username, String key, String userLat, String userLong) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("PLEASE SELECT A MECHANIC");
-
-
 
         // set the custom layout
         final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
@@ -178,14 +198,14 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
         AlertDialog dialog = builder.create();
         dialog.show();
 
-        MaterialButton assign=customLayout.findViewById(R.id.btn_assignMechanic);
-        Spinner mechanic=customLayout.findViewById(R.id.spinnerMechanic);
+        MaterialButton assign = customLayout.findViewById(R.id.btn_assignMechanic);
+        Spinner mechanic = customLayout.findViewById(R.id.spinnerMechanic);
 
         ArrayList<String> name = new ArrayList<>();
-        for (int i=0; i<mechanicList.size(); i++){
+        for (int i = 0; i < mechanicList.size(); i++) {
             name.add(mechanicList.get(i).getName());
         }
-        ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item,name);
+        ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, name);
         mechanic.setAdapter(brandAdapter);
 
         mechanic.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -193,32 +213,56 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 selName = name.get(position);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-
+        //  ASSIGNS MECHANIC AND WORKSHOP FOR SERVICE REQ
         assign.setOnClickListener(v -> {
             databaseReference.child("Service").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     databaseReference.child("Service").child(username).child(key).child("Workshop").setValue(s1);
                     databaseReference.child("Service").child(username).child(key).child("AssignedMechanic").setValue(selName);
+                    startMap(userLat, userLong, username);
 
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
-
             builder.setCancelable(true);
-           dialog.dismiss();
+            dialog.dismiss();
         });
+    }
 
-        // create and show the alert dialog
+    private void startMap(String userLat, String userLong, String username) {
+        databaseReference.child("Workshop_Profile").child(s1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final String tempLat = snapshot.child("latitude").getValue(String.class);
+                final String tempLong = snapshot.child("longitude").getValue(String.class);
+                final String tempName = snapshot.child("Name").getValue(String.class);
 
+                Intent intent = new Intent(requireContext(), MapsActivity_Workshop.class);
+                intent.putExtra("longitude", tempLong);
+                intent.putExtra("latitude", tempLat);
+                intent.putExtra("userLongitude", userLong);
+                intent.putExtra("userLatitude", userLat);
+                intent.putExtra("name", tempName);
+                intent.putExtra("userName", username);
+                intent.putExtra("activity", "workshopMap");
+                startActivity(intent);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 }

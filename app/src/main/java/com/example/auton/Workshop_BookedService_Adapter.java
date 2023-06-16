@@ -21,8 +21,6 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
         this.context = context;
         this.list = list;
     }
-
-
     @NonNull
     @Override
     public Workshop_BookedService_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -55,7 +53,7 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                workshop_Dashboard_Fragment.viewBookedService_interface.accept(username,key,position);
+                workshop_Dashboard_Fragment.viewBookedService_interface.accept(username,key,position, bookedService.getLatitude(), bookedService.getLongitude());
 
 
             }

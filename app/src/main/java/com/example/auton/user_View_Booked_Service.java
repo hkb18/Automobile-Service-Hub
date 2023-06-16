@@ -100,7 +100,7 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
     }
 
     @Override
-    public void accept(String username, String key, int position) {
+    public void accept(String username, String key, int position, String userLat, String userLong) {
 
     }
 
