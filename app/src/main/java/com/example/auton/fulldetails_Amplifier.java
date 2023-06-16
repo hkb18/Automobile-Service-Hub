@@ -14,8 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class fulldetails_Amplifier extends AppCompatActivity implements AndroidScreen_Interface{
-    String amplifierModelStr;
+public class fulldetails_Amplifier extends AppCompatActivity {
+
     private ActivityFulldetailsAmplifierBinding binding;
     static AndroidScreen_Interface androidScreen_interface;
     DatabaseReference databaseReference;
@@ -70,15 +70,5 @@ public class fulldetails_Amplifier extends AppCompatActivity implements AndroidS
 
             }
         });
-    }
-
-    @Override
-    public void details(String Model) {
-        amplifierModelStr=Model;
-    }
-
-    @Override
-    public void onClickItem(String Model) {
-
     }
 }
