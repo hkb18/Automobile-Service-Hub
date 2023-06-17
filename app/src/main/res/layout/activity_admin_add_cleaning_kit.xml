@@ -25,6 +25,28 @@
                 android:text="CLEANING KIT"
                 android:textSize="20dp"/>
 
+            <!-- Model -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Model"
+                    app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/cleaningkitModel"
+                        android:textColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
             <!-- Brand -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -202,27 +224,22 @@
             </LinearLayout>
 
             <!-- Image -->
-            <!--   <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_marginTop="5dp"
-                   android:gravity="center"
-                   android:layout_marginBottom="5dp">
-                   <ImageView
-                       android:layout_width="120dp"
-                       android:layout_height="120dp"
-                       android:id="@+id/image_view"/>
-                   <Button
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:id="@+id/btn_selectImg"
-                       android:text="SELECT IMAGE"/>
-                   <Button
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:id="@+id/btn_uploadImg"
-                       android:text="UPLOAD IMAGE"/>
-               </LinearLayout>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:layout_marginBottom="5dp">
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:id="@+id/ivCleaningkit"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_selectImgCleaningkit"
+                    android:text="SELECT IMAGE"/>
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_add_CleaningKit"
