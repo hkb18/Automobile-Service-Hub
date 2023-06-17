@@ -240,6 +240,7 @@
                     android:id="@+id/btn_selectImgAmplifier"
                     android:text="SELECT IMAGE"/>
             </LinearLayout>
+
             <Button
                 android:id="@+id/btn_add_Amplifier"
                 android:layout_marginTop="5dp"
