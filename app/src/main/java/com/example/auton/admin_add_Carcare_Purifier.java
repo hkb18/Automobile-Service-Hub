@@ -62,7 +62,8 @@ public class admin_add_Carcare_Purifier extends AppCompatActivity {
         detailing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getApplicationContext(),admin_add_Detailing.class);
+                startActivity(i);
             }
         });
         washers.setOnClickListener(new View.OnClickListener() {
