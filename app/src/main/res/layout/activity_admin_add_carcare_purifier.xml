@@ -78,7 +78,7 @@
             android:textStyle="bold"
             android:text="CLEANSERS"
             android:id="@+id/btn_Cleaners"/>
-        <!--        VACUUM CLEANER-->
+        <!--   WASHERS-->
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -86,8 +86,8 @@
             android:backgroundTint="@color/summersky"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:text="VACUUM CLEANER"
-            android:id="@+id/btn_VacuumCleaners"/>
+            android:text="WASHERS"
+            android:id="@+id/btn_Washers"/>
     </LinearLayout>
 
     <LinearLayout
@@ -105,16 +105,7 @@
             android:textStyle="bold"
             android:text="DETAILING"
             android:id="@+id/btn_Detailing"/>
-        <!--   WASHERS-->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:backgroundTint="@color/summersky"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:text="WASHERS"
-            android:id="@+id/btn_Washers"/>
+
     </LinearLayout>
 
 

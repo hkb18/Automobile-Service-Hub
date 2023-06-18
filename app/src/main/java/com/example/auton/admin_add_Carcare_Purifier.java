@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class admin_add_Carcare_Purifier extends AppCompatActivity {
-    Button airpurifier,cleaningkit,microfibers,wiperblades,cleansers,vacuumcleaners,detailing,washers;
+    Button airpurifier,cleaningkit,microfibers,wiperblades,cleansers,detailing,washers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,6 @@ public class admin_add_Carcare_Purifier extends AppCompatActivity {
         microfibers=findViewById(R.id.btn_Microfibers);
         wiperblades=findViewById(R.id.btn_WiperBlades);
         cleansers=findViewById(R.id.btn_Cleaners);
-        vacuumcleaners=findViewById(R.id.btn_VacuumCleaners);
         detailing=findViewById(R.id.btn_Detailing);
         washers=findViewById(R.id.btn_Washers);
 
@@ -48,7 +47,8 @@ public class admin_add_Carcare_Purifier extends AppCompatActivity {
         wiperblades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getApplicationContext(),admin_add_WiperBlades.class);
+                startActivity(i);
             }
         });
         cleansers.setOnClickListener(new View.OnClickListener() {
@@ -57,12 +57,7 @@ public class admin_add_Carcare_Purifier extends AppCompatActivity {
 
             }
         });
-        vacuumcleaners.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
         detailing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
