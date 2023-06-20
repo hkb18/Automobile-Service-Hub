@@ -82,7 +82,8 @@ public class user_Accessories_Fragment extends Fragment {
         cvCarcare_Purifier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getContext(), user_View_Carecare_Purifiers.class);
+                startActivity(i);
             }
         });
 

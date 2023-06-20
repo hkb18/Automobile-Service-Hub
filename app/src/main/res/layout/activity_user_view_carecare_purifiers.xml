@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".user_View_Carecare_Purifiers">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rvScreensSpeakers"
+        tools:listitem="@layout/screen_speaker_layout"
+        tools:itemCount="7"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv"
+        android:visibility="gone"
+        tools:listitem="@layout/screen_speaker_items_layout"/>
+
+    <ScrollView
+        android:id="@+id/scrollViewItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+           <!-- <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvItems"
+                tools:listitem="@layout/screen_speaker_items_layout"/>-->
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvItemsAirpurifier"
+                tools:listitem="@layout/airpurifier_layout2"/>
+
+            <!--        BASS TUBES-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvItemsBassTubes"
+                tools:listitem="@layout/basstubes_layout"/>
+
+
+            <!--        SPEAKERS-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvItemsSpeaker"
+                tools:listitem="@layout/speaker_layout"/>
+
+            <!--        VACUUM CLEANER-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvItemsVacuumCleaner"
+                tools:listitem="@layout/vacuumcleaner_layout"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
