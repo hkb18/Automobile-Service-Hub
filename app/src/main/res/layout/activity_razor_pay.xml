@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".RazorPay">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter amount to be payed"
+        android:inputType="number"
+        android:id="@+id/idEdtAmount"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/summersky"
+        android:id="@+id/idBtnPay"
+        android:text="Pay using RazorPay"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"/>
+
+
+</LinearLayout>

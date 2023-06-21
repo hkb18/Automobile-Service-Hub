@@ -307,8 +307,8 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent i = new Intent(getApplicationContext(), user_View_Booked_Service.class);
-
+                                   //Intent i = new Intent(getApplicationContext(), user_View_Booked_Service.class);
+                                    Intent i = new Intent(getApplicationContext(), RazorPay.class);
                                     i.putExtra("Username", username);
                                     startActivity(i);
                                 }
