@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -21,11 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
  * create an instance of this fragment.
  */
 public class admin_ManageWorkshop_Fragment extends Fragment {
-    TextView addWorkshop,delWorkshop;
-    ImageView addImg,delImg;
-    String addworkshopStr,delworkshopStr;
+    TextView addWorkshop,delWorkshop,addCar;
+    ImageView addImg,delImg,ivaddCar;
+    LinearLayout car,carBodyType;
     DatabaseReference databaseReference;
-    SharedPreferences sh;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,7 +79,10 @@ public class admin_ManageWorkshop_Fragment extends Fragment {
         delWorkshop=v.findViewById(R.id.admin_Del_workshop);
         addImg=v.findViewById(R.id.image_viewAdd);
         delImg=v.findViewById(R.id.image_viewDel);
-
+        addCar=v.findViewById(R.id.admin_addCar);
+        ivaddCar=v.findViewById(R.id.image_addCar);
+        car=v.findViewById(R.id.linearlayout_AddCar);
+        carBodyType=v.findViewById(R.id.linearlayout_AddCarBodyType);
         // ADD NEW WORKSHOP
         addWorkshop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +117,20 @@ public class admin_ManageWorkshop_Fragment extends Fragment {
                 startActivity(i);
             }
         }); */
+
+
+        //  ADD CARS
+        car.setOnClickListener(view -> {
+            Intent i=new Intent(getContext(),admin_AddCars.class);
+            startActivity(i);
+        });
+
+        //  ADD CARS BODYTYPE
+        carBodyType.setOnClickListener(view -> {
+            Intent i=new Intent(getContext(),admin_AddBodyType.class);
+            startActivity(i);
+        });
+
         return v;
     }
 }
