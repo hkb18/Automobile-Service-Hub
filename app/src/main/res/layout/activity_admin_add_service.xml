@@ -6,8 +6,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/theme_bg"
     android:orientation="vertical"
-    tools:context=".admin_AddBodyType">
+    tools:context=".admin_AddService">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,10 +23,11 @@
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textSize="26dp"
-            android:text="ADD CAR BODY TYPE"
+            android:text="ADD SERVICES"
+            android:layout_marginBottom="25dp"
             android:gravity="center"/>
 
-        <!-- Body Type  -->
+        <!-- Service  -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,13 +38,35 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Enter Body Type"
+                android:hint="Enter Service"
                 app:hintTextColor="@color/white"
                 android:textColorHint="@color/white">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/carBodyType"
+                    android:id="@+id/Service"
+                    android:textColor="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Description  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Description"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Description"
                     android:textColor="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -62,13 +88,13 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/carBodyTypePrice"
+                    android:id="@+id/Price"
                     android:textColor="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_addCarBodyType"
+            android:id="@+id/btn_addService"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
@@ -78,5 +104,5 @@
             android:backgroundTint="@color/summersky"
             android:text="ADD"/>
     </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>

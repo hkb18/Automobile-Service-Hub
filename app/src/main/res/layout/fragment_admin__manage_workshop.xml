@@ -97,4 +97,27 @@
             android:textColor="@color/black"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/linearlayout_AddService"
+        >
+        <ImageView
+            android:id="@+id/image_addService"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/addcar"/>
+        <TextView
+            android:id="@+id/admin_addService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Add Service"
+            android:textSize="22dp"
+            android:gravity="center"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
 </LinearLayout>

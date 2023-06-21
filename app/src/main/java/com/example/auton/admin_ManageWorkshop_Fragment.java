@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class admin_ManageWorkshop_Fragment extends Fragment {
     TextView addWorkshop,delWorkshop,addCar;
     ImageView addImg,delImg,ivaddCar;
-    LinearLayout car,carBodyType;
+    LinearLayout car,carBodyType,addService;
     DatabaseReference databaseReference;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,6 +83,7 @@ public class admin_ManageWorkshop_Fragment extends Fragment {
         ivaddCar=v.findViewById(R.id.image_addCar);
         car=v.findViewById(R.id.linearlayout_AddCar);
         carBodyType=v.findViewById(R.id.linearlayout_AddCarBodyType);
+        addService=v.findViewById(R.id.linearlayout_AddService);
         // ADD NEW WORKSHOP
         addWorkshop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +132,11 @@ public class admin_ManageWorkshop_Fragment extends Fragment {
             startActivity(i);
         });
 
+        // ADD SERVICE
+        addService.setOnClickListener(view -> {
+            Intent i=new Intent(getContext(),admin_AddService.class);
+            startActivity(i);
+        });
         return v;
     }
 }
