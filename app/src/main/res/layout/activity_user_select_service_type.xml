@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".user_Select_Service_Type">
+
+    <!--SCHEDULED SERVICES-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:cardCornerRadius="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/materialCardView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="#457879">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCHEDULED SERVICES"
+            android:padding="8dp"
+            android:textSize="16dp"
+            android:layout_gravity="center|start"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp"
+        android:layout_marginBottom="300dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top_view"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_gravity="center">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:weightSum="4">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="12dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="15dp"
+                    android:id="@+id/periodicServices">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/retrotv" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Periodic  &amp;   Services"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="11dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="12dp"
+                    android:layout_weight="1"
+                    app:cardElevation="15dp"
+                    app:cardCornerRadius="15dp"
+                    android:id="@+id/acService_Repair">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/ac_service" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="AC Service &amp;   Repair"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="11dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="12dp"
+                    android:layout_weight="1"
+                    app:cardElevation="15dp"
+                    app:cardCornerRadius="15dp"
+                    android:id="@+id/batteries">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/battery_service" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Batteries"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="11dp"
+                            />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="12dp"
+                    android:layout_weight="1"
+                    app:cardElevation="15dp"
+                    app:cardCornerRadius="15dp"
+                    android:id="@+id/tyres_WheelCare">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/mat" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Tyres &amp; Wheel Care"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="11dp"
+                            />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- VALUE ADDED SERVICES-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="45dp"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView"
+        app:cardBackgroundColor="#457879">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VALUE ADDED SERVICES"
+            android:padding="8dp"
+            android:textSize="16dp"
+            android:layout_gravity="center|start"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+     <com.google.android.material.card.MaterialCardView
+         android:id="@+id/materialCardView3"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:strokeColor="@color/black"
+         app:strokeWidth="1dp"
+         android:layout_marginBottom="300dp"
+         android:layout_marginStart="10dp"
+         android:layout_marginEnd="10dp"
+         android:layout_marginTop="20dp"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/materialCardView4"
+         android:layout_gravity="center_horizontal"
+         >
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_below="@+id/top_view"
+             android:orientation="vertical"
+             android:padding="5dp"
+             android:layout_gravity="center"
+             >
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:padding="5dp"
+                 android:weightSum="4">
+
+                 <androidx.cardview.widget.CardView
+                     android:layout_width="match_parent"
+                     android:layout_height="70dp"
+                     android:layout_margin="12dp"
+                     android:layout_weight="1"
+                     app:cardCornerRadius="15dp"
+                     app:cardElevation="15dp"
+                     android:id="@+id/dentingPainting">
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:gravity="center"
+                         android:orientation="vertical">
+
+                         <ImageView
+                             android:layout_width="30dp"
+                             android:layout_height="30dp"
+                             android:layout_gravity="center_horizontal"
+                             android:src="@drawable/retrotv" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center_horizontal"
+                             android:text="Denting &amp;   Painting"
+                             android:gravity="center"
+                             android:textColor="@color/black"
+                             android:textSize="11dp" />
+                     </LinearLayout>
+                 </androidx.cardview.widget.CardView>
+
+                 <androidx.cardview.widget.CardView
+                     android:layout_width="match_parent"
+                     android:layout_height="70dp"
+                     android:layout_margin="12dp"
+                     android:layout_weight="1"
+                     app:cardElevation="15dp"
+                     app:cardCornerRadius="15dp"
+                     android:id="@+id/detailingService">
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:gravity="center"
+                         android:orientation="vertical">
+
+                         <ImageView
+                             android:layout_width="30dp"
+                             android:layout_height="30dp"
+                             android:layout_gravity="center_horizontal"
+                             android:src="@drawable/airpurifier" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center_horizontal"
+                             android:text="Detailing &amp;   Services"
+                             android:gravity="center"
+                             android:textColor="@color/black"
+                             android:textSize="11dp" />
+                     </LinearLayout>
+                 </androidx.cardview.widget.CardView>
+
+                 <androidx.cardview.widget.CardView
+                     android:layout_width="match_parent"
+                     android:layout_height="70dp"
+                     android:layout_margin="12dp"
+                     android:layout_weight="1"
+                     app:cardElevation="15dp"
+                     app:cardCornerRadius="15dp"
+                     android:id="@+id/carInspections">
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:gravity="center"
+                         android:orientation="vertical">
+
+                         <ImageView
+                             android:layout_width="30dp"
+                             android:layout_height="30dp"
+                             android:layout_gravity="center_horizontal"
+                             android:src="@drawable/mat" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center_horizontal"
+                             android:text="Car Inspections"
+                             android:gravity="center"
+                             android:textColor="@color/black"
+                             android:textSize="11dp" />
+                     </LinearLayout>
+                 </androidx.cardview.widget.CardView>
+
+                 <androidx.cardview.widget.CardView
+                     android:layout_width="match_parent"
+                     android:layout_height="70dp"
+                     android:layout_margin="12dp"
+                     android:layout_weight="1"
+                     app:cardElevation="15dp"
+                     app:cardCornerRadius="15dp"
+                     android:id="@+id/carspaCleaning">
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:gravity="center"
+                         android:orientation="vertical">
+
+                         <ImageView
+                             android:layout_width="30dp"
+                             android:layout_height="30dp"
+                             android:layout_gravity="center_horizontal"
+                             android:src="@drawable/horn" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center_horizontal"
+                             android:text="Car Spa &amp;   Cleaning"
+                             android:textColor="@color/black"
+                             android:gravity="center"
+                             android:textSize="11dp" />
+                     </LinearLayout>
+                 </androidx.cardview.widget.CardView>
+
+             </LinearLayout>
+
+         </LinearLayout>
+
+     </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

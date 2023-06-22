@@ -13,7 +13,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
-import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
@@ -43,7 +42,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
-import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -166,6 +165,8 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_book_service);
 
+        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+
         // MAP
         mapinterface=this;
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -186,22 +187,11 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         edittextlocation=findViewById(R.id.edittextLocation);
         edittextdate=findViewById(R.id.edittextDate);
         carmodel=findViewById(R.id.carModel);
-        carmodel.setOnItemSelectedListener(this);
         carbrand=findViewById(R.id.carBrand);
-        carbrand.setOnItemSelectedListener(this);
-        ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, brand);
-        carbrand.setAdapter(brandAdapter);
-        carbrand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                String[] modelss=models[position];
-                ArrayAdapter<String> modelAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, modelss);
-                carmodel.setAdapter(modelAdapter);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
-        });
+
+        setCarBrandAdapter();
+
+        setCarTypeAdapter();
 
         servicetype=findViewById(R.id.serviceType);
         servicetype.setOnItemSelectedListener(this);
@@ -225,7 +215,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         pm.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         paymentmode.setAdapter(pm);
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+
 
         Bundle extras=getIntent().getExtras();
         username= extras.getString("Username");
@@ -369,6 +359,69 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 //        });
 //
    }
+
+    private void setCarTypeAdapter() {
+        ArrayList<String> carbodyType=new ArrayList<>();
+        databaseReference.child("CAR_BODYTYPE").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                carbodyType.clear();
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    carbodyType.add(dataSnapshot.getKey());
+                }
+                ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(user_Book_Service.this, R.layout.simple_spinner_item, carbodyType);
+                carmodel.setAdapter(brandAdapter);
+                carmodel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                        /*String[] modelss=models[position];
+                        ArrayAdapter<String> modelAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, modelss);
+                        carmodel.setAdapter(modelAdapter);*/
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void setCarBrandAdapter() {
+        ArrayList<String> carBrand=new ArrayList<>();
+        databaseReference.child("CAR").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                carBrand.clear();
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    carBrand.add(dataSnapshot.getKey());
+                }
+                ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(user_Book_Service.this, R.layout.simple_spinner_item, carBrand);
+                carbrand.setAdapter(brandAdapter);
+                carbrand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                        /*String[] modelss=models[position];
+                        ArrayAdapter<String> modelAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, modelss);
+                        carmodel.setAdapter(modelAdapter);*/
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
 
     private void enableLocationSettings() {
 

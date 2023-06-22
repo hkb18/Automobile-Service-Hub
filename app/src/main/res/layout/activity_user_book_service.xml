@@ -25,195 +25,99 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
-
+        android:weightSum="2"
+        android:padding="5dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Select Your Car Brand :"
             android:textSize="18dp"
+            android:paddingBottom="5dp"
             android:textStyle="bold"
-            android:paddingRight="15dp"
             android:textColor="@color/white"/>
         <Spinner
             android:id="@+id/carBrand"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-           />
-        <!--<TextView
-
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="10dp"
-            android:text="Select Your Car Brand"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:textColor="@color/white">
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text=":"
-            android:textColor="@color/white"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="6dp"
-            android:textSize="18dp"
-            android:textStyle="bold">
-
-        </TextView>
-        <Spinner
-            android:id="@+id/carBrand"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="8dp">
-
-        </Spinner>-->
-  <!--      <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
-            android:id="@+id/carBrand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:smsp_errorText="This is error text. You can show it as single line or multiple lines using attr smsp_multilineError"
-            app:smsp_floatingLabelColor="#1976D2"
-            app:smsp_floatingLabelText="Floating Label Text"
-            app:smsp_hint="Select Item"
-            app:smsp_hintColor="@color/white"
-            app:smsp_itemColor="#512DA8"
-            app:smsp_itemListColor="#7C4DFF"
-            app:smsp_itemListHintBackgroundColor="#808080"
-            app:smsp_itemListHintColor="#FFFFFF"
-            app:smsp_multilineError="false"
-            app:smsp_selectedItemListColor="#FF5252" />
-
-        -->
-
+            android:popupBackground="@color/black"
+            android:layout_weight="1"/>
     </LinearLayout>
-<!-- SELECT CAR MODEL -->
+
+
+<!-- SELECT CAR BODY TYPE -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:weightSum="2"
+        android:padding="5dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Select Your Car Model :"
+            android:text="Select Your Car Body Type :"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:paddingRight="12dp"
+            android:paddingBottom="5dp"
+            android:layout_weight="1"
             android:textColor="@color/white"/>
         <Spinner
             android:id="@+id/carModel"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            />
-
-
-       <!-- <TextView
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="10dp"
-            android:text="Select Your Car Model"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:textColor="@color/white">
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text=":"
-            android:textColor="@color/white"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="6dp"
-            android:textSize="18dp"
-            android:textStyle="bold">
-
-        </TextView>
-        <Spinner
-            android:id="@+id/carModel"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="8dp"
-            >
-
-        </Spinner>-->
-
-
+            android:popupBackground="@color/black"
+            android:layout_weight="1"/>
     </LinearLayout>
+
     <!-- SELECT SERVICE TYPE -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:weightSum="2"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Select Service Type :"
             android:textSize="18dp"
             android:textStyle="bold"
             android:paddingRight="35dp"
+            android:layout_weight="1"
             android:textColor="@color/white"/>
         <Spinner
             android:id="@+id/serviceType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-       <!-- <TextView
-
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="10dp"
-            android:text="Select Service Type"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:textColor="@color/white">
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text=":"
-            android:textColor="@color/white"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="6dp"
-            android:textSize="18dp"
-            android:textStyle="bold">
-
-        </TextView>
-        <Spinner
-            android:id="@+id/serviceType"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="8dp">
-
-        </Spinner>-->
-
-
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
+
     <!-- SELECT DATE -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:weightSum="2"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
         <Button
             android:id="@+id/buttonDate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Select Date"
             android:textSize="16dp"
             android:gravity="center"
             android:textColor="@color/white"
-            android:backgroundTint="@color/summersky"
-            android:layout_marginStart="8dp"/>
+            android:backgroundTint="@color/summersky" />
 
 
         <TextView
@@ -227,12 +131,12 @@
 
         <EditText
             android:id="@+id/edittextDate"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:backgroundTint="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
+            android:layout_weight="1"
             android:textColor="@color/black"/>
 
 
@@ -244,25 +148,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:weightSum="2"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
         <Button
             android:id="@+id/buttonLocation"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="View Your Location"
             android:textColor="@color/white"
             android:backgroundTint="@color/summersky"
             android:textSize="16dp"
             android:textStyle="bold"/>
-        <!--  <TextView
-              android:layout_width="180dp"
-              android:layout_height="wrap_content"
-              android:layout_marginLeft="10dp"
-              android:text="Enter Address(if you are not using current location)"
-              android:textSize="18dp"
-              android:textStyle="bold"
-              android:textColor="@color/white">
-          </TextView>-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -273,124 +171,61 @@
             android:textSize="18dp"
             android:textStyle="bold"/>
 
-
         <EditText
             android:id="@+id/edittextLocation"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:layout_marginLeft="8dp"/>
-
-
-
-
+            android:layout_weight="1"
+            android:backgroundTint="@color/white" />
     </LinearLayout>
+
     <!-- SELECT SERVICE TIME -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:weightSum="2"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Select Service Time :"
             android:textSize="18dp"
             android:textStyle="bold"
             android:paddingRight="30dp"
+            android:layout_weight="1"
             android:textColor="@color/white"/>
         <Spinner
             android:id="@+id/serviceTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <!--<TextView
-
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="10dp"
-            android:text="Select Service Time"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:textColor="@color/white">
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text=":"
-            android:textColor="@color/white"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="6dp"
-            android:textSize="18dp"
-            android:textStyle="bold">
-
-        </TextView>
-        <Spinner
-            android:id="@+id/serviceTime"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="8dp"
-            >
-
-        </Spinner>-->
-
-
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
+
     <!-- SELECT PAYMENT METHOD -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:weightSum="2"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Payment Method :"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:paddingRight="52dp"
+            android:layout_weight="1"
             android:textColor="@color/white"/>
         <Spinner
             android:id="@+id/paymentMode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <!--<TextView
-
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="10dp"
-            android:text="Payment Method"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:textColor="@color/white">
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text=":"
-
-            android:textColor="@color/white"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="6dp"
-            android:textSize="18dp"
-            android:textStyle="bold">
-
-        </TextView>
-        <Spinner
-            android:id="@+id/paymentMode"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="8dp">
-
-        </Spinner>-->
-
-
-
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <!-- BOOK SERVICE -->
