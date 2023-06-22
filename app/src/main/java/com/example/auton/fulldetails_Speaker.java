@@ -77,6 +77,7 @@ public class fulldetails_Speaker extends AppCompatActivity {
         binding.btnSpeakerBuyNow.setOnClickListener(view -> {
             Intent i=new Intent(getApplicationContext(),RazorPay.class);
             i.putExtra("price",priceStr);
+            i.putExtra("key",modelStr);
             startActivity(i);
         });
     }
