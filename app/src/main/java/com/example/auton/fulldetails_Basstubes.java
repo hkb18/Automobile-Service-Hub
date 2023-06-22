@@ -1,5 +1,6 @@
 package com.example.auton;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -78,6 +79,14 @@ public class fulldetails_Basstubes extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+        });
+        binding.btnAddtocart.setOnClickListener(view -> {
+
+        });
+        binding.btnBasstubesBuyNow.setOnClickListener(view -> {
+            Intent i=new Intent(getApplicationContext(),RazorPay.class);
+            i.putExtra("price",priceStr);
+            startActivity(i);
         });
     }
 }

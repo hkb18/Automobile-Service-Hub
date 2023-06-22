@@ -3,6 +3,7 @@ package com.example.auton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -78,6 +79,14 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+        });
+        binding.btnAddtocart.setOnClickListener(view -> {
+
+        });
+        binding.btnBuy.setOnClickListener(view -> {
+            Intent i=new Intent(getApplicationContext(),RazorPay.class);
+            i.putExtra("price",priceStr);
+            startActivity(i);
         });
     }
 

@@ -187,9 +187,9 @@
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/btn_amplifiergoBack"
+                        android:id="@+id/btn_amplifiercart"
                         android:layout_weight="1"
-                        android:text="go back"
+                        android:text="cart"
                         android:gravity="center"
                         android:textAllCaps="true"
                         android:backgroundTint="@color/summersky"/>

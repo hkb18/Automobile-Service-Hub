@@ -1,5 +1,6 @@
 package com.example.auton;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 public class fulldetails_Amplifier extends AppCompatActivity {
 
     private ActivityFulldetailsAmplifierBinding binding;
-    static AndroidScreen_Interface androidScreen_interface;
+   // static AndroidScreen_Interface androidScreen_interface;
     DatabaseReference databaseReference;
     String key,modelStr,dimensionStr,maxvoltageStr,mountinghardwareStr,channelStr,imageStr,manufacturerStr,priceStr,weightStr;
     @Override
@@ -69,6 +70,16 @@ public class fulldetails_Amplifier extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+        });
+
+        binding.btnAmplifierBuyNow.setOnClickListener(view -> {
+            Intent i=new Intent(getApplicationContext(),RazorPay.class);
+            i.putExtra("price",priceStr);
+            startActivity(i);
+        });
+
+        binding.btnAmplifiercart.setOnClickListener(view -> {
+
         });
     }
 }

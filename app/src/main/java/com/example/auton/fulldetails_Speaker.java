@@ -3,6 +3,7 @@ package com.example.auton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
@@ -70,6 +71,13 @@ public class fulldetails_Speaker extends AppCompatActivity {
 
             }
         });
+        binding.btnAddtocart.setOnClickListener(view -> {
 
+        });
+        binding.btnSpeakerBuyNow.setOnClickListener(view -> {
+            Intent i=new Intent(getApplicationContext(),RazorPay.class);
+            i.putExtra("price",priceStr);
+            startActivity(i);
+        });
     }
 }

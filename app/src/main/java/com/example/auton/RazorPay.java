@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.razorpay.Checkout;
@@ -15,22 +16,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RazorPay extends AppCompatActivity implements PaymentResultListener {
-    EditText amountEdt;
+    TextView amt;
     Button payBtn;
+    String priceStr="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_razor_pay);
 
-        amountEdt = findViewById(R.id.idEdtAmount);
+        priceStr= getIntent().getStringExtra("price");
+
+        amt = findViewById(R.id.amt);
         payBtn = findViewById(R.id.idBtnPay);
+        amt.setText(priceStr);
 
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // on below line we are getting
                 // amount that is entered by user.
-                String samount = amountEdt.getText().toString();
+                String samount = priceStr;
 
                 // rounding off the amount.
                 int amount = Math.round(Float.parseFloat(samount) * 100);

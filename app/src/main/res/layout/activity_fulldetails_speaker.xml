@@ -205,9 +205,9 @@
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/btn_speakergoBack"
+                        android:id="@+id/btn_addtocart"
                         android:layout_weight="1"
-                        android:text="go back"
+                        android:text="add to cart"
                         android:gravity="center"
                         android:textAllCaps="true"
                         android:backgroundTint="@color/summersky"/>
