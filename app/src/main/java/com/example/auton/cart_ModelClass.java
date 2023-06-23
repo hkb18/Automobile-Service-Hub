@@ -1,18 +1,27 @@
 package com.example.auton;
 
 public class cart_ModelClass {
-    String model,maufacturer,price,quantity,image,username;
+    String model,maufacturer,price,quantity,image,username,key;
 
     public cart_ModelClass() {
     }
 
-    public cart_ModelClass(String model, String maufacturer, String price, String quantity, String image,String username) {
+    public cart_ModelClass(String model, String maufacturer, String price, String quantity, String image,String username,String key) {
         this.model = model;
         this.maufacturer = maufacturer;
         this.price = price;
         this.quantity = quantity;
         this.image = image;
         this.username = username;
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getUsername() {

@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class user_HomePage extends AppCompatActivity {
-    String username;
+    String username,gotocart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,12 +18,19 @@ public class user_HomePage extends AppCompatActivity {
         //GETTING username
         Bundle extras=getIntent().getExtras();
         username= extras.getString("Username");
+        gotocart=extras.getString("iscart","0");
+
         //Toast.makeText(this, ""+username, Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new user_Dashboard_Fragment().newInstance("",username)).commit();
+
+        if (gotocart.equals("1")){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new user_Cart_fragment().newInstance("",username)).commit();
+        }else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new user_Dashboard_Fragment().newInstance("",username)).commit();
+        }
     }
       private final  BottomNavigationView.OnNavigationItemSelectedListener navListener= item -> {
             Fragment selectedFragment = null;
@@ -35,7 +42,7 @@ public class user_HomePage extends AppCompatActivity {
             } else if (itemId==R.id.accessory) {
                 selectedFragment=new user_Accessories_Fragment().newInstance("",username);
             } else if ((itemId==R.id.cart)) {
-                selectedFragment = new user_Dashboard_Fragment().newInstance("",username);
+                selectedFragment = new user_Cart_fragment().newInstance("",username);
             }
           if(selectedFragment!=null){
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();

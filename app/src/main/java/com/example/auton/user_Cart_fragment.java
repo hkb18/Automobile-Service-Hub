@@ -1,19 +1,41 @@
 package com.example.auton;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.auton.databinding.FragmentUserCartBinding;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link user_Cart_fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class user_Cart_fragment extends Fragment {
+public class user_Cart_fragment extends Fragment implements OnClickInterface{
+    private Cart_Adapter cart_adapter;
+    ArrayList<cart_ModelClass> list=new ArrayList<>();
+    private FragmentUserCartBinding binding;
+    DatabaseReference databaseReference;
+    SharedPreferences sh;
+    String s1;
+    public static OnClickInterface onClickInterface;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +81,41 @@ public class user_Cart_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user__cart, container, false);
+        binding=FragmentUserCartBinding.inflate(getLayoutInflater());
+
+        onClickInterface=this;
+
+        sh=requireContext().getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
+        s1=sh.getString("Username","");
+
+        binding.rvCart.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false));
+        cart_adapter=new Cart_Adapter(requireActivity(),list);
+        binding.rvCart.setAdapter(cart_adapter);
+
+        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference.child("CART").child(s1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    list.add(dataSnapshot.getValue(cart_ModelClass.class));
+                    cart_adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return binding.getRoot();
+
+    }
+
+    @Override
+    public void delmech(String delName, int position) {
+        databaseReference.child("CART").child(s1).child(delName).removeValue();
+        cart_adapter.notifyDataSetChanged();
     }
 }

@@ -88,11 +88,13 @@ public class fulldetails_Amplifier extends AppCompatActivity {
 
         binding.btnAmplifiercart.setOnClickListener(view -> {
             cart_ModelClass modelClass=new cart_ModelClass();
+            String key=databaseReference.push().getKey();
             modelClass.setModel(modelStr);
             modelClass.setImage(imageStr);
             modelClass.setMaufacturer(manufacturerStr);
             modelClass.setQuantity("1");
             modelClass.setUsername(s1);
+            modelClass.setKey(key);
             modelClass.setPrice(priceStr);
 
             //databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Quantity").addListenerForSingleValueEvent(new );
@@ -106,10 +108,11 @@ public class fulldetails_Amplifier extends AppCompatActivity {
                  if (qty<=0){
                      Toast.makeText(fulldetails_Amplifier.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                  }else {
-                     databaseReference.child("CART").child(s1).child(databaseReference.push().getKey()).setValue(modelClass);
+                     databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
                      databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Quantity").setValue(qty.toString());
                       Intent i=new Intent(getApplicationContext(),user_HomePage.class);
                       i.putExtra("Username", s1);
+                      i.putExtra("iscart", "1");
                       startActivity(i);
                       finishAffinity();
 
