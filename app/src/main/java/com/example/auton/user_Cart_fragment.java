@@ -109,6 +109,10 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
             }
         });
 
+        binding.btnCheckout.setOnClickListener(view -> {
+
+        });
+
         return binding.getRoot();
 
     }
@@ -116,6 +120,25 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
     @Override
     public void delmech(String delName, int position) {
         databaseReference.child("CART").child(s1).child(delName).removeValue();
+        cart_adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void add(String quantity, int position) {
+        Integer qty=Integer.parseInt(quantity);
+        qty++;
+        list.get(position).setQuantity(""+qty);
+        cart_adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void remove(String quantity, int position) {
+        Integer qty=Integer.parseInt(quantity);
+        qty--;
+        if (qty<=1){
+            qty=1;
+        }
+        list.get(position).setQuantity(""+qty);
         cart_adapter.notifyDataSetChanged();
     }
 }

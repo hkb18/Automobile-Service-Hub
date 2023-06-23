@@ -49,17 +49,13 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.ViewHold> {
 
         });
         holder.add.setOnClickListener(view -> {
-           Integer qty=Integer.parseInt(holder.qty.getText().toString());
-           qty++;
-           holder.qty.setText(""+qty);
+            user_Cart_fragment.onClickInterface.add(ss.getQuantity(),position);
+
+
         });
         holder.sub.setOnClickListener(view -> {
-            Integer qty=Integer.parseInt(holder.qty.getText().toString());
-            qty--;
-            if (qty<=1){
-                qty=1;
-            }
-            holder.qty.setText(""+qty);
+            user_Cart_fragment.onClickInterface.remove(ss.getQuantity(),position);
+
         });
     }
 
