@@ -48,34 +48,30 @@
                 android:id="@+id/rvItemsAirpurifier"
                 tools:listitem="@layout/airpurifier_layout2"/>
 
-            <!--        BASS TUBES-->
+            <!--        cleaning kit-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rvItemsBassTubes"
-                tools:listitem="@layout/basstubes_layout"/>
+                android:id="@+id/rvItemsCleaningKit"
+                tools:listitem="@layout/cleaningkit_layout"/>
 
 
-            <!--        SPEAKERS-->
+            <!--        cleansers-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rvItemsSpeaker"
-                tools:listitem="@layout/speaker_layout"/>
 
-            <!--        VACUUM CLEANER-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rvItemsVacuumCleaner"
-                tools:listitem="@layout/vacuumcleaner_layout"/>
+            <!--      detailing-->
 
+
+
+
+            <!--microfibres-->
+
+            <!--washers-->
+
+            <!--wiperblades-->
         </LinearLayout>
 
     </ScrollView>

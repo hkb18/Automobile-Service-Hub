@@ -24,7 +24,14 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements A
     String ccpModelStr;
     private ArrayList<materialButton> list=new ArrayList<>();
     private AirPurifier_Adapter airpurifierAdapter;
+    private CleaningKit_Adapter cleaningKitAdapter;
     private ArrayList<Airpurifier_ModelClass> airpurifierList= new ArrayList<>();
+    private ArrayList<CleaningKit_ModelClass> cleaningkitList= new ArrayList<>();
+    private ArrayList<Cleaners_ModelClass> cleansersList= new ArrayList<>();
+    private ArrayList<Detailing_ModelClass> detailingList= new ArrayList<>();
+    private ArrayList<MicroFibres_ModelClass> microfibresList= new ArrayList<>();
+    private ArrayList<Washers_ModelClass> washersList= new ArrayList<>();
+    private ArrayList<WiperBlades_ModelClass> wiperbladesList= new ArrayList<>();
     private  ScreensSpeakersAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +92,49 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements A
                 Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+
+        ///////CLEANING KIT
+        binding.rvItemsCleaningKit.setAdapter(cleaningKitAdapter);
+
+        binding.rvItemsCleaningKit.setHasFixedSize(true);
+        binding.rvItemsCleaningKit.setLayoutManager(new LinearLayoutManager(this));
+
+        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("CleaningKit").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                cleaningkitList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    CleaningKit_ModelClass ap = dataSnapshot.getValue(CleaningKit_ModelClass.class);
+                    cleaningkitList.add(ap);
+                }
+
+                cleaningKitAdapter =new CleaningKit_Adapter(user_View_Carecare_Purifiers.this,cleaningkitList, snapshot.getKey());
+                binding.rvItemsCleaningKit.setAdapter(cleaningKitAdapter);
+
+                airpurifierAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ////////CLEANSERS
+
+
+        ///////DETAILING
+
+
+
+        ///////MICROFIBRES
+
+
+
+        //////WASHERS
+
+
+
+        //////WIPER BLADES
 
     }
 

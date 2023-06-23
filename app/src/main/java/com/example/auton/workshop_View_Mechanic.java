@@ -106,4 +106,14 @@ public class workshop_View_Mechanic extends AppCompatActivity implements OnClick
         Log.e("", "delmech: "+position );
         myAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void add(String quantity, int position) {
+
+    }
+
+    @Override
+    public void remove(String quantity, int position) {
+
+    }
 }

@@ -34,7 +34,7 @@ public class fulldetails_Amplifier extends AppCompatActivity {
         //androidScreen_interface=this;//interface
 
         sh=getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
-         s1=sh.getString("Username","");
+        s1=sh.getString("Username","");
 
         Bundle extras=getIntent().getExtras();
         key= extras.getString("key");
@@ -96,9 +96,6 @@ public class fulldetails_Amplifier extends AppCompatActivity {
             modelClass.setUsername(s1);
             modelClass.setKey(key);
             modelClass.setPrice(priceStr);
-
-            //databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Quantity").addListenerForSingleValueEvent(new );
-
             databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -115,7 +112,6 @@ public class fulldetails_Amplifier extends AppCompatActivity {
                       i.putExtra("iscart", "1");
                       startActivity(i);
                       finishAffinity();
-
                  }
                 }
 

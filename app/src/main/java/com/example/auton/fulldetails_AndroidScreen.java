@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.auton.databinding.ActivityFulldetailsAndroidScreenBinding;
@@ -21,7 +23,8 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
     private ActivityFulldetailsAndroidScreenBinding binding;
     static AndroidScreen_Interface androidScreen_interface;
     DatabaseReference databaseReference;
-    String key,dimensionStr,displaytypeStr,imageStr,manufacturerStr,modelStr,ostypeStr,priceStr,ramStr,romStr,screensizeStr,weightStr;
+    SharedPreferences sh;
+    String s1,key,dimensionStr,displaytypeStr,imageStr,manufacturerStr,modelStr,ostypeStr,priceStr,ramStr,romStr,screensizeStr,weightStr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,9 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
         setContentView(binding.getRoot());
 
         androidScreen_interface=this;//interface
+
+        sh=getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
+        s1=sh.getString("Username","");
 
         Bundle extras=getIntent().getExtras();
         key= extras.getString("key");
@@ -80,16 +86,53 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
 
             }
         });
-        binding.btnAddtocart.setOnClickListener(view -> {
-
-        });
         binding.btnBuy.setOnClickListener(view -> {
             Intent i=new Intent(getApplicationContext(),RazorPay.class);
             i.putExtra("price",priceStr);
             i.putExtra("key",modelStr);
             startActivity(i);
         });
+
+        binding.btnAddtocart.setOnClickListener(view -> {
+            cart_ModelClass modelClass=new cart_ModelClass();
+            String key=databaseReference.push().getKey();
+            modelClass.setModel(modelStr);
+            modelClass.setImage(imageStr);
+            modelClass.setMaufacturer(manufacturerStr);
+            modelClass.setQuantity("1");
+            modelClass.setUsername(s1);
+            modelClass.setKey(key);
+            modelClass.setPrice(priceStr);
+
+            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    Integer qty=Integer.parseInt(qtyStr);
+                    qty--;
+                    if (qty<=0){
+                        Toast.makeText(fulldetails_AndroidScreen.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Quantity").setValue(qty.toString());
+                        Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                        i.putExtra("Username", s1);
+                        i.putExtra("iscart", "1");
+                        startActivity(i);
+                        finishAffinity();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        });
+
     }
+
 
     @Override
     public void details(String Model) {
