@@ -1,7 +1,10 @@
 package com.example.auton;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +23,8 @@ public class fulldetails_Amplifier extends AppCompatActivity {
     private ActivityFulldetailsAmplifierBinding binding;
    // static AndroidScreen_Interface androidScreen_interface;
     DatabaseReference databaseReference;
-    String key,modelStr,dimensionStr,maxvoltageStr,mountinghardwareStr,channelStr,imageStr,manufacturerStr,priceStr,weightStr;
+    SharedPreferences sh;
+    String s1,key,modelStr,dimensionStr,maxvoltageStr,mountinghardwareStr,channelStr,imageStr,manufacturerStr,priceStr,weightStr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,9 @@ public class fulldetails_Amplifier extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         //androidScreen_interface=this;//interface
+
+        sh=getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
+         s1=sh.getString("Username","");
 
         Bundle extras=getIntent().getExtras();
         key= extras.getString("key");
@@ -80,7 +87,42 @@ public class fulldetails_Amplifier extends AppCompatActivity {
         });
 
         binding.btnAmplifiercart.setOnClickListener(view -> {
+            cart_ModelClass modelClass=new cart_ModelClass();
+            modelClass.setModel(modelStr);
+            modelClass.setImage(imageStr);
+            modelClass.setMaufacturer(manufacturerStr);
+            modelClass.setQuantity("1");
+            modelClass.setUsername(s1);
+            modelClass.setPrice(priceStr);
 
+            //databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Quantity").addListenerForSingleValueEvent(new );
+
+            databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                 String qtyStr=snapshot.child("Quantity").getValue().toString();
+                 Integer qty=Integer.parseInt(qtyStr);
+                 qty--;
+                 if (qty<=0){
+                     Toast.makeText(fulldetails_Amplifier.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
+                 }else {
+                     databaseReference.child("CART").child(s1).child(databaseReference.push().getKey()).setValue(modelClass);
+                     databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Quantity").setValue(qty.toString());
+                      Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                      i.putExtra("Username", s1);
+                      startActivity(i);
+                      finishAffinity();
+
+                 }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         });
+
+
     }
 }

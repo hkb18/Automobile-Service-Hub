@@ -34,6 +34,8 @@ public class user_HomePage extends AppCompatActivity {
                 selectedFragment = new user_Dashboard_Fragment().newInstance("",username);
             } else if (itemId==R.id.accessory) {
                 selectedFragment=new user_Accessories_Fragment().newInstance("",username);
+            } else if ((itemId==R.id.cart)) {
+                selectedFragment = new user_Dashboard_Fragment().newInstance("",username);
             }
           if(selectedFragment!=null){
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();

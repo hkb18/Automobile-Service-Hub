@@ -65,7 +65,8 @@ public class admin_AddService extends AppCompatActivity {
 
         //  ADD BATTERIES
         binding.btnAddBatteries.setOnClickListener(view -> {
-
+            Intent i = new Intent(getApplicationContext(),admin_add_Batteries.class);
+            startActivity(i);
         });
 
         //  ADD TYRES & WHEEL CARE
