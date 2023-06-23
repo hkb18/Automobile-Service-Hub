@@ -25,6 +25,7 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements A
     private ArrayList<materialButton> list=new ArrayList<>();
     private AirPurifier_Adapter airpurifierAdapter;
     private CleaningKit_Adapter cleaningKitAdapter;
+    private Cleansers_Adapter cleansersAdapter;
     private ArrayList<Airpurifier_ModelClass> airpurifierList= new ArrayList<>();
     private ArrayList<CleaningKit_ModelClass> cleaningkitList= new ArrayList<>();
     private ArrayList<Cleaners_ModelClass> cleansersList= new ArrayList<>();
@@ -111,7 +112,7 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements A
                 cleaningKitAdapter =new CleaningKit_Adapter(user_View_Carecare_Purifiers.this,cleaningkitList, snapshot.getKey());
                 binding.rvItemsCleaningKit.setAdapter(cleaningKitAdapter);
 
-                airpurifierAdapter.notifyDataSetChanged();
+                cleaningKitAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -120,7 +121,30 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements A
         });
 
         ////////CLEANSERS
+        binding.rvItemsCleansers.setAdapter(cleansersAdapter);
 
+        binding.rvItemsCleansers.setHasFixedSize(true);
+        binding.rvItemsCleansers.setLayoutManager(new LinearLayoutManager(this));
+
+        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                cleansersList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Cleaners_ModelClass ap = dataSnapshot.getValue(Cleaners_ModelClass.class);
+                    cleansersList.add(ap);
+                }
+
+                cleansersAdapter =new Cleansers_Adapter(user_View_Carecare_Purifiers.this,cleansersList, snapshot.getKey());
+                binding.rvItemsCleansers.setAdapter(cleansersAdapter);
+
+                cleansersAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
 
         ///////DETAILING
 
