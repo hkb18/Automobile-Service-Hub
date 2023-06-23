@@ -1,13 +1,13 @@
 package com.example.auton;
 
 public class Detailing_ModelClass {
-    String BoxIncluded,Brand,Dimension,Image,ItemForm,Price,Quantity,Volume,Weight;
+    String BoxIncludes,Brand,Dimension,Image,ItemForm,Price,Quantity,Volume,Weight;
 
     public Detailing_ModelClass() {
     }
 
-    public Detailing_ModelClass(String boxIncluded, String brand, String dimension, String image, String itemForm, String price, String quantity, String volume, String weight) {
-        BoxIncluded = boxIncluded;
+    public Detailing_ModelClass(String boxIncludes, String brand, String dimension, String image, String itemForm, String price, String quantity, String volume, String weight) {
+        BoxIncludes = boxIncludes;
         Brand = brand;
         Dimension = dimension;
         Image = image;
@@ -18,12 +18,12 @@ public class Detailing_ModelClass {
         Weight = weight;
     }
 
-    public String getBoxIncluded() {
-        return BoxIncluded;
+    public String getBoxIncludes() {
+        return BoxIncludes;
     }
 
-    public void setBoxIncluded(String boxIncluded) {
-        BoxIncluded = boxIncluded;
+    public void setBoxIncludes(String boxIncludes) {
+        BoxIncludes = boxIncludes;
     }
 
     public String getBrand() {

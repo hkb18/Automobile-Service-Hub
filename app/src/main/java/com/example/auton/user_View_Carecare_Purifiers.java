@@ -26,6 +26,10 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements A
     private AirPurifier_Adapter airpurifierAdapter;
     private CleaningKit_Adapter cleaningKitAdapter;
     private Cleansers_Adapter cleansersAdapter;
+    private Detailing_Adapter detailingAdapter;
+    private MicroFibres_Adapter microFibresAdapter;
+    private Washers_Adapter washersAdapter;
+    private WiperBlades_Adapter wiperBladesAdapter;
     private ArrayList<Airpurifier_ModelClass> airpurifierList= new ArrayList<>();
     private ArrayList<CleaningKit_ModelClass> cleaningkitList= new ArrayList<>();
     private ArrayList<Cleaners_ModelClass> cleansersList= new ArrayList<>();
@@ -147,19 +151,111 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements A
         });
 
         ///////DETAILING
+        binding.rvItemsDetailing.setAdapter(detailingAdapter);
 
+        binding.rvItemsDetailing.setHasFixedSize(true);
+        binding.rvItemsDetailing.setLayoutManager(new LinearLayoutManager(this));
+
+        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                detailingList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Detailing_ModelClass ap = dataSnapshot.getValue(Detailing_ModelClass.class);
+                    detailingList.add(ap);
+                }
+
+                detailingAdapter =new Detailing_Adapter(user_View_Carecare_Purifiers.this,detailingList, snapshot.getKey());
+                binding.rvItemsDetailing.setAdapter(detailingAdapter);
+
+                detailingAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         ///////MICROFIBRES
+        binding.rvItemsMicroFibres.setAdapter(microFibresAdapter);
 
+        binding.rvItemsMicroFibres.setHasFixedSize(true);
+        binding.rvItemsMicroFibres.setLayoutManager(new LinearLayoutManager(this));
+
+        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("MicroFibres").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                microfibresList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    MicroFibres_ModelClass ap = dataSnapshot.getValue(MicroFibres_ModelClass.class);
+                    microfibresList.add(ap);
+                }
+
+                microFibresAdapter =new MicroFibres_Adapter(user_View_Carecare_Purifiers.this,microfibresList, snapshot.getKey());
+                binding.rvItemsMicroFibres.setAdapter(microFibresAdapter);
+
+                microFibresAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         //////WASHERS
+        binding.rvItemsWashers.setAdapter(washersAdapter);
 
+        binding.rvItemsWashers.setHasFixedSize(true);
+        binding.rvItemsWashers.setLayoutManager(new LinearLayoutManager(this));
+
+        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                washersList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Washers_ModelClass ap = dataSnapshot.getValue(Washers_ModelClass.class);
+                    washersList.add(ap);
+                }
+
+                washersAdapter =new Washers_Adapter(user_View_Carecare_Purifiers.this,washersList, snapshot.getKey());
+                binding.rvItemsWashers.setAdapter(washersAdapter);
+
+                washersAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         //////WIPER BLADES
+        binding.rvItemsWiperBlades.setAdapter(wiperBladesAdapter);
 
+        binding.rvItemsWiperBlades.setHasFixedSize(true);
+        binding.rvItemsWiperBlades.setLayoutManager(new LinearLayoutManager(this));
+
+        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                wiperbladesList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    WiperBlades_ModelClass ap = dataSnapshot.getValue(WiperBlades_ModelClass.class);
+                    wiperbladesList.add(ap);
+                }
+
+                wiperBladesAdapter =new WiperBlades_Adapter(user_View_Carecare_Purifiers.this,wiperbladesList, snapshot.getKey());
+                binding.rvItemsWiperBlades.setAdapter(wiperBladesAdapter);
+
+                wiperBladesAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -190,46 +286,58 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements A
                         binding.rv.setAdapter(airpurifierAdapter);
                         airpurifierAdapter.notifyDataSetChanged();
                     }
-                    /*else if (Model.equalsIgnoreCase("CleaningKit")) {
-                        ssList.clear();
+                    else if (Model.equalsIgnoreCase("CleaningKit")) {
+                        cleaningkitList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            ScreensSpeakers_ModelClass ss = dataSnapshot.getValue(ScreensSpeakers_ModelClass.class);
-                            ssList.add(ss);
+                            CleaningKit_ModelClass ss = dataSnapshot.getValue(CleaningKit_ModelClass.class);
+                            cleaningkitList.add(ss);
                         }
-                        binding.rv.setAdapter(ssAdapter);
-                        ssAdapter.notifyDataSetChanged();
+                        binding.rv.setAdapter(cleaningKitAdapter);
+                        cleaningKitAdapter.notifyDataSetChanged();
                     }
                     else if (Model.equalsIgnoreCase("Cleansers")) {
-                        basstubesList.clear();
+                        cleansersList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            BassTubes_ModelClass ss = dataSnapshot.getValue(BassTubes_ModelClass.class);
-                            basstubesList.add(ss);
+                            Cleaners_ModelClass ss = dataSnapshot.getValue(Cleaners_ModelClass.class);
+                            cleansersList.add(ss);
                         }
-                        binding.rv.setAdapter(basstubesAdapter);
-                        basstubesAdapter.notifyDataSetChanged();
+                        binding.rv.setAdapter(cleansersAdapter);
+                        cleansersAdapter.notifyDataSetChanged();
                     }
                     else if (Model.equalsIgnoreCase("Detailing")) {
-                        speakerList.clear();
+                        detailingList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Speaker_ModelClass ss = dataSnapshot.getValue(Speaker_ModelClass.class);
-                            speakerList.add(ss);
+                            Detailing_ModelClass ss = dataSnapshot.getValue(Detailing_ModelClass.class);
+                            detailingList.add(ss);
                         }
-                        binding.rv.setAdapter(speakerAdapter);
-                        speakerAdapter.notifyDataSetChanged();
+                        binding.rv.setAdapter(detailingAdapter);
+                        detailingAdapter.notifyDataSetChanged();
                     }
                     else if (Model.equalsIgnoreCase("MicroFibres")) {
-                        vacuumCleanerList.clear();
+                        microfibresList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            VacuumCleaner_ModelClass ss = dataSnapshot.getValue(VacuumCleaner_ModelClass.class);
-                            vacuumCleanerList.add(ss);
+                            MicroFibres_ModelClass ss = dataSnapshot.getValue(MicroFibres_ModelClass.class);
+                            microfibresList.add(ss);
                         }
-                        binding.rv.setAdapter(vacuumCleanerAdapter);
-                        vacuumCleanerAdapter.notifyDataSetChanged();
+                        binding.rv.setAdapter(microFibresAdapter);
+                        microFibresAdapter.notifyDataSetChanged();
                     } else if (Model.equalsIgnoreCase("Washers")) {
-                        
+                        washersList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Washers_ModelClass ss = dataSnapshot.getValue(Washers_ModelClass.class);
+                            washersList.add(ss);
+                        }
+                        binding.rv.setAdapter(washersAdapter);
+                        washersAdapter.notifyDataSetChanged();
                     }else if (Model.equalsIgnoreCase("WiperBlades")){
-
-                    }*/
+                        wiperbladesList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            WiperBlades_ModelClass ss = dataSnapshot.getValue(WiperBlades_ModelClass.class);
+                            wiperbladesList.add(ss);
+                        }
+                        binding.rv.setAdapter(wiperBladesAdapter);
+                        wiperBladesAdapter.notifyDataSetChanged();
+                    }
                 }
 
                 @Override
