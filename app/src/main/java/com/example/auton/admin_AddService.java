@@ -24,7 +24,7 @@ public class admin_AddService extends AppCompatActivity {
         binding=ActivityAdminAddServiceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+       /* databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         binding.btnAddService.setOnClickListener(v -> {
             serviceStr=binding.Service.getText().toString();
             descStr=binding.Description.getText().toString();
@@ -49,6 +49,48 @@ public class admin_AddService extends AppCompatActivity {
                     }
                 });
             }
+        });*/
+
+        // ADD PERIODIC SERVICE
+        binding.btnAddPeriodicService.setOnClickListener(view -> {
+            Intent i = new Intent(getApplicationContext(),admin_add_PeriodicService.class);
+            startActivity(i);
+        });
+
+        //  ADD AC SERVICE & REPAIR
+        binding.btnAddAcserviceRepair.setOnClickListener(view -> {
+            Intent i = new Intent(getApplicationContext(),admin_add_ACserviceRepair.class);
+            startActivity(i);
+        });
+
+        //  ADD BATTERIES
+        binding.btnAddBatteries.setOnClickListener(view -> {
+
+        });
+
+        //  ADD TYRES & WHEEL CARE
+        binding.btnAddTyresWheelcare.setOnClickListener(view -> {
+
+        });
+
+        //  ADD DENTING & PAINTING
+        binding.btnAddDentingPainting.setOnClickListener(view -> {
+
+        });
+
+        //  ADD DETAILING SERVICE
+        binding.btnAddDetailingService.setOnClickListener(view -> {
+
+        });
+
+        //  ADD CAR SPA & CLEANING
+        binding.btnAddCarspaCleaning.setOnClickListener(view -> {
+
+        });
+
+        //  ADD CAR INSPECTION
+        binding.btnAddCarInspection.setOnClickListener(view -> {
+
         });
     }
 }

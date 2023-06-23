@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         app:strokeColor="@color/black"
         app:strokeWidth="1dp"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="500dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/retrotv" />
+                            android:src="@drawable/periodic_service" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/mat" />
+                            android:src="@drawable/tyres_wheelcar" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -276,7 +276,7 @@
                              android:layout_width="30dp"
                              android:layout_height="30dp"
                              android:layout_gravity="center_horizontal"
-                             android:src="@drawable/retrotv" />
+                             android:src="@drawable/denting_painting" />
 
                          <TextView
                              android:layout_width="wrap_content"
@@ -308,7 +308,7 @@
                              android:layout_width="30dp"
                              android:layout_height="30dp"
                              android:layout_gravity="center_horizontal"
-                             android:src="@drawable/airpurifier" />
+                             android:src="@drawable/detailing_services" />
 
                          <TextView
                              android:layout_width="wrap_content"
@@ -340,7 +340,7 @@
                              android:layout_width="30dp"
                              android:layout_height="30dp"
                              android:layout_gravity="center_horizontal"
-                             android:src="@drawable/mat" />
+                             android:src="@drawable/car_inspection" />
 
                          <TextView
                              android:layout_width="wrap_content"
@@ -372,7 +372,7 @@
                              android:layout_width="30dp"
                              android:layout_height="30dp"
                              android:layout_gravity="center_horizontal"
-                             android:src="@drawable/horn" />
+                             android:src="@drawable/carspa_cleaning" />
 
                          <TextView
                              android:layout_width="wrap_content"

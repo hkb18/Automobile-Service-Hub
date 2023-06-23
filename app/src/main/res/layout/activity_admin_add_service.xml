@@ -8,101 +8,124 @@
     android:orientation="vertical"
     tools:context=".admin_AddService">
 
-    <ScrollView
+
+    <!--SCHEDULED SERVICE-->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:textColor="@color/white"
+        android:text="SCHEDULED SERVICE"
+        android:layout_marginBottom="10dp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:textSize="26dp"
-            android:text="ADD SERVICES"
-            android:layout_marginBottom="25dp"
-            android:gravity="center"/>
-
-        <!-- Service  -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="5dp">
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Enter Service"
-                app:hintTextColor="@color/white"
-                android:textColorHint="@color/white">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/Service"
-                    android:textColor="@color/white"/>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <!-- Description  -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="5dp">
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Description"
-                app:hintTextColor="@color/white"
-                android:textColorHint="@color/white">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/Description"
-                    android:textColor="@color/white"/>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <!-- Price -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="5dp">
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Enter Amount"
-                app:hintTextColor="@color/white"
-                android:textColorHint="@color/white">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/Price"
-                    android:textColor="@color/white"/>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <Button
-            android:id="@+id/btn_addService"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
+            android:layout_weight="1"
             android:backgroundTint="@color/summersky"
-            android:text="ADD"/>
+            android:textColor="@color/white"
+            android:text="Periodic Service"
+            android:id="@+id/btn_add_periodicService"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:text="AC Service &amp; Repair"
+            android:id="@+id/btn_add_acserviceRepair"/>
     </LinearLayout>
-    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="5dp">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:text="Batteries"
+            android:id="@+id/btn_add_batteries"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:text="Tyres &amp; Wheel Care"
+            android:id="@+id/btn_add_tyresWheelcare"/>
+    </LinearLayout>
+
+    <!--VALUE ADDED SERVICES-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:text="value added service"
+        android:textAllCaps="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="5dp">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:text="Denting &amp; Painting"
+            android:id="@+id/btn_add_dentingPainting"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:text="Detailing Service"
+            android:id="@+id/btn_add_detailingService"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="5dp">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:text="Car Spa &amp; Cleaning"
+            android:id="@+id/btn_add_carspaCleaning"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:text="Car Inspections"
+
+            android:id="@+id/btn_add_carInspection"/>
+    </LinearLayout>
+
 </LinearLayout>

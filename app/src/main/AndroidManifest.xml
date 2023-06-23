@@ -23,6 +23,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".admin_add_ACserviceRepair"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_PeriodicService"
+            android:exported="false" />
+        <activity
             android:name=".user_Select_Service_Type"
             android:exported="false" />
         <activity

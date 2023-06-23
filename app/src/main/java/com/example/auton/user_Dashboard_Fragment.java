@@ -93,9 +93,9 @@ public class user_Dashboard_Fragment extends Fragment {
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), user_Book_Service.class);
+                //Intent i = new Intent(getContext(), user_Book_Service.class);
+                Intent i = new Intent(getContext(), user_Select_Service_Type.class);
                 i.putExtra("Username",mParam2);
-                //Toast.makeText(getActivity(), ""+mParam2, Toast.LENGTH_SHORT).show();
                 startActivity(i);
             }
         });
