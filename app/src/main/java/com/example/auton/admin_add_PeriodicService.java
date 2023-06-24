@@ -38,12 +38,13 @@ public class admin_add_PeriodicService extends AppCompatActivity {
                 databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        pk=databaseReference.push().getKey();
-                        databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(pk).child("ServiceName").setValue(servicenameStr);
-                        databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(pk).child("EssentialServices").setValue(essentialserviceStr);
-                        databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(pk).child("PerformanceServices").setValue(performanceserviceStr);
-                        databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(pk).child("AdditionalServices").setValue(additionalserviceStr);
-                        databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(pk).child("Price").setValue(priceStr);
+                        //pk=databaseReference.push().getKey();
+                        databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(servicenameStr).child("ServiceName").setValue(servicenameStr);
+                        databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(servicenameStr).child("EssentialServices").setValue(essentialserviceStr);
+                        databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(servicenameStr).child("PerformanceServices").setValue(performanceserviceStr);
+                        databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(servicenameStr).child("AdditionalServices").setValue(additionalserviceStr);
+                        databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(servicenameStr).child("Price").setValue(priceStr);
+                        //databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").child(pk).child("Key").setValue(pk);
 
                         Toast.makeText(admin_add_PeriodicService.this, "Value Entered Successfully", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(), admin_AddService.class);

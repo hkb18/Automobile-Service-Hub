@@ -27,6 +27,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -58,9 +59,10 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
     LocationManager locationManager;
     double longitudeBest=0.0, latitudeBest=0.0;
     private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
-    String modelstr,typestr,datestr,timestr,modestr,locationstr,currentlocationstr;
+    String modelstr,typestr,datestr,timestr,modestr,locationstr,currentlocationstr,servicenameStr;
     EditText edittextdate,edittextlocation;
     Spinner carbrand,carmodel,servicetype,servicetime,paymentmode;
+    TextView serviceType;
     /*String[] brand={"Maruti Suzuki","Hyundai","Tata","Mahindra","Kia","Toyota","Honda","Renault","Volkswagen","Benz","BMW"};
     String[][] models={{"Alto","Wagon R","800","Baleno","Swift","Ciaz","Ignis","Dzire"},
             {"Santro","i 10","i 20","Venuw","Creta","Eon","Alcazar"},
@@ -167,6 +169,11 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
+        Bundle extras=getIntent().getExtras();
+        username= extras.getString("Username");
+        servicenameStr=extras.getString("Service");
+        Toast.makeText(getApplicationContext(), "Username:"+username, Toast.LENGTH_SHORT).show();
+
         // MAP
         mapinterface=this;
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -193,11 +200,13 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 
         setCarTypeAdapter();
 
-        servicetype=findViewById(R.id.serviceType);
-        servicetype.setOnItemSelectedListener(this);
+        serviceType=findViewById(R.id.tvServiceType);
+        serviceType.setText(servicenameStr);
+
+        /*servicetype.setOnItemSelectedListener(this);
         ArrayAdapter st=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,type);
         st.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        servicetype.setAdapter(st);
+        servicetype.setAdapter(st);*/
 
         servicetime=findViewById(R.id.serviceTime);
         servicetime.setOnItemSelectedListener(this);
@@ -217,9 +226,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 
 
 
-        Bundle extras=getIntent().getExtras();
-        username= extras.getString("Username");
-        Toast.makeText(getApplicationContext(), "Username:"+username, Toast.LENGTH_SHORT).show();
+
 
         //  LOCATION
         location.setOnClickListener(new View.OnClickListener() {
@@ -233,11 +240,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                         i.putExtra("activity","user");
                         startActivity(i);
 
-                       /* Bundle extras=getIntent().getExtras();
-                        currentlocationstr=extras.getString("location");
-                        Toast.makeText(user_Book_Service.this, ""+currentlocationstr, Toast.LENGTH_SHORT).show();
-                        Log.e("", "location= "+currentlocationstr );
-                        edittextlocation.setText(currentlocationstr);*/
+
                     }else {
                         Toast.makeText(user_Book_Service.this, "not able to get permission", Toast.LENGTH_SHORT).show();
                     }

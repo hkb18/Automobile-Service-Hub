@@ -86,17 +86,27 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Select Service Type :"
+            android:text="Service Type :"
             android:textSize="18dp"
             android:textStyle="bold"
             android:paddingRight="35dp"
             android:layout_weight="1"
             android:textColor="@color/white"/>
-        <Spinner
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="service name"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:id="@+id/tvServiceType"/>
+
+        <!--<Spinner
             android:id="@+id/serviceType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"/>-->
     </LinearLayout>
 
     <!-- SELECT DATE -->

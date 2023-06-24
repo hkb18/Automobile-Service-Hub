@@ -48,7 +48,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*// on below line we are getting
+                // on below line we are getting
                 // amount that is entered by user.
                 String samount = priceStr;
 
@@ -92,7 +92,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                 } catch (JSONException e) {
                     e.printStackTrace();
 
-                }*/
+                }
                 getData data=new getData();
                 data.setKey(keyStr);
                 data.setPrice(priceStr);

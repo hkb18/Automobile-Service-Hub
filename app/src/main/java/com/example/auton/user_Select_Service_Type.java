@@ -17,7 +17,7 @@ public class user_Select_Service_Type extends AppCompatActivity {
 
         //PERIODIC SERVICE
         binding.periodicServices.setOnClickListener(view -> {
-            Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
+            Intent i = new Intent(getApplicationContext(), user_View_PeriodicService.class);
             i.putExtra("service","");
             startActivity(i);
         });
