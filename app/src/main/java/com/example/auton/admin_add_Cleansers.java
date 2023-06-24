@@ -36,7 +36,7 @@ public class admin_add_Cleansers extends AppCompatActivity {
     ProgressBar progressBar;
     StorageReference storageReference;
     Uri imageUri;
-    String sysTime;
+    String sysTime,key;
     String fileName;
     DatabaseReference databaseReference;
     String brandStr,weightStr,dimensionStr,volumeStr,boxincludedStr,itemformStr,categoryStr,quantityStr,priceStr;
@@ -142,17 +142,19 @@ public class admin_add_Cleansers extends AppCompatActivity {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        sysTime=String.valueOf(System.currentTimeMillis());
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(sysTime).child("Image").setValue(uri.toString());
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(sysTime).child("Dimension").setValue(dimensionStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(sysTime).child("Volume").setValue(volumeStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(sysTime).child("BoxIncludes").setValue(boxincludedStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(sysTime).child("ItemForm").setValue(itemformStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(sysTime).child("Category").setValue(categoryStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(sysTime).child("Quantity").setValue(quantityStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(sysTime).child("Weight").setValue(weightStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(sysTime).child("Brand").setValue(brandStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(sysTime).child("Price").setValue(priceStr);
+//                        sysTime=String.valueOf(System.currentTimeMillis());
+                        key=databaseReference.push().getKey();
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("Image").setValue(uri.toString());
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("Dimension").setValue(dimensionStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("Volume").setValue(volumeStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("BoxIncludes").setValue(boxincludedStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("ItemForm").setValue(itemformStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("Category").setValue(categoryStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("Quantity").setValue(quantityStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("Weight").setValue(weightStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("Brand").setValue(brandStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("Price").setValue(priceStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("key").setValue(key);
 
                         Toast.makeText(admin_add_Cleansers.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
                     }

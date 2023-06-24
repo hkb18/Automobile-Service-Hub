@@ -1,6 +1,7 @@
 package com.example.auton;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,13 +39,13 @@ public class Cleansers_Adapter2 extends RecyclerView.Adapter<Cleansers_Adapter2.
         holder.desc.setText(ss.getBoxIncludes()+ss.getVolume());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
-        //String model= ss.getModel();
+       // String model= ss.getModel();
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent i = new Intent(context.getApplicationContext(), fulldetails_Amplifier.class);
-                i.putExtra("key",model);
-                context.startActivity(i);*/
+                Intent i = new Intent(context.getApplicationContext(), fulldetails_cleansers.class);
+                i.putExtra("key",ss.getKey());
+                context.startActivity(i);
             }
         });
     }
