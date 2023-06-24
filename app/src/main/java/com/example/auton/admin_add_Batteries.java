@@ -35,7 +35,6 @@ public class admin_add_Batteries extends AppCompatActivity {
     private ActivityAdminAddBatteriesBinding binding;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
-    ImageView imageView;
     StorageReference storageReference;
     Uri imageUri;
     String fileName;
@@ -47,6 +46,7 @@ public class admin_add_Batteries extends AppCompatActivity {
         binding=ActivityAdminAddBatteriesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        progressBar = new ProgressBar(this);
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         binding.btnAddService.setOnClickListener(view -> {
             brandStr=binding.brandName.getText().toString();
@@ -57,7 +57,7 @@ public class admin_add_Batteries extends AppCompatActivity {
             if (brandStr.isEmpty()||voltageStr.isEmpty()||warrentyyrsStr.isEmpty()||priceStr.isEmpty()){
                 Toast.makeText(this, "Please Enter all details", Toast.LENGTH_SHORT).show();
             }else {
-                databaseReference.child("SERVICE_TYPE").child("PERIODIC_SERVICE").addListenerForSingleValueEvent(new ValueEventListener() {
+                databaseReference.child("SERVICE_TYPE").child("Batteries").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         uploadImage();
@@ -92,7 +92,7 @@ public class admin_add_Batteries extends AppCompatActivity {
 
         if (requestCode==100 && data != null && data.getData() != null){
             imageUri=data.getData();
-            imageView.setImageURI(imageUri);
+            binding.ivBattery.setImageURI(imageUri);
         }
     }
     private void uploadImage() {
@@ -109,7 +109,7 @@ public class admin_add_Batteries extends AppCompatActivity {
             storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    imageView.setImageURI(null);
+                    binding.ivBattery.setImageURI(null);
                     Toast.makeText(admin_add_Batteries.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();
@@ -144,11 +144,11 @@ public class admin_add_Batteries extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         pk=databaseReference.push().getKey();
-                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(pk).child("Image").setValue(uri.toString());
-                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(pk).child("Brand").setValue(brandStr);
-                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(pk).child("Voltage").setValue(voltageStr);
-                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(pk).child("YrsofWarrenty").setValue(warrentyyrsStr);
-                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(pk).child("Price").setValue(priceStr);
+                        databaseReference.child("SERVICE_TYPE").child("Batteries").child(pk).child("Image").setValue(uri.toString());
+                        databaseReference.child("SERVICE_TYPE").child("Batteries").child(pk).child("Brand").setValue(brandStr);
+                        databaseReference.child("SERVICE_TYPE").child("Batteries").child(pk).child("Voltage").setValue(voltageStr);
+                        databaseReference.child("SERVICE_TYPE").child("Batteries").child(pk).child("YrsofWarrenty").setValue(warrentyyrsStr);
+                        databaseReference.child("SERVICE_TYPE").child("Batteries").child(pk).child("Price").setValue(priceStr);
 
                         Toast.makeText(admin_add_Batteries.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
 

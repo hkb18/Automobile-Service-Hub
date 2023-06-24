@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.auton.databinding.FragmentAdminManageWorkshopBinding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,9 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
  * create an instance of this fragment.
  */
 public class admin_ManageWorkshop_Fragment extends Fragment {
-    TextView addWorkshop,delWorkshop,addCar;
-    ImageView addImg,delImg,ivaddCar;
-    LinearLayout car,carBodyType,addService;
+    private FragmentAdminManageWorkshopBinding binding;
     DatabaseReference databaseReference;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -71,72 +70,39 @@ public class admin_ManageWorkshop_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_admin__manage_workshop, container, false);
+        binding=FragmentAdminManageWorkshopBinding.inflate(getLayoutInflater());
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
-        addWorkshop=v.findViewById(R.id.admin_Add_workshop);
-        delWorkshop=v.findViewById(R.id.admin_Del_workshop);
-        addImg=v.findViewById(R.id.image_viewAdd);
-        delImg=v.findViewById(R.id.image_viewDel);
-        addCar=v.findViewById(R.id.admin_addCar);
-        ivaddCar=v.findViewById(R.id.image_addCar);
-        car=v.findViewById(R.id.linearlayout_AddCar);
-        carBodyType=v.findViewById(R.id.linearlayout_AddCarBodyType);
-        addService=v.findViewById(R.id.linearlayout_AddService);
         // ADD NEW WORKSHOP
-        addWorkshop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i =new Intent(getContext(), admin_Add_Workshop.class);
-                startActivity(i);
-            }
-        });
-
-        addImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getContext(), admin_Add_Workshop.class);
-                startActivity(i);
-            }
+        binding.linearlayoutAddWorkshop.setOnClickListener(view -> {
+            Intent i =new Intent(getContext(), admin_Add_Workshop.class);
+            startActivity(i);
         });
 
         //DELETE EXISTING WORKSHOP
-/*
-        delWorkshop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getContext(),);
-                startActivity(i);
-            }
+        binding.linearlayoutDeleteWorkshop.setOnClickListener(view -> {
+
         });
 
-        delImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getContext(),);
-                startActivity(i);
-            }
-        }); */
-
-
         //  ADD CARS
-        car.setOnClickListener(view -> {
+        binding.linearlayoutAddCar.setOnClickListener(view -> {
             Intent i=new Intent(getContext(),admin_AddCars.class);
             startActivity(i);
         });
 
         //  ADD CARS BODYTYPE
-        carBodyType.setOnClickListener(view -> {
+        binding.linearlayoutAddCarBodyType.setOnClickListener(view -> {
             Intent i=new Intent(getContext(),admin_AddBodyType.class);
             startActivity(i);
         });
 
         // ADD SERVICE
-        addService.setOnClickListener(view -> {
+        binding.linearlayoutAddService.setOnClickListener(view -> {
             Intent i=new Intent(getContext(),admin_AddService.class);
             startActivity(i);
         });
-        return v;
+
+        return binding.getRoot();
     }
 }

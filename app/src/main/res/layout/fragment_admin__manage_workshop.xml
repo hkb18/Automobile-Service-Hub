@@ -12,7 +12,7 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    >
+    android:id="@+id/linearlayout_AddWorkshop">
     <ImageView
         android:id="@+id/image_viewAdd"
         android:layout_width="30dp"
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        >
+        android:id="@+id/linearlayout_DeleteWorkshop">
         <ImageView
             android:id="@+id/image_viewDel"
             android:layout_width="30dp"

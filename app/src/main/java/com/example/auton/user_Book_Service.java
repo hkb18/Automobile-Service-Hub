@@ -61,7 +61,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
     String modelstr,typestr,datestr,timestr,modestr,locationstr,currentlocationstr;
     EditText edittextdate,edittextlocation;
     Spinner carbrand,carmodel,servicetype,servicetime,paymentmode;
-    String[] brand={"Maruti Suzuki","Hyundai","Tata","Mahindra","Kia","Toyota","Honda","Renault","Volkswagen","Benz","BMW"};
+    /*String[] brand={"Maruti Suzuki","Hyundai","Tata","Mahindra","Kia","Toyota","Honda","Renault","Volkswagen","Benz","BMW"};
     String[][] models={{"Alto","Wagon R","800","Baleno","Swift","Ciaz","Ignis","Dzire"},
             {"Santro","i 10","i 20","Venuw","Creta","Eon","Alcazar"},
             {"Nexon","Punch","Harrier","Safari","Altroz"},
@@ -72,7 +72,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
             {"Duster","Kwid","Triber","Kiger"},
             {"Skoda","Polo","Virtus","Taigun","Tiguan"},
             {"AMG GT 63 S E","Benz G-Class","Benz C-Class"},
-            {"BMW XM"," BMW 2 Series","BMW M340i"," BMW X1"}};
+            {"BMW XM"," BMW 2 Series","BMW M340i"," BMW X1"}};*/
     String brandStr,username,latitudeStr,longitudeStr;
     String[] type={"Normal Service","Flat Tyre","Flat Battery","Car Wash","Recovery","Engine Trouble"};
     String[] time={"Morning","Afternoon","Evening"};
@@ -159,7 +159,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 60 * 1000, 10, locationListenerBest);
         }
     }
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
