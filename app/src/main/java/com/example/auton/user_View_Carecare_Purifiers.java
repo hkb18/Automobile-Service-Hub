@@ -17,9 +17,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class user_View_Carecare_Purifiers extends AppCompatActivity implements AndroidScreen_Interface{
+public class user_View_Carecare_Purifiers extends AppCompatActivity implements CarcarePurifiers_Interface{
     private ActivityUserViewCarecarePurifiersBinding binding;
-    static AndroidScreen_Interface androidScreen_interface;
+    static CarcarePurifiers_Interface carcarePurifiersInterface;
     DatabaseReference databaseReference;
     String ccpModelStr;
     private ArrayList<materialButton> list=new ArrayList<>();
@@ -37,18 +37,18 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements A
     private ArrayList<MicroFibres_ModelClass> microfibresList= new ArrayList<>();
     private ArrayList<Washers_ModelClass> washersList= new ArrayList<>();
     private ArrayList<WiperBlades_ModelClass> wiperbladesList= new ArrayList<>();
-    private  ScreensSpeakersAdapter adapter;
+    private  CarecarePurifiers_Adapter carecarePurifiers_adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityUserViewCarecarePurifiersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        androidScreen_interface=this;//interface
+        carcarePurifiersInterface=this;//interface
 
-        binding.rvScreensSpeakers.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        adapter=new ScreensSpeakersAdapter(this,list);
-        binding.rvScreensSpeakers.setAdapter(adapter);
+        binding.rvCarecarePurifiers.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        carecarePurifiers_adapter=new CarecarePurifiers_Adapter(this,list);
+        binding.rvCarecarePurifiers.setAdapter(carecarePurifiers_adapter);
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -65,7 +65,7 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements A
                     button.setSelected(false);
                     list.add(button);
                 }
-                adapter.notifyDataSetChanged();
+                carecarePurifiers_adapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
