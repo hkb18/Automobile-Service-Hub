@@ -1,12 +1,14 @@
 package com.example.auton;
 
+import org.checkerframework.checker.units.qual.K;
+
 public class Detailing_ModelClass {
-    String BoxIncludes,Brand,Dimension,Image,ItemForm,Price,Quantity,Volume,Weight;
+    String BoxIncludes,Brand,Dimension,Image,ItemForm,Price,Quantity,Volume,Weight,Key;
 
     public Detailing_ModelClass() {
     }
 
-    public Detailing_ModelClass(String boxIncludes, String brand, String dimension, String image, String itemForm, String price, String quantity, String volume, String weight) {
+    public Detailing_ModelClass(String boxIncludes, String key, String brand, String dimension, String image, String itemForm, String price, String quantity, String volume, String weight) {
         BoxIncludes = boxIncludes;
         Brand = brand;
         Dimension = dimension;
@@ -16,6 +18,15 @@ public class Detailing_ModelClass {
         Quantity = quantity;
         Volume = volume;
         Weight = weight;
+        Key = key;
+    }
+
+    public String getKey() {
+        return Key;
+    }
+
+    public void setKey(String key) {
+        Key = key;
     }
 
     public String getBoxIncludes() {

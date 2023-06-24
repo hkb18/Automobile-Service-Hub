@@ -1,6 +1,7 @@
 package com.example.auton;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,9 +43,9 @@ public class Detailing_Adapter2 extends RecyclerView.Adapter<Detailing_Adapter2.
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent i = new Intent(context.getApplicationContext(), fulldetails_Amplifier.class);
-                i.putExtra("key",model);
-                context.startActivity(i);*/
+                Intent i = new Intent(context.getApplicationContext(), fulldetails_Detailing.class);
+                i.putExtra("key",ss.getKey());
+                context.startActivity(i);
             }
         });
     }

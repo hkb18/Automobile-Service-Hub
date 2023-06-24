@@ -35,7 +35,7 @@ public class admin_add_Detailing extends AppCompatActivity {
     ProgressBar progressBar;
     StorageReference storageReference;
     Uri imageUri;
-    String fileName,sysTime;
+    String fileName,sysTime,key;
     DatabaseReference databaseReference;
     String brandStr,weightStr,dimensionStr,volumeStr,boxincludedStr,itemformStr,quantityStr,priceStr;
     @Override
@@ -140,16 +140,18 @@ public class admin_add_Detailing extends AppCompatActivity {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        sysTime=String.valueOf(System.currentTimeMillis());
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(sysTime).child("Image").setValue(uri.toString());
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(sysTime).child("Dimension").setValue(dimensionStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(sysTime).child("Volume").setValue(volumeStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(sysTime).child("BoxIncludes").setValue(boxincludedStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(sysTime).child("ItemForm").setValue(itemformStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(sysTime).child("Quantity").setValue(quantityStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(sysTime).child("Weight").setValue(weightStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(sysTime).child("Brand").setValue(brandStr);
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(sysTime).child("Price").setValue(priceStr);
+                        //sysTime=String.valueOf(System.currentTimeMillis());
+                        key=databaseReference.push().getKey();
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("Image").setValue(uri.toString());
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("Dimension").setValue(dimensionStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("Volume").setValue(volumeStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("BoxIncludes").setValue(boxincludedStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("ItemForm").setValue(itemformStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("Quantity").setValue(quantityStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("Weight").setValue(weightStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("Brand").setValue(brandStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("Price").setValue(priceStr);
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("key").setValue(key);
 
                         Toast.makeText(admin_add_Detailing.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
                     }
