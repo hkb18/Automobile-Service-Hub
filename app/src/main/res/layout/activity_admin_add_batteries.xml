@@ -135,19 +135,21 @@
             android:text="SELECT IMAGE"/>
     </LinearLayout>
 
+            <Button
+                android:id="@+id/btn_addService"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/summersky"
+                android:text="add service"
+                android:textAllCaps="true"/>
+
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/btn_addService"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/summersky"
-        android:text="add service"
-        android:textAllCaps="true"/>
+
 
 </LinearLayout>

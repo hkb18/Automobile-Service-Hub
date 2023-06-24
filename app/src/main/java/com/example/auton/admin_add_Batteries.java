@@ -149,6 +149,7 @@ public class admin_add_Batteries extends AppCompatActivity {
                         databaseReference.child("SERVICE_TYPE").child("Batteries").child(pk).child("Voltage").setValue(voltageStr);
                         databaseReference.child("SERVICE_TYPE").child("Batteries").child(pk).child("YrsofWarrenty").setValue(warrentyyrsStr);
                         databaseReference.child("SERVICE_TYPE").child("Batteries").child(pk).child("Price").setValue(priceStr);
+                        databaseReference.child("SERVICE_TYPE").child("Batteries").child(pk).child("Key").setValue(pk);
 
                         Toast.makeText(admin_add_Batteries.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
 

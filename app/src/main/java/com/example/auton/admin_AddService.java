@@ -71,7 +71,8 @@ public class admin_AddService extends AppCompatActivity {
 
         //  ADD TYRES & WHEEL CARE
         binding.btnAddTyresWheelcare.setOnClickListener(view -> {
-
+            Intent i = new Intent(getApplicationContext(),admin_add_TyresWheelcare.class);
+            startActivity(i);
         });
 
         //  ADD DENTING & PAINTING
