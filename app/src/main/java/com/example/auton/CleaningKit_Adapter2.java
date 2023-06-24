@@ -1,6 +1,7 @@
 package com.example.auton;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,9 +43,9 @@ public class CleaningKit_Adapter2 extends RecyclerView.Adapter<CleaningKit_Adapt
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent i = new Intent(context.getApplicationContext(), fulldetails_Amplifier.class);
+                Intent i = new Intent(context.getApplicationContext(), fulldetails_CleaningKit.class);
                 i.putExtra("key",model);
-                context.startActivity(i);*/
+                context.startActivity(i);
             }
         });
     }
