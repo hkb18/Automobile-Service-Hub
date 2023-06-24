@@ -43,9 +43,9 @@ public class AirPurifier_Adapter2 extends RecyclerView.Adapter<AirPurifier_Adapt
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent i = new Intent(context.getApplicationContext(), fulldetails_Amplifier.class);
+                Intent i = new Intent(context.getApplicationContext(), fulldetails_AirPurifier.class);
                 i.putExtra("key",model);
-                context.startActivity(i);*/
+                context.startActivity(i);
             }
         });
     }

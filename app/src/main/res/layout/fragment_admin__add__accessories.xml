@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:id="@+id/linearlayout_Add_screenSpeaker"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
@@ -35,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:id="@+id/linearlayout_Add_carCarePurifiers"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
@@ -58,6 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:id="@+id/linearlayout_Add_floormatsCushions"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
@@ -82,6 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:id="@+id/linearlayout_Add_homeProtectives"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
@@ -105,6 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:id="@+id/linearlayout_Add_lightsChargers"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
@@ -128,6 +133,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:id="@+id/linearlayout_Add_roadsideAssistance"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"

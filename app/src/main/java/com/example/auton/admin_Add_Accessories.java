@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.auton.databinding.FragmentAdminAddAccessoriesBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link admin_Add_Accessories#newInstance} factory method to
@@ -18,8 +20,8 @@ import android.widget.TextView;
  */
 public class admin_Add_Accessories extends Fragment {
 
-    ImageView ivscreenSpeaker,ivcarcarePurifier,ivfloormatCushion,ivlightsCharger,ivroadsideAssist;
-    TextView tvscreenSpeaker,tvcarcarePurifier,tvfloormatCushion,tvlightsCharger,tvroadsideAssist;
+    private FragmentAdminAddAccessoriesBinding binding;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,49 +67,30 @@ public class admin_Add_Accessories extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_admin__add__accessories, container, false);
-        ivscreenSpeaker=v.findViewById(R.id.imageviewAdd_screenSpeaker);
-        ivcarcarePurifier=v.findViewById(R.id.imageviewAdd_carCare);
-        ivfloormatCushion=v.findViewById(R.id.imageviewAdd_floormatCushion);
-        ivlightsCharger=v.findViewById(R.id.imageviewAdd_lightsChargers);
-        ivroadsideAssist=v.findViewById(R.id.imageviewAdd_roadsideAssistance);
+        binding=FragmentAdminAddAccessoriesBinding.inflate(getLayoutInflater());
 
-        tvscreenSpeaker=v.findViewById(R.id.textviewAdd_screenSpeaker);
-        tvcarcarePurifier=v.findViewById(R.id.textviewAdd_carCare);
-        tvfloormatCushion=v.findViewById(R.id.textviewAdd_floormatCushion);
-        tvlightsCharger=v.findViewById(R.id.textviewAdd_lightsChargers);
-        tvroadsideAssist=v.findViewById(R.id.textviewAdd_roadsideAssistance);
+        binding.linearlayoutAddScreenSpeaker.setOnClickListener(view -> {
+            Intent i=new Intent(getContext(), admin_add_ScreenSpeaker.class);
+            startActivity(i);
+        });
+        binding.linearlayoutAddCarCarePurifiers.setOnClickListener(view -> {
+            Intent i=new Intent(getContext(),admin_add_Carcare_Purifier.class);
+            startActivity(i);
+        });
+        binding.linearlayoutAddFloormatsCushions.setOnClickListener(view -> {
 
-        ivscreenSpeaker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getContext(), admin_add_ScreenSpeaker.class);
-                startActivity(i);
-            }
         });
-        tvscreenSpeaker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getContext(), admin_add_ScreenSpeaker.class);
-                startActivity(i);
-            }
+        binding.linearlayoutAddHomeProtectives.setOnClickListener(view -> {
+
         });
-        ivcarcarePurifier.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getContext(),admin_add_Carcare_Purifier.class);
-                startActivity(i);
-            }
+        binding.linearlayoutAddLightsChargers.setOnClickListener(view -> {
+
         });
-        tvcarcarePurifier.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getContext(),admin_add_Carcare_Purifier.class);
-                startActivity(i);
-            }
+        binding.linearlayoutAddRoadsideAssistance.setOnClickListener(view -> {
+
         });
 
 
-        return v;
+        return binding.getRoot();
     }
 }

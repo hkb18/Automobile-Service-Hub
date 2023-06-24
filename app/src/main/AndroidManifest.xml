@@ -23,6 +23,27 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".fulldetails_WiperBlades"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_Washers"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_Microfiber"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_Detailing"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_cleansers"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_CleaningKit"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_AirPurifier"
+            android:exported="false" />
+        <activity
             android:name=".admin_add_Batteries"
             android:exported="false" />
         <activity

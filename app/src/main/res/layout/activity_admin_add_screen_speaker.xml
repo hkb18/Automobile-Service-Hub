@@ -13,7 +13,8 @@
     android:layout_height="wrap_content"
     android:textColor="@color/white"
     android:textStyle="bold"
-    android:text="SCREEN &amp; SPEAKERS"
+    android:textAllCaps="true"
+    android:text="admin add screens &amp; speakers"
     android:gravity="center"
     android:textSize="24dp"
     android:layout_marginBottom="15dp"/>
@@ -22,13 +23,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="5dp"
         android:gravity="center">
         <!-- ANDROID SCREEN -->
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textStyle="bold"
+            android:layout_weight="1"
             android:backgroundTint="@color/summersky"
             android:text="ANDROID SCREEN"
             android:gravity="center"
@@ -37,11 +41,11 @@
 
         <!-- BASS TUBES -->
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
             android:backgroundTint="@color/summersky"
             android:text="BASS TUBES"
             android:gravity="center"
@@ -52,24 +56,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="5dp"
         android:gravity="center">
         <!-- SPEAKERS -->
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textStyle="bold"
+            android:layout_weight="1"
             android:backgroundTint="@color/summersky"
             android:text="SPEAKERS"
             android:gravity="center"
             android:id="@+id/btn_Speakers"/>
         <!-- VACUUM CLEANERS -->
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
             android:backgroundTint="@color/summersky"
             android:text="VACUUM CLEANERS"
             android:gravity="center"
@@ -81,12 +88,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_margin="5dp"
         android:gravity="center">
         <!-- AMPLIFIERS -->
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:layout_weight="1"
             android:textStyle="bold"
             android:backgroundTint="@color/summersky"
             android:text="AMPLIFIERS"
