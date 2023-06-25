@@ -10,7 +10,7 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
-    <Button
+    <!--<Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign In"
@@ -41,5 +41,165 @@
         android:text="WORKSHOP"
         android:id="@+id/button_Workshop"
         />
-</LinearLayout>
+</LinearLayout>-->
+
+    <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
+        android:id="@+id/segmentedbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="4dp"
+        android:layout_marginTop="30dp"
+        android:elevation="2dp"
+        android:background="@color/white"
+        app:borderColor="#545548"
+        app:borderWidth="1dp"
+        app:dividerPadding="10dp"
+        app:dividerWidth="1dp"
+        app:position="0"
+        app:radius="30dp"
+        app:ripple="true"
+        app:rippleColor="#FAFAFA"
+        app:selectedBackground="#ACB1D6">
+
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            app:drawableGravity="top"
+            app:selectedTextColor="@color/black"
+            app:text="User"
+            app:textColor="@color/black" />
+
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            app:drawableGravity="top"
+            app:selectedTextColor="@color/black"
+            app:text="Workshop"
+            app:textColor="@color/black" />
+    </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="22dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="30dp"
+        android:backgroundTint="#ACB1D6">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--USERNAME-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="35dp"
+                android:hint="Username"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="22dp"
+                android:padding="10dp"
+                android:textColorHint="@color/white"
+                app:hintTextColor="@color/white">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="35dp"
+                    android:id="@+id/username"
+                    android:textColor="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--<com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="USERNAME"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/username"
+                    android:textColor="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>-->
+
+        <!--PASSWORD-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconMode="password_toggle"
+                android:hint="Password"
+                android:textColorHint="@color/white"
+                app:hintTextColor="@color/white"
+                android:elevation="35dp"
+                android:padding="10dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="22dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:elevation="35dp"
+                    android:id="@+id/password"
+                    android:textColor="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+           <!-- <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:endIconMode="password_toggle"
+                android:hint="PASSWORD"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    android:id="@+id/password"
+                    android:textColor="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_Login"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="Login"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/summersky" />
+<!--            android:backgroundTint="#8294C4"-->
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Don't have an account? Sign In"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:id="@+id/signin"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Workshop Registration."
+        android:id="@+id/workshopRegistration"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:layout_marginTop="30dp"/>
 </LinearLayout>
