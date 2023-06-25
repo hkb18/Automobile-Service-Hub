@@ -1,12 +1,12 @@
 package com.example.auton;
 
 public class BookedService {
-    private String CarBrand, CarModel, Date, Latitude, Longitude, PaymentMode, ServiceTime, ServiceType, Username, SYSTIME;
+    private String Key,CarBrand, CarModel, Date, Latitude, Longitude, PaymentMode, ServiceTime, ServiceType, Username, SYSTIME;
 
     public BookedService() {
     }
 
-    public BookedService(String carBrand, String carModel, String date, String latitude, String longitude, String paymentMode, String serviceTime, String serviceType, String username, String SYSTIME) {
+    public BookedService(String key,String carBrand, String carModel, String date, String latitude, String longitude, String paymentMode, String serviceTime, String serviceType, String username, String SYSTIME) {
         CarBrand = carBrand;
         CarModel = carModel;
         Date = date;
@@ -17,6 +17,15 @@ public class BookedService {
         ServiceType = serviceType;
         Username = username;
         this.SYSTIME = SYSTIME;
+        Key=key;
+    }
+
+    public String getKey() {
+        return Key;
+    }
+
+    public void setKey(String key) {
+        Key = key;
     }
 
     public String getCarBrand() {

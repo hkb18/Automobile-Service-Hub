@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -52,7 +53,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
     Button date,location,booking;
     int i=0;
 
-    String sysTime;
+    String sysTime,pk,s1;
 
     private static final int PERMISSIONS_REQUEST_LOCATION = 123;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
@@ -174,6 +175,9 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         servicenameStr=extras.getString("Service");
         Toast.makeText(getApplicationContext(), "Username:"+username, Toast.LENGTH_SHORT).show();
 
+        SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
+        s1 = sh.getString("Username", "");
+
         // MAP
         mapinterface=this;
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -283,7 +287,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                     //  SPINNER
                     brandStr = carbrand.getSelectedItem().toString();
                     modelstr = carmodel.getSelectedItem().toString();
-                    typestr = servicetype.getSelectedItem().toString();
+        //            typestr = servicetype.getSelectedItem().toString();
                     timestr = servicetime.getSelectedItem().toString();
                     locationstr = currentlocationstr;
                     modestr = paymentmode.getSelectedItem().toString();
@@ -291,7 +295,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                 if (datestr.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Enter date", Toast.LENGTH_SHORT).show();
                 }
-                Log.e("TAG", "Username: "+username+""+brandStr+""+modelstr+""+typestr+""+datestr+""+timestr+""+latitudeStr+""+longitudeStr+""+modestr);
+                Log.e("TAG", "Username: "+username+""+brandStr+""+modelstr+""+servicenameStr+""+datestr+""+timestr+""+latitudeStr+""+longitudeStr+""+modestr);
                     databaseReference.child("Service").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -308,11 +312,11 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                             }, 3000);
 
 
-                                sysTime=String.valueOf(System.currentTimeMillis());
+                               /* sysTime=String.valueOf(System.currentTimeMillis());
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Username").setValue(username);
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("CarBrand").setValue(brandStr);
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("CarModel").setValue(modelstr);
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("ServiceType").setValue(typestr);
+                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("ServiceType").setValue(serviceType);
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Date").setValue(datestr);
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("ServiceTime").setValue(timestr);
 //                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(System.currentTimeMillis())).child("Location").setValue(locationstr);
@@ -320,20 +324,21 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Longitude").setValue(longitudeStr);
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("PaymentMode").setValue(modestr);
                                 databaseReference.child("Users").child(username).child("Service").child(sysTime).child("SYSTIME").setValue(sysTime);
-
+*/
 
                                 //passing to service table
-                                databaseReference.child("Service").child(username).child(sysTime).child("Username").setValue(username);
-                                databaseReference.child("Service").child(username).child(sysTime).child("CarBrand").setValue(brandStr);
-                                databaseReference.child("Service").child(username).child(sysTime).child("CarModel").setValue(modelstr);
-                                databaseReference.child("Service").child(username).child(sysTime).child("ServiceType").setValue(typestr);
-                                databaseReference.child("Service").child(username).child(sysTime).child("Date").setValue(datestr);
-                                databaseReference.child("Service").child(username).child(sysTime).child("ServiceTime").setValue(timestr);
+                           pk= databaseReference.push().getKey();
+                                databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
+                                databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
+                                databaseReference.child("Service").child(s1).child(pk).child("ServiceType").setValue(servicenameStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Date").setValue(datestr);
+                                databaseReference.child("Service").child(s1).child(pk).child("ServiceTime").setValue(timestr);
 //                                databaseReference.child("Service").child(username).child(String.valueOf(System.currentTimeMillis())).child("Location").setValue(longitudeStr);
-                                databaseReference.child("Service").child(username).child(sysTime).child("Latitude").setValue(latitudeStr);
-                                databaseReference.child("Service").child(username).child(sysTime).child("Longitude").setValue(longitudeStr);
-                                databaseReference.child("Service").child(username).child(sysTime).child("PaymentMode").setValue(modestr);
-                                databaseReference.child("Service").child(username).child(sysTime).child("SYSTIME").setValue(sysTime);
+                                databaseReference.child("Service").child(s1).child(pk).child("Latitude").setValue(latitudeStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("PaymentMode").setValue(modestr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
                                 Toast.makeText(getApplicationContext(), "Service Sussecfully Booked", Toast.LENGTH_SHORT).show();
                            // }
 

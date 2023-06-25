@@ -3,13 +3,14 @@ package com.example.auton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class user_HomePage extends AppCompatActivity {
-    String username,gotocart;
+    String username,gotocart,s1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,9 @@ public class user_HomePage extends AppCompatActivity {
         Bundle extras=getIntent().getExtras();
         username= extras.getString("Username");
         gotocart=extras.getString("iscart","0");
+
+        SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
+        s1 = sh.getString("Username", "");
 
         //Toast.makeText(this, ""+username, Toast.LENGTH_SHORT).show();
 

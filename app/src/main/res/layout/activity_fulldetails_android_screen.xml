@@ -237,7 +237,7 @@
                         android:text="buy now"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="#00C853"/>
+                        android:backgroundTint="@color/buynow"/>
                 </LinearLayout>
             </LinearLayout>
 

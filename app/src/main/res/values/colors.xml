@@ -3,6 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="summersky">#42A5F5</color>
-
+    <color name="buynow">#00C853</color>
     <color name="login">#6CC1D6</color>
 </resources>
