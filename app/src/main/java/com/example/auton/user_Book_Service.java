@@ -222,11 +222,11 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         location=findViewById(R.id.buttonLocation);
         servicetime=findViewById(R.id.serviceTime);
 
-        paymentmode=findViewById(R.id.paymentMode);
+        /*paymentmode=findViewById(R.id.paymentMode);
         paymentmode.setOnItemSelectedListener(this);
         ArrayAdapter pm=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,payment);
         pm.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        paymentmode.setAdapter(pm);
+        paymentmode.setAdapter(pm);*/
 
 
 
@@ -290,12 +290,11 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         //            typestr = servicetype.getSelectedItem().toString();
                     timestr = servicetime.getSelectedItem().toString();
                     locationstr = currentlocationstr;
-                    modestr = paymentmode.getSelectedItem().toString();
+                    //modestr = paymentmode.getSelectedItem().toString();
 
                 if (datestr.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Enter date", Toast.LENGTH_SHORT).show();
                 }
-                Log.e("TAG", "Username: "+username+""+brandStr+""+modelstr+""+servicenameStr+""+datestr+""+timestr+""+latitudeStr+""+longitudeStr+""+modestr);
                     databaseReference.child("Service").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -337,7 +336,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 //                                databaseReference.child("Service").child(username).child(String.valueOf(System.currentTimeMillis())).child("Location").setValue(longitudeStr);
                                 databaseReference.child("Service").child(s1).child(pk).child("Latitude").setValue(latitudeStr);
                                 databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
-                                databaseReference.child("Service").child(s1).child(pk).child("PaymentMode").setValue(modestr);
+                                //databaseReference.child("Service").child(s1).child(pk).child("PaymentMode").setValue(modestr);
                                 databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
                                 Toast.makeText(getApplicationContext(), "Service Sussecfully Booked", Toast.LENGTH_SHORT).show();
                            // }
