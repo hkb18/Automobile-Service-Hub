@@ -39,11 +39,12 @@ public class admin_add_ACserviceRepair extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         pk=databaseReference.push().getKey();
-                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(pk).child("ServiceName").setValue(servicenameStr);
-                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(pk).child("EssentialServices").setValue(essentialserviceStr);
-                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(pk).child("PerformanceServices").setValue(performanceserviceStr);
-                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(pk).child("AdditionalServices").setValue(additionalserviceStr);
-                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(pk).child("Price").setValue(priceStr);
+                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(servicenameStr).child("ServiceName").setValue(servicenameStr);
+                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(servicenameStr).child("EssentialServices").setValue(essentialserviceStr);
+                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(servicenameStr).child("PerformanceServices").setValue(performanceserviceStr);
+                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(servicenameStr).child("AdditionalServices").setValue(additionalserviceStr);
+                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(servicenameStr).child("Price").setValue(priceStr);
+                        databaseReference.child("SERVICE_TYPE").child("ACservice_Repair").child(servicenameStr).child("Key").setValue(pk);
 
                         Toast.makeText(admin_add_ACserviceRepair.this, "Value Entered Successfully", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(), admin_AddService.class);

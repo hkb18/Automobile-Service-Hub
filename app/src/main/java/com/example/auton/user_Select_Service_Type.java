@@ -24,7 +24,7 @@ public class user_Select_Service_Type extends AppCompatActivity {
 
         //AC SERVICE & REPAIR
         binding.acServiceRepair.setOnClickListener(view -> {
-            Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
+            Intent i = new Intent(getApplicationContext(), user_view_ACServiceRepair.class);
             i.putExtra("service","");
             startActivity(i);
         });

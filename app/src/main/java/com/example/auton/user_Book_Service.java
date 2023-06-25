@@ -326,7 +326,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 */
 
                                 //passing to service table
-                           pk= databaseReference.push().getKey();
+                                pk=databaseReference.push().getKey();
                                 databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
                                 databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
                                 databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
