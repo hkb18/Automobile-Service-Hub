@@ -35,7 +35,7 @@ public class user_Select_Service_Type extends AppCompatActivity {
 
         //TYRES & WHEEL CARE
         binding.tyresWheelCare.setOnClickListener(view -> {
-            Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
+            Intent i = new Intent(getApplicationContext(), user_view_TyresWheelcare.class);
             startActivity(i);
         });
 

@@ -173,7 +173,7 @@
             android:textStyle="bold"
             android:textSize="18dp"
             android:paddingTop="50dp"
-            android:text="Battery Image"/>
+            android:text="Image"/>
         <ImageView
             android:layout_weight="1"
             android:layout_width="0dp"
