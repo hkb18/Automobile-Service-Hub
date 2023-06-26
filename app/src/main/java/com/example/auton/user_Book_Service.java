@@ -52,7 +52,8 @@ import java.util.Locale;
 
 public class user_Book_Service extends AppCompatActivity implements AdapterView.OnItemSelectedListener,mapinterface {
     private ActivityUserBookServiceBinding binding;
-    String pk,s1;
+
+    String pk,s1,getPriceServiceTypeStr,carmodelPriceStr="";
     private static final int PERMISSIONS_REQUEST_LOCATION = 123;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
     LocationManager locationManager;
@@ -169,6 +170,8 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         username= extras.getString("Username");
         servicenameStr=extras.getString("Service");
         serviceStr=extras.getString("servicetype");
+        getPriceServiceTypeStr=extras.getString("Price");
+
         binding.tvServiceType.setText(servicenameStr);
         binding.tvService.setText(serviceStr);
 
@@ -368,12 +371,17 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 
     private void setCarBrandAdapter() {
         ArrayList<String> carBrand=new ArrayList<>();
+        ArrayList<carModel> model=new ArrayList<>();
         databaseReference.child("CAR").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 carBrand.clear();
+                model.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     carBrand.add(dataSnapshot.getKey());
+                   // carBrandPrice.add(dataSnapshot.child(carBrand.toString()).child("Price").getValue(String.class));
+                    carModel model1=dataSnapshot.getValue(carModel.class);
+                    model.add(model1);
                 }
                 ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(user_Book_Service.this, R.layout.simple_spinner_item, carBrand);
                 binding.carBrand.setAdapter(brandAdapter);
@@ -383,6 +391,8 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                         /*String[] modelss=models[position];
                         ArrayAdapter<String> modelAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, modelss);
                         carmodel.setAdapter(modelAdapter);*/
+                       carmodelPriceStr= model.get(position).getPrice();
+                        Toast.makeText(user_Book_Service.this, "CARMODELPRICE:"+carmodelPriceStr, Toast.LENGTH_SHORT).show();
                     }
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
@@ -492,5 +502,41 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
             e.printStackTrace();
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+}
+class carModel{
+    String Brand,Image,Price;
+
+    public carModel() {
+    }
+
+    public carModel(String brand, String image, String price) {
+        Brand = brand;
+        Image = image;
+        Price = price;
+    }
+
+    public String getBrand() {
+        return Brand;
+    }
+
+    public void setBrand(String brand) {
+        Brand = brand;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
+    }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
     }
 }
