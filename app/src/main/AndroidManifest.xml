@@ -23,6 +23,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".admin_add_CarInspections"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_CarspaCleaning"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_DetailingService"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_DentingPainting"
+            android:exported="false" />
+        <activity
+            android:name=".user_view_ACServiceRepair"
+            android:exported="false" />
+        <activity
             android:name=".user_View_PeriodicService"
             android:exported="false" />
         <activity

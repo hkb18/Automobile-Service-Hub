@@ -77,22 +77,26 @@ public class admin_AddService extends AppCompatActivity {
 
         //  ADD DENTING & PAINTING
         binding.btnAddDentingPainting.setOnClickListener(view -> {
-
+            Intent i = new Intent(getApplicationContext(),admin_add_DentingPainting.class);
+            startActivity(i);
         });
 
         //  ADD DETAILING SERVICE
         binding.btnAddDetailingService.setOnClickListener(view -> {
-
+            Intent i = new Intent(getApplicationContext(),admin_add_DetailingService.class);
+            startActivity(i);
         });
 
         //  ADD CAR SPA & CLEANING
         binding.btnAddCarspaCleaning.setOnClickListener(view -> {
-
+            Intent i = new Intent(getApplicationContext(),admin_add_CarspaCleaning.class);
+            startActivity(i);
         });
 
         //  ADD CAR INSPECTION
         binding.btnAddCarInspection.setOnClickListener(view -> {
-
+            Intent i = new Intent(getApplicationContext(),admin_add_CarInspections.class);
+            startActivity(i);
         });
     }
 }
