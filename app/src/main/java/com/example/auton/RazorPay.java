@@ -3,6 +3,7 @@ package com.example.auton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
     String priceStr="",sysTime,keyStr="";
     DatabaseReference databaseReference;
     SharedPreferences sh;
+    String s1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +110,13 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
     public void onPaymentSuccess(String s) {
         // this method is called on payment success.
         Toast.makeText(this, "Payment is successful : " + s, Toast.LENGTH_SHORT).show();
+
+
+        Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+        i.putExtra("Username", s1);
+        i.putExtra("deleteCart", "1");
+        startActivity(i);
+        finishAffinity();
     }
 
     @Override

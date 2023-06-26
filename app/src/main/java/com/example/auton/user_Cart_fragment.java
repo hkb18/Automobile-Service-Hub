@@ -2,6 +2,7 @@ package com.example.auton;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.auton.databinding.FragmentUserCartBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -110,6 +112,18 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
         });
 
         binding.btnCheckout.setOnClickListener(view -> {
+           if(list.size() != 0){
+               int totalPrice = 0;
+               for(int i=0; i<list.size(); i++){
+                   totalPrice = totalPrice+ (Integer.parseInt(list.get(i).getPrice()) * Integer.parseInt(list.get(i).getQuantity()));
+               }
+
+               Intent i = new Intent(requireContext(), RazorPay.class);
+               i.putExtra("price", String.valueOf(totalPrice));
+               startActivity(i);
+           } else {
+               Toast.makeText(requireContext(), "Cart is empty", Toast.LENGTH_SHORT).show();
+           }
 
         });
 
