@@ -135,7 +135,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Service Type :"
+            android:text="Brand Name:"
             android:textSize="18dp"
             android:textStyle="bold"
             android:paddingRight="35dp"
@@ -145,7 +145,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="service Type"
+            android:text="brand name"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
@@ -162,6 +162,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
