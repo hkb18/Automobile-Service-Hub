@@ -52,30 +52,16 @@ import java.util.Locale;
 
 public class user_Book_Service extends AppCompatActivity implements AdapterView.OnItemSelectedListener,mapinterface {
     private ActivityUserBookServiceBinding binding;
-
-    String pk,s1,getPriceServiceTypeStr,carmodelPriceStr="";
+    int totalPrice;
+    String pk,s1,getPriceServiceTypeStr,carmodelPriceStr="",carbodytypePriceStr="";
     private static final int PERMISSIONS_REQUEST_LOCATION = 123;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
     LocationManager locationManager;
     double longitudeBest=0.0, latitudeBest=0.0;
     private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
     String modelstr,datestr,timestr,locationstr,currentlocationstr,servicenameStr,serviceStr;
-    /*String[] brand={"Maruti Suzuki","Hyundai","Tata","Mahindra","Kia","Toyota","Honda","Renault","Volkswagen","Benz","BMW"};
-    String[][] models={{"Alto","Wagon R","800","Baleno","Swift","Ciaz","Ignis","Dzire"},
-            {"Santro","i 10","i 20","Venuw","Creta","Eon","Alcazar"},
-            {"Nexon","Punch","Harrier","Safari","Altroz"},
-            {"Thar","Scorpio","Bolero","XUV 700","XUV 300"},
-            {"Seltos","Sonet","Carnival","Carens"},
-            {"Crysta","Fortuner","Innova,","Glanza","Vellfire","Ertiga"},
-            {"City","Amaze","Jazz","Civic"},
-            {"Duster","Kwid","Triber","Kiger"},
-            {"Skoda","Polo","Virtus","Taigun","Tiguan"},
-            {"AMG GT 63 S E","Benz G-Class","Benz C-Class"},
-            {"BMW XM"," BMW 2 Series","BMW M340i"," BMW X1"}};*/
     String brandStr,username,latitudeStr,longitudeStr;
-//    String[] type={"Normal Service","Flat Tyre","Flat Battery","Car Wash","Recovery","Engine Trouble"};
     String[] time={"Morning","Afternoon","Evening"};
-//    String[] payment={"UPI Payment","COD","Net Banking"};
     private int mYear,mMonth,mDay;
     DatabaseReference databaseReference;
     static mapinterface mapinterface;
@@ -260,10 +246,8 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                     //  SPINNER
                     brandStr = binding.carBrand.getSelectedItem().toString();
                     modelstr = binding.carModel.getSelectedItem().toString();
-        //            typestr = servicetype.getSelectedItem().toString();
                     timestr = binding.serviceTime.getSelectedItem().toString();
                     locationstr = currentlocationstr;
-                    //modestr = paymentmode.getSelectedItem().toString();
 
                 if (datestr.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Enter date", Toast.LENGTH_SHORT).show();
@@ -276,28 +260,16 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                   //Intent i = new Intent(getApplicationContext(), user_View_Booked_Service.class);
+                                    /*totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
+                                    Log.e("TAG", "run: "+totalPrice );*/
                                     Intent i = new Intent(getApplicationContext(), RazorPay.class);
                                     i.putExtra("Username", s1);
+                                    i.putExtra("price", String.valueOf(totalPrice));
                                     startActivity(i);
                                 }
                             }, 3000);
-
-
-                               /* sysTime=String.valueOf(System.currentTimeMillis());
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Username").setValue(username);
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("CarBrand").setValue(brandStr);
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("CarModel").setValue(modelstr);
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("ServiceType").setValue(serviceType);
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Date").setValue(datestr);
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("ServiceTime").setValue(timestr);
-//                                databaseReference.child("Users").child(username).child("Service").child(String.valueOf(System.currentTimeMillis())).child("Location").setValue(locationstr);
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Latitude").setValue(latitudeStr);
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("Longitude").setValue(longitudeStr);
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("PaymentMode").setValue(modestr);
-                                databaseReference.child("Users").child(username).child("Service").child(sysTime).child("SYSTIME").setValue(sysTime);
-*/
-
+                            totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
+                            Log.e("TAG", "run: "+totalPrice );
                                 //passing to service table
                                 pk=databaseReference.push().getKey();
                                 databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
@@ -307,18 +279,17 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                 databaseReference.child("Service").child(s1).child(pk).child("ServiceName").setValue(serviceStr);
                                 databaseReference.child("Service").child(s1).child(pk).child("Date").setValue(datestr);
                                 databaseReference.child("Service").child(s1).child(pk).child("ServiceTime").setValue(timestr);
-//                                databaseReference.child("Service").child(username).child(String.valueOf(System.currentTimeMillis())).child("Location").setValue(longitudeStr);
                                 databaseReference.child("Service").child(s1).child(pk).child("Latitude").setValue(latitudeStr);
                                 databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
-                                //databaseReference.child("Service").child(s1).child(pk).child("PaymentMode").setValue(modestr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(totalPrice);
                                 databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
                                 Toast.makeText(getApplicationContext(), "Service Sussecfully Booked", Toast.LENGTH_SHORT).show();
-                           // }
+
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(user_Book_Service.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(user_Book_Service.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
             }
@@ -340,12 +311,16 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 
     private void setCarTypeAdapter() {
         ArrayList<String> carbodyType=new ArrayList<>();
+        ArrayList<carBodyType> cbtPrice=new ArrayList<>();
         databaseReference.child("CAR_BODYTYPE").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 carbodyType.clear();
+                cbtPrice.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     carbodyType.add(dataSnapshot.getKey());
+                    carBodyType carBodyType=dataSnapshot.getValue(carBodyType.class);
+                    cbtPrice.add(carBodyType);
                 }
                 ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(user_Book_Service.this, R.layout.simple_spinner_item, carbodyType);
                 binding.carModel.setAdapter(brandAdapter);
@@ -355,6 +330,8 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                         /*String[] modelss=models[position];
                         ArrayAdapter<String> modelAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, modelss);
                         carmodel.setAdapter(modelAdapter);*/
+                        carbodytypePriceStr= cbtPrice.get(position).getPrice();
+
                     }
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
@@ -379,7 +356,6 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                 model.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     carBrand.add(dataSnapshot.getKey());
-                   // carBrandPrice.add(dataSnapshot.child(carBrand.toString()).child("Price").getValue(String.class));
                     carModel model1=dataSnapshot.getValue(carModel.class);
                     model.add(model1);
                 }
@@ -392,7 +368,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                         ArrayAdapter<String> modelAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, modelss);
                         carmodel.setAdapter(modelAdapter);*/
                        carmodelPriceStr= model.get(position).getPrice();
-                        Toast.makeText(user_Book_Service.this, "CARMODELPRICE:"+carmodelPriceStr, Toast.LENGTH_SHORT).show();
+
                     }
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
@@ -530,6 +506,34 @@ class carModel{
 
     public void setImage(String image) {
         Image = image;
+    }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
+    }
+}
+
+class carBodyType{
+    String BodyType,Price;
+
+    public carBodyType() {
+    }
+
+    public carBodyType(String bodyType, String price) {
+        BodyType = bodyType;
+        Price = price;
+    }
+
+    public String getBodyType() {
+        return BodyType;
+    }
+
+    public void setBodyType(String bodyType) {
+        BodyType = bodyType;
     }
 
     public String getPrice() {

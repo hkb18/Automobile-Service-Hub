@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public class RazorPay extends AppCompatActivity implements PaymentResultListener {
     TextView amt;
     Button payBtn;
-    String priceStr="",sysTime,keyStr="";
+    String priceStr="",keyStr="";
     DatabaseReference databaseReference;
     SharedPreferences sh;
     String s1;
