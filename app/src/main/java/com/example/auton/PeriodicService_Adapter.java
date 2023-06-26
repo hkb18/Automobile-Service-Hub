@@ -46,6 +46,7 @@ public class PeriodicService_Adapter extends RecyclerView.Adapter<PeriodicServic
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), user_Book_Service.class);
                 i.putExtra("Service",ss.getServiceName());
+                i.putExtra("servicetype","Periodic Service");
                 context.startActivity(i);
             }
         });

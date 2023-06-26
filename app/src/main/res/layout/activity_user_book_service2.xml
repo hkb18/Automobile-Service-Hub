@@ -4,10 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/theme_bg"
-    tools:context=".user_Book_Service">
+    android:orientation="vertical"
+    tools:context=".user_BookService2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
     <TextView
         android:id="@+id/servicebuktopic"
@@ -20,7 +27,7 @@
         android:gravity="center"
         android:layout_marginBottom="15dp"/>
 
-<!-- SELECT CAR BRAND -->
+    <!-- SELECT CAR BRAND -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,8 +55,7 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
-
-<!-- SELECT CAR BODY TYPE -->
+    <!-- SELECT CAR BODY TYPE -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -152,6 +158,27 @@
             android:layout_weight="1"/>-->
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:paddingTop="50dp"
+            android:text="Battery Image"/>
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:id="@+id/imageView"/>
+    </LinearLayout>
+
     <!-- SELECT DATE -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -196,7 +223,6 @@
 
 
     </LinearLayout>
-
 
     <!-- SELECT LOCATION -->
     <LinearLayout
@@ -275,6 +301,6 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"/>
-
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

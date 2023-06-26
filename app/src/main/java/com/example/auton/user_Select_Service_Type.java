@@ -18,56 +18,48 @@ public class user_Select_Service_Type extends AppCompatActivity {
         //PERIODIC SERVICE
         binding.periodicServices.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), user_View_PeriodicService.class);
-            i.putExtra("service","");
             startActivity(i);
         });
 
         //AC SERVICE & REPAIR
         binding.acServiceRepair.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), user_view_ACServiceRepair.class);
-            i.putExtra("service","");
             startActivity(i);
         });
 
         //BATTERIES
         binding.batteries.setOnClickListener(view -> {
-            Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
-            i.putExtra("service","");
+            Intent i = new Intent(getApplicationContext(), user_view_Batteries.class);
             startActivity(i);
         });
 
         //TYRES & WHEEL CARE
         binding.tyresWheelCare.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
-            i.putExtra("service","");
             startActivity(i);
         });
 
         //DENTING & PAINTING
         binding.dentingPainting.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
-            i.putExtra("service","");
             startActivity(i);
         });
 
         // DETAILING SERVICES
         binding.detailingService.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
-            i.putExtra("service","");
             startActivity(i);
         });
 
         //CAR SPA & CLEANING
         binding.carspaCleaning.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
-            i.putExtra("service","");
             startActivity(i);
         });
 
         //CAR INSPECTION
         binding.carInspections.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
-            i.putExtra("service","");
             startActivity(i);
         });
     }

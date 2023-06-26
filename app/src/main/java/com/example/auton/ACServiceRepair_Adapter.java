@@ -43,6 +43,7 @@ public class ACServiceRepair_Adapter extends RecyclerView.Adapter<ACServiceRepai
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), user_Book_Service.class);
                 i.putExtra("Service",ss.getServiceName());
+                i.putExtra("servicetype","AC Service and Repair");
                 context.startActivity(i);
             }
         });
