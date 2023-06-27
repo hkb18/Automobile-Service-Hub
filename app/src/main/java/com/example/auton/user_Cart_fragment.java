@@ -120,6 +120,7 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
 
                Intent i = new Intent(requireContext(), RazorPay.class);
                i.putExtra("price", String.valueOf(totalPrice));
+               i.putExtra("activity", "cart");
                startActivity(i);
            } else {
                Toast.makeText(requireContext(), "Cart is empty", Toast.LENGTH_SHORT).show();

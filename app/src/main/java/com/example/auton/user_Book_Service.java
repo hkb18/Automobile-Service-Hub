@@ -161,7 +161,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         binding.tvServiceType.setText(servicenameStr);
         binding.tvService.setText(serviceStr);
 
-        Toast.makeText(getApplicationContext(), "Username:"+username, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Username:"+s1, Toast.LENGTH_SHORT).show();
 
         SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
         s1 = sh.getString("Username", "");
@@ -263,7 +263,16 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                     /*totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
                                     Log.e("TAG", "run: "+totalPrice );*/
                                     Intent i = new Intent(getApplicationContext(), RazorPay.class);
+                                    i.putExtra("activity", "bookService");
                                     i.putExtra("Username", s1);
+                                    i.putExtra("CarBrand", brandStr);
+                                    i.putExtra("CarModel", modelstr);
+                                    i.putExtra("ServiceType", servicenameStr);
+                                    i.putExtra("ServiceName", serviceStr);
+                                    i.putExtra("Date", datestr);
+                                    i.putExtra("ServiceTime", timestr);
+                                    i.putExtra("Latitude", latitudeStr);
+                                    i.putExtra("Longitude", longitudeStr);
                                     i.putExtra("price", String.valueOf(totalPrice));
                                     startActivity(i);
                                 }
@@ -271,7 +280,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                             totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
                             Log.e("TAG", "run: "+totalPrice );
                                 //passing to service table
-                                pk=databaseReference.push().getKey();
+                                /*pk=databaseReference.push().getKey();
                                 databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
                                 databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
                                 databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
@@ -283,7 +292,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                 databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
                                 databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(totalPrice);
                                 databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
-                                Toast.makeText(getApplicationContext(), "Service Sussecfully Booked", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Service Sussecfully Booked", Toast.LENGTH_SHORT).show();*/
 
                         }
 

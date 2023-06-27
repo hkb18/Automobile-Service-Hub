@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public class RazorPay extends AppCompatActivity implements PaymentResultListener {
     TextView amt;
     Button payBtn;
-    String priceStr="",keyStr="";
+    String priceStr="",keyStr="",pk="",usernameStr,brandStr,modelstr,servicenameStr,serviceStr,datestr,timestr,latitudeStr,longitudeStr,activity;
     DatabaseReference databaseReference;
     SharedPreferences sh;
     String s1;
@@ -40,7 +40,17 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
         sh=getApplicationContext().getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
         String s1=sh.getString("Username","");
 
+        activity= getIntent().getStringExtra("activity");
         priceStr= getIntent().getStringExtra("price");
+        usernameStr= getIntent().getStringExtra("Username");
+        brandStr= getIntent().getStringExtra("CarBrand");
+        modelstr= getIntent().getStringExtra("CarModel");
+        servicenameStr= getIntent().getStringExtra("ServiceType");
+        serviceStr= getIntent().getStringExtra("ServiceName");
+        datestr= getIntent().getStringExtra("Date");
+        timestr= getIntent().getStringExtra("ServiceTime");
+        latitudeStr= getIntent().getStringExtra("Latitude");
+        longitudeStr= getIntent().getStringExtra("Longitude");
         keyStr= getIntent().getStringExtra("key");
 
         amt = findViewById(R.id.amt);
@@ -68,6 +78,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
 
                 // initialize json object
                 JSONObject object = new JSONObject();
+                Toast.makeText(RazorPay.this, ""+activity, Toast.LENGTH_SHORT).show();
                 try {
                     // to put name
                     object.put("name", "AUTOMOBILE SERVICE HUB");
@@ -95,10 +106,54 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     e.printStackTrace();
 
                 }
-                getData data=new getData();
-                data.setKey(keyStr);
-                data.setPrice(priceStr);
-                databaseReference.child("PURCHASED_ACCESSORIES").child(s1).child(databaseReference.push().getKey()).setValue(data);
+                if(activity.equals("cart")) {
+                    Toast.makeText(RazorPay.this, "Bye", Toast.LENGTH_SHORT).show();
+                    getData data = new getData();
+                    data.setKey(keyStr);
+                    data.setPrice(priceStr);
+                    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            databaseReference.child("PURCHASED_ACCESSORIES").child(s1).child(databaseReference.push().getKey()).setValue(data);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(RazorPay.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }else if (activity.equals("bookService")) {
+                    Toast.makeText(RazorPay.this, "Hi", Toast.LENGTH_SHORT).show();
+                    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            //passing to service table
+                            pk=databaseReference.push().getKey();
+                            databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
+                            databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
+                            databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
+                            databaseReference.child("Service").child(s1).child(pk).child("ServiceType").setValue(servicenameStr);
+                            databaseReference.child("Service").child(s1).child(pk).child("ServiceName").setValue(serviceStr);
+                            databaseReference.child("Service").child(s1).child(pk).child("Date").setValue(datestr);
+                            databaseReference.child("Service").child(s1).child(pk).child("ServiceTime").setValue(timestr);
+                            databaseReference.child("Service").child(s1).child(pk).child("Latitude").setValue(latitudeStr);
+                            databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
+                            databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
+                            databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
+                            Toast.makeText(getApplicationContext(), "Service Sussecfully Booked", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                            Toast.makeText(RazorPay.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
+
+                }
             }
 
 
