@@ -47,19 +47,19 @@ public class user_Select_Service_Type extends AppCompatActivity {
 
         // DETAILING SERVICES
         binding.detailingService.setOnClickListener(view -> {
-            Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
+            Intent i = new Intent(getApplicationContext(), user_view_DetailingService.class);
             startActivity(i);
         });
 
         //CAR SPA & CLEANING
         binding.carspaCleaning.setOnClickListener(view -> {
-            Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
+            Intent i = new Intent(getApplicationContext(), user_view_CarspaCleaning.class);
             startActivity(i);
         });
 
         //CAR INSPECTION
         binding.carInspections.setOnClickListener(view -> {
-            Intent i = new Intent(getApplicationContext(), user_Book_Service.class);
+            Intent i = new Intent(getApplicationContext(), user_view_CarInspection.class);
             startActivity(i);
         });
     }
