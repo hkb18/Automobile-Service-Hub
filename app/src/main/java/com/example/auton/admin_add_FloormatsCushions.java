@@ -20,7 +20,8 @@ public class admin_add_FloormatsCushions extends AppCompatActivity {
             startActivity(i);
         });
         binding.btnBackCushions.setOnClickListener(view -> {
-
+            Intent i = new Intent(getApplicationContext(),admin_add_BackCushions.class);
+            startActivity(i);
         });
         binding.btnMats.setOnClickListener(view -> {
 
