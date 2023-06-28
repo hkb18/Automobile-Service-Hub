@@ -192,7 +192,7 @@ public class user_MyProfile_Fragment extends Fragment {
                             public void onClick(DialogInterface dialog, int id) {
                                 requireActivity().finishAffinity(); //ADD TO WORKSHOP N ADMIN
                                 Toast.makeText(getContext(), "You have been Logged Out", Toast.LENGTH_SHORT).show();
-                                Intent i =new Intent(getContext(),user_Login.class);
+                                Intent i =new Intent(getContext(),MainActivity.class);
                                 startActivity(i);
                             }
                         })

@@ -53,14 +53,12 @@ import java.util.Locale;
 public class user_Book_Service extends AppCompatActivity implements AdapterView.OnItemSelectedListener,mapinterface {
     private ActivityUserBookServiceBinding binding;
     int totalPrice;
-    String pk,s1,getPriceServiceTypeStr,carmodelPriceStr="",carbodytypePriceStr="";
+    String s1,getPriceServiceTypeStr,carmodelPriceStr="",carbodytypePriceStr="",modelstr,datestr,timestr,locationstr,currentlocationstr,servicenameStr,serviceStr,brandStr,username,latitudeStr,longitudeStr;
     private static final int PERMISSIONS_REQUEST_LOCATION = 123;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
     LocationManager locationManager;
     double longitudeBest=0.0, latitudeBest=0.0;
     private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
-    String modelstr,datestr,timestr,locationstr,currentlocationstr,servicenameStr,serviceStr;
-    String brandStr,username,latitudeStr,longitudeStr;
     String[] time={"Morning","Afternoon","Evening"};
     private int mYear,mMonth,mDay;
     DatabaseReference databaseReference;
@@ -279,21 +277,6 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                             }, 3000);
                             totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
                             Log.e("TAG", "run: "+totalPrice );
-                                //passing to service table
-                                /*pk=databaseReference.push().getKey();
-                                databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
-                                databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
-                                databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
-                                databaseReference.child("Service").child(s1).child(pk).child("ServiceType").setValue(servicenameStr);
-                                databaseReference.child("Service").child(s1).child(pk).child("ServiceName").setValue(serviceStr);
-                                databaseReference.child("Service").child(s1).child(pk).child("Date").setValue(datestr);
-                                databaseReference.child("Service").child(s1).child(pk).child("ServiceTime").setValue(timestr);
-                                databaseReference.child("Service").child(s1).child(pk).child("Latitude").setValue(latitudeStr);
-                                databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
-                                databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(totalPrice);
-                                databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
-                                Toast.makeText(getApplicationContext(), "Service Sussecfully Booked", Toast.LENGTH_SHORT).show();*/
-
                         }
 
                         @Override

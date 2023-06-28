@@ -48,6 +48,8 @@ public class Batteries_Adapter extends RecyclerView.Adapter<Batteries_Adapter.Vi
                 i.putExtra("Service",ss.getBrand());
                 i.putExtra("img",ss.getImage());
                 i.putExtra("servicetype","Batteries");
+                i.putExtra("servicetype","Batteries");
+            i.putExtra("Price",ss.getPrice());
                 context.startActivity(i);
             }
         });

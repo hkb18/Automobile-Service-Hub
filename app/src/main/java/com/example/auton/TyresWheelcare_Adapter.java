@@ -50,6 +50,7 @@ public class TyresWheelcare_Adapter extends RecyclerView.Adapter<TyresWheelcare_
                 i.putExtra("Service",ss.getModel());
                 i.putExtra("img",ss.getImage());
                 i.putExtra("servicetype","Tyres and Wheelcare");
+                i.putExtra("Price",ss.getPrice());
                 context.startActivity(i);
             }
         });
