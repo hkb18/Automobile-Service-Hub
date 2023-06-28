@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/theme_bg"
+    android:gravity="center"
+    tools:context=".admin_add_FloormatsCushions">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:text="admin add floormats &amp; cushions"
+        android:textSize="24dp"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <!-- AIR FRESHNER-->
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="AIR FRESHNER"
+            android:id="@+id/btn_AirFreshner"/>
+        <!--BACK CUSHIONS-->
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="BACK CUSHIONS"
+            android:id="@+id/btn_BackCushions"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <!-- NECK CUSHIONS-->
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="NECK CUSHIONS"
+            android:id="@+id/btn_NeckCushions"/>
+        <!--   Mats-->
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/summersky"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Mats"
+            android:id="@+id/btn_Mats"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

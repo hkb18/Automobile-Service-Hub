@@ -23,6 +23,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".admin_add_AirFreshner"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_FloormatsCushions"
+            android:exported="false" />
+        <activity
             android:name=".user_view_CarInspection"
             android:exported="false" />
         <activity
