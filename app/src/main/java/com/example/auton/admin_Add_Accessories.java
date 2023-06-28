@@ -78,7 +78,8 @@ public class admin_Add_Accessories extends Fragment {
             startActivity(i);
         });
         binding.linearlayoutAddFloormatsCushions.setOnClickListener(view -> {
-
+            Intent i=new Intent(getContext(),admin_add_FloormatsCushions.class);
+            startActivity(i);
         });
         binding.linearlayoutAddHomeProtectives.setOnClickListener(view -> {
 

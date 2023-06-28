@@ -31,7 +31,6 @@ import java.util.Locale;
 
 public class admin_add_WiperBlades extends AppCompatActivity {
     private ActivityAdminAddWiperBladesBinding binding;
-    //Button add,selectImg;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
     StorageReference storageReference;

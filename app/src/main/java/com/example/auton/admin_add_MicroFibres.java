@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.auton.databinding.ActivityAdminAddMicroFibresBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -32,73 +33,57 @@ import java.util.Date;
 import java.util.Locale;
 
 public class admin_add_MicroFibres extends AppCompatActivity {
-    Button add,selectImg;
+    private ActivityAdminAddMicroFibresBinding binding;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
-    ImageView imageView;
     StorageReference storageReference;
     Uri imageUri;
     String fileName;
-    TextInputEditText textInputEditTextModel,textInputEditTextDimension,textInputEditTextMaterialType,textInputEditTextFabricType,textInputEditTextQuantity,textInputEditTextColor,textInputEditTextBrand,textInputEditTextPrice;
     DatabaseReference databaseReference;
     String dimensionStr,materialTypeStr,fabricTypeStr,quantityStr,priceStr,colorStr,brandStr,modelStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_micro_fibres);
+        binding=ActivityAdminAddMicroFibresBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         progressBar = new ProgressBar(this);
-        imageView=findViewById(R.id.ivMicroFibres);
-        selectImg=findViewById(R.id.btn_selectImgMicroFibres);
-
-        add=findViewById(R.id.btn_add_MicroFibres);
-        textInputEditTextModel=findViewById(R.id.microfibresModel);
-        textInputEditTextDimension=findViewById(R.id.microfibresDimensions);
-        textInputEditTextMaterialType=findViewById(R.id.microfibresMaterialType);
-        textInputEditTextFabricType=findViewById(R.id.microfibresFabricType);
-        textInputEditTextQuantity=findViewById(R.id.microfibresQuantity);
-        textInputEditTextColor=findViewById(R.id.microfibresColor);
-        textInputEditTextBrand=findViewById(R.id.microfibresBrand);
-        textInputEditTextPrice=findViewById(R.id.microfibresPrice);
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dimensionStr=textInputEditTextDimension.getText().toString();
-                modelStr=textInputEditTextModel.getText().toString();
-                materialTypeStr=textInputEditTextMaterialType.getText().toString();
-                fabricTypeStr=textInputEditTextFabricType.getText().toString();
-                quantityStr=textInputEditTextQuantity.getText().toString();
-                colorStr=textInputEditTextColor.getText().toString();
-                brandStr=textInputEditTextBrand.getText().toString();
-                priceStr=textInputEditTextPrice.getText().toString();
-                if(modelStr.isEmpty()||dimensionStr.isEmpty()|| materialTypeStr.isEmpty()||fabricTypeStr.isEmpty() ||quantityStr.isEmpty()|| colorStr.isEmpty() || brandStr.isEmpty() ||priceStr.isEmpty()) {
-                    Toast.makeText(admin_add_MicroFibres.this, "Please enter all details", Toast.LENGTH_SHORT).show();
-                } else {
-                    databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+        binding.btnAddMicroFibres.setOnClickListener(view -> {
+            dimensionStr=binding.microfibresDimensions.getText().toString();
+            modelStr=binding.microfibresModel.getText().toString();
+            materialTypeStr=binding.microfibresMaterialType.getText().toString();
+            fabricTypeStr=binding.microfibresFabricType.getText().toString();
+            quantityStr=binding.microfibresQuantity.getText().toString();
+            colorStr=binding.microfibresColor.getText().toString();
+            brandStr=binding.microfibresBrand.getText().toString();
+            priceStr=binding.microfibresPrice.getText().toString();
+            if(modelStr.isEmpty()||dimensionStr.isEmpty()|| materialTypeStr.isEmpty()||fabricTypeStr.isEmpty() ||quantityStr.isEmpty()|| colorStr.isEmpty() || brandStr.isEmpty() ||priceStr.isEmpty()) {
+                Toast.makeText(admin_add_MicroFibres.this, "Please enter all details", Toast.LENGTH_SHORT).show();
+            } else {
+                databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                            uploadImage();
-                            Toast.makeText(admin_add_MicroFibres.this, "Value Entered", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(getApplicationContext(), admin_add_Carcare_Purifier.class);
-                            startActivity(i);
-                        }
+                        uploadImage();
+                        Toast.makeText(admin_add_MicroFibres.this, "Value Entered", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), admin_add_Carcare_Purifier.class);
+                        startActivity(i);
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(admin_add_MicroFibres.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(admin_add_MicroFibres.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-                }
             }
         });
         //      IMG UPLOAD
-        selectImg.setOnClickListener(v -> {
+        binding.btnSelectImgMicroFibres.setOnClickListener(v -> {
             selectImage();
         });
     }
@@ -115,7 +100,7 @@ public class admin_add_MicroFibres extends AppCompatActivity {
 
         if (requestCode==100 && data != null && data.getData() != null){
             imageUri=data.getData();
-            imageView.setImageURI(imageUri);
+            binding.ivMicroFibres.setImageURI(imageUri);
         }
     }
     private void uploadImage() {
@@ -132,7 +117,7 @@ public class admin_add_MicroFibres extends AppCompatActivity {
             storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    imageView.setImageURI(null);
+                    binding.ivMicroFibres.setImageURI(null);
                     Toast.makeText(admin_add_MicroFibres.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();

@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.airbnb.lottie.L;
+import com.example.auton.databinding.ActivityAdminAddAirPurifierBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -35,77 +36,61 @@ import java.util.Date;
 import java.util.Locale;
 
 public class admin_add_AirPurifier extends AppCompatActivity {
-    Button add,selectImg;
+    private ActivityAdminAddAirPurifierBinding binding;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
-    ImageView imageView;
     StorageReference storageReference;
     Uri imageUri;
     String fileName;
     DatabaseReference databaseReference;
-    TextInputEditText textInputEditTextModel,textInputEditTextVoltage,textInputEditTextColor,textInputEditTextDimension,textInputEditTextWeight,textInputEditTextManufacturer,textInputEditTextWarrenty,textInputEditTextItemIncluded,textInputEditTextPrice,textInputEditTextQuantity;
-    String modelStr,operatingVoltageStr,colorStr,dimensionStr,weightStr,manufacturerStr,warrentyStr,itemsIncludedStr,priceStr,quantityStr;
+   String modelStr,operatingVoltageStr,colorStr,dimensionStr,weightStr,manufacturerStr,warrentyStr,itemsIncludedStr,priceStr,quantityStr;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_air_purifier);
+        binding=ActivityAdminAddAirPurifierBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         progressBar = new ProgressBar(this);
-        imageView=findViewById(R.id.ivAirpurifier);
-        selectImg=findViewById(R.id.btn_selectImgAirPurifier);
-
-        add=findViewById(R.id.btn_add_AirPurifier);
-        textInputEditTextModel=findViewById(R.id.airpurifierModel);
-        textInputEditTextVoltage=findViewById(R.id.airpurifierOperatingVoltage);
-        textInputEditTextColor=findViewById(R.id.airpurifierColor);
-        textInputEditTextDimension=findViewById(R.id.airpurifierDimensions);
-        textInputEditTextWeight=findViewById(R.id.airpurifierWeight);
-        textInputEditTextManufacturer=findViewById(R.id.airpurifierManufacturer);
-        textInputEditTextWarrenty=findViewById(R.id.airpurifierWarrenty);
-        textInputEditTextItemIncluded=findViewById(R.id.airpurifierItemsIncluded);
-        textInputEditTextPrice=findViewById(R.id.airpurifierPrice);
-        textInputEditTextQuantity=findViewById(R.id.airpurifierQuantity);
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                modelStr=textInputEditTextModel.getText().toString();
-                operatingVoltageStr=textInputEditTextVoltage.getText().toString();
-                colorStr=textInputEditTextColor.getText().toString();
-                dimensionStr=textInputEditTextDimension.getText().toString();
-                weightStr=textInputEditTextWeight.getText().toString();
-                manufacturerStr=textInputEditTextManufacturer.getText().toString();
-                warrentyStr=textInputEditTextWarrenty.getText().toString();
-                itemsIncludedStr=textInputEditTextItemIncluded.getText().toString();
-                priceStr=textInputEditTextPrice.getText().toString();
-                quantityStr=textInputEditTextQuantity.getText().toString();
+        binding.btnAddAirPurifier.setOnClickListener(view -> {
 
-                if(modelStr.isEmpty()|| operatingVoltageStr.isEmpty()||itemsIncludedStr.isEmpty() ||warrentyStr.isEmpty()|| colorStr.isEmpty() || dimensionStr.isEmpty() || weightStr.isEmpty() || weightStr.isEmpty() || manufacturerStr.isEmpty() ||priceStr.isEmpty() ||  quantityStr.isEmpty()) {
-                    Toast.makeText(admin_add_AirPurifier.this, "Please enter all details", Toast.LENGTH_SHORT).show();
-                } else {
-                    databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            uploadImage();
+            modelStr=binding.airpurifierModel.getText().toString();
+            operatingVoltageStr=binding.airpurifierOperatingVoltage.getText().toString();
+            colorStr=binding.airpurifierColor.getText().toString();
+            dimensionStr=binding.airpurifierDimensions.getText().toString();
+            weightStr=binding.airpurifierWeight.getText().toString();
+            manufacturerStr=binding.airpurifierManufacturer.getText().toString();
+            warrentyStr=binding.airpurifierWarrenty.getText().toString();
+            itemsIncludedStr=binding.airpurifierItemsIncluded.getText().toString();
+            priceStr=binding.airpurifierPrice.getText().toString();
+            quantityStr=binding.airpurifierQuantity.getText().toString();
 
-                            Toast.makeText(admin_add_AirPurifier.this, "Value Entered", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(getApplicationContext(), admin_add_Carcare_Purifier.class);
-                            startActivity(i);
-                        }
+            if(modelStr.isEmpty()|| operatingVoltageStr.isEmpty()||itemsIncludedStr.isEmpty() ||warrentyStr.isEmpty()|| colorStr.isEmpty() || dimensionStr.isEmpty() || weightStr.isEmpty() || weightStr.isEmpty() || manufacturerStr.isEmpty() ||priceStr.isEmpty() ||  quantityStr.isEmpty()) {
+                Toast.makeText(admin_add_AirPurifier.this, "Please enter all details", Toast.LENGTH_SHORT).show();
+            } else {
+                databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        uploadImage();
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(admin_add_AirPurifier.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                        Toast.makeText(admin_add_AirPurifier.this, "Value Entered", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), admin_add_Carcare_Purifier.class);
+                        startActivity(i);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(admin_add_AirPurifier.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
+
     //      IMG UPLOAD
-        selectImg.setOnClickListener(v -> {
+        binding.btnSelectImgAirPurifier.setOnClickListener(v -> {
             selectImage();
         });
 }
@@ -122,7 +107,7 @@ public class admin_add_AirPurifier extends AppCompatActivity {
 
         if (requestCode==100 && data != null && data.getData() != null){
             imageUri=data.getData();
-            imageView.setImageURI(imageUri);
+            binding.ivAirpurifier.setImageURI(imageUri);
         }
     }
     private void uploadImage() {
@@ -139,7 +124,7 @@ public class admin_add_AirPurifier extends AppCompatActivity {
             storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    imageView.setImageURI(null);
+                    binding.ivAirpurifier.setImageURI(null);
                     Toast.makeText(admin_add_AirPurifier.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();

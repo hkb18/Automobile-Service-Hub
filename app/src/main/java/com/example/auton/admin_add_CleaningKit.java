@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.auton.databinding.ActivityAdminAddCleaningKitBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -33,74 +34,57 @@ import java.util.Date;
 import java.util.Locale;
 
 public class admin_add_CleaningKit extends AppCompatActivity {
-    Button add,selectImg;
+    private ActivityAdminAddCleaningKitBinding binding;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
-    ImageView imageView;
     StorageReference storageReference;
     Uri imageUri;
     String fileName;
-    TextInputEditText textInputEditTextModel,textInputEditTextWeight,textInputEditTextDimension,textInputEditTextBrand,textInputEditTextVolume,textInputEditTextBoxIncludes,textInputEditTextItemForm,textInputEditTextPrice,textInputEditTextQuantity;
     String weightStr,dimensionStr,brandStr,volumeStr,boxIncudeStr,itemFormStr,priceStr,quantityStr,modelStr;
     DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_cleaning_kit);
+        binding=ActivityAdminAddCleaningKitBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         progressBar = new ProgressBar(this);
-        imageView=findViewById(R.id.ivCleaningkit);
-        selectImg=findViewById(R.id.btn_selectImgCleaningkit);
-
-        add=findViewById(R.id.btn_add_CleaningKit);
-        textInputEditTextWeight=findViewById(R.id.cleaningkitWeight);
-        textInputEditTextModel=findViewById(R.id.cleaningkitModel);
-        textInputEditTextDimension=findViewById(R.id.cleaningkitDimensions);
-        textInputEditTextBrand=findViewById(R.id.cleaningkitBrand);
-        textInputEditTextVolume=findViewById(R.id.cleaningkitVolume);
-        textInputEditTextBoxIncludes=findViewById(R.id.cleaningkitBoxIncludes);
-        textInputEditTextItemForm=findViewById(R.id.cleaningkitItemForm);
-        textInputEditTextPrice=findViewById(R.id.cleaningkitPrice);
-        textInputEditTextQuantity=findViewById(R.id.cleaningkitQuantity);
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                weightStr=textInputEditTextWeight.getText().toString();
-                modelStr=textInputEditTextModel.getText().toString();
-                dimensionStr=textInputEditTextDimension.getText().toString();
-                brandStr=textInputEditTextBrand.getText().toString();
-                volumeStr=textInputEditTextVolume.getText().toString();
-                boxIncudeStr=textInputEditTextBoxIncludes.getText().toString();
-                itemFormStr=textInputEditTextItemForm.getText().toString();
-                priceStr=textInputEditTextPrice.getText().toString();
-                quantityStr=textInputEditTextQuantity.getText().toString();
-                if(modelStr.isEmpty()||weightStr.isEmpty()|| dimensionStr.isEmpty()||brandStr.isEmpty() ||volumeStr.isEmpty()|| boxIncudeStr.isEmpty() || itemFormStr.isEmpty() ||priceStr.isEmpty() ||  quantityStr.isEmpty()) {
-                    Toast.makeText(admin_add_CleaningKit.this, "Please enter all details", Toast.LENGTH_SHORT).show();
-                } else{
-                    databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+        binding.btnAddCleaningKit.setOnClickListener(view -> {
+            weightStr=binding.cleaningkitWeight.getText().toString();
+            modelStr=binding.cleaningkitModel.getText().toString();
+            dimensionStr=binding.cleaningkitDimensions.getText().toString();
+            brandStr=binding.cleaningkitBrand.getText().toString();
+            volumeStr=binding.cleaningkitVolume.getText().toString();
+            boxIncudeStr=binding.cleaningkitBoxIncludes.getText().toString();
+            itemFormStr=binding.cleaningkitItemForm.getText().toString();
+            priceStr=binding.cleaningkitPrice.getText().toString();
+            quantityStr=binding.cleaningkitQuantity.getText().toString();
+            if(modelStr.isEmpty()||weightStr.isEmpty()|| dimensionStr.isEmpty()||brandStr.isEmpty() ||volumeStr.isEmpty()|| boxIncudeStr.isEmpty() || itemFormStr.isEmpty() ||priceStr.isEmpty() ||  quantityStr.isEmpty()) {
+                Toast.makeText(admin_add_CleaningKit.this, "Please enter all details", Toast.LENGTH_SHORT).show();
+            } else{
+                databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                            uploadImage();
-                            Toast.makeText(admin_add_CleaningKit.this, "Value Entered", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(getApplicationContext(), admin_add_Carcare_Purifier.class);
-                            startActivity(i);
-                        }
+                        uploadImage();
+                        Toast.makeText(admin_add_CleaningKit.this, "Value Entered", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), admin_add_Carcare_Purifier.class);
+                        startActivity(i);
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(admin_add_CleaningKit.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(admin_add_CleaningKit.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
-        });
+                });
 
     //      IMG UPLOAD
-        selectImg.setOnClickListener(v -> {
+        binding.btnSelectImgCleaningkit.setOnClickListener(v -> {
         selectImage();
     });
 }
@@ -117,7 +101,7 @@ public class admin_add_CleaningKit extends AppCompatActivity {
 
         if (requestCode==100 && data != null && data.getData() != null){
             imageUri=data.getData();
-            imageView.setImageURI(imageUri);
+            binding.ivCleaningkit.setImageURI(imageUri);
         }
     }
     private void uploadImage() {
@@ -134,7 +118,7 @@ public class admin_add_CleaningKit extends AppCompatActivity {
             storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    imageView.setImageURI(null);
+                    binding.ivCleaningkit.setImageURI(null);
                     Toast.makeText(admin_add_CleaningKit.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();
