@@ -70,13 +70,13 @@ public class admin_add_AirFreshner extends AppCompatActivity {
                         uploadImage();
 
                         Toast.makeText(admin_add_AirFreshner.this, "Value Entered", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getApplicationContext(), admin_add_Carcare_Purifier.class);
+                        Intent i = new Intent(getApplicationContext(), admin_add_FloormatsCushions.class);
                         startActivity(i);
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(admin_add_AirFreshner.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(admin_add_AirFreshner.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
