@@ -24,10 +24,12 @@ public class admin_add_FloormatsCushions extends AppCompatActivity {
             startActivity(i);
         });
         binding.btnMats.setOnClickListener(view -> {
-
+            Intent i = new Intent(getApplicationContext(),admin_add_Mats.class);
+            startActivity(i);
         });
         binding.btnNeckCushions.setOnClickListener(view -> {
-
+            Intent i = new Intent(getApplicationContext(),admin_add_NeckCushions.class);
+            startActivity(i);
         });
     }
 }

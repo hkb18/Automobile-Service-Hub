@@ -73,7 +73,7 @@
             android:backgroundTint="@color/summersky"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:text="Mats"
+            android:text="MATS"
             android:id="@+id/btn_Mats"/>
     </LinearLayout>
 
