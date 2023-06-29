@@ -23,6 +23,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".admin_add_Projectors"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_HID"
+            android:exported="false" />
+        <activity
             android:name=".admin_add_Protectives"
             android:exported="false" />
         <activity
