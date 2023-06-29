@@ -23,6 +23,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".admin_add_Toolkits"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_TyreInflator"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_RoadsideAssistance"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_LightsChargers"
+            android:exported="false" />
+        <activity
+            android:name=".admin_add_HornsProtectives"
+            android:exported="false" />
+        <activity
             android:name=".fulldetails_Mats"
             android:exported="false" />
         <activity

@@ -82,13 +82,16 @@ public class admin_Add_Accessories extends Fragment {
             startActivity(i);
         });
         binding.linearlayoutAddHomeProtectives.setOnClickListener(view -> {
-
+            Intent i=new Intent(getContext(),admin_add_HornsProtectives.class);
+            startActivity(i);
         });
         binding.linearlayoutAddLightsChargers.setOnClickListener(view -> {
-
+            Intent i=new Intent(getContext(),admin_add_LightsChargers.class);
+            startActivity(i);
         });
         binding.linearlayoutAddRoadsideAssistance.setOnClickListener(view -> {
-
+            Intent i=new Intent(getContext(),admin_add_RoadsideAssistance.class);
+            startActivity(i);
         });
 
 
