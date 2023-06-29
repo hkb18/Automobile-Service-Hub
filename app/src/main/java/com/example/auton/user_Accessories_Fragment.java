@@ -10,13 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.auton.databinding.FragmentUserAccessoriesBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link user_Accessories_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class user_Accessories_Fragment extends Fragment {
-    CardView cvScreen_Speaker,cvCarcare_Purifier,cvFloormat_Cushion,cvHorn_Protectives,cvLights_Chargers,cvRoadsideAssistance;
+    private FragmentUserAccessoriesBinding binding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,59 +63,29 @@ public class user_Accessories_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_user__accessories, container, false);
+        binding=FragmentUserAccessoriesBinding.inflate(getLayoutInflater());
 
-        cvScreen_Speaker=v.findViewById(R.id.screens_Speakers);
-        cvCarcare_Purifier=v.findViewById(R.id.carCare_Purifier);
-        cvFloormat_Cushion=v.findViewById(R.id.floorMat_Cushion);
-        cvHorn_Protectives=v.findViewById(R.id.horns_Protectives);
-        cvLights_Chargers=v.findViewById(R.id.lights_Chargers);
-        cvRoadsideAssistance=v.findViewById(R.id.roadsideAssistance);
-
-        cvScreen_Speaker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(), user_View_Screens_Speakers.class);
-                startActivity(i);
-            }
+        binding.screensSpeakers.setOnClickListener(view -> {
+            Intent i = new Intent(getContext(), user_View_Screens_Speakers.class);
+            startActivity(i);
         });
-
-        cvCarcare_Purifier.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(), user_View_Carecare_Purifiers.class);
-                startActivity(i);
-            }
+        binding.carCarePurifier.setOnClickListener(view -> {
+            Intent i = new Intent(getContext(), user_View_Carecare_Purifiers.class);
+            startActivity(i);
         });
-
-        cvFloormat_Cushion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
+        binding.floorMatCushion.setOnClickListener(view -> {
+            Intent i = new Intent(getContext(), user_View_FloormatsCushions.class);
+            startActivity(i);
         });
+        binding.hornsProtectives.setOnClickListener(view -> {
 
-        cvHorn_Protectives.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
         });
+        binding.lightsChargers.setOnClickListener(view -> {
 
-        cvLights_Chargers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
         });
+        binding.roadsideAssistance.setOnClickListener(view -> {
 
-        cvRoadsideAssistance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
         });
-        return v;
+        return binding.getRoot();
     }
 }
