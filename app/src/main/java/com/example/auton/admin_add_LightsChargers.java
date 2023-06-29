@@ -16,7 +16,8 @@ public class admin_add_LightsChargers extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnChargers.setOnClickListener(view -> {
-
+            Intent i = new Intent(getApplicationContext(),admin_add_Chargers.class);
+            startActivity(i);
         });
         binding.btnHID.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(),admin_add_HID.class);
