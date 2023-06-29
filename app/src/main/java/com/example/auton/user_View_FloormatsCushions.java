@@ -24,19 +24,9 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
     String ccpModelStr;
     private ArrayList<materialButton> list=new ArrayList<>();
     private AirFreshner_Adapter airFreshnerAdapter;
-    private CleaningKit_Adapter cleaningKitAdapter;
-    private Cleansers_Adapter cleansersAdapter;
-    private Detailing_Adapter detailingAdapter;
-    private MicroFibres_Adapter microFibresAdapter;
-    private Washers_Adapter washersAdapter;
-    private WiperBlades_Adapter wiperBladesAdapter;
+    private BackCushions_Adapter backCushionsAdapter;
     private ArrayList<AirFreshner_ModelClass> airfreshnerList= new ArrayList<>();
-    private ArrayList<CleaningKit_ModelClass> cleaningkitList= new ArrayList<>();
-    private ArrayList<Cleaners_ModelClass> cleansersList= new ArrayList<>();
-    private ArrayList<Detailing_ModelClass> detailingList= new ArrayList<>();
-    private ArrayList<MicroFibres_ModelClass> microfibresList= new ArrayList<>();
-    private ArrayList<Washers_ModelClass> washersList= new ArrayList<>();
-    private ArrayList<WiperBlades_ModelClass> wiperbladesList= new ArrayList<>();
+    private ArrayList<BackCushion_ModelClass> backcushionList= new ArrayList<>();
     private  FloormatCushions_Adapter floormatCushionsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +88,35 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
                 Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+
+        ////////////////////////    BACK CUSHIONS
+        binding.rvItemsBackCushions.setAdapter(backCushionsAdapter);
+
+        binding.rvItemsBackCushions.setHasFixedSize(true);
+        binding.rvItemsBackCushions.setLayoutManager(new LinearLayoutManager(this));
+
+        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("BackCushions").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                backcushionList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    BackCushion_ModelClass ap = dataSnapshot.getValue(BackCushion_ModelClass.class);
+                    backcushionList.add(ap);
+                }
+
+                backCushionsAdapter =new BackCushions_Adapter(user_View_FloormatsCushions.this,backcushionList, snapshot.getKey());
+                binding.rvItemsBackCushions.setAdapter(backCushionsAdapter);
+
+                backCushionsAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ////////////////////////    MATS
+        ////////////////////////    NECK CUSHIONS
     }
 
     @Override
