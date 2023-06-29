@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityUserViewCarecarePurifiersBinding;
@@ -25,8 +26,12 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
     private ArrayList<materialButton> list=new ArrayList<>();
     private AirFreshner_Adapter airFreshnerAdapter;
     private BackCushions_Adapter backCushionsAdapter;
+    private Mats_Adapter matsAdapter;
+    private NeckCushions_Adapter neckCushionsAdapter;
     private ArrayList<AirFreshner_ModelClass> airfreshnerList= new ArrayList<>();
     private ArrayList<BackCushion_ModelClass> backcushionList= new ArrayList<>();
+    private ArrayList<Mats_ModelClass> matsList= new ArrayList<>();
+    private ArrayList<NeckCushions_ModelClass> neckcushionList= new ArrayList<>();
     private  FloormatCushions_Adapter floormatCushionsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +121,57 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
         });
 
         ////////////////////////    MATS
+        binding.rvItemsMats.setAdapter(matsAdapter);
+
+        binding.rvItemsMats.setHasFixedSize(true);
+        binding.rvItemsMats.setLayoutManager(new LinearLayoutManager(this));
+
+        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                matsList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Mats_ModelClass ap = dataSnapshot.getValue(Mats_ModelClass.class);
+                    matsList.add(ap);
+                }
+
+                matsAdapter =new Mats_Adapter(user_View_FloormatsCushions.this,matsList, snapshot.getKey());
+                binding.rvItemsMats.setAdapter(matsAdapter);
+
+                matsAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
         ////////////////////////    NECK CUSHIONS
+        binding.rvItemsNeckCushions.setAdapter(neckCushionsAdapter);
+
+        binding.rvItemsNeckCushions.setHasFixedSize(true);
+        binding.rvItemsNeckCushions.setLayoutManager(new LinearLayoutManager(this));
+
+        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("NeckCushions").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                neckcushionList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    NeckCushions_ModelClass ap = dataSnapshot.getValue(NeckCushions_ModelClass.class);
+                    neckcushionList.add(ap);
+                }
+
+                neckCushionsAdapter =new NeckCushions_Adapter(user_View_FloormatsCushions.this,neckcushionList, snapshot.getKey());
+                binding.rvItemsNeckCushions.setAdapter(neckCushionsAdapter);
+
+                neckCushionsAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
@@ -126,6 +181,60 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
 
     @Override
     public void onClickItem(String Model) {
+        if (Model.equalsIgnoreCase("All")){
+            binding.rv.setVisibility(View.GONE);
+            binding.scrollViewItems.setVisibility(View.VISIBLE);
+        }else {
+            binding.rv.setVisibility(View.VISIBLE);
+            binding.scrollViewItems.setVisibility(View.GONE);
+            binding.rv.setLayoutManager(new LinearLayoutManager(this));
+            databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child(Model).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (Model.equalsIgnoreCase("AirFreshner")){
+                        airfreshnerList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            AirFreshner_ModelClass ss = dataSnapshot.getValue(AirFreshner_ModelClass.class);
+                            airfreshnerList.add(ss);
+                        }
+                        binding.rv.setAdapter(airFreshnerAdapter);
+                        airFreshnerAdapter.notifyDataSetChanged();
+                    }
+                    else if (Model.equalsIgnoreCase("BackCushions")) {
+                        backcushionList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            BackCushion_ModelClass ss = dataSnapshot.getValue(BackCushion_ModelClass.class);
+                            backcushionList.add(ss);
+                        }
+                        binding.rv.setAdapter(backCushionsAdapter);
+                        backCushionsAdapter.notifyDataSetChanged();
+                    }
+                    else if (Model.equalsIgnoreCase("Mats")) {
+                        matsList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Mats_ModelClass ss = dataSnapshot.getValue(Mats_ModelClass.class);
+                            matsList.add(ss);
+                        }
+                        binding.rv.setAdapter(matsAdapter);
+                        matsAdapter.notifyDataSetChanged();
+                    }
+                    else if (Model.equalsIgnoreCase("NeckCushions")) {
+                        neckcushionList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            NeckCushions_ModelClass ss = dataSnapshot.getValue(NeckCushions_ModelClass.class);
+                            neckcushionList.add(ss);
+                        }
+                        binding.rv.setAdapter(neckCushionsAdapter);
+                        neckCushionsAdapter.notifyDataSetChanged();
+                    }
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
     }
 }

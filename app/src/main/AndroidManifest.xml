@@ -23,6 +23,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".fulldetails_Mats"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_NeckCushions"
+            android:exported="false" />
+        <activity
             android:name=".fulldetails_BackCushions"
             android:exported="false" />
         <activity
