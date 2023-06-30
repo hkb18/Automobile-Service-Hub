@@ -28,7 +28,8 @@ public class admin_add_LightsChargers extends AppCompatActivity {
             startActivity(i);
         });
         binding.btnMobileHolder.setOnClickListener(view -> {
-            
+            Intent i = new Intent(getApplicationContext(),admin_add_MobileHolder.class);
+            startActivity(i);
         });
     }
 }
