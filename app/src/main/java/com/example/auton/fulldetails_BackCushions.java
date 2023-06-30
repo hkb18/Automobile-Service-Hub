@@ -90,12 +90,12 @@ public class fulldetails_BackCushions extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String qtyStr=snapshot.child("Quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
-                    qty--;
+                   // qty--;
                     if (qty<=0){
                         Toast.makeText(fulldetails_BackCushions.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                     }else {
                         databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("BackCushions").child(modelStr).child("Quantity").setValue(qty.toString());
+                       // databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("BackCushions").child(modelStr).child("Quantity").setValue(qty.toString());
                         Intent i=new Intent(getApplicationContext(),user_HomePage.class);
                         i.putExtra("Username", s1);
                         i.putExtra("iscart", "1");
