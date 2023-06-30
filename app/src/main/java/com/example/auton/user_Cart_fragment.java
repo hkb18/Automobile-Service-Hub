@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -140,8 +139,14 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
 
     @Override
     public void add(String quantity, int position) {
+
         Integer qty=Integer.parseInt(quantity);
+        Integer totalQty=Integer.parseInt(list.get(position).getTotalQty());
         qty++;
+        if(qty> totalQty){
+            Toast.makeText(requireContext(), "Not enough products", Toast.LENGTH_SHORT).show();
+            qty--;
+        }
         list.get(position).setQuantity(""+qty);
         cart_adapter.notifyDataSetChanged();
     }

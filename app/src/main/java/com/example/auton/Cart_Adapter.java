@@ -44,6 +44,11 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.ViewHold> {
         holder.qty.setText(ss.getQuantity());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.imageView);
+
+        holder.imageView.setOnClickListener(view -> {
+
+        });
+
         holder.delete.setOnClickListener(view -> {
             user_Cart_fragment.onClickInterface.delmech(ss.getKey(),position);
 
