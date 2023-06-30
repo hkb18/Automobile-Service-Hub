@@ -199,6 +199,8 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     databaseReference.child("PURCHASED_ACCESSORIES").child(s1).child(databaseReference.push().getKey()).setValue(data);
+                    Intent i = new Intent(getApplicationContext(), user_HomePage.class);
+                    startActivity(i);
                     Toast.makeText(RazorPay.this, "Accessory Purchased Successfully", Toast.LENGTH_SHORT).show();
                 }
 
@@ -226,6 +228,8 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
                     Toast.makeText(getApplicationContext(), "Service Successfully Booked", Toast.LENGTH_SHORT).show();
+                    /*Intent i = new Intent(getApplicationContext(), user_HomePage.class);
+                    startActivity(i);*/
                 }
 
                 @Override
@@ -255,6 +259,8 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     databaseReference.child("Service").child(s1).child(pk).child("Image").setValue(imgStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
                     Toast.makeText(getApplicationContext(), "Service Successfully Booked", Toast.LENGTH_SHORT).show();
+                    /*Intent i = new Intent(getApplicationContext(), user_HomePage.class);
+                    startActivity(i);*/
 
                 }
 
