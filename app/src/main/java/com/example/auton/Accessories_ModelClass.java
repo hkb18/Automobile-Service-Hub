@@ -1,12 +1,11 @@
 package com.example.auton;
 
 public class Accessories_ModelClass {
-    String Color,Design,Dimension,Frequency,Image,Manufacturer,Model,PowerOutput,Price,Quantity,SalientFeature,Sensitivity,Weight,ItemForm,Dimenension,Duration,Fragrence,ItemsIncluded,OperatingVoltage,Warrenty,Channel,MaxVoltage,MountingHardware,ItemIncluded,Feature,BoxIncludes,Brand,Category,Volume,key,BoxIncluded,Watttage,BulbType,Position,Material,Pattern,FabricType,MaterialType,Diameter,Quality,SpeakerType,HoseLength,MaxPressure,Lumens,Voltage,NoiseLevel,FitType;
-
+    String Color,Design,Dimension,Frequency,Image,Manufacturer,Model,PowerOutput,Price,Quantity,SalientFeature,Sensitivity,Weight,ItemForm,Dimenension,Duration,Fragrence,ItemsIncluded,OperatingVoltage,Warrenty,Channel,MaxVoltage,MountingHardware,ItemIncluded,Feature,BoxIncludes,Brand,Category,Volume,key,BoxIncluded,Watttage,BulbType,Position,Material,Pattern,FabricType,MaterialType,Diameter,Quality,SpeakerType,HoseLength,MaxPressure,Lumens,Voltage,NoiseLevel,FitType,RAM,ROM,DisplayType,OSType,ScreenSize;
     public Accessories_ModelClass() {
     }
 
-    public Accessories_ModelClass(String color, String design, String dimension, String frequency, String image, String manufacturer, String model, String powerOutput, String price, String quantity, String salientFeature, String sensitivity, String weight, String itemForm, String dimenension, String duration, String fragrence, String itemsIncluded, String operatingVoltage, String warrenty, String channel, String maxVoltage, String mountingHardware, String itemIncluded, String feature, String boxIncludes, String brand, String category, String volume, String key, String boxIncluded, String watttage, String bulbType, String position, String material, String pattern, String fabricType, String materialType, String diameter, String quality, String speakerType, String hoseLength, String maxPressure, String lumens, String voltage, String noiseLevel, String fitType) {
+    public Accessories_ModelClass(String color, String design, String dimension, String frequency, String image, String manufacturer, String model, String powerOutput, String price, String quantity, String salientFeature, String sensitivity, String weight, String itemForm, String dimenension, String duration, String fragrence, String itemsIncluded, String operatingVoltage, String warrenty, String channel, String maxVoltage, String mountingHardware, String itemIncluded, String feature, String boxIncludes, String brand, String category, String volume, String key, String boxIncluded, String watttage, String bulbType, String position, String material, String pattern, String fabricType, String materialType, String diameter, String quality, String speakerType, String hoseLength, String maxPressure, String lumens, String voltage, String noiseLevel, String fitType, String RAM, String ROM, String displayType, String OSType, String screenSize) {
         Color = color;
         Design = design;
         Dimension = dimension;
@@ -54,6 +53,11 @@ public class Accessories_ModelClass {
         Voltage = voltage;
         NoiseLevel = noiseLevel;
         FitType = fitType;
+        this.RAM = RAM;
+        this.ROM = ROM;
+        DisplayType = displayType;
+        this.OSType = OSType;
+        ScreenSize = screenSize;
     }
 
     public String getColor() {
@@ -430,5 +434,45 @@ public class Accessories_ModelClass {
 
     public void setFitType(String fitType) {
         FitType = fitType;
+    }
+
+    public String getRAM() {
+        return RAM;
+    }
+
+    public void setRAM(String RAM) {
+        this.RAM = RAM;
+    }
+
+    public String getROM() {
+        return ROM;
+    }
+
+    public void setROM(String ROM) {
+        this.ROM = ROM;
+    }
+
+    public String getDisplayType() {
+        return DisplayType;
+    }
+
+    public void setDisplayType(String displayType) {
+        DisplayType = displayType;
+    }
+
+    public String getOSType() {
+        return OSType;
+    }
+
+    public void setOSType(String OSType) {
+        this.OSType = OSType;
+    }
+
+    public String getScreenSize() {
+        return ScreenSize;
+    }
+
+    public void setScreenSize(String screenSize) {
+        ScreenSize = screenSize;
     }
 }
