@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class fulldetails_WiperBlades extends AppCompatActivity {
     private ActivityFulldetailsWiperBladesBinding binding;
     DatabaseReference databaseReference;
@@ -80,14 +82,41 @@ public class fulldetails_WiperBlades extends AppCompatActivity {
 
         binding.btnWiperbladesCart.setOnClickListener(view -> {
             cart_ModelClass modelClass=new cart_ModelClass();
-            String key=databaseReference.push().getKey();
+            String keyz=databaseReference.push().getKey();
             modelClass.setModel(modelStr);
             modelClass.setImage(imageStr);
             modelClass.setMaufacturer(brandStr);
             modelClass.setQuantity("1");
             modelClass.setUsername(s1);
-            modelClass.setKey(key);
+            modelClass.setKey(keyz);
             modelClass.setPrice(priceStr);
+            modelClass.setProductKey(key);
+            databaseReference.child("CART").child(s1).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                    ArrayList<cart_ModelClass> list = new ArrayList<>();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        list.add(dataSnapshot.getValue(cart_ModelClass.class));
+                    }
+                    for (cart_ModelClass x : list) {
+                        if (x.getProductKey().equals(key)) {
+                            Integer tempQty = Integer.parseInt(x.getQuantity());
+                            tempQty++;
+                            modelClass.setQuantity(tempQty.toString());
+                        } else  {
+                            modelClass.setQuantity("1");
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
             databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {

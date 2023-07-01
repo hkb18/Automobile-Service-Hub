@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class fulldetails_Detailing extends AppCompatActivity {
     private ActivityFulldetailsDetailingBinding binding;
     DatabaseReference databaseReference;
@@ -89,6 +91,35 @@ public class fulldetails_Detailing extends AppCompatActivity {
             modelClass.setUsername(s1);
             modelClass.setKey(keyz);
             modelClass.setPrice(priceStr);
+            modelClass.setProductKey(key);
+
+            databaseReference.child("CART").child(s1).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                    ArrayList<cart_ModelClass> list = new ArrayList<>();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        list.add(dataSnapshot.getValue(cart_ModelClass.class));
+                    }
+                    for (cart_ModelClass x : list) {
+                        if (x.getProductKey().equals(key)) {
+                            Integer tempQty = Integer.parseInt(x.getQuantity());
+                            tempQty++;
+                            modelClass.setQuantity(tempQty.toString());
+                        } else  {
+                            modelClass.setQuantity("1");
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+
             databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
