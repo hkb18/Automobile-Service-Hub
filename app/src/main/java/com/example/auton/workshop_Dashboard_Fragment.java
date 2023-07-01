@@ -155,26 +155,30 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
 
     @Override
     public void accept(String username, String key, int position, String userLat, String userLong) {
-        databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(true);
-        myAdapter.notifyDataSetChanged();
+        try {
+            databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(true);
+            myAdapter.notifyDataSetChanged();
 
 
-        ArrayList<Mechanic> mechanicList = new ArrayList<>();
-        databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                mechanicList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Mechanic mechanic = dataSnapshot.getValue(Mechanic.class);
-                    mechanicList.add(mechanic);
+            ArrayList<Mechanic> mechanicList = new ArrayList<>();
+            databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    mechanicList.clear();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Mechanic mechanic = dataSnapshot.getValue(Mechanic.class);
+                        mechanicList.add(mechanic);
+                    }
+                    showpopup(mechanicList, username, key, userLat, userLong);
                 }
-                showpopup(mechanicList, username, key, userLat, userLong);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(requireContext(), "NO MECHANIC FOUND..Add Mechanics", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

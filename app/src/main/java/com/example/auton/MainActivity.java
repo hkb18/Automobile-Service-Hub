@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
                                     if (getPassword.equals(passwordStr)){
                                         SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
                                         SharedPreferences.Editor editor=sh.edit();
+                                        editor.putString("Username", usernameStr);
+                                        editor.commit();
                                         Intent i=new Intent(getApplicationContext(),admin_HomePage.class);
                                         startActivity(i);
                                         Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
@@ -70,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
                                 else if (getPassword.equals(passwordStr)){
                                     SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
                                     SharedPreferences.Editor editor=sh.edit();
+                                    editor.putString("Username", usernameStr);
+                                    editor.commit();
                                     Intent i=new Intent(getApplicationContext(),user_HomePage.class);
                                     i.putExtra("Username", usernameStr);// username passing
                                     startActivity(i);
@@ -95,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                                 if (getPassword.equals(passwordStr)){
                                     SharedPreferences sharedPreferences=getSharedPreferences("MySharedPreferences1",MODE_PRIVATE);
                                     SharedPreferences.Editor myEdit=sharedPreferences.edit();
+                                    myEdit.putString("Username", usernameStr);
+                                    myEdit.commit();
                                     Intent i=new Intent(getApplicationContext(),workshop_HomePage.class);
                                     startActivity(i);
                                     Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
