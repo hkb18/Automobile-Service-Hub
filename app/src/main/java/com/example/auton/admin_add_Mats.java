@@ -151,7 +151,7 @@ public class admin_add_Mats extends AppCompatActivity {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").child(modelStr).child("Image").setValue(uri.toString());
+                      /*  databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").child(modelStr).child("Image").setValue(uri.toString());
                         databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").child(modelStr).child("Model").setValue(modelStr);
                         databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").child(modelStr).child("Material").setValue(materialStr);
                         databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").child(modelStr).child("Color").setValue(colorStr);
@@ -160,6 +160,65 @@ public class admin_add_Mats extends AppCompatActivity {
                         databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
                         databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").child(modelStr).child("Price").setValue(priceStr);
                         databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").child(modelStr).child("Quantity").setValue(quantityStr);
+
+                     */
+                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+                        modelClass.setBoxIncluded("");
+                        // modelClass.setBoxIncludes();
+                        modelClass.setBrand("");
+                        modelClass.setBulbType("");
+                        modelClass.setColor(colorStr);
+                        modelClass.setChannel("");
+                        modelClass.setCategory("");
+                        modelClass.setDesign("");
+                        modelClass.setDimension("");
+                        // modelClass.setDimenension();
+                        modelClass.setDuration("");
+                        modelClass.setDiameter("");
+                        modelClass.setDisplayType("");
+                        modelClass.setFrequency("");
+                        modelClass.setFragrence("");
+                        modelClass.setFeature(featureStr);
+                        modelClass.setFabricType("");
+                        modelClass.setFitType("");
+                        modelClass.setHoseLength("");
+                        modelClass.setImage(uri.toString());
+                        modelClass.setItemForm("");
+                        modelClass.setItemsIncluded("");
+                        // modelClass.setItemIncluded();
+                        modelClass.setKey("");
+                        modelClass.setLumens("");
+                        modelClass.setManufacturer(manufacturerStr);
+                        modelClass.setModel(modelStr);
+                        modelClass.setMaxVoltage("");
+                        modelClass.setMountingHardware("");
+                        modelClass.setMaterial(materialStr);
+                        modelClass.setMaterialType("");
+                        modelClass.setMaxPressure("");
+                        modelClass.setNoiseLevel("");
+                        modelClass.setOperatingVoltage("");
+                        modelClass.setOSType("");
+                        modelClass.setPowerOutput("");
+                        modelClass.setPrice(priceStr);
+                        modelClass.setPosition("");
+                        modelClass.setPattern(patternStr);
+                        modelClass.setQuantity(quantityStr);
+                        modelClass.setQuality("");
+                        modelClass.setRAM("");
+                        modelClass.setROM("");
+                        modelClass.setSalientFeature("");
+                        modelClass.setSensitivity("");
+                        modelClass.setSpeakerType("");
+                        modelClass.setScreenSize("");
+                        modelClass.setVolume("");
+                        modelClass.setVoltage("");
+                        modelClass.setWeight("");
+                        modelClass.setWarrenty("");
+                        modelClass.setWattage("");
+                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").child(modelStr).setValue(modelClass);
+
+
+
                         Toast.makeText(admin_add_Mats.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
 
                     }

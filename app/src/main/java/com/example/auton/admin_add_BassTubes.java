@@ -193,7 +193,7 @@ public class admin_add_BassTubes extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
                         AndroidScreen_Model model= new AndroidScreen_Model(uri.toString());
 //                        String modelid=databaseReference.push().getKey();//to generate random key
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Image").setValue(uri.toString());
+                        /*databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Image").setValue(uri.toString());
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Model").setValue(modelStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Dimension").setValue(dimensionStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("PowerOutput").setValue(poweroutputStr);
@@ -206,9 +206,63 @@ public class admin_add_BassTubes extends AppCompatActivity {
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Price").setValue(priceStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Quantity").setValue(quantityStr);
+*/
+                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+                        modelClass.setBoxIncluded("");
+                        // modelClass.setBoxIncludes();
+                        modelClass.setBrand("");
+                        modelClass.setBulbType("");
+                        modelClass.setColor(colorStr);
+                        modelClass.setChannel("");
+                        modelClass.setCategory("");
+                        modelClass.setDesign(designStr);
+                        modelClass.setDimension(dimensionStr);
+                        // modelClass.setDimenension();
+                        modelClass.setDuration("");
+                        modelClass.setDiameter("");
+                        modelClass.setDisplayType("");
+                        modelClass.setFrequency(frequencyStr);
+                        modelClass.setFragrence("");
+                        modelClass.setFeature("");
+                        modelClass.setFabricType("");
+                        modelClass.setFitType("");
+                        modelClass.setHoseLength("");
+                        modelClass.setImage(uri.toString());
+                        modelClass.setItemForm("");
+                        modelClass.setItemsIncluded("");
+                        // modelClass.setItemIncluded();
+                        modelClass.setKey("");
+                        modelClass.setLumens("");
+                        modelClass.setManufacturer(manufacturerStr);
+                        modelClass.setModel(modelStr);
+                        modelClass.setMaxVoltage("");
+                        modelClass.setMountingHardware("");
+                        modelClass.setMaterial("");
+                        modelClass.setMaterialType("");
+                        modelClass.setMaxPressure("");
+                        modelClass.setNoiseLevel("");
+                        modelClass.setOperatingVoltage("");
+                        modelClass.setOSType("");
+                        modelClass.setPowerOutput(poweroutputStr);
+                        modelClass.setPrice(priceStr);
+                        modelClass.setPosition("");
+                        modelClass.setPattern("");
+                        modelClass.setQuantity(quantityStr);
+                        modelClass.setQuality("");
+                        modelClass.setRAM("");
+                        modelClass.setROM("");
+                        modelClass.setSalientFeature(salientfeatureStr);
+                        modelClass.setSensitivity(sensitivityStr);
+                        modelClass.setSpeakerType("");
+                        modelClass.setScreenSize("");
+                        modelClass.setVolume("");
+                        modelClass.setVoltage("");
+                        modelClass.setWeight(weightStr);
+                        modelClass.setWarrenty("");
+                        modelClass.setWattage("");
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).setValue(modelClass);
 
-
-                        Log.e("", "Img: "+model+""+modelStr+manufacturerStr+dimensionStr+poweroutputStr+frequencyStr+sensitivityStr+salientfeatureStr+weightStr+colorStr+designStr+priceStr+quantityStr);
+//                        Log.e("", "Img: "+model+""+modelStr+manufacturerStr+dimensionStr+poweroutputStr+frequencyStr+sensitivityStr+salientfeatureStr+weightStr+colorStr+designStr+priceStr+quantityStr);
                         Toast.makeText(admin_add_BassTubes.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
 
                     }

@@ -1,11 +1,12 @@
 package com.example.auton;
 
 public class Accessories_ModelClass {
-    String Color,Design,Dimension,Frequency,Image,Manufacturer,Model,PowerOutput,Price,Quantity,SalientFeature,Sensitivity,Weight,ItemForm,Dimenension,Duration,Fragrence,ItemsIncluded,OperatingVoltage,Warrenty,Channel,MaxVoltage,MountingHardware,ItemIncluded,Feature,BoxIncludes,Brand,Category,Volume,key,BoxIncluded,Watttage,BulbType,Position,Material,Pattern,FabricType,MaterialType,Diameter,Quality,SpeakerType,HoseLength,MaxPressure,Lumens,Voltage,NoiseLevel,FitType,RAM,ROM,DisplayType,OSType,ScreenSize;
+    String Color, Design, Dimension, Frequency, Image, Manufacturer, Model, PowerOutput, Price, Quantity, SalientFeature, Sensitivity, Weight, ItemForm, Dimenension, Duration, Fragrence, ItemsIncluded, OperatingVoltage, Warrenty, Channel, MaxVoltage, MountingHardware, ItemIncluded, Feature, BoxIncludes, Brand, Category, Volume, key, BoxIncluded, Wattage, BulbType, Position, Material, Pattern, FabricType, MaterialType, Diameter, Quality, SpeakerType, HoseLength, MaxPressure, Lumens, Voltage, NoiseLevel, FitType, RAM, ROM, DisplayType, OSType, ScreenSize;
+
     public Accessories_ModelClass() {
     }
 
-    public Accessories_ModelClass(String color, String design, String dimension, String frequency, String image, String manufacturer, String model, String powerOutput, String price, String quantity, String salientFeature, String sensitivity, String weight, String itemForm, String dimenension, String duration, String fragrence, String itemsIncluded, String operatingVoltage, String warrenty, String channel, String maxVoltage, String mountingHardware, String itemIncluded, String feature, String boxIncludes, String brand, String category, String volume, String key, String boxIncluded, String watttage, String bulbType, String position, String material, String pattern, String fabricType, String materialType, String diameter, String quality, String speakerType, String hoseLength, String maxPressure, String lumens, String voltage, String noiseLevel, String fitType, String RAM, String ROM, String displayType, String OSType, String screenSize) {
+    public Accessories_ModelClass(String color, String design, String dimension, String frequency, String image, String manufacturer, String model, String powerOutput, String price, String quantity, String salientFeature, String sensitivity, String weight, String itemForm, String dimenension, String duration, String fragrence, String itemsIncluded, String operatingVoltage, String warrenty, String channel, String maxVoltage, String mountingHardware, String itemIncluded, String feature, String boxIncludes, String brand, String category, String volume, String key, String boxIncluded, String wattage, String bulbType, String position, String material, String pattern, String fabricType, String materialType, String diameter, String quality, String speakerType, String hoseLength, String maxPressure, String lumens, String voltage, String noiseLevel, String fitType, String RAM, String ROM, String displayType, String OSType, String screenSize) {
         Color = color;
         Design = design;
         Dimension = dimension;
@@ -37,7 +38,7 @@ public class Accessories_ModelClass {
         Volume = volume;
         this.key = key;
         BoxIncluded = boxIncluded;
-        Watttage = watttage;
+        Wattage = wattage;
         BulbType = bulbType;
         Position = position;
         Material = material;
@@ -308,12 +309,12 @@ public class Accessories_ModelClass {
         BoxIncluded = boxIncluded;
     }
 
-    public String getWatttage() {
-        return Watttage;
+    public String getWattage() {
+        return Wattage;
     }
 
-    public void setWatttage(String watttage) {
-        Watttage = watttage;
+    public void setWattage(String wattage) {
+        Wattage = wattage;
     }
 
     public String getBulbType() {

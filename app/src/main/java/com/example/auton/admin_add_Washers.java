@@ -143,7 +143,7 @@ public class admin_add_Washers extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
 
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).child("Image").setValue(uri.toString());
+                      /*  databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).child("Image").setValue(uri.toString());
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).child("MaxPressure").setValue(maxpressureStr);
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).child("HoseLength").setValue(hoselengthStr);
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).child("Dimension").setValue(dimensionStr);
@@ -154,6 +154,62 @@ public class admin_add_Washers extends AppCompatActivity {
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).child("Price").setValue(priceStr);
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).child("Quantity").setValue(quantityStr);
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).child("Model").setValue(modelStr);
+*/
+                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+                        modelClass.setBoxIncluded("");
+                        // modelClass.setBoxIncludes();
+                        modelClass.setBrand("");
+                        modelClass.setBulbType("");
+                        modelClass.setColor(colorStr);
+                        modelClass.setChannel("");
+                        modelClass.setCategory("");
+                        modelClass.setDesign("");
+                        modelClass.setDimension(dimensionStr);
+                        // modelClass.setDimenension();
+                        modelClass.setDuration("");
+                        modelClass.setDiameter("");
+                        modelClass.setDisplayType("");
+                        modelClass.setFrequency("");
+                        modelClass.setFragrence("");
+                        modelClass.setFeature("");
+                        modelClass.setFabricType("");
+                        modelClass.setFitType("");
+                        modelClass.setHoseLength(hoselengthStr);
+                        modelClass.setImage(uri.toString());
+                        modelClass.setItemForm("");
+                        modelClass.setItemsIncluded("");
+                        // modelClass.setItemIncluded();
+                        modelClass.setKey("");
+                        modelClass.setLumens("");
+                        modelClass.setManufacturer(manufacturerStr);
+                        modelClass.setModel(modelStr);
+                        modelClass.setMaxVoltage("");
+                        modelClass.setMountingHardware("");
+                        modelClass.setMaterial("");
+                        modelClass.setMaterialType("");
+                        modelClass.setMaxPressure(maxpressureStr);
+                        modelClass.setNoiseLevel("");
+                        modelClass.setOperatingVoltage("");
+                        modelClass.setOSType("");
+                        modelClass.setPowerOutput(poweroutputStr);
+                        modelClass.setPrice(priceStr);
+                        modelClass.setPosition("");
+                        modelClass.setPattern("");
+                        modelClass.setQuantity(quantityStr);
+                        modelClass.setQuality("");
+                        modelClass.setRAM("");
+                        modelClass.setROM("");
+                        modelClass.setSalientFeature("");
+                        modelClass.setSensitivity("");
+                        modelClass.setSpeakerType("");
+                        modelClass.setScreenSize("");
+                        modelClass.setVolume("");
+                        modelClass.setVoltage("");
+                        modelClass.setWeight(weightStr);
+                        modelClass.setWarrenty("");
+                        modelClass.setWattage("");
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).setValue(modelClass);
+
 
                         Toast.makeText(admin_add_Washers.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
                     }

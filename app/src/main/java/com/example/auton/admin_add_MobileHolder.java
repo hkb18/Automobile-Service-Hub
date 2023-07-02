@@ -152,7 +152,7 @@ public class admin_add_MobileHolder extends AppCompatActivity {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").child(modelStr).child("Image").setValue(uri.toString());
+                       /* databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").child(modelStr).child("Image").setValue(uri.toString());
                         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").child(modelStr).child("Model").setValue(modelStr);
                         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").child(modelStr).child("Dimension").setValue(dimensionStr);
                         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").child(modelStr).child("Weight").setValue(weightStr);
@@ -161,6 +161,68 @@ public class admin_add_MobileHolder extends AppCompatActivity {
                         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
                         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").child(modelStr).child("Price").setValue(priceStr);
                         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").child(modelStr).child("Quantity").setValue(quantityStr);
+                      */
+                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+                        modelClass.setBoxIncluded("");
+                        // modelClass.setBoxIncludes();
+                        modelClass.setBrand("");
+                        modelClass.setBulbType("");
+                        modelClass.setColor(colorStr);
+                        modelClass.setChannel("");
+                        modelClass.setCategory("");
+                        modelClass.setDesign("");
+                        modelClass.setDimension(dimensionStr);
+                        // modelClass.setDimenension();
+                        modelClass.setDuration("");
+                        modelClass.setDiameter("");
+                        modelClass.setDisplayType("");
+                        modelClass.setFrequency("");
+                        modelClass.setFragrence("");
+                        modelClass.setFeature("");
+                        modelClass.setFabricType("");
+                        modelClass.setFitType("");
+                        modelClass.setHoseLength("");
+                        modelClass.setImage(uri.toString());
+                        modelClass.setItemForm("");
+                        modelClass.setItemsIncluded(itemincludedStr);
+                        // modelClass.setItemIncluded();
+                        modelClass.setKey("");
+                        modelClass.setLumens("");
+                        modelClass.setManufacturer(manufacturerStr);
+                        modelClass.setModel(modelStr);
+                        modelClass.setMaxVoltage("");
+                        modelClass.setMountingHardware("");
+                        modelClass.setMaterial("");
+                        modelClass.setMaterialType("");
+                        modelClass.setMaxPressure("");
+                        modelClass.setNoiseLevel("");
+                        modelClass.setOperatingVoltage("");
+                        modelClass.setOSType("");
+                        modelClass.setPowerOutput("");
+                        modelClass.setPrice(priceStr);
+                        modelClass.setPosition("");
+                        modelClass.setPattern("");
+                        modelClass.setQuantity(quantityStr);
+                        modelClass.setQuality("");
+                        modelClass.setRAM("");
+                        modelClass.setROM("");
+                        modelClass.setSalientFeature("");
+                        modelClass.setSensitivity("");
+                        modelClass.setSpeakerType("");
+                        modelClass.setScreenSize("");
+                        modelClass.setVolume("");
+                        modelClass.setVoltage("");
+                        modelClass.setWeight(weightStr);
+                        modelClass.setWarrenty("");
+                        modelClass.setWattage("");
+                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").child(modelStr).setValue(modelClass);
+
+
+
+
+
+
+
                         Toast.makeText(admin_add_MobileHolder.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
                     }
                 });

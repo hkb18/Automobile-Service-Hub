@@ -140,7 +140,7 @@ public class admin_add_WiperBlades extends AppCompatActivity {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).child("Image").setValue(uri.toString());
+                    /*    databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).child("Image").setValue(uri.toString());
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).child("Dimension").setValue(dimensionStr);
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).child("Model").setValue(modelStr);
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).child("Material").setValue(materialStr);
@@ -149,6 +149,61 @@ public class admin_add_WiperBlades extends AppCompatActivity {
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).child("Weight").setValue(weightStr);
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).child("Brand").setValue(brandStr);
                         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).child("Price").setValue(priceStr);
+*/
+                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+                        modelClass.setBoxIncluded("");
+                        // modelClass.setBoxIncludes();
+                        modelClass.setBrand(brandStr);
+                        modelClass.setBulbType("");
+                        modelClass.setColor("");
+                        modelClass.setChannel("");
+                        modelClass.setCategory("");
+                        modelClass.setDesign("");
+                        modelClass.setDimension(dimensionStr);
+                        // modelClass.setDimenension();
+                        modelClass.setDuration("");
+                        modelClass.setDiameter("");
+                        modelClass.setDisplayType("");
+                        modelClass.setFrequency("");
+                        modelClass.setFragrence("");
+                        modelClass.setFeature("");
+                        modelClass.setFabricType("");
+                        modelClass.setFitType("");
+                        modelClass.setHoseLength("");
+                        modelClass.setImage(uri.toString());
+                        modelClass.setItemForm("");
+                        modelClass.setItemsIncluded("");
+                        // modelClass.setItemIncluded();
+                        modelClass.setKey("");
+                        modelClass.setLumens("");
+                        modelClass.setManufacturer("");
+                        modelClass.setModel(modelStr);
+                        modelClass.setMaxVoltage("");
+                        modelClass.setMountingHardware("");
+                        modelClass.setMaterial(materialStr);
+                        modelClass.setMaterialType("");
+                        modelClass.setMaxPressure("");
+                        modelClass.setNoiseLevel("");
+                        modelClass.setOperatingVoltage("");
+                        modelClass.setOSType("");
+                        modelClass.setPowerOutput("");
+                        modelClass.setPrice(priceStr);
+                        modelClass.setPosition(positionStr);
+                        modelClass.setPattern("");
+                        modelClass.setQuantity(quantityStr);
+                        modelClass.setQuality("");
+                        modelClass.setRAM("");
+                        modelClass.setROM("");
+                        modelClass.setSalientFeature("");
+                        modelClass.setSensitivity("");
+                        modelClass.setSpeakerType("");
+                        modelClass.setScreenSize("");
+                        modelClass.setVolume("");
+                        modelClass.setVoltage("");
+                        modelClass.setWeight(weightStr);
+                        modelClass.setWarrenty("");
+                        modelClass.setWattage("");
+                        databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).setValue(modelClass);
 
                         Toast.makeText(admin_add_WiperBlades.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
                     }

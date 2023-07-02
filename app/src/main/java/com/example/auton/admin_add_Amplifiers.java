@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.auton.databinding.ActivityAdminAddAmplifiersBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -33,50 +34,37 @@ import java.util.Date;
 import java.util.Locale;
 
 public class admin_add_Amplifiers extends AppCompatActivity {
-    Button add,select;
+    private ActivityAdminAddAmplifiersBinding binding;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
-    ImageView imageView;
     StorageReference storageReference;
     Uri imageUri;
     String fileName;
-    TextInputEditText textInputEditTextModel,textInputEditTextMaxVoltage,textInputEditTextMountingHardware,textInputEditTextDimension,textInputEditTextChannels,textInputEditTextWeight,textInputEditTextManufacturer,textInputEditTextPrice,textInputEditTextQuantity;
     String modelStr,maxVoltageStr,mountingHardwareStr,dimensionStr,channelStr,weightStr,manufacturerStr,priceStr,quantityStr;
     DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_amplifiers);
+        binding=ActivityAdminAddAmplifiersBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         progressBar = new ProgressBar(this);
-        add=findViewById(R.id.btn_add_Amplifier);
-        textInputEditTextModel=findViewById(R.id.amplifierModel);
-        textInputEditTextMaxVoltage=findViewById(R.id.amplifierMaxVoltage);
-        textInputEditTextMountingHardware=findViewById(R.id.amplifierMountingHardware);
-        textInputEditTextDimension=findViewById(R.id.amplifierDimensions);
-        textInputEditTextChannels=findViewById(R.id.amplifierChannels);
-        textInputEditTextWeight=findViewById(R.id.amplifierWeight);
-        textInputEditTextManufacturer=findViewById(R.id.amplifierManufacturer);
-        textInputEditTextPrice=findViewById(R.id.amplifierPrice);
-        textInputEditTextQuantity=findViewById(R.id.amplifierQuantity);
-        imageView=findViewById(R.id.ivAmplifier);
-        select=findViewById(R.id.btn_selectImgAmplifier);
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
-        add.setOnClickListener(new View.OnClickListener() {
+        binding.btnAddAmplifier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                modelStr=textInputEditTextModel.getText().toString();
-                maxVoltageStr=textInputEditTextMaxVoltage.getText().toString();
-                mountingHardwareStr=textInputEditTextMountingHardware.getText().toString();
-                dimensionStr=textInputEditTextDimension.getText().toString();
-                channelStr=textInputEditTextChannels.getText().toString();
-                weightStr=textInputEditTextWeight.getText().toString();
-                manufacturerStr=textInputEditTextManufacturer.getText().toString();
-                priceStr=textInputEditTextPrice.getText().toString();
-                quantityStr=textInputEditTextQuantity.getText().toString();
+                modelStr=binding.amplifierModel.getText().toString();
+                maxVoltageStr=binding.amplifierMaxVoltage.getText().toString();
+                mountingHardwareStr=binding.amplifierMountingHardware.getText().toString();
+                dimensionStr=binding.amplifierDimensions.getText().toString();
+                channelStr=binding.amplifierChannels.getText().toString();
+                weightStr=binding.amplifierWeight.getText().toString();
+                manufacturerStr=binding.amplifierManufacturer.getText().toString();
+                priceStr=binding.amplifierPrice.getText().toString();
+                quantityStr=binding.amplifierQuantity.getText().toString();
 
 
                 if(modelStr.isEmpty()|| maxVoltageStr.isEmpty() || mountingHardwareStr.isEmpty() || dimensionStr.isEmpty() || channelStr.isEmpty() || weightStr.isEmpty() || manufacturerStr.isEmpty() ||priceStr.isEmpty() ||  quantityStr.isEmpty()) {
@@ -102,7 +90,7 @@ public class admin_add_Amplifiers extends AppCompatActivity {
             }
         });
         //      IMG UPLOAD
-        select.setOnClickListener(new View.OnClickListener() {
+        binding.btnSelectImgAmplifier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectImage();
@@ -122,7 +110,7 @@ public class admin_add_Amplifiers extends AppCompatActivity {
 
         if (requestCode==100 && data != null && data.getData() != null){
             imageUri=data.getData();
-            imageView.setImageURI(imageUri);
+            binding.ivAmplifier.setImageURI(imageUri);
         }
     }
 
@@ -140,7 +128,7 @@ public class admin_add_Amplifiers extends AppCompatActivity {
             storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    imageView.setImageURI(null);
+                    binding.ivAmplifier.setImageURI(null);
                     Toast.makeText(admin_add_Amplifiers.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();
@@ -179,7 +167,7 @@ public class admin_add_Amplifiers extends AppCompatActivity {
                         AndroidScreen_Model model= new AndroidScreen_Model(uri.toString());
 //                        String modelid=databaseReference.push().getKey();//to generate random key
                         //sysTime=String.valueOf(System.currentTimeMillis());
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Image").setValue(uri.toString());
+                        /*databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Image").setValue(uri.toString());
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Model").setValue(modelStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("MaxVoltage").setValue(maxVoltageStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("MountingHardware").setValue(mountingHardwareStr);
@@ -189,13 +177,64 @@ public class admin_add_Amplifiers extends AppCompatActivity {
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Price").setValue(priceStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).child("Quantity").setValue(quantityStr);
-
-                        //      Log.e("", "Img: "+model+""+modelStr+manufacturerStr+dimensionStr+poweroutputStr+frequencyStr+sensitivityStr+salientfeatureStr+weightStr+colorStr+designStr+priceStr+quantityStr);
+*/
+                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+                        modelClass.setBoxIncluded("");
+                        // modelClass.setBoxIncludes();
+                        modelClass.setBrand("");
+                        modelClass.setBulbType("");
+                        modelClass.setColor("");
+                        modelClass.setChannel(channelStr);
+                        modelClass.setCategory("");
+                        modelClass.setDesign("");
+                        modelClass.setDimension(dimensionStr);
+                        // modelClass.setDimenension();
+                        modelClass.setDuration("");
+                        modelClass.setDiameter("");
+                        modelClass.setDisplayType("");
+                        modelClass.setFrequency("");
+                        modelClass.setFragrence("");
+                        modelClass.setFeature("");
+                        modelClass.setFabricType("");
+                        modelClass.setFitType("");
+                        modelClass.setHoseLength("");
+                        modelClass.setImage(uri.toString());
+                        modelClass.setItemForm("");
+                        modelClass.setItemsIncluded("");
+                        // modelClass.setItemIncluded();
+                        modelClass.setKey("");
+                        modelClass.setLumens("");
+                        modelClass.setManufacturer(manufacturerStr);
+                        modelClass.setModel(modelStr);
+                        modelClass.setMaxVoltage(maxVoltageStr);
+                        modelClass.setMountingHardware(mountingHardwareStr);
+                        modelClass.setMaterial("");
+                        modelClass.setMaterialType("");
+                        modelClass.setMaxPressure("");
+                        modelClass.setNoiseLevel("");
+                        modelClass.setOperatingVoltage("");
+                        modelClass.setOSType("");
+                        modelClass.setPowerOutput("");
+                        modelClass.setPrice(priceStr);
+                        modelClass.setPosition("");
+                        modelClass.setPattern("");
+                        modelClass.setQuantity(quantityStr);
+                        modelClass.setQuality("");
+                        modelClass.setRAM("");
+                        modelClass.setROM("");
+                        modelClass.setSalientFeature("");
+                        modelClass.setSensitivity("");
+                        modelClass.setSpeakerType("");
+                        modelClass.setScreenSize("");
+                        modelClass.setVolume("");
+                        modelClass.setVoltage("");
+                        modelClass.setWeight(weightStr);
+                        modelClass.setWarrenty("");
+                        modelClass.setWattage("");
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).setValue(modelClass);
                         Toast.makeText(admin_add_Amplifiers.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
-
                     }
                 });
-
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override

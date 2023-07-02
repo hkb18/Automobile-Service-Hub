@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.auton.databinding.ActivityAdminAddAmplifiersBinding;
+import com.example.auton.databinding.ActivityAdminAddAndroidScreenBinding;
 import com.example.auton.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,56 +40,40 @@ import java.util.Date;
 import java.util.Locale;
 
 public class admin_add_AndroidScreen extends AppCompatActivity {
+    private ActivityAdminAddAndroidScreenBinding binding;
 
     DatabaseReference databaseReference;
-    Button add,select;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
-    ImageView imageView;
     StorageReference storageReference;
     Uri imageUri;
     String fileName;
-    TextInputEditText textInputEditTextModel,textInputEditTextDimension,textInputEditTextRAM,textInputEditTextROM,textInputEditTextDisplayType,
-        textInputEditTextOSType,textInputEditTextWeight,textInputEditTextScreenSize,textInputEditTextManufacturer,textInputEditTextPrice,textInputEditTextQuantity;
     String modelStr,dimensionStr,ramStr,romStr,displaytypeStr,ostypeStr,weightStr,screensizeStr,manufacturerStr,priceStr,quantityStr;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_android_screen);
+        binding= ActivityAdminAddAndroidScreenBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
 
         progressBar = new ProgressBar(this);
-        imageView=findViewById(R.id.image_view);
-        select=findViewById(R.id.btn_selectImg);
-        add=findViewById(R.id.btn_addAndroidScreens);
-        textInputEditTextModel=findViewById(R.id.screenModel);
-        textInputEditTextDimension=findViewById(R.id.screenDimensions);
-        textInputEditTextRAM=findViewById(R.id.screenRam);
-        textInputEditTextROM=findViewById(R.id.screenRom);
-        textInputEditTextDisplayType=findViewById(R.id.screenDisplayType);
-        textInputEditTextOSType=findViewById(R.id.screenOSType);
-        textInputEditTextWeight=findViewById(R.id.screenWeight);
-        textInputEditTextScreenSize=findViewById(R.id.screenSize);
-        textInputEditTextManufacturer=findViewById(R.id.screenManufacturer);
-        textInputEditTextPrice=findViewById(R.id.screenPrice);
-        textInputEditTextQuantity=findViewById(R.id.screenQuantity);
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-        add.setOnClickListener(new View.OnClickListener() {
+        binding.btnAddAndroidScreens.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                modelStr=textInputEditTextModel.getText().toString();
-                dimensionStr=textInputEditTextDimension.getText().toString();
-                ramStr=textInputEditTextRAM.getText().toString();
-                romStr=textInputEditTextROM.getText().toString();
-                displaytypeStr=textInputEditTextDisplayType.getText().toString();
-                ostypeStr=textInputEditTextOSType.getText().toString();
-                weightStr=textInputEditTextWeight.getText().toString();
-                screensizeStr=textInputEditTextScreenSize.getText().toString();
-                manufacturerStr=textInputEditTextManufacturer.getText().toString();
-                priceStr=textInputEditTextPrice.getText().toString();
-                quantityStr=textInputEditTextQuantity.getText().toString();
+                modelStr=binding.screenModel.getText().toString();
+                dimensionStr=binding.screenDimensions.getText().toString();
+                ramStr=binding.screenRam.getText().toString();
+                romStr=binding.screenRom.getText().toString();
+                displaytypeStr=binding.screenDisplayType.getText().toString();
+                ostypeStr=binding.screenOSType.getText().toString();
+                weightStr=binding.screenWeight.getText().toString();
+                screensizeStr=binding.screenSize.getText().toString();
+                manufacturerStr=binding.screenManufacturer.getText().toString();
+                priceStr=binding.screenPrice.getText().toString();
+                quantityStr=binding.screenQuantity.getText().toString();
 
                 if(TextUtils.isEmpty(modelStr)|| dimensionStr.isEmpty() || ramStr.isEmpty() || romStr.isEmpty() || displaytypeStr.isEmpty() || ostypeStr.isEmpty() || weightStr.isEmpty() ||screensizeStr.isEmpty() || manufacturerStr.isEmpty() || priceStr.isEmpty() || quantityStr.isEmpty()) {
                     Toast.makeText(admin_add_AndroidScreen.this, "Please enter all details", Toast.LENGTH_SHORT).show();
@@ -120,7 +106,7 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
         });
 
         //      IMG UPLOAD
-        select.setOnClickListener(new View.OnClickListener() {
+        binding.btnSelectImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectImage();
@@ -140,7 +126,7 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
 
         if (requestCode==100 && data != null && data.getData() != null){
             imageUri=data.getData();
-            imageView.setImageURI(imageUri);
+            binding.imageView.setImageURI(imageUri);
         }
     }
 
@@ -158,7 +144,7 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
             storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    imageView.setImageURI(null);
+                    binding.imageView.setImageURI(null);
                     Toast.makeText(admin_add_AndroidScreen.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();
@@ -196,7 +182,7 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
                         AndroidScreen_Model model= new AndroidScreen_Model(uri.toString());
 //                        String modelid=databaseReference.push().getKey();//to generate random key
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Image").setValue(uri.toString());
+                     /*   databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Image").setValue(uri.toString());
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Model").setValue(modelStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Dimension").setValue(dimensionStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("RAM").setValue(ramStr);
@@ -208,13 +194,67 @@ public class admin_add_AndroidScreen extends AppCompatActivity {
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Price").setValue(priceStr);
                         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Quantity").setValue(quantityStr);
-//                        databaseReference.child(modelid).setValue(model);
-                        Log.e("", "Img: "+model);
-                        Toast.makeText(admin_add_AndroidScreen.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
+*/
+                        //                        databaseReference.child(modelid).setValue(model);
 
+                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+                        modelClass.setBoxIncluded("");
+                       // modelClass.setBoxIncludes();
+                        modelClass.setBrand("");
+                        modelClass.setBulbType("");
+                        modelClass.setColor("");
+                        modelClass.setChannel("");
+                        modelClass.setCategory("");
+                        modelClass.setDesign("");
+                        modelClass.setDimension(dimensionStr);
+                       // modelClass.setDimenension();
+                        modelClass.setDuration("");
+                        modelClass.setDiameter("");
+                        modelClass.setDisplayType(displaytypeStr);
+                        modelClass.setFrequency("");
+                        modelClass.setFragrence("");
+                        modelClass.setFeature("");
+                        modelClass.setFabricType("");
+                        modelClass.setFitType("");
+                        modelClass.setHoseLength("");
+                        modelClass.setImage(uri.toString());
+                        modelClass.setItemForm("");
+                        modelClass.setItemsIncluded("");
+                       // modelClass.setItemIncluded();
+                        modelClass.setKey("");
+                        modelClass.setLumens("");
+                        modelClass.setManufacturer(manufacturerStr);
+                        modelClass.setModel(modelStr);
+                        modelClass.setMaxVoltage("");
+                        modelClass.setMountingHardware("");
+                        modelClass.setMaterial("");
+                        modelClass.setMaterialType("");
+                        modelClass.setMaxPressure("");
+                        modelClass.setNoiseLevel("");
+                        modelClass.setOperatingVoltage("");
+                        modelClass.setOSType(ostypeStr);
+                        modelClass.setPowerOutput("");
+                        modelClass.setPrice(priceStr);
+                        modelClass.setPosition("");
+                        modelClass.setPattern("");
+                        modelClass.setQuantity(quantityStr);
+                        modelClass.setQuality("");
+                        modelClass.setRAM(ramStr);
+                        modelClass.setROM(romStr);
+                        modelClass.setSalientFeature("");
+                        modelClass.setSensitivity("");
+                        modelClass.setSpeakerType("");
+                        modelClass.setScreenSize(screensizeStr);
+                        modelClass.setVolume("");
+                        modelClass.setVoltage("");
+                        modelClass.setWeight(weightStr);
+                        modelClass.setWarrenty("");
+                        modelClass.setWattage("");
+
+                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).setValue(modelClass);
+                        Toast.makeText(admin_add_AndroidScreen.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override

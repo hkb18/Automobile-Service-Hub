@@ -79,13 +79,13 @@
                 android:layout_marginBottom="5dp">
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="Enter Mounting Hardware"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:id="@+id/amplifierMountingHardware"
                         android:textColor="@color/white"/>
                 </com.google.android.material.textfield.TextInputLayout>
