@@ -19,6 +19,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +65,9 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
     private int mYear,mMonth,mDay;
     DatabaseReference databaseReference;
     static mapinterface mapinterface;
+
+    CountDownTimer mCountDownTimer;
+    int i=0;
 
     //  MAP
     private final LocationListener locationListenerBest = new LocationListener() {
@@ -149,6 +154,29 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         setContentView(binding.getRoot());
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+
+
+        binding.progressBar.setProgress(i);
+        mCountDownTimer=new CountDownTimer(5000,1000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                Log.v("Log_tag", "Tick of Progress"+ i+ millisUntilFinished);
+                i++;
+                binding.progressBar.setProgress((int)i*100/(5000/1000));
+
+            }
+
+            @Override
+            public void onFinish() {
+                //Do what you want
+                i++;
+                binding.progressBar.setProgress(100);
+                binding.loadingPanel.setVisibility(View.GONE);
+            }
+        };
+        mCountDownTimer.start();
+
 
         Bundle extras=getIntent().getExtras();
         username= extras.getString("Username");
@@ -274,9 +302,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                     i.putExtra("price", String.valueOf(totalPrice));
                                     startActivity(i);
                                 }
-                            }, 3000);
-                            totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
-                            Log.e("TAG", "run: "+totalPrice );
+                            }, 2000);
                         }
 
                         @Override
