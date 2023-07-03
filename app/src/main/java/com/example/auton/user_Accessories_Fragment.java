@@ -78,7 +78,8 @@ public class user_Accessories_Fragment extends Fragment {
             startActivity(i);
         });
         binding.hornsProtectives.setOnClickListener(view -> {
-
+            Intent i = new Intent(getContext(), user_view_HornsProtectives.class);
+            startActivity(i);
         });
         binding.lightsChargers.setOnClickListener(view -> {
 

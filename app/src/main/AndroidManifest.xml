@@ -23,6 +23,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".fulldetails_Horns"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_Protectives"
+            android:exported="false" />
+        <activity
+            android:name=".user_view_HornsProtectives"
+            android:exported="false" />
+        <activity
             android:name=".admin_add_MobileHolder"
             android:exported="false" />
         <activity
