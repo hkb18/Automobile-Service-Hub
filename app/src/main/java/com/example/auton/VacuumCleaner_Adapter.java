@@ -16,11 +16,11 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class VacuumCleaner_Adapter extends RecyclerView.Adapter<VacuumCleaner_Adapter.ViewHold>{
-    private ArrayList<VacuumCleaner_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
     private String name;
 
-    public VacuumCleaner_Adapter(Context fragment, ArrayList<VacuumCleaner_ModelClass> dataList, String key) {
+    public VacuumCleaner_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
         name=key;
@@ -38,7 +38,7 @@ public class VacuumCleaner_Adapter extends RecyclerView.Adapter<VacuumCleaner_Ad
         holder.recyclerView.setAdapter(new VacuumCleaner_Adapter_2(context,dataList));
     }
 
-    public void filterList(ArrayList<VacuumCleaner_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

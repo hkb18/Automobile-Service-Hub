@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MicroFibres_Adapter extends RecyclerView.Adapter<MicroFibres_Adapter.ViewHold>{
-    private ArrayList<MicroFibres_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
     private String title;
 
-    public MicroFibres_Adapter(Context fragment, ArrayList<MicroFibres_ModelClass> dataList, String key) {
+    public MicroFibres_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
         this.title = key;
@@ -36,7 +36,7 @@ public class MicroFibres_Adapter extends RecyclerView.Adapter<MicroFibres_Adapte
         holder.recyclerView.setAdapter(new MicroFibres_Adapter2(context,dataList));
     }
 
-    public void filterList(ArrayList<MicroFibres_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

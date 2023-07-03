@@ -17,11 +17,11 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapter2.ViewHold> {
-    private ArrayList<AirFreshner_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
 
 
-    public AirFreshner_Adapter2(Context fragment, ArrayList<AirFreshner_ModelClass> dataList) {
+    public AirFreshner_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
 
@@ -34,7 +34,7 @@ public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapt
     }
 
     public void onBindViewHolder(AirFreshner_Adapter2.ViewHold holder, int position){
-        AirFreshner_ModelClass ss=dataList.get(position);
+        Accessories_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getModel()+ss.getDuration()+ss.getFragrence());
         holder.price.setText(ss.getPrice());
@@ -50,7 +50,7 @@ public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapt
         });
     }
 
-    public void filterList(ArrayList<AirFreshner_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

@@ -17,10 +17,10 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class Speaker_Adapter_2 extends RecyclerView.Adapter<Speaker_Adapter_2.ViewHold>{
-    private ArrayList<Speaker_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
 
-    public Speaker_Adapter_2(Context fragment, ArrayList<Speaker_ModelClass> dataList) {
+    public Speaker_Adapter_2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
 
@@ -34,7 +34,7 @@ public class Speaker_Adapter_2 extends RecyclerView.Adapter<Speaker_Adapter_2.Vi
 
     public void onBindViewHolder(Speaker_Adapter_2.ViewHold holder, int position){
 
-        Speaker_ModelClass ss=dataList.get(position);
+        Accessories_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getPowerOutput()+ss.getSpeakerType());
         holder.price.setText(ss.getPrice());
@@ -46,7 +46,7 @@ public class Speaker_Adapter_2 extends RecyclerView.Adapter<Speaker_Adapter_2.Vi
         });
     }
 
-    public void filterList(ArrayList<Speaker_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

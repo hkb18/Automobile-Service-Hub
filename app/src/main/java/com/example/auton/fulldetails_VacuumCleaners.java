@@ -43,31 +43,31 @@ public class fulldetails_VacuumCleaners extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.vacuumcleanerModel.setText(modelStr);
 
-                    operatingvoltageStr=snapshot.child(key).child("OperatingVoltage").getValue(String.class);
+                    operatingvoltageStr=snapshot.child(key).child("operatingVoltage").getValue(String.class);
                     binding.vacuumcleanerOperatingVoltage.setText(operatingvoltageStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.vacuumcleanerDimensions.setText(dimensionStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.vacuumcleanerWeight.setText(weightStr);
 
-                    itemincludedStr=snapshot.child(key).child("ItemsIncluded").getValue(String.class);
+                    itemincludedStr=snapshot.child(key).child("itemsIncluded").getValue(String.class);
                     binding.vacuumcleanerItemsIncluded.setText(itemincludedStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.vacuumcleanerImg);
 
-                    manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
+                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.vacuumcleanerManufacturer.setText(manufacturerStr);
 
-                    colorStr=snapshot.child(key).child("Color").getValue(String.class);
+                    colorStr=snapshot.child(key).child("color").getValue(String.class);
                     binding.vacuumcleanerColor.setText(colorStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.vacuumcleanerPrice.setText(priceStr);
 
                 }
@@ -127,7 +127,7 @@ public class fulldetails_VacuumCleaners extends AppCompatActivity {
             databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //   qty--;
                     if (qty<=0){

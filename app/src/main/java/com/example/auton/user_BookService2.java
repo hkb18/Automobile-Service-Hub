@@ -55,7 +55,7 @@ public class user_BookService2 extends AppCompatActivity implements AdapterView.
     private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
     int totalPrice;
     String modelstr,datestr,timestr,locationstr,currentlocationstr,servicenameStr,serviceStr,imgStr,getPriceServiceTypeStr,carbodytypePriceStr="",carmodelPriceStr="";
-    String brandStr,username,latitudeStr,longitudeStr,s1;
+    String brandStr,username,latitudeStr,longitudeStr,s1="";
     String[] time={"Morning","Afternoon","Evening"};
     private int mYear,mMonth,mDay;
     DatabaseReference databaseReference;
@@ -157,10 +157,10 @@ public class user_BookService2 extends AppCompatActivity implements AdapterView.
         binding.tvService.setText(serviceStr);
         Glide.with(getApplicationContext()).load(imgStr).into(binding.imageView);
 
-        Toast.makeText(getApplicationContext(), "Username:"+s1, Toast.LENGTH_SHORT).show();
 
         SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
         s1 = sh.getString("Username", "");
+        Toast.makeText(getApplicationContext(), "Username:"+s1, Toast.LENGTH_SHORT).show();
 
         // MAP
         mapinterface=this;

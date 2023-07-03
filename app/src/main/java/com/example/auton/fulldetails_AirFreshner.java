@@ -41,34 +41,34 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.airfreshnerModel.setText(modelStr);
 
-                    colorStr=snapshot.child(key).child("Color").getValue(String.class);
+                    colorStr=snapshot.child(key).child("color").getValue(String.class);
                     binding.airfreshnerColor.setText(colorStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimenension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.airfreshnerDimensions.setText(dimensionStr);
 
-                    itemsformStr=snapshot.child(key).child("ItemForm").getValue(String.class);
+                    itemsformStr=snapshot.child(key).child("itemForm").getValue(String.class);
                     binding.airfreshnerItemForm.setText(itemsformStr);
 
-                    durationStr=snapshot.child(key).child("Duration").getValue(String.class);
+                    durationStr=snapshot.child(key).child("duration").getValue(String.class);
                     binding.airfreshnerDuration.setText(durationStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.airfreshnerImg);
 
-                    manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
+                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.airfreshnerManufacturer.setText(manufacturerStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.airfreshnerPrice.setText(priceStr);
 
-                    fragrenceStr=snapshot.child(key).child("Fragrence").getValue(String.class);
+                    fragrenceStr=snapshot.child(key).child("fragrence").getValue(String.class);
                     binding.airfreshnerFragrence.setText(fragrenceStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.airfreshnerWeight.setText(weightStr);
                 }
             }
@@ -81,6 +81,7 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
 
         binding.btnAirfreshnerBuyNow.setOnClickListener(view -> {
             Intent i=new Intent(getApplicationContext(),RazorPay.class);
+            i.putExtra("activity","buynow");
             i.putExtra("price",priceStr);
             i.putExtra("key",modelStr);
             startActivity(i);
@@ -128,7 +129,7 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
             databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //qty--;
                     if (qty<=0){

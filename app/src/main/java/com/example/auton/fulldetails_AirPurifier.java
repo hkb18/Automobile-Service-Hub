@@ -41,34 +41,34 @@ public class fulldetails_AirPurifier extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.airpurifierModel.setText(modelStr);
 
-                    colorStr=snapshot.child(key).child("Color").getValue(String.class);
+                    colorStr=snapshot.child(key).child("color").getValue(String.class);
                     binding.airpurifierColor.setText(colorStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimenension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.airpurifierDimensions.setText(dimensionStr);
 
-                    itemsincludedStr=snapshot.child(key).child("ItemsIncluded").getValue(String.class);
+                    itemsincludedStr=snapshot.child(key).child("itemsIncluded").getValue(String.class);
                     binding.airpurifierItemsIncluded.setText(itemsincludedStr);
 
-                    operatingvoltageStr=snapshot.child(key).child("OperatingVoltage").getValue(String.class);
+                    operatingvoltageStr=snapshot.child(key).child("operatingVoltage").getValue(String.class);
                     binding.airpurifierOperatingVoltage.setText(operatingvoltageStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.airpurifierImg);
 
-                    manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
+                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.airpurifierManufacturer.setText(manufacturerStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.airpurifierPrice.setText(priceStr);
 
-                    warrentyStr=snapshot.child(key).child("Warrenty").getValue(String.class);
+                    warrentyStr=snapshot.child(key).child("warrenty").getValue(String.class);
                     binding.airpurifierWarrenty.setText(warrentyStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.airpurifierWeight.setText(weightStr);
                 }
             }
@@ -128,7 +128,7 @@ public class fulldetails_AirPurifier extends AppCompatActivity {
             databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("AirPurifier").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                    // qty--;
                     if (qty<=0){

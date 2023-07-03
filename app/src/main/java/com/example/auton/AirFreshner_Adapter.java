@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class AirFreshner_Adapter extends RecyclerView.Adapter<AirFreshner_Adapter.ViewHold>{
-    private ArrayList<AirFreshner_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
     private String title;
 
-    public AirFreshner_Adapter(Context fragment, ArrayList<AirFreshner_ModelClass> dataList, String key) {
+    public AirFreshner_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
         this.title = key;
@@ -36,7 +36,7 @@ public class AirFreshner_Adapter extends RecyclerView.Adapter<AirFreshner_Adapte
         holder.recyclerView.setAdapter(new AirFreshner_Adapter2(context,dataList));
     }
 
-    public void filterList(ArrayList<AirFreshner_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

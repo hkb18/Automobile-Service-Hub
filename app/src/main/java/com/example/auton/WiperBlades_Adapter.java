@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class WiperBlades_Adapter extends RecyclerView.Adapter<WiperBlades_Adapter.ViewHold>{
-    private ArrayList<WiperBlades_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
     private String title;
 
-    public WiperBlades_Adapter(Context fragment, ArrayList<WiperBlades_ModelClass> dataList, String key) {
+    public WiperBlades_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
         this.title = key;
@@ -36,7 +36,7 @@ public class WiperBlades_Adapter extends RecyclerView.Adapter<WiperBlades_Adapte
         holder.recyclerView.setAdapter(new WiperBlades_Adapter2(context,dataList));
     }
 
-    public void filterList(ArrayList<WiperBlades_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

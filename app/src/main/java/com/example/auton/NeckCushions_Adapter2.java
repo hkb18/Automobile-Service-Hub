@@ -17,11 +17,11 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class NeckCushions_Adapter2 extends RecyclerView.Adapter<NeckCushions_Adapter2.ViewHold> {
-    private ArrayList<NeckCushions_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
 
 
-    public NeckCushions_Adapter2(Context fragment, ArrayList<NeckCushions_ModelClass> dataList) {
+    public NeckCushions_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
 
@@ -34,7 +34,7 @@ public class NeckCushions_Adapter2 extends RecyclerView.Adapter<NeckCushions_Ada
     }
 
     public void onBindViewHolder(NeckCushions_Adapter2.ViewHold holder, int position){
-        NeckCushions_ModelClass ss=dataList.get(position);
+        Accessories_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getModel()+" "+ss.getColor());
         holder.price.setText(ss.getPrice());
@@ -50,7 +50,7 @@ public class NeckCushions_Adapter2 extends RecyclerView.Adapter<NeckCushions_Ada
         });
     }
 
-    public void filterList(ArrayList<NeckCushions_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

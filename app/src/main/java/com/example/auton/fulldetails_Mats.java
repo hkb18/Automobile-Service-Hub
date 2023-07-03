@@ -41,28 +41,28 @@ public class fulldetails_Mats extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.matsModel.setText(modelStr);
 
-                    colorStr=snapshot.child(key).child("Color").getValue(String.class);
+                    colorStr=snapshot.child(key).child("color").getValue(String.class);
                     binding.matsColor.setText(colorStr);
 
-                    featureStr=snapshot.child(key).child("Feature").getValue(String.class);
+                    featureStr=snapshot.child(key).child("feature").getValue(String.class);
                     binding.matsFeature.setText(featureStr);
 
-                    materialStr=snapshot.child(key).child("Material").getValue(String.class);
+                    materialStr=snapshot.child(key).child("material").getValue(String.class);
                     binding.matsMaterial.setText(materialStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.matsImg);
 
-                    manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
+                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.matsManufacturer.setText(manufacturerStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.matsPrice.setText(priceStr);
 
-                    patternStr=snapshot.child(key).child("Pattern").getValue(String.class);
+                    patternStr=snapshot.child(key).child("pattern").getValue(String.class);
                     binding.matsPattern.setText(patternStr);
                 }
             }
@@ -121,7 +121,7 @@ public class fulldetails_Mats extends AppCompatActivity {
             databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                    // qty--;
                     if (qty<=0){

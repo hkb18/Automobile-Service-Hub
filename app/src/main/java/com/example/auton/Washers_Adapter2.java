@@ -17,11 +17,11 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class Washers_Adapter2 extends RecyclerView.Adapter<Washers_Adapter2.ViewHold> {
-    private ArrayList<Washers_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
 
 
-    public Washers_Adapter2(Context fragment, ArrayList<Washers_ModelClass> dataList) {
+    public Washers_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
 
@@ -34,7 +34,7 @@ public class Washers_Adapter2 extends RecyclerView.Adapter<Washers_Adapter2.View
     }
 
     public void onBindViewHolder(Washers_Adapter2.ViewHold holder, int position){
-        Washers_ModelClass ss=dataList.get(position);
+        Accessories_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getModel()+ss.getPowerOutput());
         holder.price.setText(ss.getPrice());
@@ -50,7 +50,7 @@ public class Washers_Adapter2 extends RecyclerView.Adapter<Washers_Adapter2.View
         });
     }
 
-    public void filterList(ArrayList<Washers_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

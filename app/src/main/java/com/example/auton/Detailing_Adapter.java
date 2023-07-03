@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class Detailing_Adapter extends RecyclerView.Adapter<Detailing_Adapter.ViewHold>{
-    private ArrayList<Detailing_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
     private String title;
 
-    public Detailing_Adapter(Context fragment, ArrayList<Detailing_ModelClass> dataList, String key) {
+    public Detailing_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
         this.title = key;
@@ -36,7 +36,7 @@ public class Detailing_Adapter extends RecyclerView.Adapter<Detailing_Adapter.Vi
         holder.recyclerView.setAdapter(new Detailing_Adapter2(context,dataList));
     }
 
-    public void filterList(ArrayList<Detailing_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

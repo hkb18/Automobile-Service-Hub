@@ -149,7 +149,7 @@
             </LinearLayout>
 
             <!-- PAYMENT MODE -->
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -167,7 +167,7 @@
                     android:textColor="@color/black"
                     android:layout_weight="1"
                     android:id="@+id/getPaymentMode"/>
-            </LinearLayout>
+            </LinearLayout>-->
 
             <!-- LATITUDE -->
             <LinearLayout
@@ -212,14 +212,14 @@
             </LinearLayout>
 
 
-            <Button
+            <!--<Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/summersky"
                 android:textColor="@color/white"
                 android:text="EDIT"
-                android:id="@+id/btn_Edit"/>
+                android:id="@+id/btn_Edit"/>-->
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

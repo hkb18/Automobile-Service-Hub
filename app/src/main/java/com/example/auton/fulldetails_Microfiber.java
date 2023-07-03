@@ -41,28 +41,28 @@ public class fulldetails_Microfiber extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.microfiberModel.setText(modelStr);
 
-                    colorStr=snapshot.child(key).child("Color").getValue(String.class);
+                    colorStr=snapshot.child(key).child("color").getValue(String.class);
                     binding.microfiberColor.setText(colorStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.microfiberDimensions.setText(dimensionStr);
 
-                    brandStr=snapshot.child(key).child("Brand").getValue(String.class);
+                    brandStr=snapshot.child(key).child("brand").getValue(String.class);
                     binding.microfiberBrand.setText(brandStr);
 
-                    fabrictypeStr=snapshot.child(key).child("FabricType").getValue(String.class);
+                    fabrictypeStr=snapshot.child(key).child("fabricType").getValue(String.class);
                     binding.microfiberFabricType.setText(fabrictypeStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.microfiberImg);
 
-                    materialtypeStr=snapshot.child(key).child("MaterialType").getValue(String.class);
+                    materialtypeStr=snapshot.child(key).child("materialType").getValue(String.class);
                     binding.microfiberMaterialType.setText(materialtypeStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.microfiberPrice.setText(priceStr);
 
                 }
@@ -123,7 +123,7 @@ public class fulldetails_Microfiber extends AppCompatActivity {
             databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("MicroFibres").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     // qty--;
                     if (qty<=0){

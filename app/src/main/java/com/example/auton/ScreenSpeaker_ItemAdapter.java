@@ -19,12 +19,12 @@ import com.google.firebase.database.DataSnapshot;
 import java.util.ArrayList;
 
 public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeaker_ItemAdapter.ViewHold> {
-    private ArrayList<ScreensSpeakers_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
     private String name;
 
 
-    public ScreenSpeaker_ItemAdapter(Context fragment, ArrayList<ScreensSpeakers_ModelClass> dataList, String key) {
+    public ScreenSpeaker_ItemAdapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
         name=key;
@@ -44,7 +44,7 @@ public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeake
         holder.recyclerView.setAdapter(new AndroidScreen_ItemAdapter(context,dataList));
     }
 
-    public void filterList(ArrayList<ScreensSpeakers_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

@@ -17,11 +17,11 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class Cleansers_Adapter2 extends RecyclerView.Adapter<Cleansers_Adapter2.ViewHold> {
-    private ArrayList<Cleaners_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
 
 
-    public Cleansers_Adapter2(Context fragment, ArrayList<Cleaners_ModelClass> dataList) {
+    public Cleansers_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
 
@@ -34,9 +34,9 @@ public class Cleansers_Adapter2 extends RecyclerView.Adapter<Cleansers_Adapter2.
     }
 
     public void onBindViewHolder(Cleansers_Adapter2.ViewHold holder, int position){
-        Cleaners_ModelClass ss=dataList.get(position);
+        Accessories_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getBrand());
-        holder.desc.setText(ss.getBoxIncludes()+ss.getVolume());
+        holder.desc.setText(ss.getBoxIncluded()+ss.getVolume());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
        // String model= ss.getModel();
@@ -50,7 +50,7 @@ public class Cleansers_Adapter2 extends RecyclerView.Adapter<Cleansers_Adapter2.
         });
     }
 
-    public void filterList(ArrayList<Cleaners_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

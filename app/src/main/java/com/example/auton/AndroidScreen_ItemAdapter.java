@@ -17,9 +17,9 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class AndroidScreen_ItemAdapter extends RecyclerView.Adapter<AndroidScreen_ItemAdapter.ViewHold> {
-    private ArrayList<ScreensSpeakers_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
-    public AndroidScreen_ItemAdapter(Context fragment, ArrayList<ScreensSpeakers_ModelClass> dataList) {
+    public AndroidScreen_ItemAdapter(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
     }
@@ -31,19 +31,19 @@ public class AndroidScreen_ItemAdapter extends RecyclerView.Adapter<AndroidScree
     }
 
     public void onBindViewHolder(AndroidScreen_ItemAdapter.ViewHold holder, int position){
-        ScreensSpeakers_ModelClass ss=dataList.get(position);
+        Accessories_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getScreenSize()+ss.getDisplayType());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
-        String model= ss.getModel();
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent i = new Intent(context.getApplicationContext(), fulldetails_AndroidScreen.class);
              //   fulldetails_AndroidScreen.androidScreen_interface.details(model);
-                i.putExtra("key",model);
+                i.putExtra("key",ss.getModel());
                 context.startActivity(i);
             }
         });

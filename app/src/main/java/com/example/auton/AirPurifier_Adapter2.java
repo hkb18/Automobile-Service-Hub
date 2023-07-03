@@ -17,11 +17,11 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class AirPurifier_Adapter2 extends RecyclerView.Adapter<AirPurifier_Adapter2.ViewHold> {
-    private ArrayList<Airpurifier_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
 
 
-    public AirPurifier_Adapter2(Context fragment, ArrayList<Airpurifier_ModelClass> dataList) {
+    public AirPurifier_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
 
@@ -34,7 +34,7 @@ public class AirPurifier_Adapter2 extends RecyclerView.Adapter<AirPurifier_Adapt
     }
 
     public void onBindViewHolder(AirPurifier_Adapter2.ViewHold holder, int position){
-        Airpurifier_ModelClass ss=dataList.get(position);
+        Accessories_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getModel()+ss.getOperatingVoltage());
         holder.price.setText(ss.getPrice());
@@ -50,7 +50,7 @@ public class AirPurifier_Adapter2 extends RecyclerView.Adapter<AirPurifier_Adapt
         });
     }
 
-    public void filterList(ArrayList<Airpurifier_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

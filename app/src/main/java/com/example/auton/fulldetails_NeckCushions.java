@@ -42,28 +42,28 @@ public class fulldetails_NeckCushions extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.neckcushionModel.setText(modelStr);
 
-                    colorStr=snapshot.child(key).child("Color").getValue(String.class);
+                    colorStr=snapshot.child(key).child("color").getValue(String.class);
                     binding.neckcushionColor.setText(colorStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.neckcushionDimensions.setText(dimensionStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.neckcushionImg);
 
-                    manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
+                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.neckcushionManufacturer.setText(manufacturerStr);
 
-                    featureStr=snapshot.child(key).child("Feature").getValue(String.class);
+                    featureStr=snapshot.child(key).child("feature").getValue(String.class);
                     binding.neckcushionFeature.setText(featureStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.neckcushionPrice.setText(priceStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.neckcushionWeight.setText(weightStr);
                 }
             }
@@ -122,7 +122,7 @@ public class fulldetails_NeckCushions extends AppCompatActivity {
             databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("NeckCushions").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //qty--;
                     if (qty<=0){

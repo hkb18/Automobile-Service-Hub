@@ -15,11 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class Amplifier_Adapter extends RecyclerView.Adapter<Amplifier_Adapter.ViewHold>{
-    private ArrayList<Amplifier_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
     private String title;
 
-    public Amplifier_Adapter(Context fragment, ArrayList<Amplifier_ModelClass> dataList, String key) {
+    public Amplifier_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
         this.title = key;
@@ -38,7 +38,7 @@ public class Amplifier_Adapter extends RecyclerView.Adapter<Amplifier_Adapter.Vi
         holder.recyclerView.setAdapter(new Amplifier_Adapter2(context,dataList));
     }
 
-    public void filterList(ArrayList<Amplifier_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

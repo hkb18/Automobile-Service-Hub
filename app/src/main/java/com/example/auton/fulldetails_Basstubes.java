@@ -45,40 +45,40 @@ public class fulldetails_Basstubes extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.basstubesModel.setText(modelStr);
 
-                    poweroutputStr=snapshot.child(key).child("PowerOutput").getValue(String.class);
+                    poweroutputStr=snapshot.child(key).child("powerOutput").getValue(String.class);
                     binding.basstubesPowerOutput.setText(poweroutputStr);
 
-                    salientfeatureStr=snapshot.child(key).child("SalientFeature").getValue(String.class);
+                    salientfeatureStr=snapshot.child(key).child("salientFeature").getValue(String.class);
                     binding.basstubesSalientFeature.setText(salientfeatureStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.basstubesDimension.setText(dimensionStr);
 
-                    frequencyStr=snapshot.child(key).child("Frequency").getValue(String.class);
+                    frequencyStr=snapshot.child(key).child("frequency").getValue(String.class);
                     binding.basstubesFrequency.setText(frequencyStr);
 
-                    sensitivityStr=snapshot.child(key).child("Sensitivity").getValue(String.class);
+                    sensitivityStr=snapshot.child(key).child("sensitivity").getValue(String.class);
                     binding.basstubesSensitivity.setText(sensitivityStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.basstubesImg);
 
-                    manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
+                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.basstubesManufacturer.setText(manufacturerStr);
 
-                    colorStr=snapshot.child(key).child("Color").getValue(String.class);
+                    colorStr=snapshot.child(key).child("color").getValue(String.class);
                     binding.basstubesColor.setText(colorStr);
 
-                    designStr=snapshot.child(key).child("Design").getValue(String.class);
+                    designStr=snapshot.child(key).child("design").getValue(String.class);
                     binding.basstubesDesign.setText(designStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.basstubesPrice.setText(priceStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.basstubesWeight.setText(weightStr);
                 }
             }
@@ -139,7 +139,7 @@ public class fulldetails_Basstubes extends AppCompatActivity {
             databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                   //  qty--;
                     if (qty<=0){

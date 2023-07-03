@@ -122,7 +122,7 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
         holder.latitude.setText(bookedService.getLatitude());
         holder.longitude.setText(bookedService.getLongitude());
         holder.servicetime.setText(bookedService.getServiceTime());
-        holder.paymentMethod.setText(bookedService.getPaymentMode());
+        //holder.paymentMethod.setText(bookedService.getPaymentMode());
 
         String key=bookedService.getSYSTIME();
         holder.btn_edit.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +167,7 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
             latitude= itemView.findViewById(R.id.getLatitude);
             longitude= itemView.findViewById(R.id.getLongitude);
             servicetime= itemView.findViewById(R.id.getServiceTime);
-            paymentMethod= itemView.findViewById(R.id.getPaymentMode);
+            //paymentMethod= itemView.findViewById(R.id.getPaymentMode);
             btn_edit= itemView.findViewById(R.id.btn_Edit);
         }
     }

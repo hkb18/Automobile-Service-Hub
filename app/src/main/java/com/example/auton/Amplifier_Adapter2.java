@@ -17,11 +17,11 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class Amplifier_Adapter2 extends RecyclerView.Adapter<Amplifier_Adapter2.ViewHold> {
-    private ArrayList<Amplifier_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
 
 
-    public Amplifier_Adapter2(Context fragment, ArrayList<Amplifier_ModelClass> dataList) {
+    public Amplifier_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
         this.dataList = dataList;
         this.context = fragment;
 
@@ -34,17 +34,16 @@ public class Amplifier_Adapter2 extends RecyclerView.Adapter<Amplifier_Adapter2.
     }
 
     public void onBindViewHolder(Amplifier_Adapter2.ViewHold holder, int position){
-        Amplifier_ModelClass ss=dataList.get(position);
+        Accessories_ModelClass ss=dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getModel());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
-        String model= ss.getModel();
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), fulldetails_Amplifier.class);
-                i.putExtra("key",model);
+                i.putExtra("key",ss.getModel());
                 context.startActivity(i);
             }
         });

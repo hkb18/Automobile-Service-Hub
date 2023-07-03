@@ -42,28 +42,28 @@ public class fulldetails_Detailing extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    boxincludeStr=snapshot.child(key).child("BoxIncludes").getValue(String.class);
+                    boxincludeStr=snapshot.child(key).child("boxIncluded").getValue(String.class);
                     binding.detailingBoxIncludes.setText(boxincludeStr);
 
-                    brandStr=snapshot.child(key).child("Brand").getValue(String.class);
+                    brandStr=snapshot.child(key).child("brand").getValue(String.class);
                     binding.detailingBrand.setText(brandStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.detailinigDimensions.setText(dimensionStr);
 
-                    itemformStr=snapshot.child(key).child("ItemForm").getValue(String.class);
+                    itemformStr=snapshot.child(key).child("itemForm").getValue(String.class);
                     binding.detailingItemForm.setText(itemformStr);
 
-                    volumeStr=snapshot.child(key).child("Volume").getValue(String.class);
+                    volumeStr=snapshot.child(key).child("volume").getValue(String.class);
                     binding.detailingVolume.setText(volumeStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.detailinigImg);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.detailinigPrice.setText(priceStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.detailinigWeight.setText(weightStr);
                 }
             }
@@ -123,7 +123,7 @@ public class fulldetails_Detailing extends AppCompatActivity {
             databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //qty--;
                     if (qty<=0){

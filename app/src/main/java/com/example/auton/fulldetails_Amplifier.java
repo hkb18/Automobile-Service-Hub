@@ -46,31 +46,31 @@ public class fulldetails_Amplifier extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.amplifierModel.setText(modelStr);
 
-                    maxvoltageStr=snapshot.child(key).child("MaxVoltage").getValue(String.class);
+                    maxvoltageStr=snapshot.child(key).child("maxVoltage").getValue(String.class);
                     binding.amplifierMaxVoltage.setText(maxvoltageStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimenension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.amplifierDimension.setText(dimensionStr);
 
-                    mountinghardwareStr=snapshot.child(key).child("MountingHardware").getValue(String.class);
+                    mountinghardwareStr=snapshot.child(key).child("mountingHardware").getValue(String.class);
                     binding.amplifierMountingHardware.setText(mountinghardwareStr);
 
-                    channelStr=snapshot.child(key).child("Channel").getValue(String.class);
+                    channelStr=snapshot.child(key).child("channel").getValue(String.class);
                     binding.amplifierChannels.setText(channelStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.amplifierImg);
 
-                    manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
+                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.amplifierManufacturer.setText(manufacturerStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.amplifierPrice.setText(priceStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.amplifierWeight.setText(weightStr);
                 }
             }
@@ -130,7 +130,7 @@ public class fulldetails_Amplifier extends AppCompatActivity {
             databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 String qtyStr=snapshot.child("Quantity").getValue().toString();
+                 String qtyStr=snapshot.child("quantity").getValue().toString();
                  Integer qty=Integer.parseInt(qtyStr);
                  //qty--;
                  if (qty<=0){

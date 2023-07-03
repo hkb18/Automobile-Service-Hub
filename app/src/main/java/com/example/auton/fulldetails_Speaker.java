@@ -42,34 +42,34 @@ public class fulldetails_Speaker extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.speakerModel.setText(modelStr);
 
-                    speakertypeStr=snapshot.child(key).child("SpeakerType").getValue(String.class);
+                    speakertypeStr=snapshot.child(key).child("speakerType").getValue(String.class);
                     binding.speakerType.setText(speakertypeStr);
 
-                    poweroutputStr=snapshot.child(key).child("PowerOutput").getValue(String.class);
+                    poweroutputStr=snapshot.child(key).child("powerOutput").getValue(String.class);
                     binding.speakerPowerOutput.setText(poweroutputStr);
 
-                    diameterStr=snapshot.child(key).child("Diameter").getValue(String.class);
+                    diameterStr=snapshot.child(key).child("diameter").getValue(String.class);
                     binding.speakerDiameter.setText(diameterStr);
 
-                    frequencyStr=snapshot.child(key).child("Frequency").getValue(String.class);
+                    frequencyStr=snapshot.child(key).child("frequency").getValue(String.class);
                     binding.speakerFrequency.setText(frequencyStr);
 
-                    sensitivityStr=snapshot.child(key).child("Sensitivity").getValue(String.class);
+                    sensitivityStr=snapshot.child(key).child("sensitivity").getValue(String.class);
                     binding.speakerSensitivity.setText(sensitivityStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.speakerImg);
 
-                    manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
+                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.speakerManufacturer.setText(manufacturerStr);
 
-                    colorStr=snapshot.child(key).child("Color").getValue(String.class);
+                    colorStr=snapshot.child(key).child("color").getValue(String.class);
                     binding.speakerColor.setText(colorStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.speakerPrice.setText(priceStr);
 
                 }
@@ -129,7 +129,7 @@ public class fulldetails_Speaker extends AppCompatActivity {
             databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //  qty--;
                     if (qty<=0){

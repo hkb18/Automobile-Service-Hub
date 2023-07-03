@@ -46,39 +46,39 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.androidscreenModel.setText(modelStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.androidscreenDimension.setText(dimensionStr);
 
-                    displaytypeStr=snapshot.child(key).child("DisplayType").getValue(String.class);
+                    displaytypeStr=snapshot.child(key).child("displayType").getValue(String.class);
                     binding.androidscreenDisplayType.setText(displaytypeStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.androidscreenImg);
 
-                    manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
+                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.androidscreenManufacturer.setText(manufacturerStr);
 
-                    ostypeStr=snapshot.child(key).child("OSType").getValue(String.class);
+                    ostypeStr=snapshot.child(key).child("ostype").getValue(String.class);
                     binding.androidscreenOSType.setText(ostypeStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.androidscreenPrice.setText(priceStr);
 
                     /*quantityStr=snapshot.child(key).child("Quantity").getValue(String.class);
                     binding.androidscreen.setText(modelStr);*/
-                    ramStr=snapshot.child(key).child("RAM").getValue(String.class);
+                    ramStr=snapshot.child(key).child("ram").getValue(String.class);
                     binding.androidscreenRAM.setText(ramStr);
 
-                    romStr=snapshot.child(key).child("ROM").getValue(String.class);
+                    romStr=snapshot.child(key).child("rom").getValue(String.class);
                     binding.androidscreenROM.setText(romStr);
 
-                    screensizeStr=snapshot.child(key).child("ScreenSize").getValue(String.class);
+                    screensizeStr=snapshot.child(key).child("screenSize").getValue(String.class);
                     binding.androidscreenScreenSize.setText(screensizeStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.androidscreenWeight.setText(weightStr);
                 }
             }
@@ -137,7 +137,7 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
             databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //qty--;
                     if (qty<=0){

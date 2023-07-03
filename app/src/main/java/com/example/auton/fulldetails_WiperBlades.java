@@ -41,28 +41,28 @@ public class fulldetails_WiperBlades extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.wiperbladesModel.setText(modelStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.wiperbladesDimensions.setText(dimensionStr);
 
-                    materialStr=snapshot.child(key).child("Material").getValue(String.class);
+                    materialStr=snapshot.child(key).child("material").getValue(String.class);
                     binding.wiperbladesMaterial.setText(materialStr);
 
-                    positionStr=snapshot.child(key).child("Position").getValue(String.class);
+                    positionStr=snapshot.child(key).child("position").getValue(String.class);
                     binding.wiperbladesPosition.setText(positionStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.wiperbladesImg);
 
-                    brandStr=snapshot.child(key).child("Brand").getValue(String.class);
+                    brandStr=snapshot.child(key).child("brand").getValue(String.class);
                     binding.wiperbladesBrand.setText(brandStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.wiperbladesPrice.setText(priceStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.wiperbladesWeight.setText(weightStr);
                 }
             }
@@ -120,7 +120,7 @@ public class fulldetails_WiperBlades extends AppCompatActivity {
             databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //   qty--;
                     if (qty<=0){

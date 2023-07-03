@@ -41,31 +41,31 @@ public class fulldetails_CleaningKit extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.cleaningkitModel.setText(modelStr);
 
-                    boxincludedStr=snapshot.child(key).child("BoxIncluded").getValue(String.class);
+                    boxincludedStr=snapshot.child(key).child("boxIncluded").getValue(String.class);
                     binding.cleaningkitBoxIncluded.setText(boxincludedStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimensions").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.cleaningkitDimensions.setText(dimensionStr);
 
-                    itemformStr=snapshot.child(key).child("ItemForm").getValue(String.class);
+                    itemformStr=snapshot.child(key).child("itemForm").getValue(String.class);
                     binding.cleaningkitItemForm.setText(itemformStr);
 
-                    volumeStr=snapshot.child(key).child("Volume").getValue(String.class);
+                    volumeStr=snapshot.child(key).child("volume").getValue(String.class);
                     binding.cleaningkitVolume.setText(volumeStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.cleaningkitImg);
 
-                    brandStr=snapshot.child(key).child("Brand").getValue(String.class);
+                    brandStr=snapshot.child(key).child("brand").getValue(String.class);
                     binding.cleaningkitBrand.setText(brandStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.cleaningkitPrice.setText(priceStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.cleaningkitWeight.setText(weightStr);
                 }
             }
@@ -125,7 +125,7 @@ public class fulldetails_CleaningKit extends AppCompatActivity {
             databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("CleaningKit").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                   //  qty--;
                     if (qty<=0){

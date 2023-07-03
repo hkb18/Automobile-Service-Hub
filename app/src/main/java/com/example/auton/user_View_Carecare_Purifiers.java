@@ -23,6 +23,7 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
     DatabaseReference databaseReference;
     String ccpModelStr;
     private ArrayList<materialButton> list=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> accessoriesList=new ArrayList<>();
     private AirPurifier_Adapter airpurifierAdapter;
     private CleaningKit_Adapter cleaningKitAdapter;
     private Cleansers_Adapter cleansersAdapter;
@@ -30,13 +31,13 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
     private MicroFibres_Adapter microFibresAdapter;
     private Washers_Adapter washersAdapter;
     private WiperBlades_Adapter wiperBladesAdapter;
-    private ArrayList<Airpurifier_ModelClass> airpurifierList= new ArrayList<>();
+    /*private ArrayList<Airpurifier_ModelClass> airpurifierList= new ArrayList<>();
     private ArrayList<CleaningKit_ModelClass> cleaningkitList= new ArrayList<>();
     private ArrayList<Cleaners_ModelClass> cleansersList= new ArrayList<>();
     private ArrayList<Detailing_ModelClass> detailingList= new ArrayList<>();
     private ArrayList<MicroFibres_ModelClass> microfibresList= new ArrayList<>();
     private ArrayList<Washers_ModelClass> washersList= new ArrayList<>();
-    private ArrayList<WiperBlades_ModelClass> wiperbladesList= new ArrayList<>();
+    private ArrayList<WiperBlades_ModelClass> wiperbladesList= new ArrayList<>();*/
     private  CarecarePurifiers_Adapter carecarePurifiers_adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,13 +82,13 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("AirPurifier").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                airpurifierList.clear();
+                accessoriesList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Airpurifier_ModelClass ap = dataSnapshot.getValue(Airpurifier_ModelClass.class);
-                    airpurifierList.add(ap);
+                    Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
+                    accessoriesList.add(ap);
                 }
 
-                airpurifierAdapter =new AirPurifier_Adapter(user_View_Carecare_Purifiers.this,airpurifierList, snapshot.getKey());
+                airpurifierAdapter =new AirPurifier_Adapter(user_View_Carecare_Purifiers.this,accessoriesList, snapshot.getKey());
                 binding.rvItemsAirpurifier.setAdapter(airpurifierAdapter);
 
                 airpurifierAdapter.notifyDataSetChanged();
@@ -107,13 +108,13 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("CleaningKit").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                cleaningkitList.clear();
+                accessoriesList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    CleaningKit_ModelClass ap = dataSnapshot.getValue(CleaningKit_ModelClass.class);
-                    cleaningkitList.add(ap);
+                    Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
+                    accessoriesList.add(ap);
                 }
 
-                cleaningKitAdapter =new CleaningKit_Adapter(user_View_Carecare_Purifiers.this,cleaningkitList, snapshot.getKey());
+                cleaningKitAdapter =new CleaningKit_Adapter(user_View_Carecare_Purifiers.this,accessoriesList, snapshot.getKey());
                 binding.rvItemsCleaningKit.setAdapter(cleaningKitAdapter);
 
                 cleaningKitAdapter.notifyDataSetChanged();
@@ -133,13 +134,13 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                cleansersList.clear();
+                accessoriesList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Cleaners_ModelClass ap = dataSnapshot.getValue(Cleaners_ModelClass.class);
-                    cleansersList.add(ap);
+                    Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
+                    accessoriesList.add(ap);
                 }
 
-                cleansersAdapter =new Cleansers_Adapter(user_View_Carecare_Purifiers.this,cleansersList, snapshot.getKey());
+                cleansersAdapter =new Cleansers_Adapter(user_View_Carecare_Purifiers.this,accessoriesList, snapshot.getKey());
                 binding.rvItemsCleansers.setAdapter(cleansersAdapter);
 
                 cleansersAdapter.notifyDataSetChanged();
@@ -159,13 +160,13 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                detailingList.clear();
+                accessoriesList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Detailing_ModelClass ap = dataSnapshot.getValue(Detailing_ModelClass.class);
-                    detailingList.add(ap);
+                    Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
+                    accessoriesList.add(ap);
                 }
 
-                detailingAdapter =new Detailing_Adapter(user_View_Carecare_Purifiers.this,detailingList, snapshot.getKey());
+                detailingAdapter =new Detailing_Adapter(user_View_Carecare_Purifiers.this,accessoriesList, snapshot.getKey());
                 binding.rvItemsDetailing.setAdapter(detailingAdapter);
 
                 detailingAdapter.notifyDataSetChanged();
@@ -186,13 +187,13 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("MicroFibres").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                microfibresList.clear();
+                accessoriesList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    MicroFibres_ModelClass ap = dataSnapshot.getValue(MicroFibres_ModelClass.class);
-                    microfibresList.add(ap);
+                    Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
+                    accessoriesList.add(ap);
                 }
 
-                microFibresAdapter =new MicroFibres_Adapter(user_View_Carecare_Purifiers.this,microfibresList, snapshot.getKey());
+                microFibresAdapter =new MicroFibres_Adapter(user_View_Carecare_Purifiers.this,accessoriesList, snapshot.getKey());
                 binding.rvItemsMicroFibres.setAdapter(microFibresAdapter);
 
                 microFibresAdapter.notifyDataSetChanged();
@@ -213,13 +214,13 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                washersList.clear();
+                accessoriesList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Washers_ModelClass ap = dataSnapshot.getValue(Washers_ModelClass.class);
-                    washersList.add(ap);
+                    Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
+                    accessoriesList.add(ap);
                 }
 
-                washersAdapter =new Washers_Adapter(user_View_Carecare_Purifiers.this,washersList, snapshot.getKey());
+                washersAdapter =new Washers_Adapter(user_View_Carecare_Purifiers.this,accessoriesList, snapshot.getKey());
                 binding.rvItemsWashers.setAdapter(washersAdapter);
 
                 washersAdapter.notifyDataSetChanged();
@@ -240,13 +241,13 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("WiperBlades").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                wiperbladesList.clear();
+                accessoriesList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    WiperBlades_ModelClass ap = dataSnapshot.getValue(WiperBlades_ModelClass.class);
-                    wiperbladesList.add(ap);
+                    Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
+                    accessoriesList.add(ap);
                 }
 
-                wiperBladesAdapter =new WiperBlades_Adapter(user_View_Carecare_Purifiers.this,wiperbladesList, snapshot.getKey());
+                wiperBladesAdapter =new WiperBlades_Adapter(user_View_Carecare_Purifiers.this,accessoriesList, snapshot.getKey());
                 binding.rvItemsWiperBlades.setAdapter(wiperBladesAdapter);
 
                 wiperBladesAdapter.notifyDataSetChanged();
@@ -278,62 +279,62 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (Model.equalsIgnoreCase("AirPurifier")){
-                        airpurifierList.clear();
+                        accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Airpurifier_ModelClass ss = dataSnapshot.getValue(Airpurifier_ModelClass.class);
-                            airpurifierList.add(ss);
+                            Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
+                            accessoriesList.add(ss);
                         }
                         binding.rv.setAdapter(airpurifierAdapter);
                         airpurifierAdapter.notifyDataSetChanged();
                     }
                     else if (Model.equalsIgnoreCase("CleaningKit")) {
-                        cleaningkitList.clear();
+                        accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            CleaningKit_ModelClass ss = dataSnapshot.getValue(CleaningKit_ModelClass.class);
-                            cleaningkitList.add(ss);
+                            Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
+                            accessoriesList.add(ss);
                         }
                         binding.rv.setAdapter(cleaningKitAdapter);
                         cleaningKitAdapter.notifyDataSetChanged();
                     }
                     else if (Model.equalsIgnoreCase("Cleansers")) {
-                        cleansersList.clear();
+                        accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Cleaners_ModelClass ss = dataSnapshot.getValue(Cleaners_ModelClass.class);
-                            cleansersList.add(ss);
+                            Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
+                            accessoriesList.add(ss);
                         }
                         binding.rv.setAdapter(cleansersAdapter);
                         cleansersAdapter.notifyDataSetChanged();
                     }
                     else if (Model.equalsIgnoreCase("Detailing")) {
-                        detailingList.clear();
+                        accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Detailing_ModelClass ss = dataSnapshot.getValue(Detailing_ModelClass.class);
-                            detailingList.add(ss);
+                            Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
+                            accessoriesList.add(ss);
                         }
                         binding.rv.setAdapter(detailingAdapter);
                         detailingAdapter.notifyDataSetChanged();
                     }
                     else if (Model.equalsIgnoreCase("MicroFibres")) {
-                        microfibresList.clear();
+                        accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            MicroFibres_ModelClass ss = dataSnapshot.getValue(MicroFibres_ModelClass.class);
-                            microfibresList.add(ss);
+                            Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
+                            accessoriesList.add(ss);
                         }
                         binding.rv.setAdapter(microFibresAdapter);
                         microFibresAdapter.notifyDataSetChanged();
                     } else if (Model.equalsIgnoreCase("Washers")) {
-                        washersList.clear();
+                        accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Washers_ModelClass ss = dataSnapshot.getValue(Washers_ModelClass.class);
-                            washersList.add(ss);
+                            Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
+                            accessoriesList.add(ss);
                         }
                         binding.rv.setAdapter(washersAdapter);
                         washersAdapter.notifyDataSetChanged();
                     }else if (Model.equalsIgnoreCase("WiperBlades")){
-                        wiperbladesList.clear();
+                        accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            WiperBlades_ModelClass ss = dataSnapshot.getValue(WiperBlades_ModelClass.class);
-                            wiperbladesList.add(ss);
+                            Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
+                            accessoriesList.add(ss);
                         }
                         binding.rv.setAdapter(wiperBladesAdapter);
                         wiperBladesAdapter.notifyDataSetChanged();

@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class BackCushions_Adapter extends RecyclerView.Adapter<BackCushions_Adapter.ViewHold>{
-    private ArrayList<BackCushion_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
     private String title;
 
-    public BackCushions_Adapter(Context fragment, ArrayList<BackCushion_ModelClass> dataList, String key) {
+    public BackCushions_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
         this.title = key;
@@ -36,7 +36,7 @@ public class BackCushions_Adapter extends RecyclerView.Adapter<BackCushions_Adap
         holder.recyclerView.setAdapter(new BackCushions_Adapter2(context,dataList));
     }
 
-    public void filterList(ArrayList<BackCushion_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

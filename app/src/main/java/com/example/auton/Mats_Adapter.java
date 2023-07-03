@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class Mats_Adapter extends RecyclerView.Adapter<Mats_Adapter.ViewHold>{
-    private ArrayList<Mats_ModelClass> dataList;
+    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
     private String title;
 
-    public Mats_Adapter(Context fragment, ArrayList<Mats_ModelClass> dataList, String key) {
+    public Mats_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
         this.title = key;
@@ -36,7 +36,7 @@ public class Mats_Adapter extends RecyclerView.Adapter<Mats_Adapter.ViewHold>{
         holder.recyclerView.setAdapter(new Mats_Adapter2(context,dataList));
     }
 
-    public void filterList(ArrayList<Mats_ModelClass> filteredlist) {
+    public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
         dataList = filteredlist;

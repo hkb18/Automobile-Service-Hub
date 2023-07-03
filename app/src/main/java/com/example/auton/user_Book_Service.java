@@ -53,7 +53,7 @@ import java.util.Locale;
 public class user_Book_Service extends AppCompatActivity implements AdapterView.OnItemSelectedListener,mapinterface {
     private ActivityUserBookServiceBinding binding;
     int totalPrice;
-    String s1,getPriceServiceTypeStr,carmodelPriceStr="",carbodytypePriceStr="",modelstr,datestr,timestr,locationstr,currentlocationstr,servicenameStr,serviceStr,brandStr,username,latitudeStr,longitudeStr;
+    String s1="",getPriceServiceTypeStr,carmodelPriceStr="",carbodytypePriceStr="",modelstr,datestr,timestr,locationstr,currentlocationstr,servicenameStr,serviceStr,brandStr,username,latitudeStr,longitudeStr;
     private static final int PERMISSIONS_REQUEST_LOCATION = 123;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
     LocationManager locationManager;
@@ -159,10 +159,10 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         binding.tvServiceType.setText(servicenameStr);
         binding.tvService.setText(serviceStr);
 
-        Toast.makeText(getApplicationContext(), "Username:"+s1, Toast.LENGTH_SHORT).show();
 
         SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
         s1 = sh.getString("Username", "");
+        Toast.makeText(getApplicationContext(), "Username:"+s1, Toast.LENGTH_SHORT).show();
 
         // MAP
         mapinterface=this;

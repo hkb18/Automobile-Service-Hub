@@ -199,8 +199,9 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     databaseReference.child("PURCHASED_ACCESSORIES").child(s1).child(databaseReference.push().getKey()).setValue(data);
-                    Intent i = new Intent(getApplicationContext(), user_HomePage.class);
-                    startActivity(i);
+                    Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                    i.putExtra("Username", s1);
+                    i.putExtra("deleteCart", "1");
                     Toast.makeText(RazorPay.this, "Accessory Purchased Successfully", Toast.LENGTH_SHORT).show();
                 }
 
@@ -270,12 +271,26 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     Toast.makeText(RazorPay.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+        } else if (activity.equals("buynow")) {
+            getData data = new getData();
+            data.setKey(modelstr);
+            data.setPrice(priceStr);
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    databaseReference.child("DirectBuy_Accessories").child(s1).child(databaseReference.push().getKey()).setValue(data);
+                    Intent i = new Intent(getApplicationContext(), user_HomePage.class);
+                    startActivity(i);
+                    Toast.makeText(RazorPay.this, "Accessory Purchased Successfully", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(RazorPay.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
-        Intent i=new Intent(getApplicationContext(),user_HomePage.class);
-        i.putExtra("Username", s1);
-        i.putExtra("deleteCart", "1");
-        startActivity(i);
         finishAffinity();
     }
 

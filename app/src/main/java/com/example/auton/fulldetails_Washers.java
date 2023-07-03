@@ -41,34 +41,34 @@ public class fulldetails_Washers extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("Model").getValue(String.class);
+                    modelStr=snapshot.child(key).child("model").getValue(String.class);
                     binding.washersModel.setText(modelStr);
 
-                    colorStr=snapshot.child(key).child("Color").getValue(String.class);
+                    colorStr=snapshot.child(key).child("color").getValue(String.class);
                     binding.washersColor.setText(colorStr);
 
-                    dimensionStr=snapshot.child(key).child("Dimension").getValue(String.class);
+                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
                     binding.washersDimensions.setText(dimensionStr);
 
-                    hoselengthStr=snapshot.child(key).child("HoseLength").getValue(String.class);
+                    hoselengthStr=snapshot.child(key).child("hoseLength").getValue(String.class);
                     binding.washersHoseLength.setText(hoselengthStr);
 
-                    maxpressureStr=snapshot.child(key).child("MaxPressure").getValue(String.class);
+                    maxpressureStr=snapshot.child(key).child("maxPressure").getValue(String.class);
                     binding.washersMaximumPressure.setText(maxpressureStr);
 
-                    imageStr=snapshot.child(key).child("Image").getValue(String.class);
+                    imageStr=snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.washersImg);
 
-                    manufacturerStr=snapshot.child(key).child("Manufacturer").getValue(String.class);
+                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.washersManufacturer.setText(manufacturerStr);
 
-                    priceStr=snapshot.child(key).child("Price").getValue(String.class);
+                    priceStr=snapshot.child(key).child("price").getValue(String.class);
                     binding.washersPrice.setText(priceStr);
 
-                    poweroutputStr=snapshot.child(key).child("PowerOutput").getValue(String.class);
+                    poweroutputStr=snapshot.child(key).child("powerOutput").getValue(String.class);
                     binding.washersPowerOutput.setText(poweroutputStr);
 
-                    weightStr=snapshot.child(key).child("Weight").getValue(String.class);
+                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
                     binding.washersWeight.setText(weightStr);
                 }
             }
@@ -126,7 +126,7 @@ public class fulldetails_Washers extends AppCompatActivity {
             databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("Quantity").getValue().toString();
+                    String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //  qty--;
                     if (qty<=0){
