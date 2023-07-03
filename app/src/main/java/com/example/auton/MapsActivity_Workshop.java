@@ -85,8 +85,10 @@ public class MapsActivity_Workshop extends FragmentActivity implements OnMapRead
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding= ActivityMaps2Binding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+       // binding= ActivityMaps2Binding.inflate(getLayoutInflater());
+        /*binding= ActivityMaps2Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());*/
+        setContentView(R.layout.activity_maps_workshop);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

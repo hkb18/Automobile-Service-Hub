@@ -13,10 +13,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Workshop_BookedService_Adapter.ViewHold> {
     ArrayList<Worshop_View_Service_modelClass> list;
     Context context;
+    DatabaseReference  databaseReference;
     public Workshop_BookedService_Adapter(Context context, ArrayList<Worshop_View_Service_modelClass> list) {
         this.context = context;
         this.list = list;
@@ -34,6 +37,7 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
         holder.carBrand.setText(bookedService.getCarBrand());
         holder.carModel.setText(bookedService.getCarModel());
         holder.serviceType.setText(bookedService.getServiceType());
+        holder.serviceName.setText(bookedService.getServiceName());
         holder.username.setText(bookedService.getUsername());
         holder.date.setText(bookedService.getDate());
         holder.latitude.setText(bookedService.getLatitude());
@@ -41,7 +45,8 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
         holder.servicetime.setText(bookedService.getServiceTime());
 //        holder.paymentMethod.setText(bookedService.getPaymentMode());
 
-        String key=bookedService.getSYSTIME();
+       // String key=bookedService.getSYSTIME();
+        String key =bookedService.getKey();
         String username=bookedService.getUsername();
         if (bookedService.isACCEPT_SERVICE()){
             holder.ServiceReject.setVisibility(View.GONE);
@@ -82,7 +87,7 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        TextView carBrand,carModel,serviceType,date,latitude,longitude,servicetime,paymentMethod,username,ServiceReject;
+        TextView carBrand,carModel,serviceType,date,latitude,longitude,servicetime,serviceName,username,ServiceReject;
         Button accept,delete;
         LinearLayout linearLayout;
 
@@ -96,7 +101,7 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
             latitude= itemView.findViewById(R.id.getLatitude);
             longitude= itemView.findViewById(R.id.getLongitude);
             servicetime= itemView.findViewById(R.id.getServiceTime);
-        //    paymentMethod= itemView.findViewById(R.id.getPaymentMode);
+            serviceName= itemView.findViewById(R.id.getServiceName);
             accept= itemView.findViewById(R.id.btn_Accept);
             delete= itemView.findViewById(R.id.btn_Delete);
             ServiceReject=itemView.findViewById(R.id.tvStatus);

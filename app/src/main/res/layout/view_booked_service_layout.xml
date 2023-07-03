@@ -4,11 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent"
     android:layout_height="wrap_content">
-
+<!--FOR TRANSPARANCY :app:cardBackgroundColor="@android:color/transparent"-->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardBackgroundColor="@android:color/transparent"
         android:layout_margin="5dp">
 
         <LinearLayout
@@ -124,6 +123,27 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:id="@+id/getServiceTime"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <!-- SERVICE NAME -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Service Name :"
+                    android:textColor="@color/black"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:id="@+id/getServiceName"
                     android:layout_weight="1"/>
             </LinearLayout>
 

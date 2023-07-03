@@ -170,8 +170,9 @@ public class workshop_Profile_Fragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
                                 finish();
+                                requireActivity().finishAffinity();
                                 Toast.makeText(getContext(), "You have been Logged Out", Toast.LENGTH_SHORT).show();
-                                Intent i =new Intent(getContext(),workshop_Login.class);
+                                Intent i =new Intent(getContext(),MainActivity.class);
                                 startActivity(i);
                             }
                         })

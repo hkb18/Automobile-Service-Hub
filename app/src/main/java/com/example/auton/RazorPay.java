@@ -202,6 +202,8 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     Intent i=new Intent(getApplicationContext(),user_HomePage.class);
                     i.putExtra("Username", s1);
                     i.putExtra("deleteCart", "1");
+                    startActivity(i);
+                    finishAffinity();
                     Toast.makeText(RazorPay.this, "Accessory Purchased Successfully", Toast.LENGTH_SHORT).show();
                 }
 
@@ -228,9 +230,12 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
+                    databaseReference.child("Service").child(s1).child(pk).child("ServiceStatus").setValue("Requested");
+                    Intent i=new Intent(getApplicationContext(),user_View_Booked_Service.class);
+                   /* i.putExtra("Username", s1);
+                    i.putExtra("deleteCart", "0");*/
                     Toast.makeText(getApplicationContext(), "Service Successfully Booked", Toast.LENGTH_SHORT).show();
-                    /*Intent i = new Intent(getApplicationContext(), user_HomePage.class);
-                    startActivity(i);*/
+                    startActivity(i);
                 }
 
                 @Override
@@ -259,10 +264,11 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Image").setValue(imgStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
+                    Intent i=new Intent(getApplicationContext(),user_View_Booked_Service.class);
+                    /*i.putExtra("Username", s1);
+                    i.putExtra("deleteCart", "0");*/
                     Toast.makeText(getApplicationContext(), "Service Successfully Booked", Toast.LENGTH_SHORT).show();
-                    /*Intent i = new Intent(getApplicationContext(), user_HomePage.class);
-                    startActivity(i);*/
-
+                    startActivity(i);
                 }
 
                 @Override
@@ -280,7 +286,10 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     databaseReference.child("DirectBuy_Accessories").child(s1).child(databaseReference.push().getKey()).setValue(data);
                     Intent i = new Intent(getApplicationContext(), user_HomePage.class);
+                    i.putExtra("Username", s1);
+                    i.putExtra("deleteCart", "0");
                     startActivity(i);
+                    finishAffinity();
                     Toast.makeText(RazorPay.this, "Accessory Purchased Successfully", Toast.LENGTH_SHORT).show();
                 }
 
@@ -291,7 +300,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
             });
         }
 
-        finishAffinity();
+        //finishAffinity();
     }
 
     @Override

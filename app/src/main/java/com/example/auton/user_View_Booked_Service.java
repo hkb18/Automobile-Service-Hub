@@ -24,7 +24,7 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
     private ActivityUserViewBookedServiceBinding binding;
     DatabaseReference databaseReference;
     BookedService_Adapter myAdapter;
-    ArrayList<BookedService> list;
+    ArrayList<Worshop_View_Service_modelClass> list;
     SharedPreferences sh;
     String s1="";
     public static ViewBookedService_Interface viewBookedService_interface;
@@ -52,7 +52,7 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    BookedService bookedService = dataSnapshot.getValue(BookedService.class);
+                    Worshop_View_Service_modelClass bookedService = dataSnapshot.getValue(Worshop_View_Service_modelClass.class);
                     list.add(bookedService);
                 }
                 myAdapter.notifyDataSetChanged();
@@ -65,6 +65,7 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
         });
 
         //  SEARCH
+/*
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -74,10 +75,10 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
             @Override
             public boolean onQueryTextChange(String newText) {
                 // creating a new array list to filter our data.
-                ArrayList<BookedService> filteredlist = new ArrayList<>();
+                ArrayList<Worshop_View_Service_modelClass> filteredlist = new ArrayList<>();
 
                 // running a for loop to compare elements.
-                for (BookedService item : list) {
+                for (Worshop_View_Service_modelClass item : list) {
                     // checking if the entered string matched with any item of our recycler view.
                     if (item.getDate().toLowerCase().contains(newText.toLowerCase())) {
                         // if the item is matched we are
@@ -97,6 +98,7 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
                 return false;
             }
         });
+*/
     }
 
     @Override

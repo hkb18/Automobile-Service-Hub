@@ -93,7 +93,6 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // View v=inflater.inflate(R.layout.fragment_workshop__dashboard, container, false);
 
         binding = FragmentWorkshopDashboardBinding.inflate(getLayoutInflater());
 
@@ -116,7 +115,9 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                         Worshop_View_Service_modelClass bookedService = dataSnapshot1.getValue(Worshop_View_Service_modelClass.class);
                         String dtStart = bookedService.getDate();
-                        Log.e("TAG", "onDataChange: " + dtStart);
+
+                        Boolean acceptedService=bookedService.isACCEPT_SERVICE();
+
                         SimpleDateFormat format = new SimpleDateFormat("dd-M-yyyy");
                         try {
                             Date date = format.parse(dtStart);
@@ -127,6 +128,7 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
                             if (!date.before(d)) {
                                 list.add(bookedService);
                             }
+
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -157,8 +159,8 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
     public void accept(String username, String key, int position, String userLat, String userLong) {
         try {
             databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(true);
+            databaseReference.child("Service").child(username).child(key).child("ServiceStatus").setValue("Accepted");
             myAdapter.notifyDataSetChanged();
-
 
             ArrayList<Mechanic> mechanicList = new ArrayList<>();
             databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").addValueEventListener(new ValueEventListener() {
@@ -184,6 +186,7 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
     @Override
     public void delete(String username, String key, int position) {
         databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(false);
+        databaseReference.child("Service").child(username).child(key).child("ServiceStatus").setValue("Rejected");
         myAdapter.notifyDataSetChanged();
     }
 
@@ -222,6 +225,7 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+
         //  ASSIGNS MECHANIC AND WORKSHOP FOR SERVICE REQ
         assign.setOnClickListener(v -> {
             databaseReference.child("Service").addValueEventListener(new ValueEventListener() {

@@ -96,9 +96,9 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
 
 
 public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Adapter.ViewHold> {
-    ArrayList<BookedService> list;
+    ArrayList<Worshop_View_Service_modelClass> list;
     Context context;
-    public BookedService_Adapter(Context context, ArrayList<BookedService> list) {
+    public BookedService_Adapter(Context context, ArrayList<Worshop_View_Service_modelClass> list) {
         this.context = context;
         this.list = list;
     }
@@ -113,7 +113,7 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
 
     public void onBindViewHolder(@NonNull BookedService_Adapter.ViewHold holder, int position){
         Log.e("TAG", "onBindViewHolder: "+list );
-        BookedService bookedService=list.get(position);
+        Worshop_View_Service_modelClass bookedService=list.get(position);
         holder.carBrand.setText(bookedService.getCarBrand());
         holder.carModel.setText(bookedService.getCarModel());
         holder.serviceType.setText(bookedService.getServiceType());
@@ -122,9 +122,10 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
         holder.latitude.setText(bookedService.getLatitude());
         holder.longitude.setText(bookedService.getLongitude());
         holder.servicetime.setText(bookedService.getServiceTime());
-        //holder.paymentMethod.setText(bookedService.getPaymentMode());
+        holder.serviceName.setText(bookedService.getServiceName());
 
-        String key=bookedService.getSYSTIME();
+
+/*
         holder.btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,6 +135,7 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
 
             }
         });
+*/
 
 
     }
@@ -153,7 +155,7 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        TextView carBrand,carModel,serviceType,date,latitude,longitude,servicetime,paymentMethod,username;
+        TextView carBrand,carModel,serviceType,date,latitude,longitude,servicetime,serviceName,username;
         Button btn_edit;
 
 
@@ -167,8 +169,8 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
             latitude= itemView.findViewById(R.id.getLatitude);
             longitude= itemView.findViewById(R.id.getLongitude);
             servicetime= itemView.findViewById(R.id.getServiceTime);
-            //paymentMethod= itemView.findViewById(R.id.getPaymentMode);
-            btn_edit= itemView.findViewById(R.id.btn_Edit);
+            serviceName= itemView.findViewById(R.id.getServiceName);
+            //btn_edit= itemView.findViewById(R.id.btn_Edit);
         }
     }
 }

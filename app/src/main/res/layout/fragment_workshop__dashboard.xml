@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/theme_bg"
     tools:context=".workshop_Dashboard_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -21,14 +20,13 @@
             app:lottie_autoPlay="true"
             app:lottie_rawRes="@raw/example" />
     </RelativeLayout>-->
-
+    <!--FOR TRANSPARANCY: android:background="@android:color/transparent"-->
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/rvBookedService"
                 tools:itemCount="8"
-                android:background="@android:color/transparent"
                 tools:listitem="@layout/view_booked_service_layout"/>
 
 
