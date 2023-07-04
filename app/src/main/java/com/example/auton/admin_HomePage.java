@@ -18,7 +18,7 @@ public class admin_HomePage extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav_admin);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_admin,new admin_ManageWorkshop_Fragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_admin,new admin_Add_Accessories()).commit();
     }
     private final  BottomNavigationView.OnNavigationItemSelectedListener navListener= item -> {
         Fragment selectedFragment = null;
@@ -30,7 +30,6 @@ public class admin_HomePage extends AppCompatActivity {
         } else if (itemId==R.id.profile) {
             Intent i =new Intent(getApplicationContext(),admin_View_Users.class);
             startActivity(i);
-            //selectedFragment=new admin_ManageWorkshop_Fragment();
         }else if (itemId==R.id.service) {
             selectedFragment = new admin_Add_Accessories();
         }

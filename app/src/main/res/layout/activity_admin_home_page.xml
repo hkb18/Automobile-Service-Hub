@@ -35,7 +35,7 @@
         android:id="@+id/bottom_nav_admin"
         android:background="#97A8D1"
         app:menu="@menu/admin_bottom_nav_menu"
-        app:labelVisibilityMode="unlabeled"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
