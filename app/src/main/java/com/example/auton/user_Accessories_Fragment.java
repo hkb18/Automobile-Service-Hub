@@ -82,7 +82,8 @@ public class user_Accessories_Fragment extends Fragment {
             startActivity(i);
         });
         binding.lightsChargers.setOnClickListener(view -> {
-
+            Intent i = new Intent(getContext(), user_view_LightsChargers.class);
+            startActivity(i);
         });
         binding.roadsideAssistance.setOnClickListener(view -> {
             Intent i = new Intent(getContext(), user_view_RoadsideAssistance.class);

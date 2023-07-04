@@ -219,8 +219,8 @@ public class admin_add_HID extends AppCompatActivity {
                         modelClass.setVolume("");
                         modelClass.setVoltage("");
                         modelClass.setWeight(weightStr);
-                        modelClass.setWarrenty(wattageStr);
-                        modelClass.setWattage("");
+                        modelClass.setWarrenty("");
+                        modelClass.setWattage(wattageStr);
                         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("HID").child(modelStr).setValue(modelClass);
 
 

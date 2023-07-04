@@ -23,6 +23,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".fulldetails_Chargers"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_HID"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_Projectors"
+            android:exported="false" />
+        <activity
+            android:name=".fulldetails_MobileHolder"
+            android:exported="false" />
+        <activity
+            android:name=".user_view_LightsChargers"
+            android:exported="false" />
+        <activity
             android:name=".fulldetails_TyreInflator"
             android:exported="false" />
         <activity
