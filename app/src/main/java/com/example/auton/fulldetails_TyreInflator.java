@@ -125,7 +125,7 @@ public class fulldetails_TyreInflator extends AppCompatActivity {
             });
 
 
-            databaseReference.child("Accessories").child("HORNS_PROTECTIVES").child("Protectives").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
+            databaseReference.child("Accessories").child("ROADSIDE_ASSISTANCE").child("TyreInflator").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String qtyStr=snapshot.child("quantity").getValue().toString();

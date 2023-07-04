@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
                                         startActivity(i);
                                         Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
                                     }
+                                    else{
+                                        Toast.makeText(MainActivity.this, "Wrong credentials ", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 //  USER LOGIN
                                 else if (getPassword.equals(passwordStr)){
@@ -78,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                                     i.putExtra("Username", usernameStr);// username passing
                                     startActivity(i);
                                     Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(MainActivity.this, "Wrong credentials ", Toast.LENGTH_SHORT).show();
                                 }
                             }
                             else{

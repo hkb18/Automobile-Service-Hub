@@ -55,7 +55,7 @@ public class RoadsideAssistance_Adapter extends RecyclerView.Adapter<RoadsideAss
             dataList.get(position).setSelected(true);
             notifyDataSetChanged();
 
-            user_view_HornsProtectives.hornsProtectivesInterface.onClickItem(dataList.get(position).getName());
+            user_view_RoadsideAssistance.hornsProtectivesInterface.onClickItem(dataList.get(position).getName());
             // use interface and show data in recycler view
 
         });
