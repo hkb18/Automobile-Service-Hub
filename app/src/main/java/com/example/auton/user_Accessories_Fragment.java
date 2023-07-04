@@ -85,7 +85,8 @@ public class user_Accessories_Fragment extends Fragment {
 
         });
         binding.roadsideAssistance.setOnClickListener(view -> {
-
+            Intent i = new Intent(getContext(), user_view_RoadsideAssistance.class);
+            startActivity(i);
         });
         return binding.getRoot();
     }
