@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.auton.databinding.FragmentUserMyProfileBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,14 +33,9 @@ import com.google.firebase.database.ValueEventListener;
  * create an instance of this fragment.
  */
 public class user_MyProfile_Fragment extends Fragment {
-
-    Button update;
-    EditText newname,newemail,newcontactno;
-    TextView userprofilename,help,updatepasswd;
-    ImageView imgview;
+    private FragmentUserMyProfileBinding binding;
     String fullnameStr,emailStr,contactStr;
     DatabaseReference databaseReference;
-    FirebaseDatabase firebaseDatabase;
     SharedPreferences sh;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -88,28 +84,47 @@ public class user_MyProfile_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       // return inflater.inflate(R.layout.fragment_user__my_profile, container, false);
-        View v=inflater.inflate(R.layout.fragment_user__my_profile, container, false);
+        binding=FragmentUserMyProfileBinding.inflate(getLayoutInflater());
+
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         sh=requireContext().getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
         String s1=sh.getString("Username","");
 
-        updatepasswd=v.findViewById(R.id.updatePwd);
-        help=v.findViewById(R.id.Help);
+        binding.btnUpdateProfile.setOnClickListener(view -> {
+            Intent i = new Intent(getContext(),user_updateProfile.class);
+            startActivity(i);
+        });
 
-        userprofilename=v.findViewById(R.id.userprofileName);
-        userprofilename.setText(s1);
+        binding.btnMyOrders.setOnClickListener(view -> {
 
-        newname=v.findViewById(R.id.newName);
-        newemail=v.findViewById(R.id.newEmail);
-        newcontactno=v.findViewById(R.id.newContact);
+        });
 
-        imgview=v.findViewById(R.id.imgLogout);
-        update=v.findViewById(R.id.updatebtn);
+        AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+        binding.btnLogout.setOnClickListener(view -> {
+            builder.setMessage("Are you sure you want to logout?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            requireActivity().finishAffinity(); //ADD TO WORKSHOP N ADMIN
+                            Toast.makeText(getContext(), "You have been Logged Out", Toast.LENGTH_SHORT).show();
+                            Intent i =new Intent(getContext(),MainActivity.class);
+                            startActivity(i);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                            Toast.makeText(getContext(), "You choose no action for Alertbox", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            AlertDialog alert=builder.create();
+            alert.setTitle("User Logout");
+            alert.show();
 
-
-
+        });
        // firebaseDatabase=FirebaseDatabase.getInstance();
         //databaseReference=firebaseDatabase
 
@@ -124,17 +139,17 @@ public class user_MyProfile_Fragment extends Fragment {
         });*/
 
         // GOTO UPDATE PASSWORD PAGE
-        updatepasswd.setOnClickListener(new View.OnClickListener() {
+       /* binding.updatePwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(getContext(),user_Update_Password.class);
                 i.putExtra("Username",s1);
                 startActivity(i);
             }
-        });
+        });*/
 
         //  TO UPDATE USER PROFILE
-        databaseReference.child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
+        /*databaseReference.child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(s1)){
@@ -142,28 +157,28 @@ public class user_MyProfile_Fragment extends Fragment {
                     emailStr=snapshot.child(s1).child("EmailId").getValue(String.class);
                     contactStr=snapshot.child(s1).child("ContactNo").getValue(String.class);
 
-                    newname.setText(fullnameStr);
-                    newemail.setText(emailStr);
-                    newcontactno.setText(contactStr);
+                    binding.newName.setText(fullnameStr);
+                    binding.newEmail.setText(emailStr);
+                    binding.newContact.setText(contactStr);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(requireContext(), "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         //  UPDATE BUTTON
-        update.setOnClickListener(new View.OnClickListener() {
+        /*binding.updatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 databaseReference.child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.hasChild(s1)){
-                            fullnameStr=newname.getText().toString();
-                            emailStr=newemail.getText().toString();
-                            contactStr=newcontactno.getText().toString();
+                            fullnameStr=binding.newName.getText().toString();
+                            emailStr=binding.newEmail.getText().toString();
+                            contactStr=binding.newContact.getText().toString();
 
                             databaseReference.child("Profile").child(s1).child("Name").setValue(fullnameStr);
                             databaseReference.child("Profile").child(s1).child("EmailId").setValue(emailStr);
@@ -174,15 +189,15 @@ public class user_MyProfile_Fragment extends Fragment {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        Toast.makeText(requireContext(), "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
-        });
+        });*/
 
         //  LOGOUT
-        AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
-        imgview.setOnClickListener(new View.OnClickListener() {
+        //AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+        binding.imgLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 builder.setMessage("Are you sure you want to logout?")
@@ -210,7 +225,7 @@ public class user_MyProfile_Fragment extends Fragment {
             private void finish() {
             }
         });
-        return v;
+        return binding.getRoot();
 
 
     }
