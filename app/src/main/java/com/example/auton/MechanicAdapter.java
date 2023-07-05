@@ -39,9 +39,6 @@ public class MechanicAdapter extends RecyclerView.Adapter<MechanicAdapter.MyView
     }
 
     public void onBindViewHolder(@NonNull MechanicAdapter.MyViewHolder holder, int position) {
-        SharedPreferences sh= context.getSharedPreferences("MySharedPreferences1", MODE_PRIVATE);
-        String s1=sh.getString("Username","");
-
         Mechanic mechanic=list.get(position);
         holder.username.setText(mechanic.getWorkshop());
         holder.fullName.setText(mechanic.getName());

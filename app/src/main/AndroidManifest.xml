@@ -335,9 +335,6 @@
             android:name=".user_View_Service"
             android:exported="false" />
         <activity
-            android:name=".workshop_Mechanic_Del_Layout"
-            android:exported="false" />
-        <activity
             android:name=".workshop_Mechanic_layout"
             android:exported="false" />
         <activity

@@ -3,11 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".workshop_Mechanic_Del_Layout">
+    android:layout_height="wrap_content"
+    android:background="@drawable/theme_bg"
+    android:orientation="vertical"
+    >
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="5dp">
 
         <LinearLayout
@@ -20,16 +24,18 @@
             android:padding="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:weightSum="2">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Mechanic Name"
                     android:textColor="@color/black"
-                    android:paddingRight="3dp"
-                    />
+                    android:paddingRight="3dp" />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:id="@+id/getMechName"/>
@@ -37,16 +43,18 @@
             <!-- MECH EMAIL -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:weightSum="2">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Email Id"
                     android:textColor="@color/black"
-                    android:paddingRight="54dp"
-                    />
+                    android:paddingRight="54dp" />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:id="@+id/getMechEmailId"/>
@@ -54,16 +62,18 @@
             <!-- CONTACT -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:weightSum="2">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Contact No"
                     android:textColor="@color/black"
-                    android:paddingRight="34dp"
-                    />
+                    android:paddingRight="34dp" />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:id="@+id/getMechContactno"/>
@@ -71,27 +81,22 @@
             <!-- WORKSHOP USERNAME -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:weightSum="2">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Workshop Name"
-                    android:textColor="@color/black"
-
-                    />
+                    android:textColor="@color/black" />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:id="@+id/getWorkshopUsername"/>
             </LinearLayout>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#D50000"
-            android:textColor="@color/white"
-            android:text="Delete"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
