@@ -24,6 +24,10 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
     String ccpModelStr;
     private ArrayList<materialButton> list=new ArrayList<>();
     private ArrayList<Accessories_ModelClass> accessoriesList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> chargersList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> hidList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> projectorsList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> mobileholdersList=new ArrayList<>();
     private MobileHolder_Adapter mobileHolderAdapter;
     private HID_Adapter hidAdapter;
     private Projectors_Adapter projectorsAdapter;
@@ -73,13 +77,13 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                 chargersList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    chargersList.add(ap);
                 }
 
-                chargerAdapter =new Charger_Adapter(user_view_LightsChargers.this,accessoriesList, snapshot.getKey());
+                chargerAdapter =new Charger_Adapter(user_view_LightsChargers.this,chargersList, snapshot.getKey());
                 binding.rvItemsChargers.setAdapter(chargerAdapter);
 
                 chargerAdapter.notifyDataSetChanged();
@@ -99,13 +103,13 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("HID").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                hidList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    hidList.add(ap);
                 }
 
-                hidAdapter =new HID_Adapter(user_view_LightsChargers.this,accessoriesList, snapshot.getKey());
+                hidAdapter =new HID_Adapter(user_view_LightsChargers.this,hidList, snapshot.getKey());
                 binding.rvItemsHID.setAdapter(hidAdapter);
 
                 hidAdapter.notifyDataSetChanged();
@@ -125,13 +129,13 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Projectors").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                projectorsList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    projectorsList.add(ap);
                 }
 
-                projectorsAdapter =new Projectors_Adapter(user_view_LightsChargers.this,accessoriesList, snapshot.getKey());
+                projectorsAdapter =new Projectors_Adapter(user_view_LightsChargers.this,projectorsList, snapshot.getKey());
                 binding.rvItemsProjectors.setAdapter(projectorsAdapter);
 
                 projectorsAdapter.notifyDataSetChanged();
@@ -151,13 +155,13 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                mobileholdersList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    mobileholdersList.add(ap);
                 }
 
-                mobileHolderAdapter =new MobileHolder_Adapter(user_view_LightsChargers.this,accessoriesList, snapshot.getKey());
+                mobileHolderAdapter =new MobileHolder_Adapter(user_view_LightsChargers.this,mobileholdersList, snapshot.getKey());
                 binding.rvItemsMobileHolders.setAdapter(mobileHolderAdapter);
 
                 mobileHolderAdapter.notifyDataSetChanged();

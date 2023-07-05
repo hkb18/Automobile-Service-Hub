@@ -24,6 +24,8 @@ public class user_view_RoadsideAssistance extends AppCompatActivity implements H
     String ccpModelStr;
     private ArrayList<materialButton> list=new ArrayList<>();
     private ArrayList<Accessories_ModelClass> accessoriesList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> toolkitList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> tyreinflatorList=new ArrayList<>();
     private Toolkit_Adapter toolkitAdapter;
     private RoadsideAssistance_Adapter roadsideAssistanceAdapter;
     private TyreInflator_Adapter tyreInflatorAdapter;
@@ -71,13 +73,13 @@ public class user_view_RoadsideAssistance extends AppCompatActivity implements H
         databaseReference.child("Accessories").child("ROADSIDE_ASSISTANCE").child("Toolkits").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                toolkitList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    toolkitList.add(ap);
                 }
 
-                toolkitAdapter =new Toolkit_Adapter(user_view_RoadsideAssistance.this,accessoriesList, snapshot.getKey());
+                toolkitAdapter =new Toolkit_Adapter(user_view_RoadsideAssistance.this,toolkitList, snapshot.getKey());
                 binding.rvToolkit.setAdapter(toolkitAdapter);
 
                 toolkitAdapter.notifyDataSetChanged();
@@ -98,13 +100,13 @@ public class user_view_RoadsideAssistance extends AppCompatActivity implements H
         databaseReference.child("Accessories").child("ROADSIDE_ASSISTANCE").child("TyreInflator").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                tyreinflatorList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    tyreinflatorList.add(ap);
                 }
 
-                tyreInflatorAdapter =new TyreInflator_Adapter(user_view_RoadsideAssistance.this,accessoriesList, snapshot.getKey());
+                tyreInflatorAdapter =new TyreInflator_Adapter(user_view_RoadsideAssistance.this,tyreinflatorList, snapshot.getKey());
                 binding.rvTyreInflator.setAdapter(tyreInflatorAdapter);
 
                 tyreInflatorAdapter.notifyDataSetChanged();

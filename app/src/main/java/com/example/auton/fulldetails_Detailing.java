@@ -70,7 +70,7 @@ public class fulldetails_Detailing extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(fulldetails_Detailing.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -92,6 +92,8 @@ public class fulldetails_Detailing extends AppCompatActivity {
             modelClass.setKey(keyz);
             modelClass.setPrice(priceStr);
             modelClass.setProductKey(key);
+            modelClass.setMainName("CARCARE_PURIFIERS");
+            modelClass.setSubName("Detailing");
 
             databaseReference.child("CART").child(s1).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -115,6 +117,7 @@ public class fulldetails_Detailing extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(fulldetails_Detailing.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -126,6 +129,7 @@ public class fulldetails_Detailing extends AppCompatActivity {
                     String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //qty--;
+                    modelClass.setTotalQty(qtyStr);
                     if (qty<=0){
                         Toast.makeText(fulldetails_Detailing.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                     }else {
@@ -141,6 +145,7 @@ public class fulldetails_Detailing extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(fulldetails_Detailing.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });

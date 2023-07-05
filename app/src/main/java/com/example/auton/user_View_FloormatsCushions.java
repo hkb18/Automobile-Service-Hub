@@ -29,10 +29,10 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
     private BackCushions_Adapter backCushionsAdapter;
     private Mats_Adapter matsAdapter;
     private NeckCushions_Adapter neckCushionsAdapter;
-    /*private ArrayList<AirFreshner_ModelClass> airfreshnerList= new ArrayList<>();
-    private ArrayList<BackCushion_ModelClass> backcushionList= new ArrayList<>();
-    private ArrayList<Mats_ModelClass> matsList= new ArrayList<>();
-    private ArrayList<NeckCushions_ModelClass> neckcushionList= new ArrayList<>();*/
+    private ArrayList<Accessories_ModelClass> airfreshnerList= new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> backcushionList= new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> matsList= new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> neckcushionList= new ArrayList<>();
     private  FloormatCushions_Adapter floormatCushionsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,13 +78,13 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
         databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                airfreshnerList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    airfreshnerList.add(ap);
                 }
 
-                airFreshnerAdapter =new AirFreshner_Adapter(user_View_FloormatsCushions.this,accessoriesList, snapshot.getKey());
+                airFreshnerAdapter =new AirFreshner_Adapter(user_View_FloormatsCushions.this,airfreshnerList, snapshot.getKey());
                 binding.rvItemsAirFreshner.setAdapter(airFreshnerAdapter);
 
                 airFreshnerAdapter.notifyDataSetChanged();
@@ -104,13 +104,13 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
         databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("BackCushions").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                backcushionList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    backcushionList.add(ap);
                 }
 
-                backCushionsAdapter =new BackCushions_Adapter(user_View_FloormatsCushions.this,accessoriesList, snapshot.getKey());
+                backCushionsAdapter =new BackCushions_Adapter(user_View_FloormatsCushions.this,backcushionList, snapshot.getKey());
                 binding.rvItemsBackCushions.setAdapter(backCushionsAdapter);
 
                 backCushionsAdapter.notifyDataSetChanged();
@@ -130,13 +130,13 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
         databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("Mats").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                matsList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    matsList.add(ap);
                 }
 
-                matsAdapter =new Mats_Adapter(user_View_FloormatsCushions.this,accessoriesList, snapshot.getKey());
+                matsAdapter =new Mats_Adapter(user_View_FloormatsCushions.this,matsList, snapshot.getKey());
                 binding.rvItemsMats.setAdapter(matsAdapter);
 
                 matsAdapter.notifyDataSetChanged();
@@ -156,13 +156,13 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
         databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("NeckCushions").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                neckcushionList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    neckcushionList.add(ap);
                 }
 
-                neckCushionsAdapter =new NeckCushions_Adapter(user_View_FloormatsCushions.this,accessoriesList, snapshot.getKey());
+                neckCushionsAdapter =new NeckCushions_Adapter(user_View_FloormatsCushions.this,neckcushionList, snapshot.getKey());
                 binding.rvItemsNeckCushions.setAdapter(neckCushionsAdapter);
 
                 neckCushionsAdapter.notifyDataSetChanged();

@@ -74,6 +74,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(fulldetails_cleansers.this, "Error:"+error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -96,6 +97,8 @@ public class fulldetails_cleansers extends AppCompatActivity {
             modelClass.setKey(keyz);
             modelClass.setPrice(priceStr);
             modelClass.setProductKey(key);
+            modelClass.setMainName("CARCARE_PURIFIERS");
+            modelClass.setSubName("Cleansers");
 
 
             databaseReference.child("CART").child(s1).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -120,7 +123,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Toast.makeText(fulldetails_cleansers.this, "Error:"+error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -193,7 +196,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Toast.makeText(fulldetails_cleansers.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         });

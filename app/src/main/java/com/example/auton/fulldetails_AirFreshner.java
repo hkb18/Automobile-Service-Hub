@@ -75,6 +75,7 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(fulldetails_AirFreshner.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -98,6 +99,8 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
             modelClass.setKey(keyz);
             modelClass.setPrice(priceStr);
             modelClass.setProductKey(key);
+            modelClass.setMainName("FLOORMATS_CUSHIONS");
+            modelClass.setSubName("AirFreshner");
 
             databaseReference.child("CART").child(s1).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -121,6 +124,7 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(fulldetails_AirFreshner.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -132,6 +136,7 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
                     String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //qty--;
+                    modelClass.setTotalQty(qtyStr);
                     if (qty<=0){
                         Toast.makeText(fulldetails_AirFreshner.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                     }else {

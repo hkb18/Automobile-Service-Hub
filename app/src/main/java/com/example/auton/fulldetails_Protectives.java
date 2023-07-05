@@ -75,6 +75,7 @@ public class fulldetails_Protectives extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(fulldetails_Protectives.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -97,6 +98,8 @@ public class fulldetails_Protectives extends AppCompatActivity {
             modelClass.setKey(keyz);
             modelClass.setPrice(priceStr);
             modelClass.setProductKey(key);
+            modelClass.setMainName("HORNS_PROTECTIVES");
+            modelClass.setSubName("Protectives");
 
             databaseReference.child("CART").child(s1).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -120,6 +123,7 @@ public class fulldetails_Protectives extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(fulldetails_Protectives.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -131,6 +135,7 @@ public class fulldetails_Protectives extends AppCompatActivity {
                     String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     // qty--;
+                    modelClass.setTotalQty(qtyStr);
                     if (qty<=0){
                         Toast.makeText(fulldetails_Protectives.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                     }else {

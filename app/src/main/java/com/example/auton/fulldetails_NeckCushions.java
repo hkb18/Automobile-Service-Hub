@@ -70,7 +70,7 @@ public class fulldetails_NeckCushions extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(fulldetails_NeckCushions.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -92,6 +92,8 @@ public class fulldetails_NeckCushions extends AppCompatActivity {
             modelClass.setKey(keyz);
             modelClass.setPrice(priceStr);
             modelClass.setProductKey(key);
+            modelClass.setMainName("FLOORMATS_CUSHIONS");
+            modelClass.setSubName("NeckCushions");
             databaseReference.child("CART").child(s1).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -114,7 +116,7 @@ public class fulldetails_NeckCushions extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Toast.makeText(fulldetails_NeckCushions.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -125,6 +127,7 @@ public class fulldetails_NeckCushions extends AppCompatActivity {
                     String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //qty--;
+                    modelClass.setTotalQty(qtyStr);
                     if (qty<=0){
                         Toast.makeText(fulldetails_NeckCushions.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                     }else {

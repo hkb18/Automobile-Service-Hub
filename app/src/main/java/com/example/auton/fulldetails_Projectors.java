@@ -78,7 +78,7 @@ public class fulldetails_Projectors extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(fulldetails_Projectors.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -101,6 +101,8 @@ public class fulldetails_Projectors extends AppCompatActivity {
             modelClass.setKey(keyz);
             modelClass.setPrice(priceStr);
             modelClass.setProductKey(key);
+            modelClass.setMainName("LIGHTS_CHARGERS");
+            modelClass.setSubName("Projectors");
 
             databaseReference.child("CART").child(s1).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -124,6 +126,7 @@ public class fulldetails_Projectors extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(fulldetails_Projectors.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -135,6 +138,7 @@ public class fulldetails_Projectors extends AppCompatActivity {
                     String qtyStr=snapshot.child("quantity").getValue().toString();
                     Integer qty=Integer.parseInt(qtyStr);
                     //qty--;
+                    modelClass.setTotalQty(qtyStr);
                     if (qty<=0){
                         Toast.makeText(fulldetails_Projectors.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                     }else {

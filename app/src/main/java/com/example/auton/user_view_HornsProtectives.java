@@ -25,6 +25,8 @@ public class user_view_HornsProtectives extends AppCompatActivity implements Hor
     String ccpModelStr;
     private ArrayList<materialButton> list=new ArrayList<>();
     private ArrayList<Accessories_ModelClass> accessoriesList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> hornsList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> protectivesList=new ArrayList<>();
     private Horns_Adapter hornsAdapter;
     private HornsProtectives_Adapter hornsProtectives_adapter;
     private Protectives_Adapter protectivesAdapter;
@@ -73,13 +75,13 @@ public class user_view_HornsProtectives extends AppCompatActivity implements Hor
         databaseReference.child("Accessories").child("HORNS_PROTECTIVES").child("Horns").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                hornsList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    hornsList.add(ap);
                 }
 
-                hornsAdapter =new Horns_Adapter(user_view_HornsProtectives.this,accessoriesList, snapshot.getKey());
+                hornsAdapter =new Horns_Adapter(user_view_HornsProtectives.this,hornsList, snapshot.getKey());
                 binding.rvHorns.setAdapter(hornsAdapter);
 
                 hornsAdapter.notifyDataSetChanged();
@@ -100,13 +102,13 @@ public class user_view_HornsProtectives extends AppCompatActivity implements Hor
         databaseReference.child("Accessories").child("HORNS_PROTECTIVES").child("Protectives").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                protectivesList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ap);
+                    protectivesList.add(ap);
                 }
 
-                protectivesAdapter =new Protectives_Adapter(user_view_HornsProtectives.this,accessoriesList, snapshot.getKey());
+                protectivesAdapter =new Protectives_Adapter(user_view_HornsProtectives.this,protectivesList, snapshot.getKey());
                 binding.rvProtectives.setAdapter(protectivesAdapter);
 
                 protectivesAdapter.notifyDataSetChanged();
