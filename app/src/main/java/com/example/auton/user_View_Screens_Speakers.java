@@ -39,6 +39,11 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
     private ArrayList<BassTubes_ModelClass> basstubesList;
     private ArrayList<Speaker_ModelClass> speakerList;
     private ArrayList<VacuumCleaner_ModelClass> vacuumCleanerList;*/
+    private ArrayList<Accessories_ModelClass> androidscreenList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> amplifierList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> basstubesList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> speakerList=new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> vacuumcleanersList=new ArrayList<>();
     private ArrayList<Accessories_ModelClass> accessoriesList=new ArrayList<>();
     private  ScreensSpeakersAdapter adapter;
     private ScreenSpeaker_ItemAdapter ssAdapter;        //ANDROID SCREEN
@@ -92,13 +97,13 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Amplifiers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                amplifierList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ss);
+                    amplifierList.add(ss);
                 }
 
-                amplifierAdapter =new Amplifier_Adapter(user_View_Screens_Speakers.this,accessoriesList, snapshot.getKey());
+                amplifierAdapter =new Amplifier_Adapter(user_View_Screens_Speakers.this,amplifierList, snapshot.getKey());
                 binding.rvItemsAmplifier.setAdapter(amplifierAdapter);
 
                 amplifierAdapter.notifyDataSetChanged();
@@ -120,12 +125,12 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                androidscreenList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ss);
+                    androidscreenList.add(ss);
                 }
-                ssAdapter =new ScreenSpeaker_ItemAdapter(user_View_Screens_Speakers.this,accessoriesList,snapshot.getKey());
+                ssAdapter =new ScreenSpeaker_ItemAdapter(user_View_Screens_Speakers.this,androidscreenList,snapshot.getKey());
                 binding.rvItems.setAdapter(ssAdapter);
                 ssAdapter.notifyDataSetChanged();
             }
@@ -145,12 +150,12 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                basstubesList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ss);
+                    basstubesList.add(ss);
                 }
-                basstubesAdapter =new BassTubes_Adapter(user_View_Screens_Speakers.this,accessoriesList,snapshot.getKey());
+                basstubesAdapter =new BassTubes_Adapter(user_View_Screens_Speakers.this,basstubesList,snapshot.getKey());
                 binding.rvItemsBassTubes.setAdapter(basstubesAdapter);
                 basstubesAdapter.notifyDataSetChanged();
             }
@@ -170,12 +175,12 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("Speaker").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                speakerList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ss);
+                    speakerList.add(ss);
                 }
-                speakerAdapter =new Speaker_Adapter(user_View_Screens_Speakers.this,accessoriesList,snapshot.getKey());
+                speakerAdapter =new Speaker_Adapter(user_View_Screens_Speakers.this,speakerList,snapshot.getKey());
                 binding.rvItemsSpeaker.setAdapter(speakerAdapter);
                 speakerAdapter.notifyDataSetChanged();
             }
@@ -196,12 +201,12 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                accessoriesList.clear();
+                vacuumcleanersList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    accessoriesList.add(ss);
+                    vacuumcleanersList.add(ss);
                 }
-                vacuumCleanerAdapter =new VacuumCleaner_Adapter(user_View_Screens_Speakers.this,accessoriesList,snapshot.getKey());
+                vacuumCleanerAdapter =new VacuumCleaner_Adapter(user_View_Screens_Speakers.this,vacuumcleanersList,snapshot.getKey());
                 binding.rvItemsVacuumCleaner.setAdapter(vacuumCleanerAdapter);
                 vacuumCleanerAdapter.notifyDataSetChanged();
             }
