@@ -280,6 +280,7 @@ public class user_BookService2 extends AppCompatActivity implements AdapterView.
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
                                 Intent i = new Intent(getApplicationContext(), RazorPay.class);
                                 i.putExtra("activity", "bookService2");
                                 i.putExtra("Username", s1);
