@@ -83,7 +83,7 @@ public class fulldetails_HID extends AppCompatActivity {
         binding.btnHidBuyNow.setOnClickListener(view -> {
             Intent i=new Intent(getApplicationContext(),RazorPay.class);
             i.putExtra("activity","buynow");
-            i.putExtra("price",priceStr);
+            i.putExtra("totalPrice",priceStr);
             i.putExtra("key",modelStr);
             startActivity(i);
         });

@@ -79,7 +79,7 @@ public class fulldetails_CleaningKit extends AppCompatActivity {
 
         binding.btnCleaningkitBuyNow.setOnClickListener(view -> {
             Intent i=new Intent(getApplicationContext(),RazorPay.class);
-            i.putExtra("price",priceStr);
+            i.putExtra("totalPrice",priceStr);
             i.putExtra("key",modelStr);
             startActivity(i);
         });

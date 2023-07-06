@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,19 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
     SharedPreferences sh;
     String s1="";
     public static ViewBookedService_Interface viewBookedService_interface;
+
+
+    /*public void onBackPressed() {
+        Log.e("TAG", "onBackPressed: 1" );
+        super.onBackPressed();
+        Log.e("TAG", "onBackPressed: 2" );
+        Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+        i.putExtra("Username", s1);
+        i.putExtra("deleteCart", "0");
+        startActivity(i);
+        finishAffinity();
+    }*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

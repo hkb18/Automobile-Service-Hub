@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
@@ -108,7 +109,8 @@ public class MapsActivity_Workshop extends FragmentActivity implements OnMapRead
         latitudeStr=extras.getString("latitude");
         activityStr=extras.getString("activity");
         if (activityStr.equals("workshopMap")){
-            currentlocation.setVisibility(View.GONE);
+            //currentlocation.setVisibility(View.GONE);
+            currentlocation.setText("OK");
             cardView.setVisibility(View.GONE);
             // binding.textview.setVisibility(View.GONE);
             workshopNameStr=extras.getString("name");
@@ -116,6 +118,13 @@ public class MapsActivity_Workshop extends FragmentActivity implements OnMapRead
             userLat=extras.getString("userLatitude");
             userName=extras.getString("userName");
         }
+
+        currentlocation.setOnClickListener(view -> {
+            if (activityStr.equals("workshopMap")){
+                startActivity(new Intent(this, workshop_HomePage.class));
+                finishAffinity();
+            }
+        });
 
         Toast.makeText(this, "LONG"+longitudeStr, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "LAT"+latitudeStr, Toast.LENGTH_SHORT).show();

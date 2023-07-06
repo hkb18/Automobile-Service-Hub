@@ -82,7 +82,7 @@ public class fulldetails_TyreInflator extends AppCompatActivity {
 
         binding.btnTyreinflatorBuyNow.setOnClickListener(view -> {
             Intent i=new Intent(getApplicationContext(),RazorPay.class);
-            i.putExtra("price",priceStr);
+            i.putExtra("totalPrice",priceStr);
             i.putExtra("key",modelStr);
             startActivity(i);
         });

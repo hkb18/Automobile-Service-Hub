@@ -288,6 +288,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                 public void run() {
                                     totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
                                     Log.e("TAG", "run: "+totalPrice );
+                                    Toast.makeText(user_Book_Service.this, "Price:"+totalPrice, Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(getApplicationContext(), RazorPay.class);
                                     i.putExtra("activity", "bookService");
                                     i.putExtra("Username", s1);
@@ -299,7 +300,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                     i.putExtra("ServiceTime", timestr);
                                     i.putExtra("Latitude", latitudeStr);
                                     i.putExtra("Longitude", longitudeStr);
-                                    i.putExtra("price", String.valueOf(totalPrice));
+                                    i.putExtra("totalPrice", String.valueOf(totalPrice));
                                     startActivity(i);
                                 }
                             }, 2000);

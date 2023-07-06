@@ -31,9 +31,9 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class user_Cart_fragment extends Fragment implements OnClickInterface{
+    private FragmentUserCartBinding binding;
     private Cart_Adapter cart_adapter;
     ArrayList<cart_ModelClass> list=new ArrayList<>();
-    private FragmentUserCartBinding binding;
     DatabaseReference databaseReference;
     SharedPreferences sh;
     String s1;
@@ -117,10 +117,11 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
                for(int i=0; i<list.size(); i++){
                    totalPrice = totalPrice+ (Integer.parseInt(list.get(i).getPrice()) * Integer.parseInt(list.get(i).getQuantity()));
                }
-               Log.e("TAG", "onCreateView: "+list );
+
                Intent i = new Intent(requireContext(), RazorPay.class);
-               i.putExtra("price", String.valueOf(totalPrice));
+               i.putExtra("totalPrice", String.valueOf(totalPrice));
                i.putExtra("activity", "cart");
+               i.putExtra("key", "");
                startActivity(i);
            } else {
                Toast.makeText(requireContext(), "Cart is empty", Toast.LENGTH_SHORT).show();

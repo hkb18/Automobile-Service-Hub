@@ -76,7 +76,7 @@ public class fulldetails_Detailing extends AppCompatActivity {
 
         binding.btnDetailinigBuyNow.setOnClickListener(view -> {
             Intent i=new Intent(getApplicationContext(),RazorPay.class);
-            i.putExtra("price",priceStr);
+            i.putExtra("totalPrice",priceStr);
             i.putExtra("key",key); //model
             startActivity(i);
         });

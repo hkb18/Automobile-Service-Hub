@@ -50,7 +50,7 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.ViewHold> {
         });
 
         holder.delete.setOnClickListener(view -> {
-            user_Cart_fragment.onClickInterface.delmech(ss.getKey(),position);
+            user_Cart_fragment.onClickInterface.delmech(ss.getProductKey(),position);
 
         });
         holder.add.setOnClickListener(view -> {

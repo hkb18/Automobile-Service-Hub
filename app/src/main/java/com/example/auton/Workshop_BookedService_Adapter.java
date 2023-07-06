@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -48,10 +49,15 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
        // String key=bookedService.getSYSTIME();
         String key =bookedService.getKey();
         String username=bookedService.getUsername();
-        if (bookedService.isACCEPT_SERVICE()){
+        if ( bookedService.getACCEPT_SERVICE()==3){
             holder.ServiceReject.setVisibility(View.GONE);
             holder.linearLayout.setVisibility(View.VISIBLE);
-        }else {
+        } else if (bookedService.getACCEPT_SERVICE()==1) {
+            holder.ServiceReject.setText("SERVICE ACCEPTED");
+            holder.ServiceReject.setTextColor(ContextCompat.getColor(context,R.color.lightgreen));
+            holder.linearLayout.setVisibility(View.GONE);
+            holder.ServiceReject.setVisibility(View.VISIBLE);
+        } else {
             holder.ServiceReject.setVisibility(View.VISIBLE);
             holder.linearLayout.setVisibility(View.GONE);
         }

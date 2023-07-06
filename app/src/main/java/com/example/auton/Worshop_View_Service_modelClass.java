@@ -2,12 +2,12 @@ package com.example.auton;
 
 public class Worshop_View_Service_modelClass {
     private String AssignedMechanic,CarBrand, CarModel, Date ,Image, Latitude, Longitude, Price, ServiceTime, ServiceType, Username,Key,ServiceName, Workshop,ServiceStatus;
-    boolean ACCEPT_SERVICE=true;
+    int ACCEPT_SERVICE=3;
 
     public Worshop_View_Service_modelClass() {
     }
 
-    public Worshop_View_Service_modelClass(String ServiceStatus,String assignedMechanic, String carBrand, String carModel, String date, String image, String latitude, String longitude, String price, String serviceTime, String serviceType, String username, String key, String serviceName, String workshop, boolean ACCEPT_SERVICE) {
+    public Worshop_View_Service_modelClass(String ServiceStatus,String assignedMechanic, String carBrand, String carModel, String date, String image, String latitude, String longitude, String price, String serviceTime, String serviceType, String username, String key, String serviceName, String workshop, int ACCEPT_SERVICE) {
         AssignedMechanic = assignedMechanic;
         CarBrand = carBrand;
         CarModel = carModel;
@@ -24,6 +24,14 @@ public class Worshop_View_Service_modelClass {
         Workshop = workshop;
         this.ACCEPT_SERVICE = ACCEPT_SERVICE;
         this.ServiceStatus = ServiceStatus;
+    }
+
+    public int getACCEPT_SERVICE() {
+        return ACCEPT_SERVICE;
+    }
+
+    public void setACCEPT_SERVICE(int ACCEPT_SERVICE) {
+        this.ACCEPT_SERVICE = ACCEPT_SERVICE;
     }
 
     public String getServiceStatus() {
@@ -146,11 +154,5 @@ public class Worshop_View_Service_modelClass {
         Workshop = workshop;
     }
 
-    public boolean isACCEPT_SERVICE() {
-        return ACCEPT_SERVICE;
-    }
 
-    public void setACCEPT_SERVICE(boolean ACCEPT_SERVICE) {
-        this.ACCEPT_SERVICE = ACCEPT_SERVICE;
-    }
 }

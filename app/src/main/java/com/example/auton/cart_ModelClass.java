@@ -1,12 +1,12 @@
 package com.example.auton;
 
 public class cart_ModelClass {
-    String model,maufacturer,price,quantity,image,username,key, productKey, totalQty;
+    String model,maufacturer,price,quantity,image,username,key, productKey, totalQty,mainName,subName;
 
     public cart_ModelClass() {
     }
 
-    public cart_ModelClass(String model, String maufacturer, String price, String quantity, String image,String username,String key, String productKey, String model2) {
+    public cart_ModelClass(String model, String maufacturer, String price, String quantity, String image, String username, String key, String productKey, String totalQty, String mainName, String subName) {
         this.model = model;
         this.maufacturer = maufacturer;
         this.price = price;
@@ -15,39 +15,9 @@ public class cart_ModelClass {
         this.username = username;
         this.key = key;
         this.productKey = productKey;
-        this.totalQty = model2;
-    }
-
-    public String getTotalQty() {
-        return totalQty;
-    }
-
-    public void setTotalQty(String totalQty) {
         this.totalQty = totalQty;
-    }
-
-    public String getProductKey() {
-        return productKey;
-    }
-
-    public void setProductKey(String productKey) {
-        this.productKey = productKey;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+        this.mainName = mainName;
+        this.subName = subName;
     }
 
     public String getModel() {
@@ -88,5 +58,53 @@ public class cart_ModelClass {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getProductKey() {
+        return productKey;
+    }
+
+    public void setProductKey(String productKey) {
+        this.productKey = productKey;
+    }
+
+    public String getTotalQty() {
+        return totalQty;
+    }
+
+    public void setTotalQty(String totalQty) {
+        this.totalQty = totalQty;
+    }
+
+    public String getMainName() {
+        return mainName;
+    }
+
+    public void setMainName(String mainName) {
+        this.mainName = mainName;
+    }
+
+    public String getSubName() {
+        return subName;
+    }
+
+    public void setSubName(String subName) {
+        this.subName = subName;
     }
 }

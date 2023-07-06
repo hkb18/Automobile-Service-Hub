@@ -92,7 +92,7 @@ public class fulldetails_Basstubes extends AppCompatActivity {
 
         binding.btnBasstubesBuyNow.setOnClickListener(view -> {
             Intent i=new Intent(getApplicationContext(),RazorPay.class);
-            i.putExtra("price",priceStr);
+            i.putExtra("totalPrice",priceStr);
             i.putExtra("key",modelStr);
             startActivity(i);
         });

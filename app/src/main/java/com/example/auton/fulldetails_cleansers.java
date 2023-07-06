@@ -80,7 +80,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
         });
         binding.btnCleanserBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
-            i.putExtra("price", priceStr);
+            i.putExtra("totalPrice",priceStr);
             i.putExtra("key", key); //suppose to be model
             startActivity(i);
         });

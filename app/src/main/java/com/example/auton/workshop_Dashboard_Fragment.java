@@ -116,7 +116,7 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
                         Worshop_View_Service_modelClass bookedService = dataSnapshot1.getValue(Worshop_View_Service_modelClass.class);
                         String dtStart = bookedService.getDate();
 
-                        Boolean acceptedService=bookedService.isACCEPT_SERVICE();
+
 
                         SimpleDateFormat format = new SimpleDateFormat("dd-M-yyyy");
                         try {
@@ -158,7 +158,7 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
     @Override
     public void accept(String username, String key, int position, String userLat, String userLong) {
         try {
-            databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(true);
+            databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(1);
             databaseReference.child("Service").child(username).child(key).child("ServiceStatus").setValue("Accepted");
             myAdapter.notifyDataSetChanged();
 
@@ -185,7 +185,7 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
 
     @Override
     public void delete(String username, String key, int position) {
-        databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(false);
+        databaseReference.child("Service").child(username).child(key).child("ACCEPT_SERVICE").setValue(2);
         databaseReference.child("Service").child(username).child(key).child("ServiceStatus").setValue("Rejected");
         myAdapter.notifyDataSetChanged();
     }
@@ -254,7 +254,7 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
                 final String tempLong = snapshot.child("longitude").getValue(String.class);
                 final String tempName = snapshot.child("Name").getValue(String.class);
 
-                Intent intent = new Intent(requireContext(), MapsActivity_Workshop.class);
+                Intent intent = new Intent(requireActivity(), MapsActivity_Workshop.class);
                 intent.putExtra("longitude", tempLong);
                 intent.putExtra("latitude", tempLat);
                 intent.putExtra("userLongitude", userLong);
