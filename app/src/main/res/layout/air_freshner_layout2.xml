@@ -1,53 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvAirfreshner"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="5dp"
-        android:id="@+id/cvAirfreshner">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
+            android:orientation="vertical"
             android:padding="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="10dp">
+
                 <ImageView
+                    android:id="@+id/airfreshnerImg"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    android:layout_gravity="center"
-                    android:id="@+id/airfreshnerImg"/>
+                    android:layout_gravity="center" />
+
                 <TextView
+                    android:id="@+id/airfreshnerManufacturer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="manufacturer"
-                    android:id="@+id/airfreshnerManufacturer"/>
+                    android:text="manufacturer" />
+
                 <TextView
+                    android:id="@+id/airfreshnerDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="desc"
-                    android:id="@+id/airfreshnerDesc"/>
+                    android:text="desc" />
+
                 <TextView
+                    android:id="@+id/airfreshnerPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="price"
-                    android:id="@+id/airfreshnerPrice"/>
+                    android:text="price" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Out of Stock"
+                android:textColor="#DD2C00"
+                android:textStyle="bold"
+                android:visibility="gone" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

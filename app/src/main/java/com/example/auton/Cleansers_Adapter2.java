@@ -40,6 +40,10 @@ public class Cleansers_Adapter2 extends RecyclerView.Adapter<Cleansers_Adapter2.
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
        // String model= ss.getModel();
+        if(Integer.parseInt(ss.getQuantity()) == 0){
+            holder.tvStatus.setVisibility(View.VISIBLE);
+            holder.cardView.setAlpha(0.5F);
+        }
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +71,7 @@ public class Cleansers_Adapter2 extends RecyclerView.Adapter<Cleansers_Adapter2.
     public class ViewHold extends RecyclerView.ViewHolder {
         ImageView productImg;
         CardView cardView;
-        TextView manufacturer,desc,price;
+        TextView manufacturer,desc,price,tvStatus;
         public ViewHold(@NonNull View itemView) {
             super(itemView);
             manufacturer=itemView.findViewById(R.id.cleansersManufacturer);
@@ -75,6 +79,7 @@ public class Cleansers_Adapter2 extends RecyclerView.Adapter<Cleansers_Adapter2.
             productImg=itemView.findViewById(R.id.cleansersImg);
             price=itemView.findViewById(R.id.cleansersPrice);
             cardView=itemView.findViewById(R.id.cvCleansers);
+            tvStatus=itemView.findViewById(R.id.tvStatus);
         }
     }
 }

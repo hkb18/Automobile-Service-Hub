@@ -40,6 +40,10 @@ public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapt
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
         String model= ss.getModel();
+        if (Integer.parseInt(ss.getQuantity()) == 0) {
+            holder.tvStatus.setVisibility(View.VISIBLE);
+            holder.cardView.setAlpha(0.5F);
+        }
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +71,7 @@ public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapt
     public class ViewHold extends RecyclerView.ViewHolder {
         ImageView productImg;
         CardView cardView;
-        TextView manufacturer,desc,price;
+        TextView manufacturer, desc, price, tvStatus;
         public ViewHold(@NonNull View itemView) {
             super(itemView);
             manufacturer=itemView.findViewById(R.id.airfreshnerManufacturer);
@@ -75,6 +79,7 @@ public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapt
             productImg=itemView.findViewById(R.id.airfreshnerImg);
             price=itemView.findViewById(R.id.airfreshnerPrice);
             cardView=itemView.findViewById(R.id.cvAirfreshner);
+            tvStatus = itemView.findViewById(R.id.tvStatus);
         }
     }
 }
