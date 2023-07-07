@@ -8,12 +8,21 @@
     android:orientation="vertical"
     tools:context=".user_View_Booked_Service">
 
-    <SearchView
+  <!--  <SearchView
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchView"
-        />
+        />-->
+
+    <!--<androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvBookedService"
+        tools:itemCount="8"
+        android:background="@android:color/transparent"
+        tools:listitem="@layout/booked_service_layout"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="25dp"
@@ -21,7 +30,6 @@
         android:layout_height="match_parent"
         android:id="@+id/rvBookedService"
         tools:itemCount="8"
-        android:background="@android:color/transparent"
         tools:listitem="@layout/booked_service_layout"/>
 
 </LinearLayout>

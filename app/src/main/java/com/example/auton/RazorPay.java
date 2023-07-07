@@ -1,17 +1,16 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,36 +23,41 @@ import com.razorpay.PaymentResultListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class RazorPay extends AppCompatActivity implements PaymentResultListener {
     TextView amt;
+    ArrayList<cart_ModelClass> list = new ArrayList<>();
     Button payBtn;
-    String priceStr="0",keyStr="",pk="",usernameStr,brandStr,modelstr,servicenameStr,serviceStr,datestr,timestr,latitudeStr,longitudeStr,activity,imgStr;
+    String priceStr = "0", keyStr = "", pk = "", usernameStr, brandStr, modelstr, servicenameStr, serviceStr, datestr, timestr, latitudeStr, longitudeStr, activity, imgStr;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1="";
+    String s1 = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_razor_pay);
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
-        sh=getApplicationContext().getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
-        s1=sh.getString("Username","");
+        sh = getApplicationContext().getSharedPreferences("MySharedPreferences", MODE_PRIVATE); // to store data for temp time
+        s1 = sh.getString("Username", "");
 
-        activity= getIntent().getStringExtra("activity");
-        priceStr= getIntent().getStringExtra("totalPrice");
-        usernameStr= getIntent().getStringExtra("Username");
-        brandStr= getIntent().getStringExtra("CarBrand");
-        modelstr= getIntent().getStringExtra("CarModel");
-        servicenameStr= getIntent().getStringExtra("ServiceType");
-        serviceStr= getIntent().getStringExtra("ServiceName");
-        datestr= getIntent().getStringExtra("Date");
-        timestr= getIntent().getStringExtra("ServiceTime");
-        latitudeStr= getIntent().getStringExtra("Latitude");
-        longitudeStr= getIntent().getStringExtra("Longitude");
-        keyStr= getIntent().getStringExtra("key");
-        imgStr= getIntent().getStringExtra("Img");
+        activity = getIntent().getStringExtra("activity");
+        priceStr = getIntent().getStringExtra("totalPrice");
+        usernameStr = getIntent().getStringExtra("Username");
+        brandStr = getIntent().getStringExtra("CarBrand");
+        modelstr = getIntent().getStringExtra("CarModel");
+        servicenameStr = getIntent().getStringExtra("ServiceType");
+        serviceStr = getIntent().getStringExtra("ServiceName");
+        datestr = getIntent().getStringExtra("Date");
+        timestr = getIntent().getStringExtra("ServiceTime");
+        latitudeStr = getIntent().getStringExtra("Latitude");
+        longitudeStr = getIntent().getStringExtra("Longitude");
+        keyStr = getIntent().getStringExtra("key");
+        imgStr = getIntent().getStringExtra("Img");
 
 
         amt = findViewById(R.id.amt);
@@ -81,7 +85,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
 
                 // initialize json object
                 JSONObject object = new JSONObject();
-                Toast.makeText(RazorPay.this, ""+activity, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RazorPay.this, "" + activity, Toast.LENGTH_SHORT).show();
                 try {
                     // to put name
                     object.put("name", "AUTOMOBILE SERVICE HUB");
@@ -108,7 +112,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                 } catch (JSONException e) {
                     e.printStackTrace();
 
-                }Log.e("TAG", "onDataChange: "+s1+brandStr+modelstr+servicenameStr+serviceStr+datestr+timestr+latitudeStr+longitudeStr+priceStr+imgStr+pk );
+                }
 
             }
 
@@ -117,19 +121,66 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
 
 
     }
+
     @Override
     public void onPaymentSuccess(String s) {
         // this method is called on payment success.
         Toast.makeText(this, "Payment is successful : " + s, Toast.LENGTH_SHORT).show();
-        if(activity.equals("cart")) {
+        if (activity.equals("cart")) {
             getData data = new getData();
-           // data.setKey(keyStr);
+            // data.setKey(keyStr);
             data.setPrice(priceStr);
+
+            databaseReference.child("CART").child(s1).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    list.clear();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        list.add(dataSnapshot.getValue(cart_ModelClass.class));
+                    }
+
+                    list.forEach((it -> {
+
+                        databaseReference.child("Accessories").child(it.getMainName()).child(it.getSubName()).child(it.getModel()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Log.e("TAG", "onDataChange: 789");
+                                Accessories_ModelClass accModelclass = snapshot.getValue(Accessories_ModelClass.class);
+
+                                int productQty = Integer.parseInt(accModelclass.getQuantity());
+                                int pFinalQty = productQty - Integer.parseInt(it.getQuantity());
+                                if (pFinalQty <= 0) {
+                                    Toast.makeText(getApplicationContext(), "Not enough products", Toast.LENGTH_SHORT).show();
+                                    pFinalQty++;
+                                }
+                                accModelclass.setQuantity(String.valueOf(pFinalQty));
+                                databaseReference.child("Accessories").child(it.getMainName()).child(it.getSubName()).child(it.getModel()).setValue(accModelclass);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }));
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getApplicationContext(), "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+
+
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     databaseReference.child("PURCHASED_ACCESSORIES").child(s1).child(databaseReference.push().getKey()).setValue(data);
-                    Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                    Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                     i.putExtra("Username", s1);
                     i.putExtra("deleteCart", "1");
                     i.putExtra("iscart", "0");
@@ -140,16 +191,16 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(RazorPay.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RazorPay.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
-        }else if (activity.equals("bookService")) {
+        } else if (activity.equals("bookService")) {
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //passing to service table
-                    pk=databaseReference.push().getKey();
+                    pk = databaseReference.push().getKey();
                     databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
                     databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
                     databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
@@ -162,7 +213,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
                     databaseReference.child("Service").child(s1).child(pk).child("ServiceStatus").setValue("Requested");
-                    Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                    Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                     i.putExtra("Username", s1);
                     i.putExtra("deleteCart", "1");
                     i.putExtra("iscart", "0");
@@ -175,7 +226,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
-                    Toast.makeText(RazorPay.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RazorPay.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         } else if (activity.equals("bookService2")) {
@@ -183,9 +234,9 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //passing to service table
-                    pk=databaseReference.push().getKey();
-                    Log.e("TAG", "onDataChange: "+s1+brandStr+modelstr+servicenameStr+serviceStr+datestr+timestr+latitudeStr+longitudeStr);
-                    Log.e("TAG", "addd: "+priceStr+imgStr+pk);
+                    pk = databaseReference.push().getKey();
+                    Log.e("TAG", "onDataChange: " + s1 + brandStr + modelstr + servicenameStr + serviceStr + datestr + timestr + latitudeStr + longitudeStr);
+                    Log.e("TAG", "addd: " + priceStr + imgStr + pk);
                     databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
                     databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
                     databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
@@ -198,7 +249,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Image").setValue(imgStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
-                    Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                    Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                     i.putExtra("Username", s1);
                     i.putExtra("deleteCart", "1");
                     i.putExtra("iscart", "0");
@@ -211,7 +262,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
-                    Toast.makeText(RazorPay.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RazorPay.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         } else if (activity.equals("buynow")) {
@@ -233,7 +284,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(RazorPay.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RazorPay.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -247,32 +298,32 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
         Toast.makeText(this, "Payment Failed due to error : " + s, Toast.LENGTH_SHORT).show();
     }
 
-  static   class getData{
+    static class getData {
         String key;
         String price;
 
-      public getData() {
-      }
+        public getData() {
+        }
 
-      public getData(String key, String price) {
-          this.key = key;
-          this.price = price;
-      }
+        public getData(String key, String price) {
+            this.key = key;
+            this.price = price;
+        }
 
-      public String getKey() {
-          return key;
-      }
+        public String getKey() {
+            return key;
+        }
 
-      public void setKey(String key) {
-          this.key = key;
-      }
+        public void setKey(String key) {
+            this.key = key;
+        }
 
-      public String getPrice() {
-          return price;
-      }
+        public String getPrice() {
+            return price;
+        }
 
-      public void setPrice(String price) {
-          this.price = price;
-      }
-  }
+        public void setPrice(String price) {
+            this.price = price;
+        }
+    }
 }

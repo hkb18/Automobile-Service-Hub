@@ -10,10 +10,14 @@
         android:title="Cart"
         />
 
-    <item android:id="@+id/accessory"
+   <!-- <item android:id="@+id/accessory"
           android:icon="@drawable/accessory_icon"
           android:title="Accessories"
-    />
+    />-->
+    <item android:id="@+id/accessory"
+        android:icon="@drawable/shopping_bag"
+        android:title="Accessories"
+        />
 
     <item android:id="@+id/profile"
         android:icon="@drawable/profile_icon"

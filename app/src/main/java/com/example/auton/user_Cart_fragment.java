@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,8 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
     DatabaseReference databaseReference;
     SharedPreferences sh;
     String s1;
+    Integer qty=0;
+    Integer totalQty =0;
     public static OnClickInterface onClickInterface;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -141,17 +144,57 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
 
     @Override
     public void add(String quantity, int position) {
+        if(!TextUtils.isEmpty(list.get(position).getModel().trim())){
+            databaseReference.child("Accessories").child(list.get(position).getMainName()).child(list.get(position).getSubName()).child(list.get(position).getModel()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Accessories_ModelClass modelClass = snapshot.getValue(Accessories_ModelClass.class);
+                    qty=Integer.parseInt(quantity);
+                    totalQty= Integer.parseInt(modelClass.getQuantity());
+                    qty++;
+                    if(qty> totalQty){
+                        Toast.makeText(requireContext(), "Not enough products", Toast.LENGTH_SHORT).show();
+                        qty--;
+                    }
+                    list.get(position).setQuantity(""+qty);
 
-        Integer qty=Integer.parseInt(quantity);
-        Integer totalQty=Integer.parseInt(list.get(position).getTotalQty());
-        qty++;
-        if(qty> totalQty){
-            Toast.makeText(requireContext(), "Not enough products", Toast.LENGTH_SHORT).show();
-            qty--;
+                    cart_adapter.notifyDataSetChanged();
+                    databaseReference.child("CART").child(s1).child(list.get(position).getModel()).setValue(list.get(position));
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        } else {
+            databaseReference.child("Accessories").child(list.get(position).getMainName()).child(list.get(position).getSubName()).child(list.get(position).getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Accessories_ModelClass modelClass = snapshot.getValue(Accessories_ModelClass.class);
+                    qty=Integer.parseInt(quantity);
+                    totalQty= Integer.parseInt(modelClass.getQuantity());
+                    qty++;
+                    if(qty> totalQty){
+                        Toast.makeText(requireContext(), "Not enough products", Toast.LENGTH_SHORT).show();
+                        qty--;
+                    }
+                    list.get(position).setQuantity(""+qty);
+
+                    cart_adapter.notifyDataSetChanged();
+                    databaseReference.child("CART").child(s1).child(list.get(position).getModel()).setValue(list.get(position));
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
-        list.get(position).setQuantity(""+qty);
-        cart_adapter.notifyDataSetChanged();
-    }
+
+
+
+           }
 
     @Override
     public void remove(String quantity, int position) {
@@ -162,5 +205,7 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
         }
         list.get(position).setQuantity(""+qty);
         cart_adapter.notifyDataSetChanged();
+
+        databaseReference.child("CART").child(s1).child(list.get(position).getModel()).setValue(list.get(position));
     }
 }
