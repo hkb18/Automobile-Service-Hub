@@ -1,12 +1,12 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.auton.databinding.ActivityFulldetailsWashersBinding;
@@ -19,77 +19,81 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class fulldetails_Washers extends AppCompatActivity {
-    private ActivityFulldetailsWashersBinding binding;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1,key,colorStr,dimensionStr,hoselengthStr,imageStr,manufacturerStr,maxpressureStr,modelStr,poweroutputStr,priceStr,weightStr;
+    String s1, key, colorStr, dimensionStr, hoselengthStr, imageStr, manufacturerStr, maxpressureStr, modelStr, poweroutputStr, priceStr, weightStr;
+    private ActivityFulldetailsWashersBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= ActivityFulldetailsWashersBinding.inflate(getLayoutInflater());
+        binding = ActivityFulldetailsWashersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        sh=getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
-        s1=sh.getString("Username","");
+        sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE); // to store data for temp time
+        s1 = sh.getString("Username", "");
 
-        Bundle extras=getIntent().getExtras();
-        key= extras.getString("key");
+        Bundle extras = getIntent().getExtras();
+        key = extras.getString("key");
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("model").getValue(String.class);
+                if (snapshot.hasChild(key)) {
+                    modelStr = snapshot.child(key).child("model").getValue(String.class);
                     binding.washersModel.setText(modelStr);
 
-                    colorStr=snapshot.child(key).child("color").getValue(String.class);
+                    colorStr = snapshot.child(key).child("color").getValue(String.class);
                     binding.washersColor.setText(colorStr);
 
-                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
+                    dimensionStr = snapshot.child(key).child("dimension").getValue(String.class);
                     binding.washersDimensions.setText(dimensionStr);
 
-                    hoselengthStr=snapshot.child(key).child("hoseLength").getValue(String.class);
+                    hoselengthStr = snapshot.child(key).child("hoseLength").getValue(String.class);
                     binding.washersHoseLength.setText(hoselengthStr);
 
-                    maxpressureStr=snapshot.child(key).child("maxPressure").getValue(String.class);
+                    maxpressureStr = snapshot.child(key).child("maxPressure").getValue(String.class);
                     binding.washersMaximumPressure.setText(maxpressureStr);
 
-                    imageStr=snapshot.child(key).child("image").getValue(String.class);
+                    imageStr = snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.washersImg);
 
-                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
+                    manufacturerStr = snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.washersManufacturer.setText(manufacturerStr);
 
-                    priceStr=snapshot.child(key).child("price").getValue(String.class);
+                    priceStr = snapshot.child(key).child("price").getValue(String.class);
                     binding.washersPrice.setText(priceStr);
 
-                    poweroutputStr=snapshot.child(key).child("powerOutput").getValue(String.class);
+                    poweroutputStr = snapshot.child(key).child("powerOutput").getValue(String.class);
                     binding.washersPowerOutput.setText(poweroutputStr);
 
-                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
+                    weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.washersWeight.setText(weightStr);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(fulldetails_Washers.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(fulldetails_Washers.this, "Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
 
         binding.btnWashersBuyNow.setOnClickListener(view -> {
-            Intent i=new Intent(getApplicationContext(),RazorPay.class);
-            i.putExtra("totalPrice",priceStr);
-            i.putExtra("key",modelStr);
+            Intent i = new Intent(getApplicationContext(), RazorPay.class);
+            i.putExtra("totalPrice", priceStr);
+            i.putExtra("key", modelStr);
+            i.putExtra("activity", "buynow");
+            i.putExtra("mainName", "CARCARE_PURIFIERS");
+            i.putExtra("subName", "Washers");
             startActivity(i);
         });
 
         binding.btnWashersCart.setOnClickListener(view -> {
-            cart_ModelClass modelClass=new cart_ModelClass();
-            String keyz=databaseReference.push().getKey();
+            cart_ModelClass modelClass = new cart_ModelClass();
+            String keyz = databaseReference.push().getKey();
             modelClass.setModel(modelStr);
             modelClass.setImage(imageStr);
             modelClass.setMaufacturer(manufacturerStr);
@@ -114,7 +118,7 @@ public class fulldetails_Washers extends AppCompatActivity {
                             Integer tempQty = Integer.parseInt(x.getQuantity());
                             tempQty++;
                             modelClass.setQuantity(tempQty.toString());
-                        } else  {
+                        } else {
                             modelClass.setQuantity("1");
                         }
                     }
@@ -122,23 +126,23 @@ public class fulldetails_Washers extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(fulldetails_Washers.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fulldetails_Washers.this, "Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
             databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("quantity").getValue().toString();
-                    Integer qty=Integer.parseInt(qtyStr);
+                    String qtyStr = snapshot.child("quantity").getValue().toString();
+                    Integer qty = Integer.parseInt(qtyStr);
                     //  qty--;
                     modelClass.setTotalQty(qtyStr);
-                    if (qty<=0){
+                    if (qty <= 0) {
                         Toast.makeText(fulldetails_Washers.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
-                    }else {
+                    } else {
                         databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
                         //  databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).child("Quantity").setValue(qty.toString());
-                        Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                        Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                         i.putExtra("Username", s1);
                         i.putExtra("iscart", "1");
                         startActivity(i);
@@ -148,7 +152,7 @@ public class fulldetails_Washers extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(fulldetails_Washers.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fulldetails_Washers.this, "Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         });

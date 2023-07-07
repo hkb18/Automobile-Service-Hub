@@ -1,12 +1,12 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.auton.databinding.ActivityFulldetailsChargersBinding;
@@ -19,56 +19,57 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class fulldetails_Chargers extends AppCompatActivity {
-    private ActivityFulldetailsChargersBinding binding;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1,key,imageStr,manufacturerStr,modelStr,operatingvoltageStr,colorStr,weightStr,itemincludedStr,dimensionStr,featureStr,priceStr;
+    String s1, key, imageStr, manufacturerStr, modelStr, operatingvoltageStr, colorStr, weightStr, itemincludedStr, dimensionStr, featureStr, priceStr;
+    private ActivityFulldetailsChargersBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityFulldetailsChargersBinding.inflate(getLayoutInflater());
+        binding = ActivityFulldetailsChargersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        sh=getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
-        s1=sh.getString("Username","");
+        sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE); // to store data for temp time
+        s1 = sh.getString("Username", "");
 
-        Bundle extras=getIntent().getExtras();
-        key= extras.getString("key");
+        Bundle extras = getIntent().getExtras();
+        key = extras.getString("key");
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("model").getValue(String.class);
+                if (snapshot.hasChild(key)) {
+                    modelStr = snapshot.child(key).child("model").getValue(String.class);
                     binding.chargersModel.setText(modelStr);
 
-                    colorStr=snapshot.child(key).child("color").getValue(String.class);
+                    colorStr = snapshot.child(key).child("color").getValue(String.class);
                     binding.chargersColor.setText(colorStr);
 
-                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
+                    dimensionStr = snapshot.child(key).child("dimension").getValue(String.class);
                     binding.chargersDimensions.setText(dimensionStr);
 
-                    operatingvoltageStr=snapshot.child(key).child("operatingVoltage").getValue(String.class);
+                    operatingvoltageStr = snapshot.child(key).child("operatingVoltage").getValue(String.class);
                     binding.chargersOperatingVoltage.setText(operatingvoltageStr);
 
-                    itemincludedStr=snapshot.child(key).child("itemsIncluded").getValue(String.class);
+                    itemincludedStr = snapshot.child(key).child("itemsIncluded").getValue(String.class);
                     binding.chargersItemsIncluded.setText(itemincludedStr);
 
-                    imageStr=snapshot.child(key).child("image").getValue(String.class);
+                    imageStr = snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.chargersImg);
 
-                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
+                    manufacturerStr = snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.chargersManufacturer.setText(manufacturerStr);
 
-                    priceStr=snapshot.child(key).child("price").getValue(String.class);
+                    priceStr = snapshot.child(key).child("price").getValue(String.class);
                     binding.chargersPrice.setText(priceStr);
 
-                    featureStr=snapshot.child(key).child("feature").getValue(String.class);
+                    featureStr = snapshot.child(key).child("feature").getValue(String.class);
                     binding.chargersFeatures.setText(featureStr);
 
-                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
+                    weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.chargersWeight.setText(weightStr);
                 }
             }
@@ -81,16 +82,18 @@ public class fulldetails_Chargers extends AppCompatActivity {
         });
 
         binding.btnChargersBuyNow.setOnClickListener(view -> {
-            Intent i=new Intent(getApplicationContext(),RazorPay.class);
-            i.putExtra("activity","buynow");
-            i.putExtra("totalPrice",priceStr);
-            i.putExtra("key",modelStr);
+            Intent i = new Intent(getApplicationContext(), RazorPay.class);
+            i.putExtra("activity", "buynow");
+            i.putExtra("totalPrice", priceStr);
+            i.putExtra("key", modelStr);
+            i.putExtra("mainName", "LIGHTS_CHARGERS");
+            i.putExtra("subName", "Chargers");
             startActivity(i);
         });
 
         binding.btnChargersCart.setOnClickListener(view -> {
-            cart_ModelClass modelClass=new cart_ModelClass();
-            String keyz=databaseReference.push().getKey();
+            cart_ModelClass modelClass = new cart_ModelClass();
+            String keyz = databaseReference.push().getKey();
             modelClass.setModel(modelStr);
             modelClass.setImage(imageStr);
             modelClass.setMaufacturer(manufacturerStr);
@@ -116,7 +119,7 @@ public class fulldetails_Chargers extends AppCompatActivity {
                             Integer tempQty = Integer.parseInt(x.getQuantity());
                             tempQty++;
                             modelClass.setQuantity(tempQty.toString());
-                        } else  {
+                        } else {
                             modelClass.setQuantity("1");
                         }
                     }
@@ -133,16 +136,16 @@ public class fulldetails_Chargers extends AppCompatActivity {
             databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("quantity").getValue().toString();
-                    Integer qty=Integer.parseInt(qtyStr);
+                    String qtyStr = snapshot.child("quantity").getValue().toString();
+                    Integer qty = Integer.parseInt(qtyStr);
                     //qty--;
                     modelClass.setTotalQty(qtyStr);
-                    if (qty<=0){
+                    if (qty <= 0) {
                         Toast.makeText(fulldetails_Chargers.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
-                    }else {
+                    } else {
                         databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
 //                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Quantity").setValue(qty.toString());
-                        Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                        Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                         i.putExtra("Username", s1);
                         i.putExtra("iscart", "1");
                         startActivity(i);

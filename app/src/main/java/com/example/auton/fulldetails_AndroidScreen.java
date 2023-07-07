@@ -1,17 +1,15 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.example.auton.databinding.ActivityFulldetailsAndroidScreenBinding;
-import com.example.auton.databinding.ActivityUserViewScreensSpeakersBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,84 +18,88 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class fulldetails_AndroidScreen extends AppCompatActivity implements AndroidScreen_Interface{
-    String androidscreenModelStr;
-    private ActivityFulldetailsAndroidScreenBinding binding;
+public class fulldetails_AndroidScreen extends AppCompatActivity implements AndroidScreen_Interface {
     static AndroidScreen_Interface androidScreen_interface;
+    String androidscreenModelStr;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1,key,dimensionStr,displaytypeStr,imageStr,manufacturerStr,modelStr,ostypeStr,priceStr,ramStr,romStr,screensizeStr,weightStr;
+    String s1, key, dimensionStr, displaytypeStr, imageStr, manufacturerStr, modelStr, ostypeStr, priceStr, ramStr, romStr, screensizeStr, weightStr;
+    private ActivityFulldetailsAndroidScreenBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityFulldetailsAndroidScreenBinding.inflate(getLayoutInflater());
+        binding = ActivityFulldetailsAndroidScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        androidScreen_interface=this;//interface
+        androidScreen_interface = this;//interface
 
-        sh=getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
-        s1=sh.getString("Username","");
+        sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE); // to store data for temp time
+        s1 = sh.getString("Username", "");
 
-        Bundle extras=getIntent().getExtras();
-        key= extras.getString("key");
+        Bundle extras = getIntent().getExtras();
+        key = extras.getString("key");
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("model").getValue(String.class);
+                if (snapshot.hasChild(key)) {
+                    modelStr = snapshot.child(key).child("model").getValue(String.class);
                     binding.androidscreenModel.setText(modelStr);
 
-                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
+                    dimensionStr = snapshot.child(key).child("dimension").getValue(String.class);
                     binding.androidscreenDimension.setText(dimensionStr);
 
-                    displaytypeStr=snapshot.child(key).child("displayType").getValue(String.class);
+                    displaytypeStr = snapshot.child(key).child("displayType").getValue(String.class);
                     binding.androidscreenDisplayType.setText(displaytypeStr);
 
-                    imageStr=snapshot.child(key).child("image").getValue(String.class);
+                    imageStr = snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.androidscreenImg);
 
-                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
+                    manufacturerStr = snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.androidscreenManufacturer.setText(manufacturerStr);
 
-                    ostypeStr=snapshot.child(key).child("ostype").getValue(String.class);
+                    ostypeStr = snapshot.child(key).child("ostype").getValue(String.class);
                     binding.androidscreenOSType.setText(ostypeStr);
 
-                    priceStr=snapshot.child(key).child("price").getValue(String.class);
+                    priceStr = snapshot.child(key).child("price").getValue(String.class);
                     binding.androidscreenPrice.setText(priceStr);
 
                     /*quantityStr=snapshot.child(key).child("Quantity").getValue(String.class);
                     binding.androidscreen.setText(modelStr);*/
-                    ramStr=snapshot.child(key).child("ram").getValue(String.class);
+                    ramStr = snapshot.child(key).child("ram").getValue(String.class);
                     binding.androidscreenRAM.setText(ramStr);
 
-                    romStr=snapshot.child(key).child("rom").getValue(String.class);
+                    romStr = snapshot.child(key).child("rom").getValue(String.class);
                     binding.androidscreenROM.setText(romStr);
 
-                    screensizeStr=snapshot.child(key).child("screenSize").getValue(String.class);
+                    screensizeStr = snapshot.child(key).child("screenSize").getValue(String.class);
                     binding.androidscreenScreenSize.setText(screensizeStr);
 
-                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
+                    weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.androidscreenWeight.setText(weightStr);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(fulldetails_AndroidScreen.this, "Error:"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(fulldetails_AndroidScreen.this, "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         binding.btnBuy.setOnClickListener(view -> {
-            Intent i=new Intent(getApplicationContext(),RazorPay.class);
-            i.putExtra("totalPrice",priceStr);
-            i.putExtra("key",modelStr);
+            Intent i = new Intent(getApplicationContext(), RazorPay.class);
+            i.putExtra("totalPrice", priceStr);
+            i.putExtra("key", modelStr);
+            i.putExtra("activity", "buynow");
+            i.putExtra("mainName", "SCREENS_SPEAKERS");
+            i.putExtra("subName", "AndroidScreens");
             startActivity(i);
         });
 
         binding.btnAddtocart.setOnClickListener(view -> {
-            cart_ModelClass modelClass=new cart_ModelClass();
-            String keyz=databaseReference.push().getKey();
+            cart_ModelClass modelClass = new cart_ModelClass();
+            String keyz = databaseReference.push().getKey();
             modelClass.setModel(modelStr);
             modelClass.setImage(imageStr);
             modelClass.setMaufacturer(manufacturerStr);
@@ -123,7 +125,7 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
                             Integer tempQty = Integer.parseInt(x.getQuantity());
                             tempQty++;
                             modelClass.setQuantity(tempQty.toString());
-                        } else  {
+                        } else {
                             modelClass.setQuantity("1");
                         }
                     }
@@ -131,7 +133,7 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(fulldetails_AndroidScreen.this, "Error:"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fulldetails_AndroidScreen.this, "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -139,16 +141,16 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
             databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("quantity").getValue().toString();
-                    Integer qty=Integer.parseInt(qtyStr);
+                    String qtyStr = snapshot.child("quantity").getValue().toString();
+                    Integer qty = Integer.parseInt(qtyStr);
                     //qty--;
                     modelClass.setTotalQty(qtyStr);
-                    if (qty<=0){
+                    if (qty <= 0) {
                         Toast.makeText(fulldetails_AndroidScreen.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
-                    }else {
+                    } else {
                         databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
-                       // databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Quantity").setValue(qty.toString());
-                        Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                        // databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Quantity").setValue(qty.toString());
+                        Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                         i.putExtra("Username", s1);
                         i.putExtra("iscart", "1");
                         startActivity(i);
@@ -158,7 +160,7 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(fulldetails_AndroidScreen.this, "Error:"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fulldetails_AndroidScreen.this, "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -170,7 +172,7 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
 
     @Override
     public void details(String Model) {
-        androidscreenModelStr=Model;
+        androidscreenModelStr = Model;
     }
 
     @Override

@@ -1,12 +1,12 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.auton.databinding.ActivityFulldetailsCleansersBinding;
@@ -74,14 +74,17 @@ public class fulldetails_cleansers extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(fulldetails_cleansers.this, "Error:"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(fulldetails_cleansers.this, "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
         binding.btnCleanserBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
-            i.putExtra("totalPrice",priceStr);
+            i.putExtra("totalPrice", priceStr);
             i.putExtra("key", key); //suppose to be model
+            i.putExtra("activity", "buynow");
+            i.putExtra("mainName", "CARCARE_PURIFIERS");
+            i.putExtra("subName", "Cleansers");
             startActivity(i);
         });
 
@@ -115,7 +118,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
                             Integer tempQty = Integer.parseInt(x.getQuantity());
                             tempQty++;
                             modelClass.setQuantity(tempQty.toString());
-                        } else  {
+                        } else {
                             modelClass.setQuantity("1");
                         }
                     }
@@ -123,7 +126,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(fulldetails_cleansers.this, "Error:"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fulldetails_cleansers.this, "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -196,7 +199,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(fulldetails_cleansers.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fulldetails_cleansers.this, "Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         });

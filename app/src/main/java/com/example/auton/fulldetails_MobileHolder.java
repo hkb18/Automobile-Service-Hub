@@ -1,12 +1,12 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.auton.databinding.ActivityFulldetailsMobileHolderBinding;
@@ -19,50 +19,51 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class fulldetails_MobileHolder extends AppCompatActivity {
-    private ActivityFulldetailsMobileHolderBinding binding;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String imageStr,s1,key,manufacturerStr,modelStr,colorStr,weightStr,itemincludedStr,dimensionStr,priceStr;
+    String imageStr, s1, key, manufacturerStr, modelStr, colorStr, weightStr, itemincludedStr, dimensionStr, priceStr;
+    private ActivityFulldetailsMobileHolderBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityFulldetailsMobileHolderBinding.inflate(getLayoutInflater());
+        binding = ActivityFulldetailsMobileHolderBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        sh=getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
-        s1=sh.getString("Username","");
+        sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE); // to store data for temp time
+        s1 = sh.getString("Username", "");
 
-        Bundle extras=getIntent().getExtras();
-        key= extras.getString("key");
+        Bundle extras = getIntent().getExtras();
+        key = extras.getString("key");
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(key)){
-                    modelStr=snapshot.child(key).child("model").getValue(String.class);
+                if (snapshot.hasChild(key)) {
+                    modelStr = snapshot.child(key).child("model").getValue(String.class);
                     binding.mobileholderModel.setText(modelStr);
 
-                    colorStr=snapshot.child(key).child("color").getValue(String.class);
+                    colorStr = snapshot.child(key).child("color").getValue(String.class);
                     binding.mobileholderColor.setText(colorStr);
 
-                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
+                    dimensionStr = snapshot.child(key).child("dimension").getValue(String.class);
                     binding.mobileholderDimensions.setText(dimensionStr);
 
-                    itemincludedStr=snapshot.child(key).child("itemsIncluded").getValue(String.class);
+                    itemincludedStr = snapshot.child(key).child("itemsIncluded").getValue(String.class);
                     binding.mobileholderItemIncluded.setText(itemincludedStr);
 
-                    imageStr=snapshot.child(key).child("image").getValue(String.class);
+                    imageStr = snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.mobileholderImg);
 
-                    manufacturerStr=snapshot.child(key).child("manufacturer").getValue(String.class);
+                    manufacturerStr = snapshot.child(key).child("manufacturer").getValue(String.class);
                     binding.mobileholderManufacturer.setText(manufacturerStr);
 
-                    priceStr=snapshot.child(key).child("price").getValue(String.class);
+                    priceStr = snapshot.child(key).child("price").getValue(String.class);
                     binding.mobileholderPrice.setText(priceStr);
 
-                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
+                    weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.mobileholderWeight.setText(weightStr);
                 }
             }
@@ -75,16 +76,18 @@ public class fulldetails_MobileHolder extends AppCompatActivity {
         });
 
         binding.btnMobileholderBuyNow.setOnClickListener(view -> {
-            Intent i=new Intent(getApplicationContext(),RazorPay.class);
-            i.putExtra("activity","buynow");
-            i.putExtra("totalPrice",priceStr);
-            i.putExtra("key",modelStr);
+            Intent i = new Intent(getApplicationContext(), RazorPay.class);
+            i.putExtra("activity", "buynow");
+            i.putExtra("totalPrice", priceStr);
+            i.putExtra("mainName", "LIGHTS_CHARGERS");
+            i.putExtra("subName", "MobileHolder");
+            i.putExtra("key", modelStr);
             startActivity(i);
         });
 
         binding.btnMobileholderCart.setOnClickListener(view -> {
-            cart_ModelClass modelClass=new cart_ModelClass();
-            String keyz=databaseReference.push().getKey();
+            cart_ModelClass modelClass = new cart_ModelClass();
+            String keyz = databaseReference.push().getKey();
             modelClass.setModel(modelStr);
             modelClass.setImage(imageStr);
             modelClass.setMaufacturer(manufacturerStr);
@@ -110,7 +113,7 @@ public class fulldetails_MobileHolder extends AppCompatActivity {
                             Integer tempQty = Integer.parseInt(x.getQuantity());
                             tempQty++;
                             modelClass.setQuantity(tempQty.toString());
-                        } else  {
+                        } else {
                             modelClass.setQuantity("1");
                         }
                     }
@@ -118,7 +121,7 @@ public class fulldetails_MobileHolder extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(fulldetails_MobileHolder.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fulldetails_MobileHolder.this, "Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -126,16 +129,16 @@ public class fulldetails_MobileHolder extends AppCompatActivity {
             databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("MobileHolder").child(modelStr).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("quantity").getValue().toString();
-                    Integer qty=Integer.parseInt(qtyStr);
+                    String qtyStr = snapshot.child("quantity").getValue().toString();
+                    Integer qty = Integer.parseInt(qtyStr);
                     //qty--;
                     modelClass.setTotalQty(qtyStr);
-                    if (qty<=0){
+                    if (qty <= 0) {
                         Toast.makeText(fulldetails_MobileHolder.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
-                    }else {
+                    } else {
                         databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
 //                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Quantity").setValue(qty.toString());
-                        Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                        Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                         i.putExtra("Username", s1);
                         i.putExtra("iscart", "1");
                         startActivity(i);

@@ -1,15 +1,14 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
-import com.example.auton.databinding.ActivityFulldetailsAirPurifierBinding;
 import com.example.auton.databinding.ActivityFulldetailsDetailingBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,70 +19,74 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class fulldetails_Detailing extends AppCompatActivity {
-    private ActivityFulldetailsDetailingBinding binding;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1,key,boxincludeStr,brandStr,dimensionStr,imageStr,itemformStr,priceStr,weightStr,volumeStr;
+    String s1, key, boxincludeStr, brandStr, dimensionStr, imageStr, itemformStr, priceStr, weightStr, volumeStr;
+    private ActivityFulldetailsDetailingBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= ActivityFulldetailsDetailingBinding.inflate(getLayoutInflater());
+        binding = ActivityFulldetailsDetailingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        sh=getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
-        s1=sh.getString("Username","");
+        sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE); // to store data for temp time
+        s1 = sh.getString("Username", "");
 
-        Bundle extras=getIntent().getExtras();
-        key= extras.getString("key");
+        Bundle extras = getIntent().getExtras();
+        key = extras.getString("key");
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(key)){
-                    boxincludeStr=snapshot.child(key).child("boxIncluded").getValue(String.class);
+                if (snapshot.hasChild(key)) {
+                    boxincludeStr = snapshot.child(key).child("boxIncluded").getValue(String.class);
                     binding.detailingBoxIncludes.setText(boxincludeStr);
 
-                    brandStr=snapshot.child(key).child("brand").getValue(String.class);
+                    brandStr = snapshot.child(key).child("brand").getValue(String.class);
                     binding.detailingBrand.setText(brandStr);
 
-                    dimensionStr=snapshot.child(key).child("dimension").getValue(String.class);
+                    dimensionStr = snapshot.child(key).child("dimension").getValue(String.class);
                     binding.detailinigDimensions.setText(dimensionStr);
 
-                    itemformStr=snapshot.child(key).child("itemForm").getValue(String.class);
+                    itemformStr = snapshot.child(key).child("itemForm").getValue(String.class);
                     binding.detailingItemForm.setText(itemformStr);
 
-                    volumeStr=snapshot.child(key).child("volume").getValue(String.class);
+                    volumeStr = snapshot.child(key).child("volume").getValue(String.class);
                     binding.detailingVolume.setText(volumeStr);
 
-                    imageStr=snapshot.child(key).child("image").getValue(String.class);
+                    imageStr = snapshot.child(key).child("image").getValue(String.class);
                     Glide.with(getApplicationContext()).load(imageStr).into(binding.detailinigImg);
 
-                    priceStr=snapshot.child(key).child("price").getValue(String.class);
+                    priceStr = snapshot.child(key).child("price").getValue(String.class);
                     binding.detailinigPrice.setText(priceStr);
 
-                    weightStr=snapshot.child(key).child("weight").getValue(String.class);
+                    weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.detailinigWeight.setText(weightStr);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(fulldetails_Detailing.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(fulldetails_Detailing.this, "Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
         binding.btnDetailinigBuyNow.setOnClickListener(view -> {
-            Intent i=new Intent(getApplicationContext(),RazorPay.class);
-            i.putExtra("totalPrice",priceStr);
-            i.putExtra("key",key); //model
+            Intent i = new Intent(getApplicationContext(), RazorPay.class);
+            i.putExtra("totalPrice", priceStr);
+            i.putExtra("key", key); //model
+            i.putExtra("activity", "buynow");
+            i.putExtra("mainName", "CARCARE_PURIFIERS");
+            i.putExtra("subName", "Detailing");
             startActivity(i);
         });
 
         binding.btnDetailinigCart.setOnClickListener(view -> {
-            cart_ModelClass modelClass=new cart_ModelClass();
-            String keyz=databaseReference.push().getKey();
+            cart_ModelClass modelClass = new cart_ModelClass();
+            String keyz = databaseReference.push().getKey();
             modelClass.setModel(boxincludeStr);
             modelClass.setImage(imageStr);
             modelClass.setMaufacturer(brandStr);
@@ -109,7 +112,7 @@ public class fulldetails_Detailing extends AppCompatActivity {
                             Integer tempQty = Integer.parseInt(x.getQuantity());
                             tempQty++;
                             modelClass.setQuantity(tempQty.toString());
-                        } else  {
+                        } else {
                             modelClass.setQuantity("1");
                         }
                     }
@@ -117,7 +120,7 @@ public class fulldetails_Detailing extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(fulldetails_Detailing.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fulldetails_Detailing.this, "Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -126,16 +129,16 @@ public class fulldetails_Detailing extends AppCompatActivity {
             databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String qtyStr=snapshot.child("quantity").getValue().toString();
-                    Integer qty=Integer.parseInt(qtyStr);
+                    String qtyStr = snapshot.child("quantity").getValue().toString();
+                    Integer qty = Integer.parseInt(qtyStr);
                     //qty--;
                     modelClass.setTotalQty(qtyStr);
-                    if (qty<=0){
+                    if (qty <= 0) {
                         Toast.makeText(fulldetails_Detailing.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
-                    }else {
+                    } else {
                         databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
-                  //      databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("Quantity").setValue(qty.toString());
-                        Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                        //      databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").child(key).child("Quantity").setValue(qty.toString());
+                        Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                         i.putExtra("Username", s1);
                         i.putExtra("iscart", "1");
                         startActivity(i);
@@ -145,7 +148,7 @@ public class fulldetails_Detailing extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(fulldetails_Detailing.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fulldetails_Detailing.this, "Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });
