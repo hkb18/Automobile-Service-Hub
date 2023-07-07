@@ -151,7 +151,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                                 int pFinalQty = productQty - Integer.parseInt(it.getQuantity());
                                 if (pFinalQty <= 0) {
                                     Toast.makeText(getApplicationContext(), "Not enough products", Toast.LENGTH_SHORT).show();
-                                    pFinalQty++;
+                                    pFinalQty =0;
                                 }
                                 accModelclass.setQuantity(String.valueOf(pFinalQty));
                                 databaseReference.child("Accessories").child(it.getMainName()).child(it.getSubName()).child(it.getModel()).setValue(accModelclass);
@@ -163,8 +163,6 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                             }
                         });
                     }));
-
-
                 }
 
                 @Override
@@ -174,12 +172,10 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
             });
 
 
-
-
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    databaseReference.child("PURCHASED_ACCESSORIES").child(s1).child(databaseReference.push().getKey()).setValue(data);
+                    databaseReference.child("ORDER_HISTORY").child(s1).child(databaseReference.push().getKey()).setValue(list);
                     Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                     i.putExtra("Username", s1);
                     i.putExtra("deleteCart", "1");

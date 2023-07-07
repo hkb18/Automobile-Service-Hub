@@ -50,36 +50,7 @@ public class user_HomePage extends AppCompatActivity {
         }
 
         if(deleteCart.equals("1")){
-            ArrayList<cart_ModelClass> list=new ArrayList<>();
-            databaseReference.child("CART").child(s1).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    list.clear();
-                    for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                        list.add(dataSnapshot.getValue(cart_ModelClass.class));
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(user_HomePage.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-
-                for(int i =0 ;i< list.size();i++){
-                    databaseReference.child("Accessories").child(list.get(i).getMainName()).child(list.get(i).getSubName()).child(list.get(i).getProductKey()).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Log.e("TAG", "onDataChange: "+snapshot );
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(user_HomePage.this, "error"+error.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-          //  databaseReference.child("CART").child(s1).removeValue();
+            databaseReference.child("CART").child(s1).removeValue();
         }
     }
       private final  BottomNavigationView.OnNavigationItemSelectedListener navListener= item -> {
