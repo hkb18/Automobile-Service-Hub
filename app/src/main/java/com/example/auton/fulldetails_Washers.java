@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_Washers extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, colorStr, dimensionStr, hoselengthStr, imageStr, manufacturerStr, maxpressureStr, modelStr, poweroutputStr, priceStr, weightStr;
+    String s1, key, colorStr, quantityStr, dimensionStr, hoselengthStr, imageStr, manufacturerStr, maxpressureStr, modelStr, poweroutputStr, priceStr, weightStr;
     private ActivityFulldetailsWashersBinding binding;
 
     @Override
@@ -71,6 +71,7 @@ public class fulldetails_Washers extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.washersWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -84,10 +85,14 @@ public class fulldetails_Washers extends AppCompatActivity {
         binding.btnWashersBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "CARCARE_PURIFIERS");
             i.putExtra("subName", "Washers");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_Mats extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, imageStr, manufacturerStr, priceStr, colorStr, materialStr, patternStr, featureStr;
+    String s1, key, modelStr, quantityStr, imageStr, manufacturerStr, priceStr, colorStr, materialStr, patternStr, featureStr;
     private ActivityFulldetailsMatsBinding binding;
 
     @Override
@@ -65,6 +65,7 @@ public class fulldetails_Mats extends AppCompatActivity {
 
                     patternStr = snapshot.child(key).child("pattern").getValue(String.class);
                     binding.matsPattern.setText(patternStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -78,10 +79,14 @@ public class fulldetails_Mats extends AppCompatActivity {
         binding.btnMatsBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "FLOORMATS_CUSHIONS");
             i.putExtra("subName", "Mats");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

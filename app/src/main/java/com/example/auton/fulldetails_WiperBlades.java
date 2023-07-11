@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_WiperBlades extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, brandStr, dimensionStr, imageStr, materialStr, modelStr, positionStr, priceStr, weightStr;
+    String s1, key, brandStr, quantityStr, dimensionStr, imageStr, materialStr, modelStr, positionStr, priceStr, weightStr;
     private ActivityFulldetailsWiperBladesBinding binding;
 
     @Override
@@ -65,6 +65,7 @@ public class fulldetails_WiperBlades extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.wiperbladesWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -78,10 +79,14 @@ public class fulldetails_WiperBlades extends AppCompatActivity {
         binding.btnWiperbladesBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "CARCARE_PURIFIERS");
             i.putExtra("subName", "WiperBlades");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", brandStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

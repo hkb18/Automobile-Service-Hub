@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_Protectives extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, imageStr, modelStr, colorStr, dimensionStr, materialtypeStr, weightStr, manufacturerStr, fittypeStr, featureStr, priceStr;
+    String s1, key, imageStr, quantityStr, modelStr, colorStr, dimensionStr, materialtypeStr, weightStr, manufacturerStr, fittypeStr, featureStr, priceStr;
     private ActivityFulldetailsProtectivesBinding binding;
 
     @Override
@@ -71,6 +71,7 @@ public class fulldetails_Protectives extends AppCompatActivity {
 
                     fittypeStr = snapshot.child(key).child("fitType").getValue(String.class);
                     binding.protectivesFitType.setText(fittypeStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -84,10 +85,14 @@ public class fulldetails_Protectives extends AppCompatActivity {
         binding.btnProtectivesBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "HORNS_PROTECTIVES");
             i.putExtra("subName", "Protectives");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

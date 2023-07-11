@@ -22,7 +22,7 @@ public class fulldetails_VacuumCleaners extends AppCompatActivity {
     //    static AndroidScreen_Interface androidScreen_interface;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, imageStr, manufacturerStr, colorStr, priceStr, operatingvoltageStr, dimensionStr, weightStr, itemincludedStr;
+    String s1, key, modelStr, quantityStr, imageStr, manufacturerStr, colorStr, priceStr, operatingvoltageStr, dimensionStr, weightStr, itemincludedStr;
     private ActivityFulldetailsVacuumCleanersBinding binding;
 
     @Override
@@ -68,7 +68,7 @@ public class fulldetails_VacuumCleaners extends AppCompatActivity {
 
                     priceStr = snapshot.child(key).child("price").getValue(String.class);
                     binding.vacuumcleanerPrice.setText(priceStr);
-
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -81,10 +81,14 @@ public class fulldetails_VacuumCleaners extends AppCompatActivity {
         binding.btnVacuumcleanerBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "SCREENS_SPEAKERS");
             i.putExtra("subName", "VacuumCleaners");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

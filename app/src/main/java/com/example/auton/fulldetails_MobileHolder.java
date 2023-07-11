@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_MobileHolder extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String imageStr, s1, key, manufacturerStr, modelStr, colorStr, weightStr, itemincludedStr, dimensionStr, priceStr;
+    String imageStr, quantityStr, s1, key, manufacturerStr, modelStr, colorStr, weightStr, itemincludedStr, dimensionStr, priceStr;
     private ActivityFulldetailsMobileHolderBinding binding;
 
     @Override
@@ -65,6 +65,7 @@ public class fulldetails_MobileHolder extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.mobileholderWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -79,9 +80,13 @@ public class fulldetails_MobileHolder extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("activity", "buynow");
             i.putExtra("totalPrice", priceStr);
+            i.putExtra("key", key);
             i.putExtra("mainName", "LIGHTS_CHARGERS");
             i.putExtra("subName", "MobileHolder");
-            i.putExtra("key", modelStr);
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

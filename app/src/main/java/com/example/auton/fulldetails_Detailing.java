@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_Detailing extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, boxincludeStr, brandStr, dimensionStr, imageStr, itemformStr, priceStr, weightStr, volumeStr;
+    String s1, key, boxincludeStr, quantityStr, brandStr, dimensionStr, imageStr, itemformStr, priceStr, weightStr, volumeStr;
     private ActivityFulldetailsDetailingBinding binding;
 
     @Override
@@ -65,6 +65,7 @@ public class fulldetails_Detailing extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.detailinigWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -81,13 +82,17 @@ public class fulldetails_Detailing extends AppCompatActivity {
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "CARCARE_PURIFIERS");
             i.putExtra("subName", "Detailing");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", brandStr);
+            i.putExtra("model", "");//no model
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 
         binding.btnDetailinigCart.setOnClickListener(view -> {
             cart_ModelClass modelClass = new cart_ModelClass();
             String keyz = databaseReference.push().getKey();
-            modelClass.setModel(boxincludeStr);
+            modelClass.setModel("");
             modelClass.setImage(imageStr);
             modelClass.setMaufacturer(brandStr);
             modelClass.setQuantity("1");

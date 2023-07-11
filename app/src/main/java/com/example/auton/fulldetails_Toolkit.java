@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_Toolkit extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, imageStr, modelStr, colorStr, dimensionStr, weightStr, itemincludedStr, brandStr, priceStr;
+    String s1, key, imageStr, quantityStr, modelStr, colorStr, dimensionStr, weightStr, itemincludedStr, brandStr, priceStr;
     private ActivityFulldetailsToolkitBinding binding;
 
     @Override
@@ -65,7 +65,7 @@ public class fulldetails_Toolkit extends AppCompatActivity {
 
                     itemincludedStr = snapshot.child(key).child("itemsIncluded").getValue(String.class);
                     binding.toolkitItemIncluded.setText(itemincludedStr);
-
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -79,10 +79,14 @@ public class fulldetails_Toolkit extends AppCompatActivity {
         binding.btnToolkitBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "ROADSIDE_ASSISTANCE");
             i.putExtra("subName", "Toolkits");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", brandStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

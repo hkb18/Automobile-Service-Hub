@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_NeckCushions extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, dimensionStr, imageStr, manufacturerStr, priceStr, weightStr, colorStr, featureStr;
+    String s1, key, quantityStr, modelStr, dimensionStr, imageStr, manufacturerStr, priceStr, weightStr, colorStr, featureStr;
     private ActivityFulldetailsNeckCushionsBinding binding;
 
     @Override
@@ -65,6 +65,7 @@ public class fulldetails_NeckCushions extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.neckcushionWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -77,10 +78,14 @@ public class fulldetails_NeckCushions extends AppCompatActivity {
         binding.btnNeckcushionBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "FLOORMATS_CUSHIONS");
             i.putExtra("subName", "NeckCushions");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

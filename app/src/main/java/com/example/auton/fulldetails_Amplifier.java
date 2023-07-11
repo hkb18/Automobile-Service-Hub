@@ -23,7 +23,7 @@ public class fulldetails_Amplifier extends AppCompatActivity {
     // static AndroidScreen_Interface androidScreen_interface;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, dimensionStr, maxvoltageStr, mountinghardwareStr, channelStr, imageStr, manufacturerStr, priceStr, weightStr;
+    String s1, key, quantityStr, modelStr, dimensionStr, maxvoltageStr, mountinghardwareStr, channelStr, imageStr, manufacturerStr, priceStr, weightStr;
     private ActivityFulldetailsAmplifierBinding binding;
 
     @Override
@@ -71,6 +71,8 @@ public class fulldetails_Amplifier extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.amplifierWeight.setText(weightStr);
+
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -84,10 +86,14 @@ public class fulldetails_Amplifier extends AppCompatActivity {
         binding.btnAmplifierBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "SCREENS_SPEAKERS");
             i.putExtra("subName", "Amplifiers");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_CleaningKit extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, boxincludedStr, brandStr, dimensionStr, imageStr, itemformStr, priceStr, volumeStr, weightStr;
+    String s1, key, modelStr, quantityStr, boxincludedStr, brandStr, dimensionStr, imageStr, itemformStr, priceStr, volumeStr, weightStr;
     private ActivityFulldetailsCleaningKitBinding binding;
 
     @Override
@@ -68,6 +68,7 @@ public class fulldetails_CleaningKit extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.cleaningkitWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -81,10 +82,14 @@ public class fulldetails_CleaningKit extends AppCompatActivity {
         binding.btnCleaningkitBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "CARCARE_PURIFIERS");
             i.putExtra("subName", "CleaningKit");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", brandStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

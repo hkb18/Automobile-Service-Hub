@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_cleansers extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, dimensionStr, imageStr, priceStr, weightStr, boxincludeStr, brandStr, categoryStr, itemformStr, volumeStr, root;
+    String s1, key, quantityStr, dimensionStr, imageStr, priceStr, weightStr, boxincludeStr, brandStr, categoryStr, itemformStr, volumeStr, root;
     private ActivityFulldetailsCleansersBinding binding;
 
     @Override
@@ -69,6 +69,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.cleanserWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -85,6 +86,10 @@ public class fulldetails_cleansers extends AppCompatActivity {
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "CARCARE_PURIFIERS");
             i.putExtra("subName", "Cleansers");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", brandStr);
+            i.putExtra("model", "");//no model
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 
@@ -92,7 +97,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
         binding.btnCleanserCart.setOnClickListener(view -> {
             cart_ModelClass modelClass = new cart_ModelClass();
             String keyz = databaseReference.push().getKey();
-            modelClass.setModel(categoryStr);
+            modelClass.setModel("");
             modelClass.setImage(imageStr);
             modelClass.setMaufacturer(brandStr);
             modelClass.setQuantity("1");

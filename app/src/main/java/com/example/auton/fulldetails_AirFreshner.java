@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_AirFreshner extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, dimensionStr, imageStr, manufacturerStr, priceStr, weightStr, colorStr, itemsformStr, durationStr, fragrenceStr;
+    String s1, key, modelStr, dimensionStr, imageStr, manufacturerStr, priceStr, weightStr, colorStr, itemsformStr, durationStr, fragrenceStr,quantityStr;
     private ActivityFulldetailsAirFreshnerBinding binding;
 
     @Override
@@ -71,6 +71,8 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.airfreshnerWeight.setText(weightStr);
+
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -84,10 +86,15 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
         binding.btnAirfreshnerBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "FLOORMATS_CUSHIONS");
             i.putExtra("subName", "AirFreshner");
+            i.putExtra("image",imageStr );
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity",quantityStr );
+
             startActivity(i);
         });
 

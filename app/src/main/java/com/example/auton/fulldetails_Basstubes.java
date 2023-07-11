@@ -23,7 +23,7 @@ public class fulldetails_Basstubes extends AppCompatActivity {
     //    static AndroidScreen_Interface androidScreen_interface;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, dimensionStr, poweroutputStr, frequencyStr, imageStr, manufacturerStr, sensitivityStr, colorStr, priceStr, weightStr, designStr, salientfeatureStr;
+    String s1, key, modelStr, quantityStr, dimensionStr, poweroutputStr, frequencyStr, imageStr, manufacturerStr, sensitivityStr, colorStr, priceStr, weightStr, designStr, salientfeatureStr;
     private ActivityFulldetailsBasstubesBinding binding;
 
     @Override
@@ -80,6 +80,7 @@ public class fulldetails_Basstubes extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.basstubesWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -93,10 +94,14 @@ public class fulldetails_Basstubes extends AppCompatActivity {
         binding.btnBasstubesBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "SCREENS_SPEAKERS");
             i.putExtra("subName", "BassTubes");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

@@ -22,7 +22,7 @@ public class fulldetails_Speaker extends AppCompatActivity {
     //    static AndroidScreen_Interface androidScreen_interface;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, diameterStr, poweroutputStr, frequencyStr, imageStr, manufacturerStr, sensitivityStr, colorStr, priceStr, speakertypeStr;
+    String s1, key, modelStr, quantityStr, diameterStr, poweroutputStr, frequencyStr, imageStr, manufacturerStr, sensitivityStr, colorStr, priceStr, speakertypeStr;
     private ActivityFulldetailsSpeakerBinding binding;
 
     @Override
@@ -71,7 +71,7 @@ public class fulldetails_Speaker extends AppCompatActivity {
 
                     priceStr = snapshot.child(key).child("price").getValue(String.class);
                     binding.speakerPrice.setText(priceStr);
-
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -85,10 +85,14 @@ public class fulldetails_Speaker extends AppCompatActivity {
         binding.btnSpeakerBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "SCREENS_SPEAKERS");
             i.putExtra("subName", "Speaker");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

@@ -97,7 +97,8 @@ public class user_MyProfile_Fragment extends Fragment {
         });
 
         binding.btnMyOrders.setOnClickListener(view -> {
-
+            Intent i = new Intent(getContext(),user_orderHistory.class);
+            startActivity(i);
         });
 
         AlertDialog.Builder builder=new AlertDialog.Builder(getContext());

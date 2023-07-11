@@ -149,17 +149,21 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     Accessories_ModelClass modelClass = snapshot.getValue(Accessories_ModelClass.class);
-                    qty=Integer.parseInt(quantity);
-                    totalQty= Integer.parseInt(modelClass.getQuantity());
-                    qty++;
-                    if(qty> totalQty){
-                        Toast.makeText(requireContext(), "Not enough products", Toast.LENGTH_SHORT).show();
-                        qty--;
-                    }
-                    list.get(position).setQuantity(""+qty);
+                    try {
+                        qty=Integer.parseInt(quantity);
+                        totalQty= Integer.parseInt(modelClass.getQuantity());
+                        qty++;
+                        if(qty> totalQty){
+                            Toast.makeText(requireContext(), "Not enough products", Toast.LENGTH_SHORT).show();
+                            qty--;
+                        }
+                        list.get(position).setQuantity(""+qty);
 
-                    cart_adapter.notifyDataSetChanged();
-                    databaseReference.child("CART").child(s1).child(list.get(position).getModel()).setValue(list.get(position));
+                        cart_adapter.notifyDataSetChanged();
+                        databaseReference.child("CART").child(s1).child(list.get(position).getModel()).setValue(list.get(position));
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 @Override
@@ -168,21 +172,25 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
                 }
             });
         } else {
-            databaseReference.child("Accessories").child(list.get(position).getMainName()).child(list.get(position).getSubName()).child(list.get(position).getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+            databaseReference.child("Accessories").child(list.get(position).getMainName()).child(list.get(position).getSubName()).child(list.get(position).getProductKey()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     Accessories_ModelClass modelClass = snapshot.getValue(Accessories_ModelClass.class);
-                    qty=Integer.parseInt(quantity);
-                    totalQty= Integer.parseInt(modelClass.getQuantity());
-                    qty++;
-                    if(qty> totalQty){
-                        Toast.makeText(requireContext(), "Not enough products", Toast.LENGTH_SHORT).show();
-                        qty--;
-                    }
-                    list.get(position).setQuantity(""+qty);
+                    try {
+                        qty=Integer.parseInt(quantity);
+                        totalQty= Integer.parseInt(modelClass.getQuantity());
+                        qty++;
+                        if(qty> totalQty){
+                            Toast.makeText(requireContext(), "Not enough products", Toast.LENGTH_SHORT).show();
+                            qty--;
+                        }
+                        list.get(position).setQuantity(""+qty);
 
-                    cart_adapter.notifyDataSetChanged();
-                    databaseReference.child("CART").child(s1).child(list.get(position).getModel()).setValue(list.get(position));
+                        cart_adapter.notifyDataSetChanged();
+                        databaseReference.child("CART").child(s1).child(list.get(position).getProductKey()).setValue(list.get(position));
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 @Override
@@ -198,14 +206,22 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
 
     @Override
     public void remove(String quantity, int position) {
-        Integer qty=Integer.parseInt(quantity);
-        qty--;
-        if (qty<=1){
-            qty=1;
-        }
-        list.get(position).setQuantity(""+qty);
-        cart_adapter.notifyDataSetChanged();
+        try {
+            Integer qty=Integer.parseInt(quantity);
+            qty--;
+            if (qty<=1){
+                qty=1;
+            }
+            list.get(position).setQuantity(""+qty);
+            cart_adapter.notifyDataSetChanged();
 
-        databaseReference.child("CART").child(s1).child(list.get(position).getModel()).setValue(list.get(position));
+            if(!TextUtils.isEmpty(list.get(position).getModel().trim())){
+                databaseReference.child("CART").child(s1).child(list.get(position).getModel()).setValue(list.get(position));
+            } else  {
+                databaseReference.child("CART").child(s1).child(list.get(position).getProductKey()).setValue(list.get(position));
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 }

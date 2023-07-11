@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_Horns extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, imageStr, dimensionStr, materialtypeStr, colorStr, weightStr, manufacturerStr, modelStr, voltageStr, noiselevelStr, fittypeStr, featureStr, priceStr;
+    String s1, key, imageStr, quantityStr, dimensionStr, materialtypeStr, colorStr, weightStr, manufacturerStr, modelStr, voltageStr, noiselevelStr, fittypeStr, featureStr, priceStr;
     private ActivityFulldetailsHornsBinding binding;
 
     @Override
@@ -77,6 +77,7 @@ public class fulldetails_Horns extends AppCompatActivity {
 
                     noiselevelStr = snapshot.child(key).child("noiseLevel").getValue(String.class);
                     binding.hornsNoiseLevel.setText(noiselevelStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -90,10 +91,14 @@ public class fulldetails_Horns extends AppCompatActivity {
         binding.btnHornsBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "HORNS_PROTECTIVES");
             i.putExtra("subName", "Horns");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

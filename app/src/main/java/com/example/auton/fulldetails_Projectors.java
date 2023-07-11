@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_Projectors extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, brandStr, wattageStr, lumenStr, dimensionStr, bulbtypeStr, weightStr, categoryStr, featureStr, priceStr, imageStr;
+    String s1, key, modelStr, quantityStr, brandStr, wattageStr, lumenStr, dimensionStr, bulbtypeStr, weightStr, categoryStr, featureStr, priceStr, imageStr;
     private ActivityFulldetailsProjectorsBinding binding;
 
     @Override
@@ -74,6 +74,7 @@ public class fulldetails_Projectors extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.projectorsWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -87,9 +88,13 @@ public class fulldetails_Projectors extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("activity", "buynow");
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("mainName", "LIGHTS_CHARGERS");
             i.putExtra("subName", "Projectors");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", brandStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

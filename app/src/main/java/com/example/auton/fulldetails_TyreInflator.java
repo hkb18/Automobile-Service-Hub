@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_TyreInflator extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, imageStr, modelStr, maxcapacityStr, colorStr, dimensionStr, weightStr, voltageStr, itemincludedStr, brandStr, priceStr;
+    String s1, key, imageStr, quantityStr, modelStr, maxcapacityStr, colorStr, dimensionStr, weightStr, voltageStr, itemincludedStr, brandStr, priceStr;
     private ActivityFulldetailsTyreInflatorBinding binding;
 
     @Override
@@ -71,6 +71,7 @@ public class fulldetails_TyreInflator extends AppCompatActivity {
 
                     itemincludedStr = snapshot.child(key).child("itemsIncluded").getValue(String.class);
                     binding.tyreinflatorItemsIncluded.setText(itemincludedStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -84,10 +85,14 @@ public class fulldetails_TyreInflator extends AppCompatActivity {
         binding.btnTyreinflatorBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "ROADSIDE_ASSISTANCE");
             i.putExtra("subName", "TyreInflator");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", brandStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

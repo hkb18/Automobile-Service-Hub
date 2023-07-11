@@ -23,6 +23,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".user_orderHistory"
+            android:exported="false" />
+        <activity
             android:name=".user_updateProfile"
             android:exported="false" />
         <activity

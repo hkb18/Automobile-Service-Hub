@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_BackCushions extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, dimensionStr, imageStr, manufacturerStr, priceStr, weightStr, colorStr;
+    String s1, key, modelStr, quantityStr, dimensionStr, imageStr, manufacturerStr, priceStr, weightStr, colorStr;
     private ActivityFulldetailsBackCushionsBinding binding;
 
     @Override
@@ -62,6 +62,7 @@ public class fulldetails_BackCushions extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.backcushionWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -75,10 +76,14 @@ public class fulldetails_BackCushions extends AppCompatActivity {
         binding.btnBackcushionBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "FLOORMATS_CUSHIONS");
             i.putExtra("subName", "BackCushions");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

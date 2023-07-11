@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_AirPurifier extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, dimensionStr, imageStr, manufacturerStr, priceStr, weightStr, colorStr, itemsincludedStr, operatingvoltageStr, warrentyStr;
+    String s1, quantityStr, key, modelStr, dimensionStr, imageStr, manufacturerStr, priceStr, weightStr, colorStr, itemsincludedStr, operatingvoltageStr, warrentyStr;
     private ActivityFulldetailsAirPurifierBinding binding;
 
     @Override
@@ -71,6 +71,8 @@ public class fulldetails_AirPurifier extends AppCompatActivity {
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.airpurifierWeight.setText(weightStr);
+
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -84,10 +86,14 @@ public class fulldetails_AirPurifier extends AppCompatActivity {
         binding.btnAirpurifierBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "CARCARE_PURIFIERS");
             i.putExtra("subName", "AirPurifier");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

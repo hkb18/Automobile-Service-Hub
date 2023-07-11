@@ -23,7 +23,7 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
     String androidscreenModelStr;
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, dimensionStr, displaytypeStr, imageStr, manufacturerStr, modelStr, ostypeStr, priceStr, ramStr, romStr, screensizeStr, weightStr;
+    String s1, key, quantityStr, dimensionStr, displaytypeStr, imageStr, manufacturerStr, modelStr, ostypeStr, priceStr, ramStr, romStr, screensizeStr, weightStr;
     private ActivityFulldetailsAndroidScreenBinding binding;
 
     @Override
@@ -79,6 +79,7 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
 
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.androidscreenWeight.setText(weightStr);
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -90,10 +91,14 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
         binding.btnBuy.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "SCREENS_SPEAKERS");
             i.putExtra("subName", "AndroidScreens");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", manufacturerStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

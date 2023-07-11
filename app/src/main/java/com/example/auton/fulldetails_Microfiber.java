@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_Microfiber extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, brandStr, colorStr, dimensionStr, fabrictypeStr, materialtypeStr, imageStr, modelStr, priceStr;
+    String s1, key, quantityStr, brandStr, colorStr, dimensionStr, fabrictypeStr, materialtypeStr, imageStr, modelStr, priceStr;
     private ActivityFulldetailsMicrofiberBinding binding;
 
     @Override
@@ -65,7 +65,7 @@ public class fulldetails_Microfiber extends AppCompatActivity {
 
                     priceStr = snapshot.child(key).child("price").getValue(String.class);
                     binding.microfiberPrice.setText(priceStr);
-
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                 }
             }
 
@@ -79,10 +79,14 @@ public class fulldetails_Microfiber extends AppCompatActivity {
         binding.btnMicrofiberBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "CARCARE_PURIFIERS");
             i.putExtra("subName", "MicroFibres");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", brandStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 

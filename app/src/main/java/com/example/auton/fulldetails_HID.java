@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class fulldetails_HID extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, imageStr, brandStr, modelStr, wattageStr, dimensionStr, bulbtypeStr, weightStr, positionStr, featureStr, priceStr;
+    String s1, key, quantityStr, imageStr, brandStr, modelStr, wattageStr, dimensionStr, bulbtypeStr, weightStr, positionStr, featureStr, priceStr;
     private ActivityFulldetailsHidBinding binding;
 
     @Override
@@ -42,6 +42,7 @@ public class fulldetails_HID extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(key)) {
+                    quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
                     modelStr = snapshot.child(key).child("model").getValue(String.class);
                     binding.hidModel.setText(modelStr);
 
@@ -85,9 +86,13 @@ public class fulldetails_HID extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
             i.putExtra("activity", "buynow");
             i.putExtra("totalPrice", priceStr);
-            i.putExtra("key", modelStr);
+            i.putExtra("key", key);
             i.putExtra("mainName", "LIGHTS_CHARGERS");
             i.putExtra("subName", "HID");
+            i.putExtra("image", imageStr);
+            i.putExtra("manufacturer", brandStr);
+            i.putExtra("model", modelStr);
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 
