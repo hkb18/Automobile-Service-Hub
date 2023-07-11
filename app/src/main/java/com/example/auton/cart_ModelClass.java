@@ -1,12 +1,18 @@
 package com.example.auton;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class cart_ModelClass {
     String model,maufacturer,price,quantity,image,username,key, productKey, totalQty,mainName,subName;
 
+    String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+    String date = currentDate;
     public cart_ModelClass() {
     }
 
-    public cart_ModelClass(String model, String maufacturer, String price, String quantity, String image, String username, String key, String productKey, String totalQty, String mainName, String subName) {
+    public cart_ModelClass(String model, String maufacturer, String price, String quantity, String image, String username, String key, String productKey, String totalQty, String mainName, String subName, String date) {
         this.model = model;
         this.maufacturer = maufacturer;
         this.price = price;
@@ -18,6 +24,15 @@ public class cart_ModelClass {
         this.totalQty = totalQty;
         this.mainName = mainName;
         this.subName = subName;
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getModel() {
