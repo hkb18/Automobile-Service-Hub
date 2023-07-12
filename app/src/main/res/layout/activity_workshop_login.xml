@@ -29,12 +29,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="USERNAME"
+            android:hint="CONTACT NUMBER"
             app:hintTextColor="@color/white"
             android:textColorHint="@color/white">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="number"
+                android:maxLength="10"
                 android:id="@+id/workshopName"
                 android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,12 +72,5 @@
         android:textColor="@color/white"
         android:id="@+id/button_WorkshopLogin"
         android:text="Login"/>
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:textColor="@color/white"
-    android:textStyle="bold"
-    android:id="@+id/workshop_registration"
-    android:text="Don't have an account?SignUp"/>
+
 </LinearLayout>

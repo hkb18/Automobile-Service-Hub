@@ -148,6 +148,9 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
                     } else if (activityStr.equals("user2")) {
                         user_BookService2.mapinterface.location(latitudeStr,longitudeStr); //Interface
                         finish();
+                    } else if (activityStr.equals("admin")) {
+                        admin_Add_Workshop.mapinterface.location(latitudeStr,longitudeStr); //Interface
+                        finish();
                     } else {
                         user_Book_Service.mapinterface.location(latitudeStr,longitudeStr); //Interface
                         finish();

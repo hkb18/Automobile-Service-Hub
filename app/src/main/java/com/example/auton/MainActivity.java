@@ -133,6 +133,10 @@ public class MainActivity extends AppCompatActivity {
             Intent i=new Intent(getApplicationContext(), worker_Registration.class);
             startActivity(i);
         });
+        binding.mechanicLogin.setOnClickListener(view -> {
+            Intent i=new Intent(getApplicationContext(), workshop_Login.class);
+            startActivity(i);
+        });
     }
 
     public void onPause(){
@@ -155,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
 
-        if (loginPref.getBoolean("isLogin", false)){
+        /*if (loginPref.getBoolean("isLogin", false)){
             if(loginPref.getInt("type", 0) == 0){
                 Intent i=new Intent(getApplicationContext(),admin_HomePage.class);
                 startActivity(i);
@@ -169,6 +173,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
 
             }
-        }
+        }*/
     }
 }

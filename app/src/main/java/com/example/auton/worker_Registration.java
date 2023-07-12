@@ -102,7 +102,7 @@ public class worker_Registration extends BASEACTIVITY implements mapinterface {
                             databaseReference.child("Workshop_Profile").child(usernameStr).child("latitude").setValue(latitudeStr);
                             databaseReference.child("Workshop_Profile").child(usernameStr).child("longitude").setValue(longitudeStr);
                             Toast.makeText(worker_Registration.this,"Workshop Successfully Registered",Toast.LENGTH_SHORT).show();
-                            Intent i=new Intent(getApplicationContext(),workshop_Login.class);
+                            Intent i=new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(i);
                         }
                     }

@@ -82,7 +82,8 @@ public class admin_ManageWorkshop_Fragment extends Fragment {
 
         //DELETE EXISTING WORKSHOP
         binding.linearlayoutDeleteWorkshop.setOnClickListener(view -> {
-
+            Intent i =new Intent(getContext(), admin_DeleteWorkshop.class);
+            startActivity(i);
         });
 
         //  ADD CARS

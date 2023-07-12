@@ -68,7 +68,7 @@ public class user_Registration extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if(snapshot.hasChild(username)){
                                     Toast.makeText(user_Registration.this,"Already existing User",Toast.LENGTH_SHORT).show();
-                                    Intent i=new Intent(getApplicationContext(),user_Login.class);
+                                    Intent i=new Intent(getApplicationContext(),MainActivity.class);
                                     startActivity(i);
                                 }
                                 else {
@@ -78,7 +78,7 @@ public class user_Registration extends AppCompatActivity {
                                     databaseReference.child("Profile").child(username).child("EmailId").setValue(emailid);
                                     databaseReference.child("Profile").child(username).child("Password").setValue(password);
                                     Toast.makeText(user_Registration.this,"User Successfully Registered",Toast.LENGTH_SHORT).show();
-                                    Intent i=new Intent(getApplicationContext(),user_Login.class);
+                                    Intent i=new Intent(getApplicationContext(),MainActivity.class);
                                     startActivity(i);
                                 }
 
@@ -94,7 +94,7 @@ public class user_Registration extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.hasChild(username)){
                                 Toast.makeText(user_Registration.this,"Already existing User",Toast.LENGTH_SHORT).show();
-                                Intent i=new Intent(getApplicationContext(),user_Login.class);
+                                Intent i=new Intent(getApplicationContext(),MainActivity.class);
                                 startActivity(i);
                             }
                             else {
@@ -104,7 +104,7 @@ public class user_Registration extends AppCompatActivity {
                                 databaseReference.child("Users").child(username).child("EmailId").setValue(emailid);
                                 databaseReference.child("Users").child(username).child("Password").setValue(password);
                                 Toast.makeText(user_Registration.this,"User Successfully Registered",Toast.LENGTH_SHORT).show();
-                                Intent i=new Intent(getApplicationContext(),user_Login.class);
+                                Intent i=new Intent(getApplicationContext(),MainActivity.class);
                                 startActivity(i);
                             }
 
@@ -118,17 +118,6 @@ public class user_Registration extends AppCompatActivity {
                     } else {
                         Toast.makeText(user_Registration.this,"Password doesn't match",Toast.LENGTH_SHORT).show();
                     }
-
-
-                //Intent
-               /* Intent i=new Intent(getApplicationContext(),user_Login.class);
-                i.putExtra("Value1",fullname);
-                i.putExtra("Value2",emailid);
-                i.putExtra("Value3",contactno);
-                i.putExtra("Value4",username);
-                i.putExtra("Value5",password);
-                i.putExtra("Value6",confirmpassword);
-                startActivity(i);*/
             }
         });
     }

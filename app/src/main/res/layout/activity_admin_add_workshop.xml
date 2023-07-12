@@ -9,6 +9,15 @@
     android:background="@drawable/theme_bg"
     tools:context=".admin_Add_Workshop">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADMIN ADD WORKSHOP"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
     <!-- COMPANY NAME -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -143,9 +152,29 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="Select Location of Workshop"
+        android:drawableEnd="@drawable/location"
+        android:drawableTint="@color/white"
         android:textColor="@color/white"
-        android:id="@+id/button_WorkshopSignUp"
+        android:id="@+id/LOCATION"
+        android:backgroundTint="@color/summersky"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvLocation"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@color/white"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Workshop"
+        android:textColor="@color/white"
+        android:id="@+id/btn_addWorkshop"
         android:backgroundTint="@color/summersky"
         />
 </LinearLayout>

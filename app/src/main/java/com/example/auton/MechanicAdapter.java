@@ -45,7 +45,7 @@ public class MechanicAdapter extends RecyclerView.Adapter<MechanicAdapter.MyView
         holder.emailid.setText(mechanic.getEmail());
         holder.contactno.setText(mechanic.getContactNo());
 
-        String item_todel=mechanic.getName();
+        String item_todel=mechanic.getEmail();
         holder.btn_del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

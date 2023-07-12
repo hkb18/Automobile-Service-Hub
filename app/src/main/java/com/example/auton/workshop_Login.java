@@ -22,22 +22,15 @@ import com.google.firebase.database.ValueEventListener;
 
 public class workshop_Login extends AppCompatActivity {
     private ActivityWorkshopLoginBinding binding;
-    Button login;
-   // TextInputEditText username,password;
+
     String workshopnameStr,passwordStr;
     DatabaseReference databaseReference;
-    TextView notRegistered;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityWorkshopLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        /*login=(Button) findViewById(R.id.button_WorkshopLogin);
-        username=findViewById(R.id.workshopName);
-        password=findViewById(R.id.password);
-        notRegistered=(TextView) findViewById(R.id.workshop_registration);*/
 
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
@@ -47,13 +40,13 @@ public class workshop_Login extends AppCompatActivity {
             if (passwordStr.isEmpty() || workshopnameStr.isEmpty()){
                 Toast.makeText(workshop_Login.this, "Please Enter all details", Toast.LENGTH_SHORT).show();
             } else {
-                databaseReference.child("Workshop_Profile").addListenerForSingleValueEvent(new ValueEventListener() {
+                databaseReference.child("Mechanic_Profile").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.hasChild(workshopnameStr)){
                             final String getPassword=snapshot.child(workshopnameStr).child("Password").getValue(String.class);
                             if (getPassword.equals(passwordStr)){
-                                Intent i=new Intent(getApplicationContext(),workshop_HomePage.class);
+                                Intent i=new Intent(getApplicationContext(),mechanic_HomePage.class);
                                 startActivity(i);
                                 Toast.makeText(workshop_Login.this, "Login Successfull", Toast.LENGTH_SHORT).show();
                             }
@@ -69,48 +62,6 @@ public class workshop_Login extends AppCompatActivity {
                 });
             }
         });
-      /* login.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               workshopnameStr=username.getText().toString();
-               passwordStr=password.getText().toString();
-               if (passwordStr.isEmpty() || workshopnameStr.isEmpty()){
-                   Toast.makeText(workshop_Login.this, "Please Enter all details", Toast.LENGTH_SHORT).show();
-               } else {
-                   databaseReference.child("Workshop_Profile").addListenerForSingleValueEvent(new ValueEventListener() {
-                       @Override
-                       public void onDataChange(@NonNull DataSnapshot snapshot) {
-                           if (snapshot.hasChild(workshopnameStr)){
-                               final String getPassword=snapshot.child(workshopnameStr).child("Password").getValue(String.class);
-                               if (getPassword.equals(passwordStr)){
-                                   Intent i=new Intent(getApplicationContext(),workshop_HomePage.class);
-                                   startActivity(i);
-                                   Toast.makeText(workshop_Login.this, "Login Successfull", Toast.LENGTH_SHORT).show();
-                               }
-                           }else {
-                               Toast.makeText(workshop_Login.this, "Wrong Credentials ", Toast.LENGTH_SHORT).show();
-                           }
-                       }
-
-                       @Override
-                       public void onCancelled(@NonNull DatabaseError error) {
-                           Toast.makeText(workshop_Login.this,error.getMessage(), Toast.LENGTH_SHORT).show();
-                       }
-                   });
-               }
-           }
-       });*/
-        binding.workshopRegistration.setOnClickListener(view -> {
-            Intent i=new Intent(getApplicationContext(), worker_Registration.class);
-            startActivity(i);
-        });
-       /*notRegistered.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent i=new Intent(getApplicationContext(), worker_Registration.class);
-               startActivity(i);
-           }
-       });*/
     }
     public void onResume(){
         super.onResume();
