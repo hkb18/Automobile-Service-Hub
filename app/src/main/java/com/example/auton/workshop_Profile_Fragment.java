@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.auton.databinding.FragmentWorkshopProfileBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,11 +33,7 @@ import com.google.firebase.database.ValueEventListener;
  * create an instance of this fragment.
  */
 public class workshop_Profile_Fragment extends Fragment {
-    Button update;
-    EditText newname,newemail,newcontactno;
-    TextView userprofilename,help,updatepasswd;
-    ImageView imgview;
-    String fullnameStr,emailStr,contactStr;
+    private FragmentWorkshopProfileBinding binding;
     DatabaseReference databaseReference;
     SharedPreferences sh;
 
@@ -84,84 +81,16 @@ public class workshop_Profile_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_workshop__profile, container, false);
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        binding=FragmentWorkshopProfileBinding.inflate(getLayoutInflater());
 
-        sh=requireContext().getSharedPreferences("MySharedPreferences1",MODE_PRIVATE); // to store data for temp time
-        String s1=sh.getString("Username","");
-
-        updatepasswd=v.findViewById(R.id.updatePwd);
-        help=v.findViewById(R.id.Help);
-
-        userprofilename=v.findViewById(R.id.userprofileName);
-        userprofilename.setText(s1);
-
-        newname=v.findViewById(R.id.newName);
-        newemail=v.findViewById(R.id.newEmail);
-        newcontactno=v.findViewById(R.id.newContact);
-
-        imgview=v.findViewById(R.id.imgLogout);
-        update=v.findViewById(R.id.updatebtn);
-
-        updatepasswd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getContext(),user_Update_Password.class);
-                i.putExtra("Username",s1);
-                startActivity(i);
-            }
-        });
-
-        //  TO UPDATE USER PROFILE
-        databaseReference.child("Workshop_Profile").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(s1)){
-                    fullnameStr=snapshot.child(s1).child("Name").getValue(String.class);
-                    emailStr=snapshot.child(s1).child("Email_Id").getValue(String.class);
-                    contactStr=snapshot.child(s1).child("ContactNo").getValue(String.class);
-
-                    newname.setText(fullnameStr);
-                    newemail.setText(emailStr);
-                    newcontactno.setText(contactStr);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        //  UPDATE BUTTON
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                databaseReference.child("Workshop_Profile").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild(s1)){
-                            fullnameStr=newname.getText().toString();
-                            emailStr=newemail.getText().toString();
-                            contactStr=newcontactno.getText().toString();
-
-                            databaseReference.child("Workshop_Profile").child(s1).child("Name").setValue(fullnameStr);
-                            databaseReference.child("Workshop_Profile").child(s1).child("Email_Id").setValue(emailStr);
-                            databaseReference.child("Workshop_Profile").child(s1).child("ContactNo").setValue(contactStr);
-                            Toast.makeText(getContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
+        binding.btnUpdateProfile.setOnClickListener(view -> {
+            Intent i = new Intent(getContext(), workshop_UpdateProfile.class);
+            startActivity(i);
         });
 
         //  LOGOUT
         AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
-        imgview.setOnClickListener(new View.OnClickListener() {
+        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 builder.setMessage("Are you sure you want to logout?")
@@ -171,6 +100,14 @@ public class workshop_Profile_Fragment extends Fragment {
                             public void onClick(DialogInterface dialog, int id) {
                                 finish();
                                 requireActivity().finishAffinity();
+
+                                SharedPreferences loginPref;
+                                SharedPreferences.Editor loginPrefEditor;
+                                loginPref = requireActivity().getSharedPreferences("login", MODE_PRIVATE);
+                                loginPrefEditor =loginPref.edit();
+                                loginPrefEditor.putBoolean("isLogin", false);
+                                loginPrefEditor.apply();
+
                                 Toast.makeText(getContext(), "You have been Logged Out", Toast.LENGTH_SHORT).show();
                                 Intent i =new Intent(getContext(),MainActivity.class);
                                 startActivity(i);
@@ -190,7 +127,7 @@ public class workshop_Profile_Fragment extends Fragment {
             private void finish() {
             }
         });
-        return v;
 
+        return  binding.getRoot();
     }
 }

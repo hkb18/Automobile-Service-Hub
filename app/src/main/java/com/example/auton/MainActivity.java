@@ -21,27 +21,18 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     DatabaseReference databaseReference;
     String usernameStr,passwordStr;
+    SharedPreferences loginPref;
+    SharedPreferences.Editor loginPrefEditor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        loginPref = getSharedPreferences("login", MODE_PRIVATE);
+        loginPrefEditor =loginPref.edit();
+
         databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-      /*  binding.buttonSignUp.setOnClickListener(view -> {
-            Intent i=new Intent(getApplicationContext(), user_Registration.class);
-            startActivity(i);
-        });
-
-        binding.buttonSignIn.setOnClickListener(view -> {
-            Intent i=new Intent(getApplicationContext(), user_Login.class);
-            startActivity(i);
-        });
-
-        binding.buttonWorkshop.setOnClickListener(view -> {
-            Intent i=new Intent(getApplicationContext(), workshop_Login.class);
-            startActivity(i);
-        });*/
 
         binding.btnLogin.setOnClickListener(view -> {
             usernameStr=binding.username.getText().toString();
@@ -62,7 +53,10 @@ public class MainActivity extends AppCompatActivity {
                                         SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
                                         SharedPreferences.Editor editor=sh.edit();
                                         editor.putString("Username", usernameStr);
+                                        loginPrefEditor.putBoolean("isLogin", true);
+                                        loginPrefEditor.putInt("type", 0);
                                         editor.commit();
+                                        loginPrefEditor.commit();
                                         Intent i=new Intent(getApplicationContext(),admin_HomePage.class);
                                         startActivity(i);
                                         Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
@@ -76,7 +70,10 @@ public class MainActivity extends AppCompatActivity {
                                     SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
                                     SharedPreferences.Editor editor=sh.edit();
                                     editor.putString("Username", usernameStr);
+                                    loginPrefEditor.putBoolean("isLogin", true);
+                                    loginPrefEditor.putInt("type", 1);
                                     editor.commit();
+                                    loginPrefEditor.commit();
                                     Intent i=new Intent(getApplicationContext(),user_HomePage.class);
                                     i.putExtra("Username", usernameStr);// username passing
                                     startActivity(i);
@@ -105,7 +102,10 @@ public class MainActivity extends AppCompatActivity {
                                     SharedPreferences sharedPreferences=getSharedPreferences("MySharedPreferences1",MODE_PRIVATE);
                                     SharedPreferences.Editor myEdit=sharedPreferences.edit();
                                     myEdit.putString("Username", usernameStr);
+                                    loginPrefEditor.putBoolean("isLogin", true);
+                                    loginPrefEditor.putInt("type", 3);
                                     myEdit.commit();
+                                    loginPrefEditor.commit();
                                     Intent i=new Intent(getApplicationContext(),workshop_HomePage.class);
                                     startActivity(i);
                                     Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
@@ -148,5 +148,27 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor myEdit1=sharedPreferences.edit();
         myEdit1.putString("Username",binding.username.getText().toString());
         myEdit1.apply();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        if (loginPref.getBoolean("isLogin", false)){
+            if(loginPref.getInt("type", 0) == 0){
+                Intent i=new Intent(getApplicationContext(),admin_HomePage.class);
+                startActivity(i);
+            } else if (loginPref.getInt("type", 0) == 1){
+                Intent i=new Intent(getApplicationContext(),user_HomePage.class);
+                i.putExtra("Username", usernameStr);// username passing
+                startActivity(i);
+
+            } else {
+                Intent i=new Intent(getApplicationContext(),workshop_HomePage.class);
+                startActivity(i);
+
+            }
+        }
     }
 }

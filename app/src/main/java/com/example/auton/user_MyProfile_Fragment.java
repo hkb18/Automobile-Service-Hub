@@ -34,7 +34,6 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class user_MyProfile_Fragment extends Fragment {
     private FragmentUserMyProfileBinding binding;
-    String fullnameStr,emailStr,contactStr;
     DatabaseReference databaseReference;
     SharedPreferences sh;
 
@@ -109,6 +108,13 @@ public class user_MyProfile_Fragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             requireActivity().finishAffinity(); //ADD TO WORKSHOP N ADMIN
+
+                            SharedPreferences loginPref;
+                            SharedPreferences.Editor loginPrefEditor;
+                            loginPref = requireActivity().getSharedPreferences("login", MODE_PRIVATE);
+                            loginPrefEditor =loginPref.edit();
+                            loginPrefEditor.putBoolean("isLogin", false);
+                            loginPrefEditor.apply();
                             Toast.makeText(getContext(), "You have been Logged Out", Toast.LENGTH_SHORT).show();
                             Intent i =new Intent(getContext(),MainActivity.class);
                             startActivity(i);
