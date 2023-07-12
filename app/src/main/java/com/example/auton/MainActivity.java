@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
 
-        if (loginPref.getBoolean("isLogin", false)){
+        /*if (loginPref.getBoolean("isLogin", false)){
             if(loginPref.getInt("type", 0) == 0){
                 Intent i=new Intent(getApplicationContext(),admin_HomePage.class);
                 startActivity(i);
@@ -173,6 +173,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
 
             }
-        }
+        }*/
     }
 }

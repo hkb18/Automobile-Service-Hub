@@ -4,124 +4,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/theme_bg"
+    android:gravity="center"
+
+    android:orientation="vertical"
     tools:context=".admin_AddCars">
 
 
-        <LinearLayout
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="ADD CAR BRAND"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="26dp"
+        android:textStyle="bold" />
+
+    <!-- Brand -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="5dp">
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:hint="Enter Brand"
+            android:textColorHint="@color/white"
+            app:hintTextColor="@color/white">
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/carBrand"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:textSize="26dp"
-                android:text="ADD CAR BRAND"
-                android:gravity="center"/>
+                android:layout_height="match_parent"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
-            <!-- Brand -->
-            <LinearLayout
+    <!-- Body Type  -->
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="5dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter Body Type"
+            app:hintTextColor="@color/white"
+            android:textColorHint="@color/white">
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="5dp">
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Enter Brand"
-                    app:hintTextColor="@color/white"
-                    android:textColorHint="@color/white">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/carBrand"
-                        android:textColor="@color/white"/>
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:id="@+id/carBodyType"
+                android:textColor="@color/white"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>-->
 
-            <!-- Body Type  -->
-            <!--<LinearLayout
+
+    <!-- Price -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="5dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter Amount"
+            android:textColorHint="@color/white"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/carPrice"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="5dp">
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Enter Body Type"
-                    app:hintTextColor="@color/white"
-                    android:textColorHint="@color/white">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/carBodyType"
-                        android:textColor="@color/white"/>
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>-->
+                android:layout_height="match_parent"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
 
-            <!-- Price -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="5dp">
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Enter Amount"
-                    app:hintTextColor="@color/white"
-                    android:textColorHint="@color/white">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/carPrice"
-                        android:textColor="@color/white"/>
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+    <!-- Image -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center">
 
+        <ImageView
+            android:id="@+id/ivCar"
+            android:layout_width="160dp"
+            android:layout_height="160dp" />
 
-            <!-- Image -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:layout_marginBottom="5dp">
-                <ImageView
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    android:id="@+id/ivCar"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btn_selectImgCar"
-                    android:text="SELECT IMAGE"/>
-            </LinearLayout>
+        <Button
+            android:id="@+id/btn_selectImgCar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SELECT IMAGE" />
+    </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_addCar"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/summersky"
-                android:text="ADD"/>
-        </LinearLayout>
+    <Button
+        android:id="@+id/btn_addCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/summersky"
+        android:text="ADD"
+        android:textColor="@color/white" />
 
 
 </LinearLayout>

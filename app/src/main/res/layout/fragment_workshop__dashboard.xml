@@ -40,7 +40,7 @@
         android:textStyle="bold|italic"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Service's will be completed with in one day"
+        android:text="Service's should be completed within one day"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -1,16 +1,12 @@
 package com.example.auton;
 
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityUserViewBookedServiceBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -22,42 +18,30 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class user_View_Booked_Service extends AppCompatActivity implements ViewBookedService_Interface {
-    private ActivityUserViewBookedServiceBinding binding;
+    public static ViewBookedService_Interface viewBookedService_interface;
     DatabaseReference databaseReference;
     BookedService_Adapter myAdapter;
     ArrayList<Worshop_View_Service_modelClass> list;
     SharedPreferences sh;
-    String s1="";
-    public static ViewBookedService_Interface viewBookedService_interface;
-
-
-    /*public void onBackPressed() {
-        Log.e("TAG", "onBackPressed: 1" );
-        super.onBackPressed();
-        Log.e("TAG", "onBackPressed: 2" );
-        Intent i=new Intent(getApplicationContext(),user_HomePage.class);
-        i.putExtra("Username", s1);
-        i.putExtra("deleteCart", "0");
-        startActivity(i);
-        finishAffinity();
-    }*/
+    String s1 = "";
+    private ActivityUserViewBookedServiceBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityUserViewBookedServiceBinding.inflate(getLayoutInflater());
+        binding = ActivityUserViewBookedServiceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        viewBookedService_interface=this;
+        viewBookedService_interface = this;
 
-        SharedPreferences sh= getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
-        s1=sh.getString("Username","");
+        SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
+        s1 = sh.getString("Username", "");
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-        list=new ArrayList<>();
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        list = new ArrayList<>();
 
         binding.rvBookedService.setLayoutManager(new LinearLayoutManager(this));
-        myAdapter =new BookedService_Adapter(this,list);
+        myAdapter = new BookedService_Adapter(this, list);
         binding.rvBookedService.setAdapter(myAdapter);
 
 
@@ -74,7 +58,7 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

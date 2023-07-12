@@ -4,53 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MapsActivity2">
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/textview"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_margin="12dp"
         android:layout_weight="1"
         app:cardCornerRadius="15dp"
         app:cardElevation="15dp"
-        android:id="@+id/textview"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="24dp"
-        android:text="LONG PRESS ON THE MAP TO SET LOCATION"
-        android:fontFamily="times"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:elevation="5dp"
-        android:id="@+id/textview1"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:fontFamily="times"
+            android:gravity="center"
+            android:text="LONG PRESS ON THE MAP TO SET LOCATION"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.cardview.widget.CardView>
-<fragment
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    map:layout_constraintStart_toStartOf="parent"
-    map:layout_constraintEnd_toEndOf="parent"
-    map:layout_constraintTop_toTopOf="parent"
-    map:layout_constraintBottom_toBottomOf="parent"
-  />
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:backgroundTint="@color/summersky"
-    android:text="Submit Location"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    android:id="@+id/btn"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
-<!--create interface,on btn click set latlang n finish(),pass it through interface-->
+
+    <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@id/textview" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/summersky"
+        android:text="Submit Location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout><!--create interface,on btn click set latlang n finish(),pass it through interface-->

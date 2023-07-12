@@ -10,11 +10,19 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
+        android:background="#5D6B8C"
         android:id="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:text="automobile service hub"
+            android:textAllCaps="true"/>
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
@@ -40,6 +48,7 @@
         android:id="@+id/bottom_nav_admin"
         android:background="#97A8D1"
         app:menu="@menu/admin_bottom_nav_menu"
+        app:labelVisibilityMode="selected"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

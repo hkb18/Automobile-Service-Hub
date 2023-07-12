@@ -59,7 +59,7 @@ public class worker_Registration extends BASEACTIVITY implements mapinterface {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i =new Intent(getApplicationContext(), workshop_Login.class);
+                Intent i =new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
             }
         });

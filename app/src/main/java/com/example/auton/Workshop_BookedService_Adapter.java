@@ -52,7 +52,7 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
         if ( bookedService.getACCEPT_SERVICE()==3){
             holder.ServiceReject.setVisibility(View.GONE);
             holder.linearLayout.setVisibility(View.VISIBLE);
-        } else if (bookedService.getACCEPT_SERVICE()==1) {
+        } else if (bookedService.getACCEPT_SERVICE()==2) {
             holder.ServiceReject.setText("SERVICE ACCEPTED");
             holder.ServiceReject.setTextColor(ContextCompat.getColor(context,R.color.lightgreen));
             holder.linearLayout.setVisibility(View.GONE);

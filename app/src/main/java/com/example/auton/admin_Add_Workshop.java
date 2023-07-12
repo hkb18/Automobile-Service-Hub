@@ -77,7 +77,7 @@ public class admin_Add_Workshop extends BASEACTIVITY implements mapinterface {
                             databaseReference.child("Workshop_Profile").child(usernameStr).child("latitude").setValue(latitudeStr);
                             databaseReference.child("Workshop_Profile").child(usernameStr).child("longitude").setValue(longitudeStr);
                             Toast.makeText(admin_Add_Workshop.this,"Workshop Successfully Registered",Toast.LENGTH_SHORT).show();
-                            Intent i=new Intent(getApplicationContext(),workshop_Login.class);
+                            Intent i=new Intent(admin_Add_Workshop.this,admin_HomePage.class);
                             startActivity(i);
                         }
                     }

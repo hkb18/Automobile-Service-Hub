@@ -112,7 +112,8 @@ public class user_Dashboard_Fragment extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(getContext(),user_Delete_Service.class);
+                startActivity(intent);
             }
         });
         return v;

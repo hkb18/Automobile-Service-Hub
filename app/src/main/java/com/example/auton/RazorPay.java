@@ -3,8 +3,6 @@ package com.example.auton;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -91,6 +89,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                 // initialize json object
                 JSONObject object = new JSONObject();
                 Toast.makeText(RazorPay.this, "" + activity, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RazorPay.this, "Username" + s1, Toast.LENGTH_SHORT).show();
                 try {
                     // to put name
                     object.put("name", "AUTOMOBILE SERVICE HUB");

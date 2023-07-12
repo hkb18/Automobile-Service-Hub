@@ -7,12 +7,12 @@
 
     <item android:id="@+id/service"
         android:icon="@drawable/service_icon"
-        android:title="Services"
+        android:title="Accessories"
         />
 
     <item android:id="@+id/workshop"
         android:icon="@drawable/car_repair_icon"
-        android:title="Workshop"
+        android:title="Service"
         />
 
     <item android:id="@+id/profile"
