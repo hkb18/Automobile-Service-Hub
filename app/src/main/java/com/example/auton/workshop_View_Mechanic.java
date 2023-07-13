@@ -1,15 +1,14 @@
 package com.example.auton;
 
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.widget.SearchView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,33 +18,34 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class workshop_View_Mechanic extends AppCompatActivity implements OnClickInterface{
+public class workshop_View_Mechanic extends AppCompatActivity implements OnClickInterface {
+    public static OnClickInterface onClickInterface;
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     MechanicAdapter myAdapter;
     ArrayList<Mechanic> list;
     SearchView searchView;
-    public static OnClickInterface onClickInterface;
-    String s1="";
+    String s1 = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workshop_view_mechanic);
 
-        SharedPreferences sh= getSharedPreferences("MySharedPreferences1", MODE_PRIVATE);
-         s1=sh.getString("Username","");
-        recyclerView=findViewById(R.id.viewRecyclerView);
-        searchView= findViewById(R.id.searchView);
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        SharedPreferences sh = getSharedPreferences("MySharedPreferences1", MODE_PRIVATE);
+        s1 = sh.getString("Username", "");
+        recyclerView = findViewById(R.id.viewRecyclerView);
+        searchView = findViewById(R.id.searchView);
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        list=new ArrayList<>();
-        myAdapter =new MechanicAdapter(this,list);
+        list = new ArrayList<>();
+        myAdapter = new MechanicAdapter(this, list);
         recyclerView.setAdapter(myAdapter);
 
-        onClickInterface=this;
+        onClickInterface = this;
 
         databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").addValueEventListener(new ValueEventListener() {
             @Override
@@ -60,7 +60,7 @@ public class workshop_View_Mechanic extends AppCompatActivity implements OnClick
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -100,10 +100,9 @@ public class workshop_View_Mechanic extends AppCompatActivity implements OnClick
     }
 
     @Override
-    public void delmech(String delName,int position) {
+    public void delmech(String delName, int position) {
         databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(delName).removeValue();
-      //  list.remove(position);
-        Log.e("", "delmech: "+position );
+        databaseReference.child("Mechanic_Profile").child(delName).removeValue();
         myAdapter.notifyDataSetChanged();
     }
 

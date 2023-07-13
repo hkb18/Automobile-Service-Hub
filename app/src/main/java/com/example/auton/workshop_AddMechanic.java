@@ -19,8 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class workshop_AddMechanic extends AppCompatActivity {
-    String mechNameStr,mechEmailStr,mechContactStr;
-    TextInputEditText name,email,contact;
+    String mechNameStr,mechEmailStr,mechContactStr,PasswordStr;
+    TextInputEditText name,email,contact,passwd;
     Button add;
     DatabaseReference databaseReference;
     SharedPreferences sh;
@@ -32,6 +32,7 @@ public class workshop_AddMechanic extends AppCompatActivity {
         name=findViewById(R.id.mechanicName);
         email=findViewById(R.id.mechanicEmailId);
         contact=findViewById(R.id.mechanicContactNumber);
+        passwd=findViewById(R.id.mechanicPassword);
         add=findViewById(R.id.btn_AddMechanic);
 
         SharedPreferences sh=getSharedPreferences("MySharedPreferences1",MODE_PRIVATE); // to store data for temp time
@@ -45,8 +46,9 @@ public class workshop_AddMechanic extends AppCompatActivity {
                 mechNameStr=name.getText().toString();
                 mechEmailStr=email.getText().toString();
                 mechContactStr=contact.getText().toString();
+                PasswordStr=passwd.getText().toString();
 
-                if(TextUtils.isEmpty(mechNameStr)|| mechEmailStr.isEmpty() || mechContactStr.isEmpty() ) {
+                if(TextUtils.isEmpty(mechNameStr)|| mechEmailStr.isEmpty() || mechContactStr.isEmpty()||PasswordStr.isEmpty() ) {
                     Toast.makeText(workshop_AddMechanic.this, "Please enter all details", Toast.LENGTH_SHORT).show();
                 } else { //s1 is username of workshop
                     databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -57,10 +59,20 @@ public class workshop_AddMechanic extends AppCompatActivity {
                                 Intent i=new Intent(getApplicationContext(),workshop_Login.class);
                                 startActivity(i);
                             } else {
-                                databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(mechNameStr).child("Name").setValue(mechNameStr);
-                                databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(mechNameStr).child("Email").setValue(mechEmailStr);
-                                databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(mechNameStr).child("ContactNo").setValue(mechContactStr);
-                                databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(mechNameStr).child("Workshop").setValue(s1);
+                                databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(mechContactStr).child("Name").setValue(mechNameStr);
+                                databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(mechContactStr).child("Email").setValue(mechEmailStr);
+                                databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(mechContactStr).child("ContactNo").setValue(mechContactStr);
+                                databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(mechContactStr).child("Workshop").setValue(s1);
+                                databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(mechContactStr).child("Password").setValue(PasswordStr);
+                                databaseReference.child("Workshop_Profile").child(s1).child("Mechanic_Profile").child(mechContactStr).child("Status").setValue(true);
+
+                                databaseReference.child("Mechanic_Profile").child(mechContactStr).child("Name").setValue(mechNameStr);
+                                databaseReference.child("Mechanic_Profile").child(mechContactStr).child("Email").setValue(mechEmailStr);
+                                databaseReference.child("Mechanic_Profile").child(mechContactStr).child("ContactNo").setValue(mechContactStr);
+                                databaseReference.child("Mechanic_Profile").child(mechContactStr).child("Workshop").setValue(s1);
+                                databaseReference.child("Mechanic_Profile").child(mechContactStr).child("Password").setValue(PasswordStr);
+                                databaseReference.child("Mechanic_Profile").child(mechContactStr).child("Status").setValue(true);
+
                                 Toast.makeText(workshop_AddMechanic.this,"Mechanic Successfully Registered",Toast.LENGTH_SHORT).show();
                                 Intent i=new Intent(getApplicationContext(),workshop_HomePage.class);
                                 startActivity(i);
