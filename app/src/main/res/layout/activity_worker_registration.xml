@@ -80,6 +80,7 @@
                 android:layout_height="match_parent"
                 android:inputType="phone"
                 android:id="@+id/contactNumber"
+                android:maxLength="10"
                 android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -123,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
+                android:maxLength="16"
                 android:id="@+id/password"
                 android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -145,6 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
+                android:maxLength="16"
                 android:id="@+id/confirmPassword"
                 android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>

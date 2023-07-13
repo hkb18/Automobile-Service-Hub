@@ -59,13 +59,13 @@ ImageView imageView;
 
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_admin,new admin_Add_Accessories()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_admin,new admin_Home_Fragment()).commit();
     }
     private final  BottomNavigationView.OnNavigationItemSelectedListener navListener= item -> {
         Fragment selectedFragment = null;
         int itemId=item.getItemId();
         if(itemId==R.id.home){
-           // selectedFragment=new admin_ManageWorkshop_Fragment();
+            selectedFragment=new admin_Home_Fragment();
         } else if (itemId==R.id.workshop) {
             selectedFragment = new admin_ManageWorkshop_Fragment();
         } else if (itemId==R.id.profile) {

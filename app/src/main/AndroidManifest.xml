@@ -23,6 +23,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".admin_viewPurchaseHistory"
+            android:exported="false" />
+        <activity
+            android:name=".admin_viewBookedService"
+            android:exported="false" />
+        <activity
             android:name=".user_Delete_Service"
             android:exported="false" />
         <activity
