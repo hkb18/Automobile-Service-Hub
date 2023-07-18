@@ -20,7 +20,6 @@ public class OrderHistory_Adapter extends RecyclerView.Adapter<OrderHistory_Adap
     private ArrayList<OrderHistory_ModelClass> dataList;
 
 
-
     public OrderHistory_Adapter(Activity user_cart_fragment, ArrayList<OrderHistory_ModelClass> list) {
         this.context = user_cart_fragment;
         this.dataList = list;
@@ -35,12 +34,19 @@ public class OrderHistory_Adapter extends RecyclerView.Adapter<OrderHistory_Adap
 
     public void onBindViewHolder(OrderHistory_Adapter.ViewHold holder, int position) {
         OrderHistory_ModelClass ss = dataList.get(position);
-        holder.manufacturer.setText(ss.getManufacturer());
-        holder.model.setText(ss.getModel());
-        holder.qty.setText(ss.getQuantity());
-        holder.price.setText(ss.getPrice());
-        Glide.with(context).load(ss.getImage()).into(holder.imageView);
-
+        if (ss.getModel().isEmpty()) {
+            holder.model.setVisibility(View.GONE);
+            holder.manufacturer.setText(ss.getManufacturer());
+            holder.qty.setText(ss.getQuantity());
+            holder.price.setText(ss.getPrice());
+            Glide.with(context).load(ss.getImage()).into(holder.imageView);
+        } else {
+            holder.manufacturer.setText(ss.getManufacturer());
+            holder.model.setText(ss.getModel());
+            holder.qty.setText(ss.getQuantity());
+            holder.price.setText(ss.getPrice());
+            Glide.with(context).load(ss.getImage()).into(holder.imageView);
+        }
     }
 
     public void filterList(ArrayList<OrderHistory_ModelClass> filteredlist) {

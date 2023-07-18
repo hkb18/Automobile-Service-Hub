@@ -133,10 +133,10 @@ public class MainActivity extends AppCompatActivity {
             Intent i=new Intent(getApplicationContext(), worker_Registration.class);
             startActivity(i);
         });
-        binding.mechanicLogin.setOnClickListener(view -> {
+    /*    binding.mechanicLogin.setOnClickListener(view -> {
             Intent i=new Intent(getApplicationContext(), workshop_Login.class);
             startActivity(i);
-        });
+        });*/
     }
 
     public void onPause(){

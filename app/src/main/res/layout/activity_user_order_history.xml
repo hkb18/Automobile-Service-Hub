@@ -8,13 +8,23 @@
     android:orientation="vertical"
     tools:context=".user_orderHistory">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOrderHistory"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/rvOrderHistory"
-        tools:listitem="@layout/orderhistory_layout"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/orderhistory_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

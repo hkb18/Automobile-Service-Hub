@@ -1,13 +1,13 @@
 package com.example.auton;
 
 public class OrderHistory_ModelClass {
-    String image,key,mainName,manufacturer,model,price,productKey,quantity,subName,totalQty,username;
+    String image,key,mainName,manufacturer,model,price,productKey,quantity,subName,totalQty,username,date;
 
     public OrderHistory_ModelClass() {
     }
 
 
-    public OrderHistory_ModelClass(String image, String key, String mainName, String manufacturer, String model, String price, String productKey, String quantity, String subName, String totalQty, String username) {
+    public OrderHistory_ModelClass(String date, String image, String key, String mainName, String manufacturer, String model, String price, String productKey, String quantity, String subName, String totalQty, String username) {
         this.image = image;
         this.key = key;
         this.mainName = mainName;
@@ -19,6 +19,15 @@ public class OrderHistory_ModelClass {
         this.subName = subName;
         this.totalQty = totalQty;
         this.username = username;
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getImage() {
