@@ -39,12 +39,14 @@ public class OrderHistory_Adapter extends RecyclerView.Adapter<OrderHistory_Adap
             holder.manufacturer.setText(ss.getManufacturer());
             holder.qty.setText(ss.getQuantity());
             holder.price.setText(ss.getPrice());
+            holder.date.setText(ss.getDate());
             Glide.with(context).load(ss.getImage()).into(holder.imageView);
         } else {
             holder.manufacturer.setText(ss.getManufacturer());
             holder.model.setText(ss.getModel());
             holder.qty.setText(ss.getQuantity());
             holder.price.setText(ss.getPrice());
+            holder.date.setText(ss.getDate());
             Glide.with(context).load(ss.getImage()).into(holder.imageView);
         }
     }
@@ -64,7 +66,7 @@ public class OrderHistory_Adapter extends RecyclerView.Adapter<OrderHistory_Adap
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        TextView manufacturer, model, qty, price;
+        TextView manufacturer, model, qty, price,date;
         ImageView imageView;
 
         public ViewHold(@NonNull View itemView) {
@@ -73,6 +75,7 @@ public class OrderHistory_Adapter extends RecyclerView.Adapter<OrderHistory_Adap
             model = itemView.findViewById(R.id.tvModel);
             qty = itemView.findViewById(R.id.tvQuantity);
             price = itemView.findViewById(R.id.tvPrice);
+            date = itemView.findViewById(R.id.tvDate);
             imageView = itemView.findViewById(R.id.cartImage);
         }
     }

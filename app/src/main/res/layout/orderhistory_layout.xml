@@ -57,7 +57,12 @@
                     android:gravity="center"
                     android:text="Price"
                     android:id="@+id/tvPrice"/>
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Date"
+                    android:id="@+id/tvDate"/>
 
             </LinearLayout>
 

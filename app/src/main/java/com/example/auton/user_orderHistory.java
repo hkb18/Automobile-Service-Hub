@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityUserOrderHistoryBinding;
@@ -75,7 +76,7 @@ public class user_orderHistory extends AppCompatActivity {
                 // running a for loop to compare elements.
                 for (OrderHistory_ModelClass item : list) {
                     // checking if the entered string matched with any item of our recycler view.
-                    if (item.getModel().toLowerCase().contains(newText.toLowerCase())) {
+                    if (item.getModel().toLowerCase().contains(newText.toLowerCase()) || item.getManufacturer().toLowerCase().contains(newText.toLowerCase())) {
                         // if the item is matched we are
                         // adding it to our filtered list.
                         filteredlist.add(item);

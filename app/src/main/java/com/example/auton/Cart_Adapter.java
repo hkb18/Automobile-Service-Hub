@@ -37,13 +37,13 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.ViewHold> {
     public void onBindViewHolder(Cart_Adapter.ViewHold holder, int position) {
         cart_ModelClass ss = dataList.get(position);
         if (ss.getModel().isEmpty()) {
-            holder.manufacturer.setText(ss.getMaufacturer());
+            holder.manufacturer.setText(ss.getManufacturer());
             holder.model.setVisibility(View.GONE);
             holder.qty.setText(ss.getQuantity());
             holder.price.setText(ss.getPrice());
             Glide.with(context).load(ss.getImage()).into(holder.imageView);
         } else {
-            holder.manufacturer.setText(ss.getMaufacturer());
+            holder.manufacturer.setText(ss.getManufacturer());
             holder.model.setText(ss.getModel());
             holder.qty.setText(ss.getQuantity());
             holder.price.setText(ss.getPrice());

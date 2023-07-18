@@ -5,16 +5,16 @@ import java.util.Date;
 import java.util.Locale;
 
 public class cart_ModelClass {
-    String model,maufacturer,price,quantity,image,username,key, productKey, totalQty,mainName,subName;
+    String model,manufacturer,price,quantity,image,username,key, productKey, totalQty,mainName,subName;
 
     String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
     String date = currentDate;
     public cart_ModelClass() {
     }
 
-    public cart_ModelClass(String model, String maufacturer, String price, String quantity, String image, String username, String key, String productKey, String totalQty, String mainName, String subName, String date) {
+    public cart_ModelClass(String model, String manufacturer, String price, String quantity, String image, String username, String key, String productKey, String totalQty, String mainName, String subName, String date) {
         this.model = model;
-        this.maufacturer = maufacturer;
+        this.manufacturer = manufacturer;
         this.price = price;
         this.quantity = quantity;
         this.image = image;
@@ -43,12 +43,12 @@ public class cart_ModelClass {
         this.model = model;
     }
 
-    public String getMaufacturer() {
-        return maufacturer;
+    public String getManufacturer() {
+        return manufacturer;
     }
 
-    public void setMaufacturer(String maufacturer) {
-        this.maufacturer = maufacturer;
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public String getPrice() {

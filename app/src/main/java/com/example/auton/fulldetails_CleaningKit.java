@@ -98,7 +98,7 @@ public class fulldetails_CleaningKit extends AppCompatActivity {
             String keyz = databaseReference.push().getKey();
             modelClass.setModel(modelStr);
             modelClass.setImage(imageStr);
-            modelClass.setMaufacturer(brandStr);
+            modelClass.setManufacturer(brandStr);
             modelClass.setQuantity("1");
             modelClass.setUsername(s1);
             modelClass.setKey(keyz);

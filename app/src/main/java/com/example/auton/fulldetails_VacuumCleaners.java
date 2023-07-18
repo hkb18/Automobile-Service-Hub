@@ -97,7 +97,7 @@ public class fulldetails_VacuumCleaners extends AppCompatActivity {
             String keyz = databaseReference.push().getKey();
             modelClass.setModel(modelStr);
             modelClass.setImage(imageStr);
-            modelClass.setMaufacturer(manufacturerStr);
+            modelClass.setManufacturer(manufacturerStr);
             modelClass.setQuantity("1");
             modelClass.setUsername(s1);
             modelClass.setKey(keyz);

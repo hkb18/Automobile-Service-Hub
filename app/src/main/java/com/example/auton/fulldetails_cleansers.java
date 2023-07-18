@@ -99,7 +99,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
             String keyz = databaseReference.push().getKey();
             modelClass.setModel("");
             modelClass.setImage(imageStr);
-            modelClass.setMaufacturer(brandStr);
+            modelClass.setManufacturer(brandStr);
             modelClass.setQuantity("1");
             modelClass.setUsername(s1);
             modelClass.setKey(keyz);
