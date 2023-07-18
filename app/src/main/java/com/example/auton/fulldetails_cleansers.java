@@ -23,6 +23,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
     SharedPreferences sh;
     String s1, key, quantityStr, dimensionStr, imageStr, priceStr, weightStr, boxincludeStr, brandStr, categoryStr, itemformStr, volumeStr, root;
     private ActivityFulldetailsCleansersBinding binding;
+    String model="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,7 @@ public class fulldetails_cleansers extends AppCompatActivity {
                     weightStr = snapshot.child(key).child("weight").getValue(String.class);
                     binding.cleanserWeight.setText(weightStr);
                     quantityStr = snapshot.child(key).child("quantity").getValue(String.class);
+                    model = snapshot.child(key).child("model").getValue(String.class);
                 }
             }
 

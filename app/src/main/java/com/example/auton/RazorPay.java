@@ -57,6 +57,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
         serviceStr = getIntent().getStringExtra("ServiceName");
         datestr = getIntent().getStringExtra("Date");
         timestr = getIntent().getStringExtra("ServiceTime");
+//        dateStr2 = getIntent().getStringExtra("date");
         latitudeStr = getIntent().getStringExtra("Latitude");
         longitudeStr = getIntent().getStringExtra("Longitude");
         keyStr = getIntent().getStringExtra("key");
@@ -131,9 +132,6 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
         // this method is called on payment success.
         Toast.makeText(this, "Payment is successful : " + s, Toast.LENGTH_SHORT).show();
         if (activity.equals("cart")) {
-           /* getData data = new getData();
-            // data.setKey(keyStr);
-            data.setPrice(priceStr);*/
 
             databaseReference.child("CART").child(s1).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -144,28 +142,53 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     }
 
                     list.forEach((it -> {
+                        if (!it.getModel().isEmpty()) {
+                            databaseReference.child("Accessories").child(it.getMainName()).child(it.getSubName()).child(it.getModel()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                        databaseReference.child("Accessories").child(it.getMainName()).child(it.getSubName()).child(it.getModel()).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    Accessories_ModelClass accModelclass = snapshot.getValue(Accessories_ModelClass.class);
 
-                                Accessories_ModelClass accModelclass = snapshot.getValue(Accessories_ModelClass.class);
-
-                                int productQty = Integer.parseInt(accModelclass.getQuantity());
-                                int pFinalQty = productQty - Integer.parseInt(it.getQuantity());
-                                if (pFinalQty <= 0) {
-                                    Toast.makeText(getApplicationContext(), "Not enough products", Toast.LENGTH_SHORT).show();
-                                    pFinalQty = 0;
+                                    int productQty = Integer.parseInt(accModelclass.getQuantity());
+                                    int pFinalQty = productQty - Integer.parseInt(it.getQuantity());
+                                    if (pFinalQty <= 0) {
+                                        Toast.makeText(getApplicationContext(), "Not enough products", Toast.LENGTH_SHORT).show();
+                                        pFinalQty = 0;
+                                    }
+                                    accModelclass.setQuantity(String.valueOf(pFinalQty));
+                                    databaseReference.child("Accessories").child(it.getMainName()).child(it.getSubName()).child(it.getModel()).setValue(accModelclass);
                                 }
-                                accModelclass.setQuantity(String.valueOf(pFinalQty));
-                                databaseReference.child("Accessories").child(it.getMainName()).child(it.getSubName()).child(it.getModel()).setValue(accModelclass);
-                            }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(getApplicationContext(), "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(getApplicationContext(), "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                        } else {
+                            databaseReference.child("Accessories").child(it.getMainName()).child(it.getSubName()).child(it.getProductKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                    Accessories_ModelClass accModelclass = snapshot.getValue(Accessories_ModelClass.class);
+
+                                    int productQty = Integer.parseInt(accModelclass.getQuantity());
+                                    int pFinalQty = productQty - Integer.parseInt(it.getQuantity());
+                                    if (pFinalQty <= 0) {
+                                        Toast.makeText(getApplicationContext(), "Not enough products", Toast.LENGTH_SHORT).show();
+                                        pFinalQty = 0;
+                                    }
+                                    accModelclass.setQuantity(String.valueOf(pFinalQty));
+                                    databaseReference.child("Accessories").child(it.getMainName()).child(it.getSubName()).child(it.getProductKey()).setValue(accModelclass);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(getApplicationContext(), "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                        }
                     }));
                 }
 
@@ -327,97 +350,6 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
         // on payment failed.
         Toast.makeText(this, "Payment Failed due to error : " + s, Toast.LENGTH_SHORT).show();
     }
-
-   /* static class getData {
-        String key;
-        String price;
-        String mainName;
-        String subName,image,manufacturer,model,quantity;
-
-        public getData() {
-        }
-
-        public getData(String key, String price, String mainName, String subName, String username, String image, String manufacturer, String model, String productkey, String quantity) {
-            this.key = key;
-            this.price = price;
-            this.mainName = mainName;
-            this.subName = subName;
-
-            this.image = image;
-            this.manufacturer = manufacturer;
-            this.model = model;
-
-            this.quantity = quantity;
-        }
-
-
-
-        public String getImage() {
-            return image;
-        }
-
-        public void setImage(String image) {
-            this.image = image;
-        }
-
-        public String getManufacturer() {
-            return manufacturer;
-        }
-
-        public void setManufacturer(String manufacturer) {
-            this.manufacturer = manufacturer;
-        }
-
-        public String getModel() {
-            return model;
-        }
-
-        public void setModel(String model) {
-            this.model = model;
-        }
-
-
-
-        public String getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(String quantity) {
-            this.quantity = quantity;
-        }
-
-        public String getKey() {
-            return key;
-        }
-
-        public void setKey(String key) {
-            this.key = key;
-        }
-
-        public String getPrice() {
-            return price;
-        }
-
-        public void setPrice(String price) {
-            this.price = price;
-        }
-
-        public String getMainName() {
-            return mainName;
-        }
-
-        public void setMainName(String mainName) {
-            this.mainName = mainName;
-        }
-
-        public String getSubName() {
-            return subName;
-        }
-
-        public void setSubName(String subName) {
-            this.subName = subName;
-        }
-    }*/
 
 
     private void copyRecord(Query fromPath, final DatabaseReference toPath) {

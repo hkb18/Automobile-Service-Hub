@@ -134,16 +134,20 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                cleansersList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    cleansersList.add(ap);
+                try {
+                    cleansersList.clear();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
+                        cleansersList.add(ap);
+                    }
+
+                    cleansersAdapter =new Cleansers_Adapter(user_View_Carecare_Purifiers.this,cleansersList, snapshot.getKey());
+                    binding.rvItemsCleansers.setAdapter(cleansersAdapter);
+
+                    cleansersAdapter.notifyDataSetChanged();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-                cleansersAdapter =new Cleansers_Adapter(user_View_Carecare_Purifiers.this,cleansersList, snapshot.getKey());
-                binding.rvItemsCleansers.setAdapter(cleansersAdapter);
-
-                cleansersAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -160,16 +164,21 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Detailing").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                detailingList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
-                    detailingList.add(ap);
+
+                try {
+                    detailingList.clear();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
+                        detailingList.add(ap);
+                    }
+
+                    detailingAdapter =new Detailing_Adapter(user_View_Carecare_Purifiers.this,detailingList, snapshot.getKey());
+                    binding.rvItemsDetailing.setAdapter(detailingAdapter);
+
+                    detailingAdapter.notifyDataSetChanged();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-                detailingAdapter =new Detailing_Adapter(user_View_Carecare_Purifiers.this,detailingList, snapshot.getKey());
-                binding.rvItemsDetailing.setAdapter(detailingAdapter);
-
-                detailingAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

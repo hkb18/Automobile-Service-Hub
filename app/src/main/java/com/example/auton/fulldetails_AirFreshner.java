@@ -16,7 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class fulldetails_AirFreshner extends AppCompatActivity {
     DatabaseReference databaseReference;
@@ -85,6 +88,7 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
 
         binding.btnAirfreshnerBuyNow.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), RazorPay.class);
+            String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
             i.putExtra("totalPrice", priceStr);
             i.putExtra("key", key);
             i.putExtra("activity", "buynow");
@@ -94,6 +98,7 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
             i.putExtra("manufacturer", manufacturerStr);
             i.putExtra("model", modelStr);
             i.putExtra("quantity",quantityStr );
+//            i.putExtra("date",currentDate );
 
             startActivity(i);
         });
