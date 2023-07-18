@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -55,8 +56,9 @@ public class MainActivity extends AppCompatActivity {
                                         editor.putString("Username", usernameStr);
                                         loginPrefEditor.putBoolean("isLogin", true);
                                         loginPrefEditor.putInt("type", 0);
-                                        editor.commit();
-                                        loginPrefEditor.commit();
+                                        editor.apply();
+                                        loginPrefEditor.apply();
+                                        Log.e("TAG", "onDataChange: "+ usernameStr );
                                         Intent i=new Intent(getApplicationContext(),admin_HomePage.class);
                                         startActivity(i);
                                         Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
@@ -72,8 +74,9 @@ public class MainActivity extends AppCompatActivity {
                                     editor.putString("Username", usernameStr);
                                     loginPrefEditor.putBoolean("isLogin", true);
                                     loginPrefEditor.putInt("type", 1);
-                                    editor.commit();
-                                    loginPrefEditor.commit();
+                                    editor.apply();
+                                    loginPrefEditor.apply();
+                                    Log.e("TAG", "onDataChange: "+ usernameStr );
                                     Intent i=new Intent(getApplicationContext(),user_HomePage.class);
                                     i.putExtra("Username", usernameStr);// username passing
                                     startActivity(i);
@@ -104,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
                                     myEdit.putString("Username", usernameStr);
                                     loginPrefEditor.putBoolean("isLogin", true);
                                     loginPrefEditor.putInt("type", 3);
-                                    myEdit.commit();
-                                    loginPrefEditor.commit();
+                                    myEdit.apply();
+                                    loginPrefEditor.apply();
                                     Intent i=new Intent(getApplicationContext(),workshop_HomePage.class);
                                     startActivity(i);
                                     Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
@@ -159,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
 
-        /*if (loginPref.getBoolean("isLogin", false)){
+     /*   if (loginPref.getBoolean("isLogin", false)){
             if(loginPref.getInt("type", 0) == 0){
                 Intent i=new Intent(getApplicationContext(),admin_HomePage.class);
                 startActivity(i);

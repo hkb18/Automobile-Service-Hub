@@ -37,18 +37,21 @@ public class user_HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home_page);
 
+
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
 
         Bundle extras = getIntent().getExtras();
         username = extras.getString("Username");
+
         gotocart = extras.getString("iscart", "0");
         deleteCart = extras.getString("deleteCart", "0");
 
         SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
-        s1 = sh.getString("Username", "");
+      //  s1 = sh.getString("Username", "");
+        username = sh.getString("Username", "");
 
-        Toast.makeText(this, "" + s1, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + username, Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
