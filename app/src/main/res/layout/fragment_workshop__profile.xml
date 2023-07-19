@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:backgroundTint="@color/summersky"
+            android:backgroundTint="@color/bluegreen"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textSize="18dp"
@@ -55,27 +55,27 @@
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="10dp"
             android:id="@+id/btn_updateProfile"/>
-      <!--  &lt;!&ndash;MY ORDERS&ndash;&gt;
+        <!-- feedback-->
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:backgroundTint="@color/summersky"
+            android:backgroundTint="@color/bluegreen"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textSize="18dp"
-            android:text="my orders"
+            android:text="feedback"
             android:padding="10dp"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="10dp"
-            android:id="@+id/btn_myOrders"/>-->
+            android:id="@+id/btn_feedback"/>
         <!--LOGOUT-->
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:backgroundTint="@color/summersky"
+            android:backgroundTint="@color/bluegreen"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textSize="18dp"

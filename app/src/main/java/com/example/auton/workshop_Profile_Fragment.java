@@ -87,6 +87,11 @@ public class workshop_Profile_Fragment extends Fragment {
             Intent i = new Intent(getContext(), workshop_UpdateProfile.class);
             startActivity(i);
         });
+        binding.btnFeedback.setOnClickListener(view -> {
+            Intent i = new Intent(getContext(),feedback.class);
+            i.putExtra("activity","workshop");
+            startActivity(i);
+        });
 
         //  LOGOUT
         AlertDialog.Builder builder=new AlertDialog.Builder(getContext());

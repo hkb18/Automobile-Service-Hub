@@ -90,6 +90,8 @@ public class user_MyProfile_Fragment extends Fragment {
         sh=requireContext().getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
         String s1=sh.getString("Username","");
 
+        binding.userprofileName.setText("Hi "+ s1);
+
         binding.btnUpdateProfile.setOnClickListener(view -> {
             Intent i = new Intent(getContext(),user_updateProfile.class);
             startActivity(i);
@@ -97,6 +99,12 @@ public class user_MyProfile_Fragment extends Fragment {
 
         binding.btnMyOrders.setOnClickListener(view -> {
             Intent i = new Intent(getContext(),user_orderHistory.class);
+            startActivity(i);
+        });
+
+        binding.btnFeedback.setOnClickListener(view -> {
+            Intent i = new Intent(getContext(),feedback.class);
+            i.putExtra("activity","user");
             startActivity(i);
         });
 
@@ -204,7 +212,7 @@ public class user_MyProfile_Fragment extends Fragment {
 
         //  LOGOUT
         //AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
-        binding.imgLogout.setOnClickListener(new View.OnClickListener() {
+     /*   binding.imgLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 builder.setMessage("Are you sure you want to logout?")
@@ -231,7 +239,7 @@ public class user_MyProfile_Fragment extends Fragment {
             }
             private void finish() {
             }
-        });
+        });*/
         return binding.getRoot();
 
 

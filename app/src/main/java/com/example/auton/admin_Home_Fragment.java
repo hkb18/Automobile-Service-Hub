@@ -71,6 +71,10 @@ public class admin_Home_Fragment extends Fragment {
             Intent i=new Intent(getContext(),admin_viewPurchaseHistory.class);
             startActivity(i);
         });
+        binding.btnViewFeedback.setOnClickListener(view -> {
+            Intent i=new Intent(getContext(),viewFeedback.class);
+            startActivity(i);
+        });
         return binding.getRoot();
     }
 }
