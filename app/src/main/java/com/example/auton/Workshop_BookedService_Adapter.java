@@ -33,7 +33,6 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
     }
 
     public void onBindViewHolder(@NonNull Workshop_BookedService_Adapter.ViewHold holder, int position){
-        Log.e("TAG", "onBindViewHolder: "+list );
         Worshop_View_Service_modelClass bookedService=list.get(position);
         holder.carBrand.setText(bookedService.getCarBrand());
         holder.carModel.setText(bookedService.getCarModel());
@@ -44,15 +43,12 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
         holder.latitude.setText(bookedService.getLatitude());
         holder.longitude.setText(bookedService.getLongitude());
         holder.servicetime.setText(bookedService.getServiceTime());
-//        holder.paymentMethod.setText(bookedService.getPaymentMode());
-
-       // String key=bookedService.getSYSTIME();
         String key =bookedService.getKey();
         String username=bookedService.getUsername();
         if ( bookedService.getACCEPT_SERVICE()==3){
             holder.ServiceReject.setVisibility(View.GONE);
             holder.linearLayout.setVisibility(View.VISIBLE);
-        } else if (bookedService.getACCEPT_SERVICE()==2) {
+        } else if (bookedService.getACCEPT_SERVICE()==1) {
             holder.ServiceReject.setText("SERVICE ACCEPTED");
             holder.ServiceReject.setTextColor(ContextCompat.getColor(context,R.color.lightgreen));
             holder.linearLayout.setVisibility(View.GONE);

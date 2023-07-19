@@ -218,6 +218,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
+                    databaseReference.child("Service").child(s1).child(pk).child("ACCEPT_SERVICE").setValue(3);
                     databaseReference.child("Service").child(s1).child(pk).child("ServiceStatus").setValue("Requested");
                     Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                     i.putExtra("Username", s1);
@@ -253,6 +254,8 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Image").setValue(imgStr);
                     databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
+                    databaseReference.child("Service").child(s1).child(pk).child("ACCEPT_SERVICE").setValue(3);
+                    databaseReference.child("Service").child(s1).child(pk).child("ServiceStatus").setValue("Requested");
                     Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                     i.putExtra("Username", s1);
                     i.putExtra("deleteCart", "0");

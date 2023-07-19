@@ -34,11 +34,22 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
 
         Worshop_View_Service_modelClass bookedService = list.get(position);
         if (bookedService.getACCEPT_SERVICE()==1){
-
             holder.tv.setText("SERVICE ACCEPTED");
             holder.tv.setTextColor(ContextCompat.getColor(context,R.color.lightgreen));
             holder.tv.setVisibility(View.VISIBLE);
-
+            holder.carBrand.setText(bookedService.getCarBrand());
+            holder.carModel.setText(bookedService.getCarModel());
+            holder.serviceType.setText(bookedService.getServiceType());
+            holder.username.setText(bookedService.getUsername());
+            holder.date.setText(bookedService.getDate());
+            holder.latitude.setText(bookedService.getLatitude());
+            holder.longitude.setText(bookedService.getLongitude());
+            holder.servicetime.setText(bookedService.getServiceTime());
+            holder.serviceName.setText(bookedService.getServiceName());
+        } else if (bookedService.getACCEPT_SERVICE()==2) {
+            holder.tv.setText("SERVICE REJECTED");
+            holder.tv.setTextColor(ContextCompat.getColor(context,R.color.red));
+            holder.tv.setVisibility(View.VISIBLE);
             holder.carBrand.setText(bookedService.getCarBrand());
             holder.carModel.setText(bookedService.getCarModel());
             holder.serviceType.setText(bookedService.getServiceType());
@@ -49,10 +60,9 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
             holder.servicetime.setText(bookedService.getServiceTime());
             holder.serviceName.setText(bookedService.getServiceName());
         } else if (bookedService.getACCEPT_SERVICE()==3) {
-            holder.tv.setText("SERVICE REJECTED");
-            holder.tv.setTextColor(ContextCompat.getColor(context,R.color.red));
+            holder.tv.setText("NO WORKSHOP ACCEPTED SERVICES CURRENTLY.PLEASE WAIT !!!");
+            holder.tv.setTextColor(ContextCompat.getColor(context,R.color.blue));
             holder.tv.setVisibility(View.VISIBLE);
-
             holder.carBrand.setText(bookedService.getCarBrand());
             holder.carModel.setText(bookedService.getCarModel());
             holder.serviceType.setText(bookedService.getServiceType());
