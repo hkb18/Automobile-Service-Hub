@@ -48,8 +48,8 @@ public class user_HomePage extends AppCompatActivity {
         deleteCart = extras.getString("deleteCart", "0");
 
         SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
-      //  s1 = sh.getString("Username", "");
-        username = sh.getString("Username", "");
+        s1 = sh.getString("Username", "");
+
 
         Toast.makeText(this, "" + username, Toast.LENGTH_SHORT).show();
 
