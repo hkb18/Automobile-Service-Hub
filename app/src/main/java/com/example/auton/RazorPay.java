@@ -31,7 +31,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
     TextView amt;
     ArrayList<cart_ModelClass> list = new ArrayList<>();
     Button payBtn;
-    String priceStr = "0", keyStr = "", pk = "", usernameStr, brandStr, modelstr, servicenameStr, serviceStr, datestr, timestr, latitudeStr, longitudeStr, activity, imgStr;
+    String priceStr = "0", keyStr = "", pk = "", usernameStr, brandStr, modelstr, servicenameStr, serviceStr, datestr, timestr, latitudeStr, longitudeStr, activity, imgStr,contactStr;
     DatabaseReference databaseReference;
     SharedPreferences sh;
     String s1 = "";
@@ -202,31 +202,53 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
 
 
         } else if (activity.equals("bookService")) {
+
+
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //passing to service table
                     pk = databaseReference.push().getKey();
-                    databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
-                    databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
-                    databaseReference.child("Service").child(s1).child(pk).child("ServiceType").setValue(servicenameStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("ServiceName").setValue(serviceStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Date").setValue(datestr);
-                    databaseReference.child("Service").child(s1).child(pk).child("ServiceTime").setValue(timestr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Latitude").setValue(latitudeStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
-                    databaseReference.child("Service").child(s1).child(pk).child("ACCEPT_SERVICE").setValue(3);
-                    databaseReference.child("Service").child(s1).child(pk).child("ServiceStatus").setValue("Requested");
-                    Intent i = new Intent(getApplicationContext(), user_HomePage.class);
-                    i.putExtra("Username", s1);
-                    i.putExtra("deleteCart", "0");
-                    i.putExtra("iscart", "0");
-                    startActivity(i);
-                    finishAffinity();
-                    Toast.makeText(getApplicationContext(), "Service Successfully Booked", Toast.LENGTH_SHORT).show();
+
+                    databaseReference.child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(s1)){
+                                contactStr=snapshot.child(s1).child("ContactNo").getValue(String.class);
+
+                                databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
+                                databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
+                                databaseReference.child("Service").child(s1).child(pk).child("ServiceType").setValue(servicenameStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("ServiceName").setValue(serviceStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Date").setValue(datestr);
+                                databaseReference.child("Service").child(s1).child(pk).child("ServiceTime").setValue(timestr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Latitude").setValue(latitudeStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
+                                databaseReference.child("Service").child(s1).child(pk).child("ContactNo").setValue(contactStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("ACCEPT_SERVICE").setValue(3);
+                                databaseReference.child("Service").child(s1).child(pk).child("ServiceStatus").setValue("Requested");
+                                Intent i = new Intent(getApplicationContext(), user_HomePage.class);
+                                i.putExtra("Username", s1);
+                                i.putExtra("deleteCart", "0");
+                                i.putExtra("iscart", "0");
+                                startActivity(i);
+                                finishAffinity();
+                                Toast.makeText(getApplicationContext(), "Service Successfully Booked", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(getApplicationContext(), "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
+
+
 
                 }
 
@@ -242,27 +264,42 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //passing to service table
                     pk = databaseReference.push().getKey();
-                    databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
-                    databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
-                    databaseReference.child("Service").child(s1).child(pk).child("ServiceType").setValue(servicenameStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("ServiceName").setValue(serviceStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Date").setValue(datestr);
-                    databaseReference.child("Service").child(s1).child(pk).child("ServiceTime").setValue(timestr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Latitude").setValue(latitudeStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Image").setValue(imgStr);
-                    databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
-                    databaseReference.child("Service").child(s1).child(pk).child("ACCEPT_SERVICE").setValue(3);
-                    databaseReference.child("Service").child(s1).child(pk).child("ServiceStatus").setValue("Requested");
-                    Intent i = new Intent(getApplicationContext(), user_HomePage.class);
-                    i.putExtra("Username", s1);
-                    i.putExtra("deleteCart", "0");
-                    i.putExtra("iscart", "0");
-                    startActivity(i);
-                    finishAffinity();
-                    Toast.makeText(getApplicationContext(), "Service Successfully Booked", Toast.LENGTH_SHORT).show();
+                    databaseReference.child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(s1)) {
+                                contactStr = snapshot.child(s1).child("ContactNo").getValue(String.class);
+                                databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
+                                databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("CarModel").setValue(modelstr);
+                                databaseReference.child("Service").child(s1).child(pk).child("ServiceType").setValue(servicenameStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("ServiceName").setValue(serviceStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Date").setValue(datestr);
+                                databaseReference.child("Service").child(s1).child(pk).child("ServiceTime").setValue(timestr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Latitude").setValue(latitudeStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Longitude").setValue(longitudeStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Price").setValue(priceStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Image").setValue(imgStr);
+                                databaseReference.child("Service").child(s1).child(pk).child("Key").setValue(pk);
+                                databaseReference.child("Service").child(s1).child(pk).child("ACCEPT_SERVICE").setValue(3);
+                                databaseReference.child("Service").child(s1).child(pk).child("ServiceStatus").setValue("Requested");
+                                Intent i = new Intent(getApplicationContext(), user_HomePage.class);
+                                i.putExtra("Username", s1);
+                                i.putExtra("deleteCart", "0");
+                                i.putExtra("iscart", "0");
+                                startActivity(i);
+                                finishAffinity();
+                                Toast.makeText(getApplicationContext(), "Service Successfully Booked", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
 
                 }
 

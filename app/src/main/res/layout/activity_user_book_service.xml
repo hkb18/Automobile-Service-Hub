@@ -1,303 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/theme_bg"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".user_Book_Service">
 
     <RelativeLayout
+        android:id="@+id/loadingPanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:id="@+id/loadingPanel">
+        android:gravity="center">
+
         <ProgressBar
+            android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:indeterminate="true"
-            android:id="@+id/progressBar"/>
+            android:indeterminate="true" />
     </RelativeLayout>
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-
-
-    <TextView
-        android:id="@+id/servicebuktopic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SERVICE BOOKING"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="#710900"
-        android:gravity="center"
-        android:layout_marginBottom="15dp"/>
-
-<!-- SELECT CAR BRAND -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:padding="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
-        <TextView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Select Your Car Brand :"
-            android:textSize="18dp"
-            android:paddingBottom="5dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
-        <Spinner
-            android:id="@+id/carBrand"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:popupBackground="@color/black"
-            android:layout_weight="1"/>
-    </LinearLayout>
+            android:orientation="vertical">
 
 
-<!-- SELECT CAR BODY TYPE -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:padding="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
+            <TextView
+                android:id="@+id/servicebuktopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:text="SERVICE BOOKING"
+                android:textColor="#710900"
+                android:textSize="30dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Select Your Car Body Type :"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:paddingBottom="5dp"
-            android:layout_weight="1"
-            android:textColor="@color/white"/>
-        <Spinner
-            android:id="@+id/carModel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:popupBackground="@color/black"
-            android:layout_weight="1"/>
-    </LinearLayout>
+            <!-- SELECT CAR BRAND -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:weightSum="2">
 
-    <!--  SERVICE  -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="5dp"
+                    android:text="Select Your Car Brand :"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Service Name:"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:paddingRight="35dp"
-            android:layout_weight="1"
-            android:textColor="@color/white"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="service name"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:id="@+id/tvService"/>
-
-        <!--<Spinner
-            android:id="@+id/serviceType"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>-->
-    </LinearLayout>
-
-    <!-- SERVICE TYPE -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Service Type :"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:paddingRight="35dp"
-            android:layout_weight="1"
-            android:textColor="@color/white"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="service Type"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:id="@+id/tvServiceType"/>
-
-        <!--<Spinner
-            android:id="@+id/serviceType"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>-->
-    </LinearLayout>
-
-    <!-- SELECT DATE -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
-
-        <Button
-            android:id="@+id/buttonDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Select Date"
-            android:textSize="16dp"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/summersky" />
+                <Spinner
+                    android:id="@+id/carBrand"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:popupBackground="@color/black" />
+            </LinearLayout>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=":"
-            android:textColor="@color/white"
-            android:layout_marginLeft="6dp"
-            android:textSize="18dp"
-            android:textStyle="bold"/>
+            <!-- SELECT CAR BODY TYPE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:weightSum="2">
 
-        <EditText
-            android:id="@+id/edittextDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="5dp"
+                    android:text="Select Your Car Body Type :"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/carModel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:popupBackground="@color/black" />
+            </LinearLayout>
+
+            <!--  SERVICE  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingRight="35dp"
+                    android:text="Service Name:"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvService"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="service name"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <!--<Spinner
+                    android:id="@+id/serviceType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>-->
+            </LinearLayout>
+
+            <!-- SERVICE TYPE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingRight="35dp"
+                    android:text="Service Type :"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvServiceType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="service Type"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <!--<Spinner
+                    android:id="@+id/serviceType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>-->
+            </LinearLayout>
+
+            <!-- SELECT DATE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/buttonDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/summersky"
+                    android:gravity="center"
+                    android:text="Select Date"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
 
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text=":"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edittextDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
 
-    <!-- SELECT LOCATION -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
-        <Button
-            android:id="@+id/buttonLocation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="View Your Location"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/summersky"
-            android:textSize="16dp"
-            android:textStyle="bold"/>
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=":"
-            android:textColor="@color/white"
-            android:layout_marginLeft="6dp"
-            android:textSize="18dp"
-            android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/edittextLocation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/white" />
-    </LinearLayout>
+            <!-- SELECT LOCATION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-    <!-- SELECT SERVICE TIME -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
+                <Button
+                    android:id="@+id/buttonLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/summersky"
+                    android:text="View Your Location"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Select Service Time :"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:paddingRight="30dp"
-            android:layout_weight="1"
-            android:textColor="@color/white"/>
-        <Spinner
-            android:id="@+id/serviceTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text=":"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
-    <!-- BOOK SERVICE -->
-    <Button
-        android:id="@+id/btn_BookService"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
-        android:text="BOOK SERVICE"
-        android:backgroundTint="@color/buynow"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+                <EditText
+                    android:id="@+id/edittextLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/white" />
+            </LinearLayout>
 
-    </LinearLayout>
-</ScrollView>
+            <!-- SELECT SERVICE TIME -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingRight="30dp"
+                    android:text="Select Service Time :"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/serviceTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <!-- BOOK SERVICE -->
+            <Button
+                android:id="@+id/btn_BookService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@color/buynow"
+                android:text="BOOK SERVICE"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

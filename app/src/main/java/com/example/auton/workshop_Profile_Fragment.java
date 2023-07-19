@@ -83,6 +83,11 @@ public class workshop_Profile_Fragment extends Fragment {
         // Inflate the layout for this fragment
         binding=FragmentWorkshopProfileBinding.inflate(getLayoutInflater());
 
+        sh=requireContext().getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
+        String s1=sh.getString("Username","");
+
+        binding.userprofileName.setText("Hi "+ s1);
+
         binding.btnUpdateProfile.setOnClickListener(view -> {
             Intent i = new Intent(getContext(), workshop_UpdateProfile.class);
             startActivity(i);

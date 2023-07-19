@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,9 +34,9 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
     public void onBindViewHolder(@NonNull BookedService_Adapter.ViewHold holder, int position) {
 
         Worshop_View_Service_modelClass bookedService = list.get(position);
-        if (bookedService.getACCEPT_SERVICE()==1){
+        if (bookedService.getACCEPT_SERVICE() == 1) {
             holder.tv.setText("SERVICE ACCEPTED");
-            holder.tv.setTextColor(ContextCompat.getColor(context,R.color.lightgreen));
+            holder.tv.setTextColor(ContextCompat.getColor(context, R.color.lightgreen));
             holder.tv.setVisibility(View.VISIBLE);
             holder.carBrand.setText(bookedService.getCarBrand());
             holder.carModel.setText(bookedService.getCarModel());
@@ -46,9 +47,14 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
             holder.longitude.setText(bookedService.getLongitude());
             holder.servicetime.setText(bookedService.getServiceTime());
             holder.serviceName.setText(bookedService.getServiceName());
-        } else if (bookedService.getACCEPT_SERVICE()==2) {
+            holder.workshop.setText(bookedService.getWorkshop());
+            holder.mechanic.setText(bookedService.getAssignedMechanic());
+            holder.contactno.setText(bookedService.getContactNo());
+        } else if (bookedService.getACCEPT_SERVICE() == 2) {
+            holder.llworkshop.setVisibility(View.GONE);
+            holder.llMechanic.setVisibility(View.GONE);
             holder.tv.setText("SERVICE REJECTED");
-            holder.tv.setTextColor(ContextCompat.getColor(context,R.color.red));
+            holder.tv.setTextColor(ContextCompat.getColor(context, R.color.red));
             holder.tv.setVisibility(View.VISIBLE);
             holder.carBrand.setText(bookedService.getCarBrand());
             holder.carModel.setText(bookedService.getCarModel());
@@ -59,9 +65,12 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
             holder.longitude.setText(bookedService.getLongitude());
             holder.servicetime.setText(bookedService.getServiceTime());
             holder.serviceName.setText(bookedService.getServiceName());
-        } else if (bookedService.getACCEPT_SERVICE()==3) {
+            holder.contactno.setText(bookedService.getContactNo());
+        } else if (bookedService.getACCEPT_SERVICE() == 3) {
+            holder.llworkshop.setVisibility(View.GONE);
+            holder.llMechanic.setVisibility(View.GONE);
             holder.tv.setText("NO WORKSHOP ACCEPTED SERVICES CURRENTLY.PLEASE WAIT !!!");
-            holder.tv.setTextColor(ContextCompat.getColor(context,R.color.blue));
+            holder.tv.setTextColor(ContextCompat.getColor(context, R.color.blue));
             holder.tv.setVisibility(View.VISIBLE);
             holder.carBrand.setText(bookedService.getCarBrand());
             holder.carModel.setText(bookedService.getCarModel());
@@ -72,6 +81,7 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
             holder.longitude.setText(bookedService.getLongitude());
             holder.servicetime.setText(bookedService.getServiceTime());
             holder.serviceName.setText(bookedService.getServiceName());
+            holder.contactno.setText(bookedService.getContactNo());
         } else {
             holder.tv.setVisibility(View.VISIBLE);
         }
@@ -108,8 +118,8 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        TextView carBrand, carModel, serviceType, date, latitude, longitude, servicetime, serviceName, username,tv;
-
+        TextView carBrand, carModel, serviceType, date, latitude, longitude, servicetime, serviceName, username, tv, workshop, mechanic, contactno;
+        LinearLayout llworkshop, llMechanic;
 
         public ViewHold(@NonNull View itemView) {
             super(itemView);
@@ -122,7 +132,12 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
             longitude = itemView.findViewById(R.id.getLongitude);
             servicetime = itemView.findViewById(R.id.getServiceTime);
             serviceName = itemView.findViewById(R.id.getServiceName);
+            workshop = itemView.findViewById(R.id.getWorkshop);
+            mechanic = itemView.findViewById(R.id.getMechanic);
+            contactno = itemView.findViewById(R.id.getContactNo);
             tv = itemView.findViewById(R.id.tv);
+            llworkshop = itemView.findViewById(R.id.llWorkshop);
+            llMechanic = itemView.findViewById(R.id.llMechanic);
 
         }
     }
