@@ -3,11 +3,13 @@ package com.example.auton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.util.Pair;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
@@ -22,10 +24,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class user_orderHistory extends AppCompatActivity {
     private ActivityUserOrderHistoryBinding binding;
@@ -68,7 +72,7 @@ public class user_orderHistory extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
-/*binding.btnDate.setOnClickListener(view -> {
+binding.btnDate.setOnClickListener(view -> {
     final Calendar c=Calendar.getInstance();
    int mYear=c.get(Calendar.YEAR);
  int   mMonth=c.get(Calendar.MONTH);
@@ -76,7 +80,7 @@ public class user_orderHistory extends AppCompatActivity {
     long minDate = c.getTimeInMillis();
 
 
-    DatePickerDialog datePickerDialog=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+  /*  DatePickerDialog datePickerDialog=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthofYear, int dayofMonth) {
             String tempDate=dayofMonth +"-"+(monthofYear+1)+"-"+year;
@@ -108,14 +112,66 @@ public class user_orderHistory extends AppCompatActivity {
         }
     },mYear,mMonth,mDay);
     datePickerDialog.getDatePicker().setMinDate(minDate);
-    datePickerDialog.show();
-    *//*MaterialDatePicker picker = MaterialDatePicker.Builder.dateRangePicker().build();
-    picker.addOnPositiveButtonClickListener(selection -> {
-        Log.e("TAG", "onCreate: "+ selection.toString().split(" ")[0]);
-        Log.e("TAG", "onCreate: "+ selection.toString().split(" ")[1]);
+    datePickerDialog.show();*/
+    MaterialDatePicker.Builder<Pair<Long, Long>> builder = MaterialDatePicker.Builder.dateRangePicker();
+    MaterialDatePicker<Pair<Long, Long>> pickerRange = builder.build();
+    pickerRange.show(getSupportFragmentManager(),"");
+
+    pickerRange.addOnPositiveButtonClickListener(selection -> {
+        Long startDate = selection.first;
+        Long endDate = selection.second;
+
+        String startDateString = DateFormat.format("dd-MM-yyyy", new Date(startDate)).toString();
+        String endDateString = DateFormat.format("dd-MM-yyyy", new Date(endDate)).toString();
+       // String date = "Start: " + startDateString + " End: " + endDateString;
+       // Log.e("TAG", "onCreate: "  +date );
+
+        ArrayList<OrderHistory_ModelClass> filteredlist = new ArrayList<>();
+
+        // running a for loop to compare elements.
+        for (OrderHistory_ModelClass item : list) {
+            // checking if the entered string matched with any item of our recycler view.
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            try {
+                Date date = format.parse(item.getDate());
+                Date date2 = format.parse(startDateString);
+                Date date3 = format.parse(endDateString);
+                if (date.before(date3)) {
+                    filteredlist.add(item);
+                }
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
+        if (filteredlist.isEmpty()) {
+            // if no item is added in filtered list we are
+            // displaying a toast message as no data found.
+            Toast.makeText(getApplicationContext(), "No Data Found..", Toast.LENGTH_SHORT).show();
+        } else {
+            // at last we are passing that filtered
+            // list to our adapter class.
+            orderHistoryAdapter.filterList(filteredlist);
+        }
     });
-    picker.show(getSupportFragmentManager(),"");*//*
-});*/
+
+
+//    picker.addOnPositiveButtonClickListener(selection -> {
+//        Log.e("TAG", "onCreate: "+ selection.toString().split(" ")[0]);
+//        Log.e("TAG", "onCreate: "+ selection.toString().split(" ")[1]);
+//        Log.e("TAG", "onCreate: "+ picker.getHeaderText());
+//        String dt1 = selection.toString().split(" ")[0];
+//        String dt2 = selection.toString().split(" ")[1];
+//       String q1 =  dt1.replace("Pair{", "");
+//      String q2=  dt2.replace("}", "");
+//      String w1 = getDate(Long.parseLong(q1));
+//      String w2 = getDate(Long.parseLong(q2));
+//        Log.e("TAG", "onCreate: " + w1 + " ****" + w2 );
+//
+//    });
+
+});
         //  SEARCH
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -150,5 +206,12 @@ public class user_orderHistory extends AppCompatActivity {
             }
         });
 
+    }
+
+    private String getDate(long time) {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        cal.setTimeInMillis(time * 1000);
+        String date = DateFormat.format("yyyy-MM-dd", cal).toString();
+        return date;
     }
 }
