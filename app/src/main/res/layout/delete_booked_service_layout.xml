@@ -248,6 +248,17 @@
                 android:backgroundTint="#D50000"
                 android:text="Cancel"
                 android:textColor="@color/white" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:textStyle="italic|bold"
+                android:textColor="@color/blue"
+                android:textAllCaps="true"
+                android:text="this service was accepted or rejected.so it can't be cancelled"
+                android:gravity="center"
+                android:visibility="gone"
+                android:id="@+id/tv"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

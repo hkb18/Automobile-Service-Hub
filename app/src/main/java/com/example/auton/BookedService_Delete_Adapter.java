@@ -34,21 +34,35 @@ public class BookedService_Delete_Adapter extends RecyclerView.Adapter<BookedSer
     public void onBindViewHolder(@NonNull BookedService_Delete_Adapter.ViewHold holder, int position) {
 
         Worshop_View_Service_modelClass bookedService = list.get(position);
-        holder.carBrand.setText(bookedService.getCarBrand());
-        holder.carModel.setText(bookedService.getCarModel());
-        holder.serviceType.setText(bookedService.getServiceType());
-        holder.username.setText(bookedService.getUsername());
-        holder.date.setText(bookedService.getDate());
-        holder.latitude.setText(bookedService.getLatitude());
-        holder.longitude.setText(bookedService.getLongitude());
-        holder.servicetime.setText(bookedService.getServiceTime());
-        holder.serviceName.setText(bookedService.getServiceName());
-        String item_todel = bookedService.getKey();
-        holder.delete.setOnClickListener(view -> {
-            user_Delete_Service.onClickInterface.delmech(item_todel, position);
+        if (bookedService.getACCEPT_SERVICE() == 3) {
+            holder.carBrand.setText(bookedService.getCarBrand());
+            holder.carModel.setText(bookedService.getCarModel());
+            holder.serviceType.setText(bookedService.getServiceType());
+            holder.username.setText(bookedService.getUsername());
+            holder.date.setText(bookedService.getDate());
+            holder.latitude.setText(bookedService.getLatitude());
+            holder.longitude.setText(bookedService.getLongitude());
+            holder.servicetime.setText(bookedService.getServiceTime());
+            holder.serviceName.setText(bookedService.getServiceName());
+            String item_todel = bookedService.getKey();
+            holder.delete.setOnClickListener(view -> {
+                user_Delete_Service.onClickInterface.delmech(item_todel, position);
 
-            Toast.makeText(context, "Deleted service", Toast.LENGTH_SHORT).show();
-        });
+                Toast.makeText(context, "Deleted service", Toast.LENGTH_SHORT).show();
+            });
+        }else {
+            holder.carBrand.setText(bookedService.getCarBrand());
+            holder.carModel.setText(bookedService.getCarModel());
+            holder.serviceType.setText(bookedService.getServiceType());
+            holder.username.setText(bookedService.getUsername());
+            holder.date.setText(bookedService.getDate());
+            holder.latitude.setText(bookedService.getLatitude());
+            holder.longitude.setText(bookedService.getLongitude());
+            holder.servicetime.setText(bookedService.getServiceTime());
+            holder.serviceName.setText(bookedService.getServiceName());
+            holder.delete.setVisibility(View.GONE);
+            holder.tv.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -67,7 +81,7 @@ public class BookedService_Delete_Adapter extends RecyclerView.Adapter<BookedSer
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        TextView carBrand, carModel, serviceType, date, latitude, longitude, servicetime, serviceName, username;
+        TextView carBrand, carModel, serviceType, date, latitude, longitude, servicetime, serviceName, username,tv;
         Button delete;
 
 
@@ -83,6 +97,7 @@ public class BookedService_Delete_Adapter extends RecyclerView.Adapter<BookedSer
             servicetime = itemView.findViewById(R.id.getServiceTime);
             serviceName = itemView.findViewById(R.id.getServiceName);
             delete = itemView.findViewById(R.id.btn_Delete);
+            tv = itemView.findViewById(R.id.tv);
 
         }
     }
