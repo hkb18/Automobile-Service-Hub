@@ -20,8 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class user_Registration extends AppCompatActivity {
     String fullname, emailid, contactno, username, password, confirmpassword;
-    // TextInputLayout textInputEditText1,textInputEditText2,textInputEditText3,textInputEditText4,textInputEditText5,textInputEditText6;
-
     TextInputEditText textInputEditText1, textInputEditText2, textInputEditText3, textInputEditText4, textInputEditText5, textInputEditText6;
     Button signUp, signIn;
 

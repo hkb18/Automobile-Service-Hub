@@ -1,13 +1,8 @@
 package com.example.auton;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 
-import com.google.firebase.database.DatabaseReference;
-
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class admin_User_Layout extends AppCompatActivity {
 

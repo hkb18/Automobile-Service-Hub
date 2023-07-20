@@ -24,7 +24,7 @@ import java.util.Locale;
 public class fulldetails_AirFreshner extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
-    String s1, key, modelStr, dimensionStr, imageStr, manufacturerStr, priceStr, weightStr, colorStr, itemsformStr, durationStr, fragrenceStr,quantityStr;
+    String s1, key, modelStr, dimensionStr, imageStr, manufacturerStr, priceStr, weightStr, colorStr, itemsformStr, durationStr, fragrenceStr, quantityStr;
     private ActivityFulldetailsAirFreshnerBinding binding;
 
     @Override
@@ -94,12 +94,10 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
             i.putExtra("activity", "buynow");
             i.putExtra("mainName", "FLOORMATS_CUSHIONS");
             i.putExtra("subName", "AirFreshner");
-            i.putExtra("image",imageStr );
+            i.putExtra("image", imageStr);
             i.putExtra("manufacturer", manufacturerStr);
             i.putExtra("model", modelStr);
-            i.putExtra("quantity",quantityStr );
-//            i.putExtra("date",currentDate );
-
+            i.putExtra("quantity", quantityStr);
             startActivity(i);
         });
 
@@ -150,13 +148,11 @@ public class fulldetails_AirFreshner extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String qtyStr = snapshot.child("quantity").getValue().toString();
                     Integer qty = Integer.parseInt(qtyStr);
-                    //qty--;
                     modelClass.setTotalQty(qtyStr);
                     if (qty <= 0) {
                         Toast.makeText(fulldetails_AirFreshner.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                     } else {
                         databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
-//                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Quantity").setValue(qty.toString());
                         Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                         i.putExtra("Username", s1);
                         i.putExtra("iscart", "1");

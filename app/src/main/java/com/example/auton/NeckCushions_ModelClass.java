@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class NeckCushions_ModelClass {
-    String Image,Model,Dimension,Color,Weight,Feature,Manufacturer,Price,Quantity;
+    String Image, Model, Dimension, Color, Weight, Feature, Manufacturer, Price, Quantity;
 
     public NeckCushions_ModelClass() {
     }

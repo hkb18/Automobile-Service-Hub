@@ -2,12 +2,11 @@ package com.example.auton;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.auton.databinding.FragmentAdminHomeBinding;
 
@@ -17,12 +16,11 @@ import com.example.auton.databinding.FragmentAdminHomeBinding;
  * create an instance of this fragment.
  */
 public class admin_Home_Fragment extends Fragment {
-    private FragmentAdminHomeBinding binding;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private FragmentAdminHomeBinding binding;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -61,18 +59,18 @@ public class admin_Home_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding=FragmentAdminHomeBinding.inflate(getLayoutInflater());
+        binding = FragmentAdminHomeBinding.inflate(getLayoutInflater());
 
         binding.btnBookedService.setOnClickListener(view -> {
-            Intent i=new Intent(getContext(),admin_viewBookedService.class);
+            Intent i = new Intent(getContext(), admin_viewBookedService.class);
             startActivity(i);
         });
         binding.btnPurchaseHistory.setOnClickListener(view -> {
-            Intent i=new Intent(getContext(),admin_viewPurchaseHistory.class);
+            Intent i = new Intent(getContext(), admin_viewPurchaseHistory.class);
             startActivity(i);
         });
         binding.btnViewFeedback.setOnClickListener(view -> {
-            Intent i=new Intent(getContext(),viewFeedback.class);
+            Intent i = new Intent(getContext(), viewFeedback.class);
             startActivity(i);
         });
         return binding.getRoot();

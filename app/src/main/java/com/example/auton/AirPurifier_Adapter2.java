@@ -17,8 +17,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class AirPurifier_Adapter2 extends RecyclerView.Adapter<AirPurifier_Adapter2.ViewHold> {
-    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
+    private ArrayList<Accessories_ModelClass> dataList;
 
 
     public AirPurifier_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
@@ -26,6 +26,7 @@ public class AirPurifier_Adapter2 extends RecyclerView.Adapter<AirPurifier_Adapt
         this.context = fragment;
 
     }
+
     @NonNull
     @Override
     public AirPurifier_Adapter2.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,15 +34,15 @@ public class AirPurifier_Adapter2 extends RecyclerView.Adapter<AirPurifier_Adapt
         return new AirPurifier_Adapter2.ViewHold(view);
     }
 
-    public void onBindViewHolder(AirPurifier_Adapter2.ViewHold holder, int position){
-        Accessories_ModelClass ss=dataList.get(position);
+    public void onBindViewHolder(AirPurifier_Adapter2.ViewHold holder, int position) {
+        Accessories_ModelClass ss = dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
-        holder.desc.setText(ss.getModel()+ss.getOperatingVoltage());
+        holder.desc.setText(ss.getModel() + ss.getOperatingVoltage());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
-        String model= ss.getModel();
+        String model = ss.getModel();
 
-        if(Integer.parseInt(ss.getQuantity()) == 0){
+        if (Integer.parseInt(ss.getQuantity()) == 0) {
             holder.tvStatus.setVisibility(View.VISIBLE);
             holder.cardView.setAlpha(0.5F);
         }
@@ -49,7 +50,7 @@ public class AirPurifier_Adapter2 extends RecyclerView.Adapter<AirPurifier_Adapt
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), fulldetails_AirPurifier.class);
-                i.putExtra("key",model);
+                i.putExtra("key", model);
                 context.startActivity(i);
             }
         });
@@ -72,15 +73,16 @@ public class AirPurifier_Adapter2 extends RecyclerView.Adapter<AirPurifier_Adapt
     public class ViewHold extends RecyclerView.ViewHolder {
         ImageView productImg;
         CardView cardView;
-        TextView manufacturer,desc,price, tvStatus;
+        TextView manufacturer, desc, price, tvStatus;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            manufacturer=itemView.findViewById(R.id.airpurifierManufacturer);
-            desc=itemView.findViewById(R.id.airpurifierDesc);
-            productImg=itemView.findViewById(R.id.airpurifierImg);
-            price=itemView.findViewById(R.id.airpurifierPrice);
-            cardView=itemView.findViewById(R.id.cvAirpurifier);
-            tvStatus=itemView.findViewById(R.id.tvStatus);
+            manufacturer = itemView.findViewById(R.id.airpurifierManufacturer);
+            desc = itemView.findViewById(R.id.airpurifierDesc);
+            productImg = itemView.findViewById(R.id.airpurifierImg);
+            price = itemView.findViewById(R.id.airpurifierPrice);
+            cardView = itemView.findViewById(R.id.cvAirpurifier);
+            tvStatus = itemView.findViewById(R.id.tvStatus);
         }
     }
 }

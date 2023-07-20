@@ -2,14 +2,11 @@ package com.example.auton;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.auton.databinding.FragmentAdminAddAccessoriesBinding;
 
@@ -20,14 +17,11 @@ import com.example.auton.databinding.FragmentAdminAddAccessoriesBinding;
  */
 public class admin_Add_Accessories extends Fragment {
 
-    private FragmentAdminAddAccessoriesBinding binding;
-
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private FragmentAdminAddAccessoriesBinding binding;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -67,30 +61,30 @@ public class admin_Add_Accessories extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding=FragmentAdminAddAccessoriesBinding.inflate(getLayoutInflater());
+        binding = FragmentAdminAddAccessoriesBinding.inflate(getLayoutInflater());
 
         binding.linearlayoutAddScreenSpeaker.setOnClickListener(view -> {
-            Intent i=new Intent(getContext(), admin_add_ScreenSpeaker.class);
+            Intent i = new Intent(getContext(), admin_add_ScreenSpeaker.class);
             startActivity(i);
         });
         binding.linearlayoutAddCarCarePurifiers.setOnClickListener(view -> {
-            Intent i=new Intent(getContext(),admin_add_Carcare_Purifier.class);
+            Intent i = new Intent(getContext(), admin_add_Carcare_Purifier.class);
             startActivity(i);
         });
         binding.linearlayoutAddFloormatsCushions.setOnClickListener(view -> {
-            Intent i=new Intent(getContext(),admin_add_FloormatsCushions.class);
+            Intent i = new Intent(getContext(), admin_add_FloormatsCushions.class);
             startActivity(i);
         });
         binding.linearlayoutAddHomeProtectives.setOnClickListener(view -> {
-            Intent i=new Intent(getContext(),admin_add_HornsProtectives.class);
+            Intent i = new Intent(getContext(), admin_add_HornsProtectives.class);
             startActivity(i);
         });
         binding.linearlayoutAddLightsChargers.setOnClickListener(view -> {
-            Intent i=new Intent(getContext(),admin_add_LightsChargers.class);
+            Intent i = new Intent(getContext(), admin_add_LightsChargers.class);
             startActivity(i);
         });
         binding.linearlayoutAddRoadsideAssistance.setOnClickListener(view -> {
-            Intent i=new Intent(getContext(),admin_add_RoadsideAssistance.class);
+            Intent i = new Intent(getContext(), admin_add_RoadsideAssistance.class);
             startActivity(i);
         });
 

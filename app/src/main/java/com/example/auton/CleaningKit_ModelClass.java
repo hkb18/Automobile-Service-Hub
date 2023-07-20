@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class CleaningKit_ModelClass {
-    String BoxIncluded,Brand,Dimensions,Image,ItemForm,Model,Price,Quantity,Volume,Weight;
+    String BoxIncluded, Brand, Dimensions, Image, ItemForm, Model, Price, Quantity, Volume, Weight;
 
     public CleaningKit_ModelClass() {
     }

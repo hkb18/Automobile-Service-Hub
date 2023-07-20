@@ -1,9 +1,5 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.auton.databinding.ActivityAdminAddTyresWheelcareBinding;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,33 +30,34 @@ import java.util.Date;
 import java.util.Locale;
 
 public class admin_add_TyresWheelcare extends AppCompatActivity {
-    private ActivityAdminAddTyresWheelcareBinding binding;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
     StorageReference storageReference;
     Uri imageUri;
     String fileName;
     DatabaseReference databaseReference;
-    String brandStr,modelStr,widthStr,rimsizeStr,featureStr,priceStr,pk;
+    String brandStr, modelStr, widthStr, rimsizeStr, featureStr, priceStr, pk;
+    private ActivityAdminAddTyresWheelcareBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityAdminAddTyresWheelcareBinding.inflate(getLayoutInflater());
+        binding = ActivityAdminAddTyresWheelcareBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         progressBar = new ProgressBar(this);
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         binding.btnAddService.setOnClickListener(view -> {
-            brandStr=binding.brandName.getText().toString();
-            modelStr=binding.modelName.getText().toString();
-            widthStr=binding.width.getText().toString();
-            rimsizeStr=binding.rimSize.getText().toString();
-            featureStr=binding.features.getText().toString();
-            priceStr=binding.price.getText().toString();
+            brandStr = binding.brandName.getText().toString();
+            modelStr = binding.modelName.getText().toString();
+            widthStr = binding.width.getText().toString();
+            rimsizeStr = binding.rimSize.getText().toString();
+            featureStr = binding.features.getText().toString();
+            priceStr = binding.price.getText().toString();
 
-            if (brandStr.isEmpty()||modelStr.isEmpty()||widthStr.isEmpty()||rimsizeStr.isEmpty()||featureStr.isEmpty()||priceStr.isEmpty()){
+            if (brandStr.isEmpty() || modelStr.isEmpty() || widthStr.isEmpty() || rimsizeStr.isEmpty() || featureStr.isEmpty() || priceStr.isEmpty()) {
                 Toast.makeText(this, "Please Enter all details", Toast.LENGTH_SHORT).show();
-            }else {
+            } else {
                 databaseReference.child("SERVICE_TYPE").child("TYRES_WHEELCARE").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -79,22 +80,24 @@ public class admin_add_TyresWheelcare extends AppCompatActivity {
             selectImage();
         });
     }
-    private void selectImage(){
-        Intent intent=new Intent();
+
+    private void selectImage() {
+        Intent intent = new Intent();
         intent.setType("image/+");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,100);
+        startActivityForResult(intent, 100);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==100 && data != null && data.getData() != null){
-            imageUri=data.getData();
+        if (requestCode == 100 && data != null && data.getData() != null) {
+            imageUri = data.getData();
             binding.ivBattery.setImageURI(imageUri);
         }
     }
+
     private void uploadImage() {
         if (imageUri != null) {
             progressDialog = new ProgressDialog(this);
@@ -127,23 +130,20 @@ public class admin_add_TyresWheelcare extends AppCompatActivity {
                 }
             });
             uploadtoFirebase(imageUri);
-        }
-        else {
+        } else {
             Toast.makeText(this, "Please select Image", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     private void uploadtoFirebase(Uri uri) {
-        //storageReference= storageReference.child(System.currentTimeMillis()+"."+getFileExtension(uri));
-        storageReference=storageReference.child("images/").child(fileName);
+        storageReference = storageReference.child("images/").child(fileName);
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        //pk=databaseReference.push().getKey();
                         databaseReference.child("SERVICE_TYPE").child("TYRES_WHEELCARE").child(modelStr).child("Image").setValue(uri.toString());
                         databaseReference.child("SERVICE_TYPE").child("TYRES_WHEELCARE").child(modelStr).child("Brand").setValue(brandStr);
                         databaseReference.child("SERVICE_TYPE").child("TYRES_WHEELCARE").child(modelStr).child("Model").setValue(modelStr);

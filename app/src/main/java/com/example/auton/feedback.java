@@ -47,7 +47,7 @@ public class feedback extends AppCompatActivity {
                         if (activity.equals("user")) {
                             Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                             startActivity(i);
-                        }else {
+                        } else {
                             Intent i = new Intent(getApplicationContext(), workshop_HomePage.class);
                             startActivity(i);
                         }

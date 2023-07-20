@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class ACServiceRepair_ModelClass {
-    private String AdditionalServices,EssentialServices,PerformanceServices,Price,ServiceName,Key;
+    private String AdditionalServices, EssentialServices, PerformanceServices, Price, ServiceName, Key;
 
     public ACServiceRepair_ModelClass() {
     }

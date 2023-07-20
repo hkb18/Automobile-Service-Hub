@@ -70,8 +70,6 @@ public class user_BookService2 extends AppCompatActivity implements AdapterView.
         public void onLocationChanged(Location location) {
             longitudeBest = location.getLongitude();
             latitudeBest = location.getLatitude();
-
-            Toast.makeText(user_BookService2.this, "Best " + longitudeBest, Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -186,7 +184,6 @@ public class user_BookService2 extends AppCompatActivity implements AdapterView.
 
         SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
         s1 = sh.getString("Username", "");
-        Toast.makeText(getApplicationContext(), "Username:"+s1, Toast.LENGTH_SHORT).show();
 
         // MAP
         mapinterface=this;
@@ -281,7 +278,6 @@ public class user_BookService2 extends AppCompatActivity implements AdapterView.
                             @Override
                             public void run() {
                                 totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
-                                Toast.makeText(user_BookService2.this, "totalPrice"+totalPrice, Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getApplicationContext(), RazorPay.class);
                                 i.putExtra("activity", "bookService2");
                                 i.putExtra("Username", s1);

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/transparent"
-    android:layout_height="wrap_content">
-<!--FOR TRANSPARANCY :app:cardBackgroundColor="@android:color/transparent"-->
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+    <!--FOR TRANSPARANCY :app:cardBackgroundColor="@android:color/transparent"-->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,11 +12,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_marginLeft="35dp"
-            android:background="@android:color/transparent"
             android:layout_marginRight="35dp"
             android:layout_marginBottom="15dp"
+            android:background="@android:color/transparent"
+            android:orientation="vertical"
             android:padding="8dp">
 
             <!-- USERNAME -->
@@ -26,40 +25,63 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Username :"
-                    android:layout_weight="1"
-                    android:textColor="@color/black"
-                    />
+                    android:textColor="@color/black" />
+
                 <TextView
+                    android:id="@+id/getUsername"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    android:id="@+id/getUsername"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
 
-<!--            CAR BRAND-->
+            <!-- Contact No -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Contact No :"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/getContactNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+            <!--            CAR BRAND-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Car Brand :"
-                    android:textColor="@color/black"
-                    android:layout_weight="1"
-                    />
+                    android:textColor="@color/black" />
+
                 <TextView
+                    android:id="@+id/getCarBrand"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    android:id="@+id/getCarBrand"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <!-- CAR MODEL -->
@@ -68,19 +90,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Car Model :"
-                    android:textColor="@color/black"
-                    android:layout_weight="1"
-                    />
+                    android:textColor="@color/black" />
+
                 <TextView
+                    android:id="@+id/getCarModel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    android:id="@+id/getCarModel"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <!-- DATE -->
@@ -89,20 +112,21 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Date :"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
                     android:paddingRight="34dp"
-                    />
+                    android:text="Date :"
+                    android:textColor="@color/black" />
+
                 <TextView
+                    android:id="@+id/getDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    android:id="@+id/getDate"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <!-- SERVICE TIME -->
@@ -111,19 +135,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Service Time :"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    />
+                    android:text="Service Time :"
+                    android:textColor="@color/black" />
+
                 <TextView
+                    android:id="@+id/getServiceTime"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:id="@+id/getServiceTime"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <!-- SERVICE NAME -->
@@ -132,19 +157,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Service Name :"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    />
+                    android:text="Service Name :"
+                    android:textColor="@color/black" />
+
                 <TextView
+                    android:id="@+id/getServiceName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:id="@+id/getServiceName"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <!-- SERVICE TYPE -->
@@ -153,41 +179,21 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Service Type :"
-                    android:textColor="@color/black"
-                    android:layout_weight="1"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:layout_weight="1"
-                    android:id="@+id/getServiceType"/>
-            </LinearLayout>
 
-           <!-- &lt;!&ndash; PAYMENT MODE &ndash;&gt;
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Payment Mode :"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    />
+                    android:text="Service Type :"
+                    android:textColor="@color/black" />
+
                 <TextView
+                    android:id="@+id/getServiceType"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    android:id="@+id/getPaymentMode"/>
-            </LinearLayout>-->
+                    android:textColor="@color/black" />
+            </LinearLayout>
 
             <!-- LATITUDE -->
             <LinearLayout
@@ -195,19 +201,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Latitude :"
-                    android:textColor="@color/black"
-                    android:layout_weight="1"
-                    />
+                    android:textColor="@color/black" />
+
                 <TextView
+                    android:id="@+id/getLatitude"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    android:id="@+id/getLatitude"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <!-- LONGITUDE -->
@@ -216,57 +223,61 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Longitude :"
-                    android:textColor="@color/black"
-                    android:layout_weight="1"
-                    />
+                    android:textColor="@color/black" />
+
                 <TextView
+                    android:id="@+id/getLongitude"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_weight="1"
-                    android:id="@+id/getLongitude"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/Linear_btn"
-    android:orientation="horizontal"
-    android:layout_weight="2">
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:backgroundTint="#08DA3C"
-        android:textColor="@color/white"
-        android:text="ACCEPT"
-        android:id="@+id/btn_Accept"/>
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:backgroundTint="#D50000"
-        android:textColor="@color/white"
-        android:text="DELETE"
-        android:id="@+id/btn_Delete"/>
-</LinearLayout>
-            <TextView
+            <LinearLayout
+                android:id="@+id/Linear_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="service rejected"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:textColor="#D50000"
-                android:gravity="center"
-                android:textAllCaps="true"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_Accept"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:backgroundTint="#08DA3C"
+                    android:text="ACCEPT"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_Delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:backgroundTint="#D50000"
+                    android:text="DELETE"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
                 android:id="@+id/tvStatus"
-                android:visibility="gone"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="service rejected"
+                android:textAllCaps="true"
+                android:textColor="#D50000"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
 
 
         </LinearLayout>

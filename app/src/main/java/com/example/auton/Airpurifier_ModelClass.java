@@ -1,12 +1,12 @@
 package com.example.auton;
 
 public class Airpurifier_ModelClass {
-    private String Color,Dimensions,ItemsIncluded,Manufacturer,Model,OperatingVoltage,Price,Quantity,Warrenty,Weight,Image;
+    private String Color, Dimensions, ItemsIncluded, Manufacturer, Model, OperatingVoltage, Price, Quantity, Warrenty, Weight, Image;
 
     public Airpurifier_ModelClass() {
     }
 
-    public Airpurifier_ModelClass(String image,String color, String dimensions, String itemsIncluded, String manufacturer, String model, String operatingVoltage, String price, String quantity, String warrenty, String weight) {
+    public Airpurifier_ModelClass(String image, String color, String dimensions, String itemsIncluded, String manufacturer, String model, String operatingVoltage, String price, String quantity, String warrenty, String weight) {
         Color = color;
         Dimensions = dimensions;
         ItemsIncluded = itemsIncluded;
@@ -17,7 +17,7 @@ public class Airpurifier_ModelClass {
         Quantity = quantity;
         Warrenty = warrenty;
         Weight = weight;
-        Image=image;
+        Image = image;
     }
 
     public String getImage() {

@@ -1,9 +1,5 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.auton.databinding.ActivityAdminAddChargersBinding;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,38 +30,39 @@ import java.util.Date;
 import java.util.Locale;
 
 public class admin_add_Chargers extends AppCompatActivity {
-    private ActivityAdminAddChargersBinding binding;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
     StorageReference storageReference;
     Uri imageUri;
     String fileName;
     DatabaseReference databaseReference;
-    String manufacturerStr,modelStr,operatingvoltageStr,colorStr,weightStr,itemincludedStr,dimensionStr,featureStr,priceStr,quantityStr;
+    String manufacturerStr, modelStr, operatingvoltageStr, colorStr, weightStr, itemincludedStr, dimensionStr, featureStr, priceStr, quantityStr;
+    private ActivityAdminAddChargersBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityAdminAddChargersBinding.inflate(getLayoutInflater());
+        binding = ActivityAdminAddChargersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         progressBar = new ProgressBar(this);
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         binding.btnAddCharger.setOnClickListener(view -> {
 
-            modelStr=binding.chargerModel.getText().toString();
-            operatingvoltageStr=binding.chargerOperatingVoltage.getText().toString();
-            weightStr=binding.chargerWeight.getText().toString();
-            colorStr=binding.chargerColor.getText().toString();
-            itemincludedStr=binding.chargerItemIncluded.getText().toString();
-            dimensionStr=binding.chargerDimension.getText().toString();
-            featureStr=binding.chargerFeature.getText().toString();
-            manufacturerStr=binding.chargerManufacturer.getText().toString();
-            priceStr=binding.chargerPrice.getText().toString();
-            quantityStr=binding.chargerQuantity.getText().toString();
+            modelStr = binding.chargerModel.getText().toString();
+            operatingvoltageStr = binding.chargerOperatingVoltage.getText().toString();
+            weightStr = binding.chargerWeight.getText().toString();
+            colorStr = binding.chargerColor.getText().toString();
+            itemincludedStr = binding.chargerItemIncluded.getText().toString();
+            dimensionStr = binding.chargerDimension.getText().toString();
+            featureStr = binding.chargerFeature.getText().toString();
+            manufacturerStr = binding.chargerManufacturer.getText().toString();
+            priceStr = binding.chargerPrice.getText().toString();
+            quantityStr = binding.chargerQuantity.getText().toString();
 
-            if(modelStr.isEmpty() ||operatingvoltageStr.isEmpty() || featureStr.isEmpty()||dimensionStr.isEmpty()||weightStr.isEmpty()||manufacturerStr.isEmpty()|| colorStr.isEmpty() || itemincludedStr.isEmpty() ||priceStr.isEmpty() ||  quantityStr.isEmpty()) {
+            if (modelStr.isEmpty() || operatingvoltageStr.isEmpty() || featureStr.isEmpty() || dimensionStr.isEmpty() || weightStr.isEmpty() || manufacturerStr.isEmpty() || colorStr.isEmpty() || itemincludedStr.isEmpty() || priceStr.isEmpty() || quantityStr.isEmpty()) {
                 Toast.makeText(admin_add_Chargers.this, "Please enter all details", Toast.LENGTH_SHORT).show();
             } else {
                 databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -88,22 +89,23 @@ public class admin_add_Chargers extends AppCompatActivity {
         });
     }
 
-    private void selectImage(){
-        Intent intent=new Intent();
+    private void selectImage() {
+        Intent intent = new Intent();
         intent.setType("image/+");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,100);
+        startActivityForResult(intent, 100);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==100 && data != null && data.getData() != null){
-            imageUri=data.getData();
+        if (requestCode == 100 && data != null && data.getData() != null) {
+            imageUri = data.getData();
             binding.ivCharger.setImageURI(imageUri);
         }
     }
+
     private void uploadImage() {
         if (imageUri != null) {
             progressDialog = new ProgressDialog(this);
@@ -136,37 +138,21 @@ public class admin_add_Chargers extends AppCompatActivity {
                 }
             });
             uploadtoFirebase(imageUri);
-        }
-        else {
+        } else {
             Toast.makeText(this, "Please select Image", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     private void uploadtoFirebase(Uri uri) {
-
-
-        //storageReference= storageReference.child(System.currentTimeMillis()+"."+getFileExtension(uri));
-        storageReference=storageReference.child("images/").child(fileName);
+        storageReference = storageReference.child("images/").child(fileName);
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                      /*  databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("Image").setValue(uri.toString());
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("Model").setValue(modelStr);
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("Dimension").setValue(dimensionStr);
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("OperatingVoltage").setValue(operatingvoltageStr);
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("Weight").setValue(weightStr);
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("Color").setValue(colorStr);
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("ItemIncluded").setValue(itemincludedStr);
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("Feature").setValue(featureStr);
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("Price").setValue(priceStr);
-                        databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).child("Quantity").setValue(quantityStr);
-                       */
-                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+                        Accessories_ModelClass modelClass = new Accessories_ModelClass();
                         modelClass.setBoxIncluded("");
                         // modelClass.setBoxIncludes();
                         modelClass.setBrand("");
@@ -220,13 +206,6 @@ public class admin_add_Chargers extends AppCompatActivity {
                         modelClass.setWarrenty("");
                         modelClass.setWattage("");
                         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").child(modelStr).setValue(modelClass);
-
-
-
-
-
-
-
                         Toast.makeText(admin_add_Chargers.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();
                     }
                 });

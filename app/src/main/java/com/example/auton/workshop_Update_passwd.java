@@ -1,14 +1,14 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
@@ -19,8 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class workshop_Update_passwd extends AppCompatActivity {
     Button buttonPasswdUpdate;
-    TextInputEditText changedPassword,confirmNewPassword,password;
-    String passwordStr,newPasswordStr,originalPasswordStr;
+    TextInputEditText changedPassword, confirmNewPassword, password;
+    String passwordStr, newPasswordStr, originalPasswordStr;
     DatabaseReference databaseReference;
 
     @SuppressLint("MissingInflatedId")
@@ -28,10 +28,10 @@ public class workshop_Update_passwd extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workshop_update_passwd);
-        changedPassword=(TextInputEditText) findViewById(R.id.confirmPassword);
-        buttonPasswdUpdate=findViewById(R.id.btn_UpdatePasswd);
-        confirmNewPassword=(TextInputEditText) findViewById(R.id.confirmNewPassword);
-        password=(TextInputEditText)findViewById(R.id.password);
+        changedPassword = (TextInputEditText) findViewById(R.id.confirmPassword);
+        buttonPasswdUpdate = findViewById(R.id.btn_UpdatePasswd);
+        confirmNewPassword = (TextInputEditText) findViewById(R.id.confirmNewPassword);
+        password = (TextInputEditText) findViewById(R.id.password);
 
         buttonPasswdUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +44,7 @@ public class workshop_Update_passwd extends AppCompatActivity {
 
                 passwordStr = changedPassword.getText().toString();
                 newPasswordStr = confirmNewPassword.getText().toString();
-                originalPasswordStr=password.getText().toString();
+                originalPasswordStr = password.getText().toString();
 
                 if (passwordStr.equals(newPasswordStr)) {
                     databaseReference.child("Workshop_Profile").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -52,10 +52,10 @@ public class workshop_Update_passwd extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.hasChild(username)) {
                                 passwordStr = snapshot.child(username).child("Password").getValue(String.class);
-                                if (originalPasswordStr.equals(passwordStr)){
+                                if (originalPasswordStr.equals(passwordStr)) {
                                     changedPassword.setText(passwordStr);
                                     Toast.makeText(workshop_Update_passwd.this, "Password Updated", Toast.LENGTH_SHORT).show();
-                                }else {
+                                } else {
                                     Toast.makeText(workshop_Update_passwd.this, "Current Password Incorrect", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -68,8 +68,7 @@ public class workshop_Update_passwd extends AppCompatActivity {
                     });
 
                     startActivity(i);
-                }
-                else {
+                } else {
                     Toast.makeText(workshop_Update_passwd.this, "Password not same", Toast.LENGTH_SHORT).show();
                 }
             }

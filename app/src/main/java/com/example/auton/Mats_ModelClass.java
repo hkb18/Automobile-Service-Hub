@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class Mats_ModelClass {
-    String Image,Model,Material,Color,Pattern,Feature,Manufacturer,Price,Quantity;
+    String Image, Model, Material, Color, Pattern, Feature, Manufacturer, Price, Quantity;
 
     public Mats_ModelClass() {
     }

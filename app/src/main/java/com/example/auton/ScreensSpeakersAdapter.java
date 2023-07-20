@@ -1,28 +1,19 @@
 package com.example.auton;
 
-import static android.content.Context.MODE_PRIVATE;
-
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+
 public class ScreensSpeakersAdapter extends RecyclerView.Adapter<ScreensSpeakersAdapter.ViewHold> {
 
     private final ArrayList<materialButton> dataList;
@@ -44,7 +35,7 @@ public class ScreensSpeakersAdapter extends RecyclerView.Adapter<ScreensSpeakers
     @Override
     public void onBindViewHolder(@NonNull ViewHold holder, int position) {
 
-       holder.androidScreen.setText(dataList.get(position).getName());
+        holder.androidScreen.setText(dataList.get(position).getName());
 
 
         if (dataList.get(position).getSelected()) {
@@ -58,14 +49,13 @@ public class ScreensSpeakersAdapter extends RecyclerView.Adapter<ScreensSpeakers
         }
 
         holder.androidScreen.setOnClickListener(v -> {
-            for (int i=0; i<dataList.size(); i++){
+            for (int i = 0; i < dataList.size(); i++) {
                 dataList.get(i).setSelected(false);
             }
             dataList.get(position).setSelected(true);
             notifyDataSetChanged();
 
             user_View_Screens_Speakers.androidScreen_interface.onClickItem(dataList.get(position).getName());
-            // use interface and show data in recycler view
 
         });
 
@@ -79,13 +69,12 @@ public class ScreensSpeakersAdapter extends RecyclerView.Adapter<ScreensSpeakers
 
     public class ViewHold extends RecyclerView.ViewHolder {
         MaterialButton androidScreen;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
             androidScreen = itemView.findViewById(R.id.materialBtn);
         }
     }
-
-
 
 
 }

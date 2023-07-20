@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class Amplifier_ModelClass {
-    private String Channel,Dimension,Image,Manufacturer,MaxVoltage,Model,MountingHardware,Price,Quantity,Weight;
+    private String Channel, Dimension, Image, Manufacturer, MaxVoltage, Model, MountingHardware, Price, Quantity, Weight;
 
     public Amplifier_ModelClass() {
     }

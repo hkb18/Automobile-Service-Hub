@@ -1,18 +1,19 @@
 package com.example.auton;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.auton.databinding.ActivityUserSelectServiceTypeBinding;
 
 public class user_Select_Service_Type extends AppCompatActivity {
     private ActivityUserSelectServiceTypeBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityUserSelectServiceTypeBinding.inflate(getLayoutInflater());
+        binding = ActivityUserSelectServiceTypeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //PERIODIC SERVICE

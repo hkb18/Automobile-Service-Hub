@@ -17,8 +17,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class MicroFibres_Adapter2 extends RecyclerView.Adapter<MicroFibres_Adapter2.ViewHold> {
-    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
+    private ArrayList<Accessories_ModelClass> dataList;
 
 
     public MicroFibres_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
@@ -26,6 +26,7 @@ public class MicroFibres_Adapter2 extends RecyclerView.Adapter<MicroFibres_Adapt
         this.context = fragment;
 
     }
+
     @NonNull
     @Override
     public MicroFibres_Adapter2.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,14 +34,14 @@ public class MicroFibres_Adapter2 extends RecyclerView.Adapter<MicroFibres_Adapt
         return new MicroFibres_Adapter2.ViewHold(view);
     }
 
-    public void onBindViewHolder(MicroFibres_Adapter2.ViewHold holder, int position){
-        Accessories_ModelClass ss=dataList.get(position);
+    public void onBindViewHolder(MicroFibres_Adapter2.ViewHold holder, int position) {
+        Accessories_ModelClass ss = dataList.get(position);
         holder.manufacturer.setText(ss.getBrand());
         holder.desc.setText(ss.getModel());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
-        String model= ss.getModel();
-        if(Integer.parseInt(ss.getQuantity()) == 0){
+        String model = ss.getModel();
+        if (Integer.parseInt(ss.getQuantity()) == 0) {
             holder.tvStatus.setVisibility(View.VISIBLE);
             holder.cardView.setAlpha(0.5F);
         }
@@ -48,7 +49,7 @@ public class MicroFibres_Adapter2 extends RecyclerView.Adapter<MicroFibres_Adapt
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), fulldetails_Microfiber.class);
-                i.putExtra("key",model);
+                i.putExtra("key", model);
                 context.startActivity(i);
             }
         });
@@ -71,15 +72,16 @@ public class MicroFibres_Adapter2 extends RecyclerView.Adapter<MicroFibres_Adapt
     public class ViewHold extends RecyclerView.ViewHolder {
         ImageView productImg;
         CardView cardView;
-        TextView manufacturer,desc,price,tvStatus;
+        TextView manufacturer, desc, price, tvStatus;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            manufacturer=itemView.findViewById(R.id.microfibresManufacturer);
-            desc=itemView.findViewById(R.id.microfibresDesc);
-            productImg=itemView.findViewById(R.id.microfibresImg);
-            price=itemView.findViewById(R.id.microfibresPrice);
-            cardView=itemView.findViewById(R.id.cvMicroFibres);
-            tvStatus=itemView.findViewById(R.id.tvStatus);
+            manufacturer = itemView.findViewById(R.id.microfibresManufacturer);
+            desc = itemView.findViewById(R.id.microfibresDesc);
+            productImg = itemView.findViewById(R.id.microfibresImg);
+            price = itemView.findViewById(R.id.microfibresPrice);
+            cardView = itemView.findViewById(R.id.cvMicroFibres);
+            tvStatus = itemView.findViewById(R.id.tvStatus);
         }
     }
 }

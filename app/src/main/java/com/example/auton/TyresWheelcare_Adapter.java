@@ -18,8 +18,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class TyresWheelcare_Adapter extends RecyclerView.Adapter<TyresWheelcare_Adapter.ViewHold> {
-    private ArrayList<TyresWheelcare_ModelClass> dataList;
     private final Context context;
+    private ArrayList<TyresWheelcare_ModelClass> dataList;
 
 
     public TyresWheelcare_Adapter(Context fragment, ArrayList<TyresWheelcare_ModelClass> dataList) {
@@ -27,6 +27,7 @@ public class TyresWheelcare_Adapter extends RecyclerView.Adapter<TyresWheelcare_
         this.context = fragment;
 
     }
+
     @NonNull
     @Override
     public TyresWheelcare_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,8 +35,8 @@ public class TyresWheelcare_Adapter extends RecyclerView.Adapter<TyresWheelcare_
         return new TyresWheelcare_Adapter.ViewHold(view);
     }
 
-    public void onBindViewHolder(TyresWheelcare_Adapter.ViewHold holder, int position){
-        TyresWheelcare_ModelClass ss=dataList.get(position);
+    public void onBindViewHolder(TyresWheelcare_Adapter.ViewHold holder, int position) {
+        TyresWheelcare_ModelClass ss = dataList.get(position);
         Glide.with(context).load(ss.getImage()).into(holder.imageView);
         holder.brand.setText(ss.getBrand());
         holder.model.setText(ss.getModel());
@@ -47,10 +48,10 @@ public class TyresWheelcare_Adapter extends RecyclerView.Adapter<TyresWheelcare_
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), user_BookService2.class);
-                i.putExtra("Service",ss.getModel());
-                i.putExtra("img",ss.getImage());
-                i.putExtra("servicetype","Tyres and Wheelcare");
-                i.putExtra("Price",ss.getPrice());
+                i.putExtra("Service", ss.getModel());
+                i.putExtra("img", ss.getImage());
+                i.putExtra("servicetype", "Tyres and Wheelcare");
+                i.putExtra("Price", ss.getPrice());
                 context.startActivity(i);
             }
         });
@@ -59,7 +60,7 @@ public class TyresWheelcare_Adapter extends RecyclerView.Adapter<TyresWheelcare_
     public void filterList(ArrayList<ScreensSpeakers_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
-       // dataList = filteredlist;
+        // dataList = filteredlist;
         // below line is to notify our adapter
         // as change in recycler view data.
         notifyDataSetChanged();
@@ -74,17 +75,18 @@ public class TyresWheelcare_Adapter extends RecyclerView.Adapter<TyresWheelcare_
         Button buynow;
         CardView cardView;
         ImageView imageView;
-        TextView brand,features,model,width,rimsize,price;
+        TextView brand, features, model, width, rimsize, price;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.tyrewheelcareImg);
-            features=itemView.findViewById(R.id.tyrewheelcareFeatures);
-            width=itemView.findViewById(R.id.tyrewheelcareWidth);
-            model=itemView.findViewById(R.id.tyrewheelcareModel);
-            rimsize=itemView.findViewById(R.id.tyrewheelcareRimSize);
-            brand=itemView.findViewById(R.id.tyrewheelcareBand);
-            price=itemView.findViewById(R.id.tyrewheelcarePrice);
-            buynow=itemView.findViewById(R.id.btn_tyrewheelcareBuyNow);
+            imageView = itemView.findViewById(R.id.tyrewheelcareImg);
+            features = itemView.findViewById(R.id.tyrewheelcareFeatures);
+            width = itemView.findViewById(R.id.tyrewheelcareWidth);
+            model = itemView.findViewById(R.id.tyrewheelcareModel);
+            rimsize = itemView.findViewById(R.id.tyrewheelcareRimSize);
+            brand = itemView.findViewById(R.id.tyrewheelcareBand);
+            price = itemView.findViewById(R.id.tyrewheelcarePrice);
+            buynow = itemView.findViewById(R.id.btn_tyrewheelcareBuyNow);
         }
     }
 }

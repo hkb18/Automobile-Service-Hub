@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class Projectors_ModelClass {
-    String Image,Model,Dimension,Watttage,Weight,BulbType,Lumens,Category,Feature,Brand,Price,Quantity;
+    String Image, Model, Dimension, Watttage, Weight, BulbType, Lumens, Category, Feature, Brand, Price, Quantity;
 
     public Projectors_ModelClass() {
     }

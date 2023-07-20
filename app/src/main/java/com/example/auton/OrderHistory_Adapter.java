@@ -66,7 +66,7 @@ public class OrderHistory_Adapter extends RecyclerView.Adapter<OrderHistory_Adap
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        TextView manufacturer, model, qty, price,date;
+        TextView manufacturer, model, qty, price, date;
         ImageView imageView;
 
         public ViewHold(@NonNull View itemView) {

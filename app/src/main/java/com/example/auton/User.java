@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class User {
-    private String Name,Username,EmailId,ContactNo;
+    private String Name, Username, EmailId, ContactNo;
 
     public User(String name, String username, String emailId, String contactNo) {
         Name = name;

@@ -1,11 +1,11 @@
 package com.example.auton;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityUserViewTyresWheelcareBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -17,17 +17,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class user_view_TyresWheelcare extends AppCompatActivity {
+    DatabaseReference databaseReference;
     private ActivityUserViewTyresWheelcareBinding binding;
     private TyresWheelcare_Adapter tyresWheelcareAdapter;
-    private ArrayList<TyresWheelcare_ModelClass> tyreswheelcareList=new ArrayList<>();
-    DatabaseReference databaseReference;
+    private ArrayList<TyresWheelcare_ModelClass> tyreswheelcareList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityUserViewTyresWheelcareBinding.inflate(getLayoutInflater());
+        binding = ActivityUserViewTyresWheelcareBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         binding.rvTyreWheelcare.setAdapter(tyresWheelcareAdapter);
 
@@ -43,14 +44,15 @@ public class user_view_TyresWheelcare extends AppCompatActivity {
                     tyreswheelcareList.add(ss);
                 }
 
-                tyresWheelcareAdapter =new TyresWheelcare_Adapter(user_view_TyresWheelcare.this,tyreswheelcareList);
+                tyresWheelcareAdapter = new TyresWheelcare_Adapter(user_view_TyresWheelcare.this, tyreswheelcareList);
                 binding.rvTyreWheelcare.setAdapter(tyresWheelcareAdapter);
 
                 tyresWheelcareAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -1,11 +1,11 @@
 package com.example.auton;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityAdminViewPurchaseHistoryBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -17,14 +17,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class admin_viewPurchaseHistory extends AppCompatActivity {
-private ActivityAdminViewPurchaseHistoryBinding binding;
     DatabaseReference databaseReference;
+    ArrayList<OrderHistory_ModelClass> list = new ArrayList<>();
+    private ActivityAdminViewPurchaseHistoryBinding binding;
     private admin_OrderHistory_Adapter orderHistoryAdapter;
-    ArrayList<OrderHistory_ModelClass> list=new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityAdminViewPurchaseHistoryBinding.inflate(getLayoutInflater());
+        binding = ActivityAdminViewPurchaseHistoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");

@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Detailing_Adapter extends RecyclerView.Adapter<Detailing_Adapter.ViewHold>{
-    private ArrayList<Accessories_ModelClass> dataList;
+public class Detailing_Adapter extends RecyclerView.Adapter<Detailing_Adapter.ViewHold> {
     private final Context context;
+    private ArrayList<Accessories_ModelClass> dataList;
     private String title;
 
     public Detailing_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
@@ -23,6 +23,7 @@ public class Detailing_Adapter extends RecyclerView.Adapter<Detailing_Adapter.Vi
         this.title = key;
 
     }
+
     @NonNull
     @Override
     public Detailing_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -30,10 +31,10 @@ public class Detailing_Adapter extends RecyclerView.Adapter<Detailing_Adapter.Vi
         return new Detailing_Adapter.ViewHold(view);
     }
 
-    public void onBindViewHolder(Detailing_Adapter.ViewHold holder, int position){
+    public void onBindViewHolder(Detailing_Adapter.ViewHold holder, int position) {
         holder.textView.setText(title);
-        holder.recyclerView.setLayoutManager(new GridLayoutManager(context,2));
-        holder.recyclerView.setAdapter(new Detailing_Adapter2(context,dataList));
+        holder.recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
+        holder.recyclerView.setAdapter(new Detailing_Adapter2(context, dataList));
     }
 
     public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
@@ -49,14 +50,16 @@ public class Detailing_Adapter extends RecyclerView.Adapter<Detailing_Adapter.Vi
     public int getItemCount() {
         return 1;
     }
+
     public class ViewHold extends RecyclerView.ViewHolder {
         TextView textView;
         RecyclerView recyclerView;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
 
-            recyclerView=itemView.findViewById(R.id.rv);
-            textView=itemView.findViewById(R.id.tvTitle);
+            recyclerView = itemView.findViewById(R.id.rv);
+            textView = itemView.findViewById(R.id.tvTitle);
 
         }
     }

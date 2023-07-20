@@ -85,22 +85,6 @@ public class BookedService_Adapter extends RecyclerView.Adapter<BookedService_Ad
         } else {
             holder.tv.setVisibility(View.VISIBLE);
         }
-
-
-
-/*
-        holder.btn_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                user_View_Booked_Service.viewBookedService_interface.view(key,position);
-
-                Toast.makeText(context, "KEY: "+key, Toast.LENGTH_SHORT).show();
-
-            }
-        });
-*/
-
-
     }
 
     public void filterList(ArrayList<BookedService> filteredlist) {

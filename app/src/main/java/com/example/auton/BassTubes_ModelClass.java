@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class BassTubes_ModelClass {
-    private String Color,Design,Dimension,Frequency,Image,Manufacturer,Model,PowerOutput,Price,Quantity,SalientFeature,Sensitivity,Weight;
+    private String Color, Design, Dimension, Frequency, Image, Manufacturer, Model, PowerOutput, Price, Quantity, SalientFeature, Sensitivity, Weight;
 
     public BassTubes_ModelClass() {
     }

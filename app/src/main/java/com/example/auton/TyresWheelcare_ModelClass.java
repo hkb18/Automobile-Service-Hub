@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class TyresWheelcare_ModelClass {
-    private String Brand,Image,Features,Model,Price,RimSize,Width;
+    private String Brand, Image, Features, Model, Price, RimSize, Width;
 
     public TyresWheelcare_ModelClass() {
     }

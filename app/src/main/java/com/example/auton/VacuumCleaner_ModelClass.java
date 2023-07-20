@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class VacuumCleaner_ModelClass {
-    private String Color,Dimension,Image,ItemsIncluded,Manufacturer,Model,OperatingVoltage,Price,Quantity,Weight;
+    private String Color, Dimension, Image, ItemsIncluded, Manufacturer, Model, OperatingVoltage, Price, Quantity, Weight;
 
     public VacuumCleaner_ModelClass() {
     }

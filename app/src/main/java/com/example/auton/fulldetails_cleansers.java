@@ -22,8 +22,8 @@ public class fulldetails_cleansers extends AppCompatActivity {
     DatabaseReference databaseReference;
     SharedPreferences sh;
     String s1, key, quantityStr, dimensionStr, imageStr, priceStr, weightStr, boxincludeStr, brandStr, categoryStr, itemformStr, volumeStr, root;
+    String model = "";
     private ActivityFulldetailsCleansersBinding binding;
-    String model="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,6 @@ public class fulldetails_cleansers extends AppCompatActivity {
         key = extras.getString("key");
 
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
-        //root=databaseReference.getRoot().toString();
 
         databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").addValueEventListener(new ValueEventListener() {
             @Override
@@ -142,60 +141,11 @@ public class fulldetails_cleansers extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String qtyStr = snapshot.child("quantity").getValue().toString();
                     Integer qty = Integer.parseInt(qtyStr);
-                    //  qty--;
                     modelClass.setTotalQty(qtyStr);
                     if (qty <= 0) {
                         Toast.makeText(fulldetails_cleansers.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                     } else {
-                     /*   databaseReference.child("CART").child(s1).child(key).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                String qtyStr=snapshot.child("quantity").getValue(String.class);
-                                Integer qty=Integer.parseInt(qtyStr);
-                                cart_ModelClass cart= snapshot.getValue(cart_ModelClass.class);
-                                cart.setQuantity(qty.toString());
-                                databaseReference.child("CART").child(s1).child(keyz).setValue(cart);
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });*/
-
-
                         databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
-
-                    /*    databaseReference.child("CART").child(s1).child(key).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                String qtyStr = snapshot.child("quantity").getValue(String.class);
-                                Integer qty = Integer.parseInt(qtyStr);
-                                qty++;
-                                cart_ModelClass cart = snapshot.getValue(cart_ModelClass.class);
-                                cart.setQuantity(qty.toString());
-                                databaseReference.child("CART").child(s1).child(key).setValue(cart);
-//                                ArrayList<cart_ModelClass> list=new ArrayList<>();
-//                                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-//                                    list.add(dataSnapshot.getValue(cart_ModelClass.class));
-//                                }
-//                                for (cart_ModelClass x: list){
-//                                    if (x.getProductKey().equals(key)){
-//                                        Integer tempQty=Integer.parseInt(x.getQuantity());
-//                                        tempQty++;
-//                                        modelClass.setQuantity(tempQty.toString());
-//                                        snapshot.child("sd").
-//                                    }
-//                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });*/
-                        //    databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Cleansers").child(key).child("Quantity").setValue(qty.toString());
                         Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                         i.putExtra("Username", s1);
                         i.putExtra("iscart", "1");

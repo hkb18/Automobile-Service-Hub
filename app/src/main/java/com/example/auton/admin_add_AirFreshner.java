@@ -1,17 +1,16 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.auton.databinding.ActivityAdminAddAirFreshnerBinding;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,37 +30,38 @@ import java.util.Date;
 import java.util.Locale;
 
 public class admin_add_AirFreshner extends AppCompatActivity {
-    private ActivityAdminAddAirFreshnerBinding binding;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
     StorageReference storageReference;
     Uri imageUri;
     String fileName;
     DatabaseReference databaseReference;
-    String manufacturerStr,modelStr,itemformStr,colorStr,dimensionStr,weightStr,fragrenceStr,durationStr,priceStr,quantityStr;
+    String manufacturerStr, modelStr, itemformStr, colorStr, dimensionStr, weightStr, fragrenceStr, durationStr, priceStr, quantityStr;
+    private ActivityAdminAddAirFreshnerBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityAdminAddAirFreshnerBinding.inflate(getLayoutInflater());
+        binding = ActivityAdminAddAirFreshnerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         progressBar = new ProgressBar(this);
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         binding.btnAddAirFreshner.setOnClickListener(view -> {
 
-            modelStr=binding.airfreshnerModel.getText().toString();
-            itemformStr=binding.airfreshnerItemForm.getText().toString();
-            durationStr=binding.airfreshnerDuration.getText().toString();
-            colorStr=binding.airfreshnerColor.getText().toString();
-            dimensionStr=binding.airfreshnerDimensions.getText().toString();
-            weightStr=binding.airfreshnerWeight.getText().toString();
-            fragrenceStr=binding.airfreshnerFragrence.getText().toString();
-            manufacturerStr=binding.airfreshnerManufacturer.getText().toString();
-            priceStr=binding.airfreshnerPrice.getText().toString();
-            quantityStr=binding.airfreshnerQuantity.getText().toString();
+            modelStr = binding.airfreshnerModel.getText().toString();
+            itemformStr = binding.airfreshnerItemForm.getText().toString();
+            durationStr = binding.airfreshnerDuration.getText().toString();
+            colorStr = binding.airfreshnerColor.getText().toString();
+            dimensionStr = binding.airfreshnerDimensions.getText().toString();
+            weightStr = binding.airfreshnerWeight.getText().toString();
+            fragrenceStr = binding.airfreshnerFragrence.getText().toString();
+            manufacturerStr = binding.airfreshnerManufacturer.getText().toString();
+            priceStr = binding.airfreshnerPrice.getText().toString();
+            quantityStr = binding.airfreshnerQuantity.getText().toString();
 
-            if(modelStr.isEmpty()||fragrenceStr.isEmpty()||itemformStr.isEmpty()||durationStr.isEmpty()|| colorStr.isEmpty() || dimensionStr.isEmpty() || weightStr.isEmpty() || manufacturerStr.isEmpty() ||priceStr.isEmpty() ||  quantityStr.isEmpty()) {
+            if (modelStr.isEmpty() || fragrenceStr.isEmpty() || itemformStr.isEmpty() || durationStr.isEmpty() || colorStr.isEmpty() || dimensionStr.isEmpty() || weightStr.isEmpty() || manufacturerStr.isEmpty() || priceStr.isEmpty() || quantityStr.isEmpty()) {
                 Toast.makeText(admin_add_AirFreshner.this, "Please enter all details", Toast.LENGTH_SHORT).show();
             } else {
                 databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -88,22 +88,23 @@ public class admin_add_AirFreshner extends AppCompatActivity {
         });
     }
 
-    private void selectImage(){
-        Intent intent=new Intent();
+    private void selectImage() {
+        Intent intent = new Intent();
         intent.setType("image/+");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,100);
+        startActivityForResult(intent, 100);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==100 && data != null && data.getData() != null){
-            imageUri=data.getData();
+        if (requestCode == 100 && data != null && data.getData() != null) {
+            imageUri = data.getData();
             binding.ivAirFreshner.setImageURI(imageUri);
         }
     }
+
     private void uploadImage() {
         if (imageUri != null) {
             progressDialog = new ProgressDialog(this);
@@ -136,8 +137,7 @@ public class admin_add_AirFreshner extends AppCompatActivity {
                 }
             });
             uploadtoFirebase(imageUri);
-        }
-        else {
+        } else {
             Toast.makeText(this, "Please select Image", Toast.LENGTH_SHORT).show();
         }
 
@@ -145,28 +145,15 @@ public class admin_add_AirFreshner extends AppCompatActivity {
 
     private void uploadtoFirebase(Uri uri) {
 
-
-        //storageReference= storageReference.child(System.currentTimeMillis()+"."+getFileExtension(uri));
-        storageReference=storageReference.child("images/").child(fileName);
+        storageReference = storageReference.child("images/").child(fileName);
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                       /* databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Image").setValue(uri.toString());
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Model").setValue(modelStr);
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("ItemForm").setValue(itemformStr);
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Color").setValue(colorStr);
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Dimenension").setValue(dimensionStr);
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Weight").setValue(weightStr);
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Duration").setValue(durationStr);
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Fragrence").setValue(fragrenceStr);
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Price").setValue(priceStr);
-                        databaseReference.child("Accessories").child("FLOORMATS_CUSHIONS").child("AirFreshner").child(modelStr).child("Quantity").setValue(quantityStr);
-                        */
-                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+
+                        Accessories_ModelClass modelClass = new Accessories_ModelClass();
                         modelClass.setBoxIncluded("");
                         // modelClass.setBoxIncludes();
                         modelClass.setBrand("");

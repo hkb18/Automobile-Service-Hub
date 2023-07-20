@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class MobileHolder_ModelClass {
-    String Image,Model,Dimension,Weight,Color,ItemIncluded,Manufacturer,Price,Quantity;
+    String Image, Model, Dimension, Weight, Color, ItemIncluded, Manufacturer, Price, Quantity;
 
     public MobileHolder_ModelClass() {
     }

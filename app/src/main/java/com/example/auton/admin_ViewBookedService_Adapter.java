@@ -42,7 +42,7 @@ public class admin_ViewBookedService_Adapter extends RecyclerView.Adapter<admin_
         holder.workshop.setText(bookedService.getWorkshop());
         holder.mechanic.setText(bookedService.getAssignedMechanic());
 
-        if (bookedService.getWorkshop()==null || bookedService.getAssignedMechanic()==null) {
+        if (bookedService.getWorkshop() == null || bookedService.getAssignedMechanic() == null) {
             holder.llMechanic.setVisibility(View.GONE);
             holder.llWorkshop.setVisibility(View.GONE);
             holder.tv.setVisibility(View.VISIBLE);
@@ -65,7 +65,7 @@ public class admin_ViewBookedService_Adapter extends RecyclerView.Adapter<admin_
 
     public class ViewHold extends RecyclerView.ViewHolder {
         TextView carBrand, carModel, serviceType, date, latitude, longitude, servicetime, serviceName, customer, workshop, mechanic, tv;
-LinearLayout llWorkshop,llMechanic;
+        LinearLayout llWorkshop, llMechanic;
 
         public ViewHold(@NonNull View itemView) {
             super(itemView);

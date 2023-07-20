@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class ScreensSpeakers_ModelClass {
-    private String Dimension,DisplayType,Image,Manufacturer,Model,OSType,Price,Quantity,RAM,ROM,ScreenSize,Weight;
+    private String Dimension, DisplayType, Image, Manufacturer, Model, OSType, Price, Quantity, RAM, ROM, ScreenSize, Weight;
 
 
     public ScreensSpeakers_ModelClass() {

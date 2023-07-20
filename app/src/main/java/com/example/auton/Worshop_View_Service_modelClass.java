@@ -1,13 +1,13 @@
 package com.example.auton;
 
 public class Worshop_View_Service_modelClass {
-    private String AssignedMechanic,CarBrand, CarModel, Date ,Image, Latitude, Longitude, Price, ServiceTime, ServiceType, Username,Key,ServiceName, Workshop,ServiceStatus,ContactNo;
-    int ACCEPT_SERVICE=3;
+    int ACCEPT_SERVICE = 3;
+    private String AssignedMechanic, CarBrand, CarModel, Date, Image, Latitude, Longitude, Price, ServiceTime, ServiceType, Username, Key, ServiceName, Workshop, ServiceStatus, ContactNo;
 
     public Worshop_View_Service_modelClass() {
     }
 
-    public Worshop_View_Service_modelClass(String ContactNo, String ServiceStatus,String assignedMechanic, String carBrand, String carModel, String date, String image, String latitude, String longitude, String price, String serviceTime, String serviceType, String username, String key, String serviceName, String workshop, int ACCEPT_SERVICE) {
+    public Worshop_View_Service_modelClass(String ContactNo, String ServiceStatus, String assignedMechanic, String carBrand, String carModel, String date, String image, String latitude, String longitude, String price, String serviceTime, String serviceType, String username, String key, String serviceName, String workshop, int ACCEPT_SERVICE) {
         AssignedMechanic = assignedMechanic;
         CarBrand = carBrand;
         CarModel = carModel;

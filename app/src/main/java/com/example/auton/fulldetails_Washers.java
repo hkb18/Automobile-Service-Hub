@@ -140,13 +140,11 @@ public class fulldetails_Washers extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String qtyStr = snapshot.child("quantity").getValue().toString();
                     Integer qty = Integer.parseInt(qtyStr);
-                    //  qty--;
                     modelClass.setTotalQty(qtyStr);
                     if (qty <= 0) {
                         Toast.makeText(fulldetails_Washers.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                     } else {
                         databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
-                        //  databaseReference.child("Accessories").child("CARCARE_PURIFIERS").child("Washers").child(modelStr).child("Quantity").setValue(qty.toString());
                         Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                         i.putExtra("Username", s1);
                         i.putExtra("iscart", "1");

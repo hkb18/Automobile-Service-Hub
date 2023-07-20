@@ -1,9 +1,7 @@
 package com.example.auton;
 
-import org.checkerframework.checker.units.qual.K;
-
 public class Detailing_ModelClass {
-    String BoxIncludes,Brand,Dimension,Image,ItemForm,Price,Quantity,Volume,Weight,Key;
+    String BoxIncludes, Brand, Dimension, Image, ItemForm, Price, Quantity, Volume, Weight, Key;
 
     public Detailing_ModelClass() {
     }

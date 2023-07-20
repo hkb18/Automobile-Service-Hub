@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class HID_ModelClass {
-    String Image,Model,Dimension,Watttage,Weight,BulbType,Position,Feature,Brand,Price,Quantity;
+    String Image, Model, Dimension, Watttage, Weight, BulbType, Position, Feature, Brand, Price, Quantity;
 
     public HID_ModelClass() {
     }

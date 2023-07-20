@@ -1,7 +1,5 @@
 package com.example.auton;
 
-import static android.content.ContentValues.TAG;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -44,11 +42,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 import org.json.JSONObject;
 
@@ -62,31 +57,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MapsActivity_Workshop extends FragmentActivity implements OnMapReadyCallback , LocationListener {
+public class MapsActivity_Workshop extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
-    private Geocoder geocoder;
-    private GoogleMap mMap;
-    private ActivityMaps2Binding binding;
     double longitudeGPS, latitudeGPS;
-    private int ACCESS_LOCATION_REQUEST_CODE = 100;
-    String longitudeStr,latitudeStr,activityStr, workshopNameStr, userLat, userLong, userName;
+    String longitudeStr, latitudeStr, activityStr, workshopNameStr, userLat, userLong, userName;
     Button currentlocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     CardView cardView;
     TextView textView;
     String provider;
-    private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
-
-
-
     MarkerOptions origin, destination;
     LocationManager locationManager;
+    private Geocoder geocoder;
+    private GoogleMap mMap;
+    private ActivityMaps2Binding binding;
+    private int ACCESS_LOCATION_REQUEST_CODE = 100;
+    private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       // binding= ActivityMaps2Binding.inflate(getLayoutInflater());
+        // binding= ActivityMaps2Binding.inflate(getLayoutInflater());
         /*binding= ActivityMaps2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());*/
         setContentView(R.layout.activity_maps_workshop);
@@ -98,36 +90,36 @@ public class MapsActivity_Workshop extends FragmentActivity implements OnMapRead
         mapFragment.getMapAsync(this);
 
 
-        cardView=findViewById(R.id.textview);
-        textView=findViewById(R.id.textview1);
-        currentlocation=findViewById(R.id.btn);
+        cardView = findViewById(R.id.textview);
+        textView = findViewById(R.id.textview1);
+        currentlocation = findViewById(R.id.btn);
 
         geocoder = new Geocoder(this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        Bundle extras=getIntent().getExtras();
-        longitudeStr=extras.getString("longitude");
-        latitudeStr=extras.getString("latitude");
-        activityStr=extras.getString("activity");
-        if (activityStr.equals("workshopMap")){
+        Bundle extras = getIntent().getExtras();
+        longitudeStr = extras.getString("longitude");
+        latitudeStr = extras.getString("latitude");
+        activityStr = extras.getString("activity");
+        if (activityStr.equals("workshopMap")) {
             //currentlocation.setVisibility(View.GONE);
             currentlocation.setText("OK");
             cardView.setVisibility(View.GONE);
             // binding.textview.setVisibility(View.GONE);
-            workshopNameStr=extras.getString("name");
-            userLong=extras.getString("userLongitude");
-            userLat=extras.getString("userLatitude");
-            userName=extras.getString("userName");
+            workshopNameStr = extras.getString("name");
+            userLong = extras.getString("userLongitude");
+            userLat = extras.getString("userLatitude");
+            userName = extras.getString("userName");
         }
 
         currentlocation.setOnClickListener(view -> {
-            if (activityStr.equals("workshopMap")){
+            if (activityStr.equals("workshopMap")) {
                 startActivity(new Intent(this, workshop_HomePage.class));
                 finishAffinity();
             }
         });
 
-        Toast.makeText(this, "LONG"+longitudeStr, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "LAT"+latitudeStr, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "LONG" + longitudeStr, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "LAT" + latitudeStr, Toast.LENGTH_SHORT).show();
 
         /* enable location and permissions */
         enableLocationSettings();
@@ -143,7 +135,7 @@ public class MapsActivity_Workshop extends FragmentActivity implements OnMapRead
 
     private void enableLocationSettings() {
 
-        LocationRequest locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10*1000)
+        LocationRequest locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10 * 1000)
                 .setWaitForAccurateLocation(false)
                 .setMinUpdateIntervalMillis(3000)
                 .setMaxUpdateDelayMillis(100)
@@ -259,11 +251,11 @@ public class MapsActivity_Workshop extends FragmentActivity implements OnMapRead
             });*/
 
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     private void enableUserLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling

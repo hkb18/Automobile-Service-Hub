@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class Batteries_ModelClass {
-    private String Brand,Image,Key,Price,Voltage,YrsofWarrenty;
+    private String Brand, Image, Key, Price, Voltage, YrsofWarrenty;
 
     public Batteries_ModelClass() {
     }

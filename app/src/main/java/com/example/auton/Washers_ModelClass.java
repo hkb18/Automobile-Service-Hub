@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class Washers_ModelClass {
-    String Color,Dimension,HoseLength,Image,Manufacturer,MaxPressure,Model,PowerOutput,Price,Quantity,Weight;
+    String Color, Dimension, HoseLength, Image, Manufacturer, MaxPressure, Model, PowerOutput, Price, Quantity, Weight;
 
     public Washers_ModelClass() {
     }

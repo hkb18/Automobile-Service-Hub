@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ACServiceRepair_Adapter extends RecyclerView.Adapter<ACServiceRepair_Adapter.ViewHold> {
-    private ArrayList<ACServiceRepair_ModelClass> dataList;
     private final Context context;
+    private ArrayList<ACServiceRepair_ModelClass> dataList;
 
 
     public ACServiceRepair_Adapter(Context fragment, ArrayList<ACServiceRepair_ModelClass> dataList) {
@@ -24,6 +24,7 @@ public class ACServiceRepair_Adapter extends RecyclerView.Adapter<ACServiceRepai
         this.context = fragment;
 
     }
+
     @NonNull
     @Override
     public ACServiceRepair_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,8 +32,8 @@ public class ACServiceRepair_Adapter extends RecyclerView.Adapter<ACServiceRepai
         return new ACServiceRepair_Adapter.ViewHold(view);
     }
 
-    public void onBindViewHolder(ACServiceRepair_Adapter.ViewHold holder, int position){
-        ACServiceRepair_ModelClass ss=dataList.get(position);
+    public void onBindViewHolder(ACServiceRepair_Adapter.ViewHold holder, int position) {
+        ACServiceRepair_ModelClass ss = dataList.get(position);
         holder.name.setText(ss.getServiceName());
         holder.performanceService.setText(ss.getPerformanceServices());
         holder.essentialService.setText(ss.getEssentialServices());
@@ -42,9 +43,9 @@ public class ACServiceRepair_Adapter extends RecyclerView.Adapter<ACServiceRepai
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), user_Book_Service.class);
-                i.putExtra("Service",ss.getServiceName());
-                i.putExtra("servicetype","AC Service and Repair");
-                i.putExtra("Price",ss.getPrice());
+                i.putExtra("Service", ss.getServiceName());
+                i.putExtra("servicetype", "AC Service and Repair");
+                i.putExtra("Price", ss.getPrice());
                 context.startActivity(i);
             }
         });
@@ -53,7 +54,7 @@ public class ACServiceRepair_Adapter extends RecyclerView.Adapter<ACServiceRepai
     public void filterList(ArrayList<ScreensSpeakers_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
-       // dataList = filteredlist;
+        // dataList = filteredlist;
         // below line is to notify our adapter
         // as change in recycler view data.
         notifyDataSetChanged();
@@ -67,16 +68,17 @@ public class ACServiceRepair_Adapter extends RecyclerView.Adapter<ACServiceRepai
     public class ViewHold extends RecyclerView.ViewHolder {
         Button buynow;
         CardView cardView;
-        TextView name,additionalService,essentialService,performanceService,price;
+        TextView name, additionalService, essentialService, performanceService, price;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.acservicerepairName);
-            additionalService=itemView.findViewById(R.id.acservicerepairAdditionalService);
-            essentialService=itemView.findViewById(R.id.acservicerepairEssentialService);
-            performanceService=itemView.findViewById(R.id.acservicerepairPerformanceService);
-            price=itemView.findViewById(R.id.acservicerepairPrice);
-            buynow=itemView.findViewById(R.id.btn_acservicerepairBuyNow);
-            cardView=itemView.findViewById(R.id.cvAcServiceRepair);
+            name = itemView.findViewById(R.id.acservicerepairName);
+            additionalService = itemView.findViewById(R.id.acservicerepairAdditionalService);
+            essentialService = itemView.findViewById(R.id.acservicerepairEssentialService);
+            performanceService = itemView.findViewById(R.id.acservicerepairPerformanceService);
+            price = itemView.findViewById(R.id.acservicerepairPrice);
+            buynow = itemView.findViewById(R.id.btn_acservicerepairBuyNow);
+            cardView = itemView.findViewById(R.id.cvAcServiceRepair);
         }
     }
 }

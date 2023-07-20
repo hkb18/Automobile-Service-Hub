@@ -1,11 +1,11 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.auton.databinding.ActivityAdminAddDentingPaintingBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -15,24 +15,25 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class admin_add_DentingPainting extends AppCompatActivity {
-    private ActivityAdminAddDentingPaintingBinding binding;
     DatabaseReference databaseReference;
-    String servicenameStr,wtsincludedStr,priceStr;
+    String servicenameStr, wtsincludedStr, priceStr;
+    private ActivityAdminAddDentingPaintingBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityAdminAddDentingPaintingBinding.inflate(getLayoutInflater());
+        binding = ActivityAdminAddDentingPaintingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         binding.btnAddService.setOnClickListener(view -> {
-            servicenameStr=binding.serviceName.getText().toString();
-            wtsincludedStr=binding.wtsIncluded.getText().toString();
-            priceStr=binding.price.getText().toString();
+            servicenameStr = binding.serviceName.getText().toString();
+            wtsincludedStr = binding.wtsIncluded.getText().toString();
+            priceStr = binding.price.getText().toString();
 
-            if (servicenameStr.isEmpty()||wtsincludedStr.isEmpty()||priceStr.isEmpty()){
+            if (servicenameStr.isEmpty() || wtsincludedStr.isEmpty() || priceStr.isEmpty()) {
                 Toast.makeText(this, "Please Enter all details", Toast.LENGTH_SHORT).show();
-            }else {
+            } else {
                 databaseReference.child("SERVICE_TYPE").child("DENTING_PAINITNG").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

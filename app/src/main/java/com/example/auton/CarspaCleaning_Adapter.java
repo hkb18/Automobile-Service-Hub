@@ -9,14 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class CarspaCleaning_Adapter extends RecyclerView.Adapter<CarspaCleaning_Adapter.ViewHold> {
-    private ArrayList<CarspaCleaning_ModelClass> dataList;
     private final Context context;
+    private ArrayList<CarspaCleaning_ModelClass> dataList;
 
 
     public CarspaCleaning_Adapter(Context fragment, ArrayList<CarspaCleaning_ModelClass> dataList) {
@@ -24,6 +23,7 @@ public class CarspaCleaning_Adapter extends RecyclerView.Adapter<CarspaCleaning_
         this.context = fragment;
 
     }
+
     @NonNull
     @Override
     public CarspaCleaning_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,8 +31,8 @@ public class CarspaCleaning_Adapter extends RecyclerView.Adapter<CarspaCleaning_
         return new CarspaCleaning_Adapter.ViewHold(view);
     }
 
-    public void onBindViewHolder(CarspaCleaning_Adapter.ViewHold holder, int position){
-        CarspaCleaning_ModelClass ss=dataList.get(position);
+    public void onBindViewHolder(CarspaCleaning_Adapter.ViewHold holder, int position) {
+        CarspaCleaning_ModelClass ss = dataList.get(position);
         holder.servicename.setText(ss.getServiceName());
         holder.wtsincluded.setText(ss.getWtsIncluded());
         holder.price.setText(ss.getPrice());
@@ -40,9 +40,9 @@ public class CarspaCleaning_Adapter extends RecyclerView.Adapter<CarspaCleaning_
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), user_Book_Service.class);
-                i.putExtra("Service",ss.getServiceName());
-                i.putExtra("servicetype","Denting and Painting");
-                i.putExtra("Price",ss.getPrice());
+                i.putExtra("Service", ss.getServiceName());
+                i.putExtra("servicetype", "Denting and Painting");
+                i.putExtra("Price", ss.getPrice());
                 context.startActivity(i);
             }
         });
@@ -51,7 +51,7 @@ public class CarspaCleaning_Adapter extends RecyclerView.Adapter<CarspaCleaning_
     public void filterList(ArrayList<CarspaCleaning_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
-       // dataList = filteredlist;
+        // dataList = filteredlist;
         // below line is to notify our adapter
         // as change in recycler view data.
         notifyDataSetChanged();
@@ -64,15 +64,15 @@ public class CarspaCleaning_Adapter extends RecyclerView.Adapter<CarspaCleaning_
 
     public class ViewHold extends RecyclerView.ViewHolder {
         Button buynow;
-        CardView cardView;
-        TextView servicename,wtsincluded,price;
+        TextView servicename, wtsincluded, price;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
 
-            wtsincluded=itemView.findViewById(R.id.dentingpaintingWtsIncluded);
-            servicename=itemView.findViewById(R.id.dentingpaintingServiceName);
-            price=itemView.findViewById(R.id.dentingpaintingPrice);
-            buynow=itemView.findViewById(R.id.btn_dentingpaintingBuyNow);
+            wtsincluded = itemView.findViewById(R.id.dentingpaintingWtsIncluded);
+            servicename = itemView.findViewById(R.id.dentingpaintingServiceName);
+            price = itemView.findViewById(R.id.dentingpaintingPrice);
+            buynow = itemView.findViewById(R.id.btn_dentingpaintingBuyNow);
         }
     }
 }

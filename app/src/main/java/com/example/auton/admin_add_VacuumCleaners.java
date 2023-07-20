@@ -1,20 +1,19 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -109,19 +108,20 @@ public class admin_add_VacuumCleaners extends AppCompatActivity {
             }
         });
     }
-    private void selectImage(){
-        Intent intent=new Intent();
+
+    private void selectImage() {
+        Intent intent = new Intent();
         intent.setType("image/+");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,100);
+        startActivityForResult(intent, 100);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==100 && data != null && data.getData() != null){
-            imageUri=data.getData();
+        if (requestCode == 100 && data != null && data.getData() != null) {
+            imageUri = data.getData();
             imageView.setImageURI(imageUri);
         }
     }
@@ -158,38 +158,22 @@ public class admin_add_VacuumCleaners extends AppCompatActivity {
                 }
             });
             uploadtoFirebase(imageUri);
-        }
-        else {
+        } else {
             Toast.makeText(this, "Please select Image", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     private void uploadtoFirebase(Uri uri) {
-
-
-        //storageReference= storageReference.child(System.currentTimeMillis()+"."+getFileExtension(uri));
-        storageReference=storageReference.child("images/").child(fileName);
+        storageReference = storageReference.child("images/").child(fileName);
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        AndroidScreen_Model model= new AndroidScreen_Model(uri.toString());
-//                        String modelid=databaseReference.push().getKey();//to generate random key
-                      /*  databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Image").setValue(uri.toString());
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Model").setValue(modelStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("OperatingVoltage").setValue(operatingVoltageStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Color").setValue(colorStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Dimension").setValue(dimensionStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Weight").setValue(weightStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("ItemsIncluded").setValue(itemsIncludedStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Price").setValue(priceStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("VacuumCleaners").child(modelStr).child("Quantity").setValue(quantityStr);
-*/
-                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+                        AndroidScreen_Model model = new AndroidScreen_Model(uri.toString());
+                        Accessories_ModelClass modelClass = new Accessories_ModelClass();
                         modelClass.setBoxIncluded("");
                         // modelClass.setBoxIncludes();
                         modelClass.setBrand("");

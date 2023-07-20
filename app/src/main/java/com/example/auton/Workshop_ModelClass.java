@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class Workshop_ModelClass {
-    private String Name,Username,Email_Id,ContactNo;
+    private String Name, Username, Email_Id, ContactNo;
 
     public Workshop_ModelClass() {
     }

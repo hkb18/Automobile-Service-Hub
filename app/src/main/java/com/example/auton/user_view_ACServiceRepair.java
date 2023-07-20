@@ -1,11 +1,11 @@
 package com.example.auton;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityUserViewAcserviceRepairBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -17,17 +17,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class user_view_ACServiceRepair extends AppCompatActivity {
+    DatabaseReference databaseReference;
     private ActivityUserViewAcserviceRepairBinding binding;
     private ACServiceRepair_Adapter acservicerepairAdapter;
-    private ArrayList<ACServiceRepair_ModelClass> acservicerepairList=new ArrayList<>();
-    DatabaseReference databaseReference;
+    private ArrayList<ACServiceRepair_ModelClass> acservicerepairList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityUserViewAcserviceRepairBinding.inflate(getLayoutInflater());
+        binding = ActivityUserViewAcserviceRepairBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         binding.rvACServiceRepair.setAdapter(acservicerepairAdapter);
 
@@ -43,14 +44,15 @@ public class user_view_ACServiceRepair extends AppCompatActivity {
                     acservicerepairList.add(ss);
                 }
 
-                acservicerepairAdapter =new ACServiceRepair_Adapter(user_view_ACServiceRepair.this,acservicerepairList);
+                acservicerepairAdapter = new ACServiceRepair_Adapter(user_view_ACServiceRepair.this, acservicerepairList);
                 binding.rvACServiceRepair.setAdapter(acservicerepairAdapter);
 
                 acservicerepairAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

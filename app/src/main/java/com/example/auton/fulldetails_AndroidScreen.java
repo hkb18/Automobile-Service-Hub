@@ -66,8 +66,6 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
                     priceStr = snapshot.child(key).child("price").getValue(String.class);
                     binding.androidscreenPrice.setText(priceStr);
 
-                    /*quantityStr=snapshot.child(key).child("Quantity").getValue(String.class);
-                    binding.androidscreen.setText(modelStr);*/
                     ramStr = snapshot.child(key).child("ram").getValue(String.class);
                     binding.androidscreenRAM.setText(ramStr);
 
@@ -148,13 +146,11 @@ public class fulldetails_AndroidScreen extends AppCompatActivity implements Andr
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String qtyStr = snapshot.child("quantity").getValue().toString();
                     Integer qty = Integer.parseInt(qtyStr);
-                    //qty--;
                     modelClass.setTotalQty(qtyStr);
                     if (qty <= 0) {
                         Toast.makeText(fulldetails_AndroidScreen.this, "OUT OF STOCK!!!!", Toast.LENGTH_SHORT).show();
                     } else {
                         databaseReference.child("CART").child(s1).child(key).setValue(modelClass);
-                        // databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("AndroidScreens").child(modelStr).child("Quantity").setValue(qty.toString());
                         Intent i = new Intent(getApplicationContext(), user_HomePage.class);
                         i.putExtra("Username", s1);
                         i.putExtra("iscart", "1");

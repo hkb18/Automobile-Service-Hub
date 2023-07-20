@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class Charger_ModelClass {
-    String Image,Model,Dimension,OperatingVoltage,Weight,Color,ItemIncluded,Feature,Manufacturer,Price,Quantity;
+    String Image, Model, Dimension, OperatingVoltage, Weight, Color, ItemIncluded, Feature, Manufacturer, Price, Quantity;
 
     public Charger_ModelClass() {
     }

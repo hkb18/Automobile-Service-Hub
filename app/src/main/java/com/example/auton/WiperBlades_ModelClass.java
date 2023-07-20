@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class WiperBlades_ModelClass {
-    String Brand,Dimension,Image,Material,Model,Position,Price,Quantity,Weight;
+    String Brand, Dimension, Image, Material, Model, Position, Price, Quantity, Weight;
 
     public WiperBlades_ModelClass() {
     }

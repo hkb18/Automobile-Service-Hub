@@ -47,7 +47,6 @@ public class AndroidScreen_ItemAdapter extends RecyclerView.Adapter<AndroidScree
             public void onClick(View v) {
 
                 Intent i = new Intent(context.getApplicationContext(), fulldetails_AndroidScreen.class);
-                //   fulldetails_AndroidScreen.androidScreen_interface.details(model);
                 i.putExtra("key", ss.getModel());
                 context.startActivity(i);
             }

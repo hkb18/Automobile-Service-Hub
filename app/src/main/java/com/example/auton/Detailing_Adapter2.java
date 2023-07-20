@@ -17,8 +17,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class Detailing_Adapter2 extends RecyclerView.Adapter<Detailing_Adapter2.ViewHold> {
-    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
+    private ArrayList<Accessories_ModelClass> dataList;
 
 
     public Detailing_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
@@ -26,6 +26,7 @@ public class Detailing_Adapter2 extends RecyclerView.Adapter<Detailing_Adapter2.
         this.context = fragment;
 
     }
+
     @NonNull
     @Override
     public Detailing_Adapter2.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,14 +34,14 @@ public class Detailing_Adapter2 extends RecyclerView.Adapter<Detailing_Adapter2.
         return new Detailing_Adapter2.ViewHold(view);
     }
 
-    public void onBindViewHolder(Detailing_Adapter2.ViewHold holder, int position){
-        Accessories_ModelClass ss=dataList.get(position);
+    public void onBindViewHolder(Detailing_Adapter2.ViewHold holder, int position) {
+        Accessories_ModelClass ss = dataList.get(position);
         holder.manufacturer.setText(ss.getBrand());
-        holder.desc.setText(ss.getBoxIncluded()+ss.getVolume());
+        holder.desc.setText(ss.getBoxIncluded() + ss.getVolume());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
-        //String model= ss.getModel();
-        if(Integer.parseInt(ss.getQuantity()) == 0){
+
+        if (Integer.parseInt(ss.getQuantity()) == 0) {
             holder.tvStatus.setVisibility(View.VISIBLE);
             holder.cardView.setAlpha(0.5F);
         }
@@ -48,7 +49,7 @@ public class Detailing_Adapter2 extends RecyclerView.Adapter<Detailing_Adapter2.
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), fulldetails_Detailing.class);
-                i.putExtra("key",ss.getKey());
+                i.putExtra("key", ss.getKey());
                 context.startActivity(i);
             }
         });
@@ -71,15 +72,16 @@ public class Detailing_Adapter2 extends RecyclerView.Adapter<Detailing_Adapter2.
     public class ViewHold extends RecyclerView.ViewHolder {
         ImageView productImg;
         CardView cardView;
-        TextView manufacturer,desc,price,tvStatus;
+        TextView manufacturer, desc, price, tvStatus;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            manufacturer=itemView.findViewById(R.id.detailersManufacturer);
-            desc=itemView.findViewById(R.id.detailersDesc);
-            productImg=itemView.findViewById(R.id.detailersImg);
-            price=itemView.findViewById(R.id.detailersPrice);
-            cardView=itemView.findViewById(R.id.cvDetailers);
-            tvStatus=itemView.findViewById(R.id.tvStatus);
+            manufacturer = itemView.findViewById(R.id.detailersManufacturer);
+            desc = itemView.findViewById(R.id.detailersDesc);
+            productImg = itemView.findViewById(R.id.detailersImg);
+            price = itemView.findViewById(R.id.detailersPrice);
+            cardView = itemView.findViewById(R.id.cvDetailers);
+            tvStatus = itemView.findViewById(R.id.tvStatus);
         }
     }
 }

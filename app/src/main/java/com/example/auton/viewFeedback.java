@@ -28,18 +28,18 @@ public class viewFeedback extends AppCompatActivity {
         binding = ActivityViewFeedbackBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("FEEDBACK");
+        databaseReference = FirebaseDatabase.getInstance().getReference("FEEDBACK");
         binding.rvUsers.setHasFixedSize(true);
         binding.rvUsers.setLayoutManager(new LinearLayoutManager(this));
 
-        feedbackAdapter=new Feedback_Adapter(this,list);
+        feedbackAdapter = new Feedback_Adapter(this, list);
         binding.rvUsers.setAdapter(feedbackAdapter);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot :snapshot.getChildren()){
-                    Feedback_ModelClass feedback=dataSnapshot.getValue(Feedback_ModelClass.class);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Feedback_ModelClass feedback = dataSnapshot.getValue(Feedback_ModelClass.class);
                     list.add(feedback);
                 }
                 feedbackAdapter.notifyDataSetChanged();
@@ -47,7 +47,7 @@ public class viewFeedback extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

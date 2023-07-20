@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class OrderHistory_ModelClass {
-    String image,key,mainName,manufacturer,model,price,productKey,quantity,subName,totalQty,username;
+    String image, key, mainName, manufacturer, model, price, productKey, quantity, subName, totalQty, username;
     String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
     String date = currentDate;
 

@@ -35,7 +35,7 @@ public class LightsChargers_Adapter extends RecyclerView.Adapter<LightsChargers_
     @Override
     public void onBindViewHolder(@NonNull ViewHold holder, int position) {
 
-       holder.androidScreen.setText(dataList.get(position).getName());
+        holder.androidScreen.setText(dataList.get(position).getName());
 
 
         if (dataList.get(position).getSelected()) {
@@ -49,15 +49,13 @@ public class LightsChargers_Adapter extends RecyclerView.Adapter<LightsChargers_
         }
 
         holder.androidScreen.setOnClickListener(v -> {
-            for (int i=0; i<dataList.size(); i++){
+            for (int i = 0; i < dataList.size(); i++) {
                 dataList.get(i).setSelected(false);
             }
             dataList.get(position).setSelected(true);
             notifyDataSetChanged();
 
             user_view_LightsChargers.lightsChargersInterface.onClickItem(dataList.get(position).getName());
-            // use interface and show data in recycler view
-
         });
 
     }
@@ -70,13 +68,12 @@ public class LightsChargers_Adapter extends RecyclerView.Adapter<LightsChargers_
 
     public class ViewHold extends RecyclerView.ViewHolder {
         MaterialButton androidScreen;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
             androidScreen = itemView.findViewById(R.id.materialBtn);
         }
     }
-
-
 
 
 }

@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class CarspaCleaning_ModelClass {
-    String Price,ServiceName,WtsIncluded;
+    String Price, ServiceName, WtsIncluded;
 
     public CarspaCleaning_ModelClass() {
     }

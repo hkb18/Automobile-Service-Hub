@@ -1,12 +1,12 @@
 package com.example.auton;
 
 public class Cleaners_ModelClass {
-    String BoxIncludes,Brand,Category,Dimension,Image,ItemForm,Price,Quantity,Volume,Weight,key;
+    String BoxIncludes, Brand, Category, Dimension, Image, ItemForm, Price, Quantity, Volume, Weight, key;
 
     public Cleaners_ModelClass() {
     }
 
-    public Cleaners_ModelClass(String key,String boxIncludes, String brand, String category, String dimension, String image, String itemForm, String price, String quantity, String volume, String weight) {
+    public Cleaners_ModelClass(String key, String boxIncludes, String brand, String category, String dimension, String image, String itemForm, String price, String quantity, String volume, String weight) {
         BoxIncludes = boxIncludes;
         Brand = brand;
         Category = category;
@@ -17,7 +17,7 @@ public class Cleaners_ModelClass {
         Quantity = quantity;
         Volume = volume;
         Weight = weight;
-        this.key=key;
+        this.key = key;
     }
 
     public String getKey() {

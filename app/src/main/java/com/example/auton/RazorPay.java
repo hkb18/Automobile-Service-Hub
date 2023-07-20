@@ -31,7 +31,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
     TextView amt;
     ArrayList<cart_ModelClass> list = new ArrayList<>();
     Button payBtn;
-    String priceStr = "0", keyStr = "", pk = "", usernameStr, brandStr, modelstr, servicenameStr, serviceStr, datestr, timestr, latitudeStr, longitudeStr, activity, imgStr,contactStr;
+    String priceStr = "0", keyStr = "", pk = "", usernameStr, brandStr, modelstr, servicenameStr, serviceStr, datestr, timestr, latitudeStr, longitudeStr, activity, imgStr, contactStr;
     DatabaseReference databaseReference;
     SharedPreferences sh;
     String s1 = "";
@@ -57,7 +57,6 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
         serviceStr = getIntent().getStringExtra("ServiceName");
         datestr = getIntent().getStringExtra("Date");
         timestr = getIntent().getStringExtra("ServiceTime");
-//        dateStr2 = getIntent().getStringExtra("date");
         latitudeStr = getIntent().getStringExtra("Latitude");
         longitudeStr = getIntent().getStringExtra("Longitude");
         keyStr = getIntent().getStringExtra("key");
@@ -89,8 +88,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
 
                 // initialize json object
                 JSONObject object = new JSONObject();
-                Toast.makeText(RazorPay.this, "" + activity, Toast.LENGTH_SHORT).show();
-                Toast.makeText(RazorPay.this, "Username" + s1, Toast.LENGTH_SHORT).show();
+
                 try {
                     // to put name
                     object.put("name", "AUTOMOBILE SERVICE HUB");
@@ -130,7 +128,7 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
     @Override
     public void onPaymentSuccess(String s) {
         // this method is called on payment success.
-        Toast.makeText(this, "Payment is successful : " + s, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Payment is successful : ", Toast.LENGTH_SHORT).show();
         if (activity.equals("cart")) {
 
             databaseReference.child("CART").child(s1).addValueEventListener(new ValueEventListener() {
@@ -213,8 +211,8 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     databaseReference.child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.hasChild(s1)){
-                                contactStr=snapshot.child(s1).child("ContactNo").getValue(String.class);
+                            if (snapshot.hasChild(s1)) {
+                                contactStr = snapshot.child(s1).child("ContactNo").getValue(String.class);
 
                                 databaseReference.child("Service").child(s1).child(pk).child("Username").setValue(s1);
                                 databaseReference.child("Service").child(s1).child(pk).child("CarBrand").setValue(brandStr);
@@ -242,12 +240,9 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(getApplicationContext(), "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-
-
-
 
 
                 }
@@ -300,7 +295,6 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     });
 
 
-
                 }
 
                 @Override
@@ -322,7 +316,8 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
             oh.setModel(model);
             oh.setManufacturer(manufacturer);
             oh.setImage(image);
-            oh.setQuantity(quantity);
+            oh.setTotalQty(quantity);
+            oh.setQuantity("1");
             oh.setUsername(s1);
             oh.setMainName(mainName);
             oh.setSubName(subName);
@@ -344,24 +339,6 @@ public class RazorPay extends AppCompatActivity implements PaymentResultListener
                     Toast.makeText(RazorPay.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-            /*databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    databaseReference.child("DirectBuy_Accessories").child(s1).child(databaseReference.push().getKey()).setValue(data);
-                    Intent i = new Intent(getApplicationContext(), user_HomePage.class);
-                    i.putExtra("Username", s1);
-                    i.putExtra("deleteCart", "0");
-                    i.putExtra("iscart", "0");
-                    startActivity(i);
-                    finishAffinity();
-                    Toast.makeText(RazorPay.this, "Accessory Purchased Successfully", Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(RazorPay.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });*/
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -1,14 +1,13 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.auton.databinding.ActivityUserViewFloormatsCushionsBinding;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.auton.databinding.ActivityUserViewHornsProtectivesBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,15 +17,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class user_view_HornsProtectives extends AppCompatActivity implements HornsProtectives_Interface{
-    private ActivityUserViewHornsProtectivesBinding binding;
+public class user_view_HornsProtectives extends AppCompatActivity implements HornsProtectives_Interface {
     static HornsProtectives_Interface hornsProtectivesInterface;
     DatabaseReference databaseReference;
     String ccpModelStr;
-    private ArrayList<materialButton> list=new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> accessoriesList=new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> hornsList=new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> protectivesList=new ArrayList<>();
+    private ActivityUserViewHornsProtectivesBinding binding;
+    private ArrayList<materialButton> list = new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> hornsList = new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> protectivesList = new ArrayList<>();
     private Horns_Adapter hornsAdapter;
     private HornsProtectives_Adapter hornsProtectives_adapter;
     private Protectives_Adapter protectivesAdapter;
@@ -34,32 +33,33 @@ public class user_view_HornsProtectives extends AppCompatActivity implements Hor
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= ActivityUserViewHornsProtectivesBinding.inflate(getLayoutInflater());
+        binding = ActivityUserViewHornsProtectivesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        hornsProtectivesInterface=this;//interface
+        hornsProtectivesInterface = this;//interface
 
-        binding.rvHornsProtectives.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        hornsProtectives_adapter=new HornsProtectives_Adapter(this,list);
+        binding.rvHornsProtectives.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        hornsProtectives_adapter = new HornsProtectives_Adapter(this, list);
         binding.rvHornsProtectives.setAdapter(hornsProtectives_adapter);
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         databaseReference.child("Accessories").child("HORNS_PROTECTIVES").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
-                materialButton button1=new materialButton();
+                materialButton button1 = new materialButton();
                 button1.setName("All");
                 button1.setSelected(true);
                 list.add(button1);
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    materialButton button=new materialButton();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    materialButton button = new materialButton();
                     button.setName(dataSnapshot.getKey());
                     button.setSelected(false);
                     list.add(button);
                 }
                 hornsProtectives_adapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(user_view_HornsProtectives.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
@@ -81,14 +81,15 @@ public class user_view_HornsProtectives extends AppCompatActivity implements Hor
                     hornsList.add(ap);
                 }
 
-                hornsAdapter =new Horns_Adapter(user_view_HornsProtectives.this,hornsList, snapshot.getKey());
+                hornsAdapter = new Horns_Adapter(user_view_HornsProtectives.this, hornsList, snapshot.getKey());
                 binding.rvHorns.setAdapter(hornsAdapter);
 
                 hornsAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -108,14 +109,15 @@ public class user_view_HornsProtectives extends AppCompatActivity implements Hor
                     protectivesList.add(ap);
                 }
 
-                protectivesAdapter =new Protectives_Adapter(user_view_HornsProtectives.this,protectivesList, snapshot.getKey());
+                protectivesAdapter = new Protectives_Adapter(user_view_HornsProtectives.this, protectivesList, snapshot.getKey());
                 binding.rvProtectives.setAdapter(protectivesAdapter);
 
                 protectivesAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -129,17 +131,17 @@ public class user_view_HornsProtectives extends AppCompatActivity implements Hor
 
     @Override
     public void onClickItem(String Model) {
-        if (Model.equalsIgnoreCase("All")){
+        if (Model.equalsIgnoreCase("All")) {
             binding.rv.setVisibility(View.GONE);
             binding.scrollViewItems.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             binding.rv.setVisibility(View.VISIBLE);
             binding.scrollViewItems.setVisibility(View.GONE);
             binding.rv.setLayoutManager(new LinearLayoutManager(this));
             databaseReference.child("Accessories").child("HORNS_PROTECTIVES").child(Model).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (Model.equalsIgnoreCase("Horns")){
+                    if (Model.equalsIgnoreCase("Horns")) {
                         accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
@@ -147,8 +149,7 @@ public class user_view_HornsProtectives extends AppCompatActivity implements Hor
                         }
                         binding.rv.setAdapter(hornsAdapter);
                         hornsAdapter.notifyDataSetChanged();
-                    }
-                    else if (Model.equalsIgnoreCase("Protectives")) {
+                    } else if (Model.equalsIgnoreCase("Protectives")) {
                         accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
@@ -161,7 +162,7 @@ public class user_view_HornsProtectives extends AppCompatActivity implements Hor
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 

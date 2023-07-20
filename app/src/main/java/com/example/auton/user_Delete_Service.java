@@ -1,12 +1,12 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.auton.databinding.ActivityUserDeleteServiceBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -18,13 +18,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class user_Delete_Service extends AppCompatActivity implements OnClickInterface {
-    private ActivityUserDeleteServiceBinding binding;
     public static OnClickInterface onClickInterface;
     DatabaseReference databaseReference;
     BookedService_Delete_Adapter myAdapter;
     ArrayList<Worshop_View_Service_modelClass> list;
     SharedPreferences sh;
     String s1 = "";
+    private ActivityUserDeleteServiceBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

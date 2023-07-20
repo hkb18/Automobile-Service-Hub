@@ -74,8 +74,6 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         public void onLocationChanged(Location location) {
             longitudeBest = location.getLongitude();
             latitudeBest = location.getLatitude();
-
-            Toast.makeText(user_Book_Service.this, "Best " + longitudeBest, Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -113,7 +111,6 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                     resolutionForResult.launch(intentSenderRequest);
                 } catch (Exception exception) {
                     Toast.makeText(this, "" + exception, Toast.LENGTH_SHORT).show();
-                    Log.d("TAG", "enableLocationSettings: " + exception);
                 }
             }
         });
@@ -161,7 +158,6 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.v("Log_tag", "Tick of Progress"+ i+ millisUntilFinished);
                 i++;
                 binding.progressBar.setProgress((int)i*100/(5000/1000));
 
@@ -190,7 +186,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 
         SharedPreferences sh = getSharedPreferences("MySharedPreferences", MODE_PRIVATE);
         s1 = sh.getString("Username", "");
-        Toast.makeText(getApplicationContext(), "Username:"+s1, Toast.LENGTH_SHORT).show();
+
 
         // MAP
         mapinterface=this;
@@ -287,8 +283,6 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                                 @Override
                                 public void run() {
                                     totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
-                                    Log.e("TAG", "run: "+totalPrice );
-                                    Toast.makeText(user_Book_Service.this, "Price:"+totalPrice, Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(getApplicationContext(), RazorPay.class);
                                     i.putExtra("activity", "bookService");
                                     i.putExtra("Username", s1);
@@ -314,18 +308,6 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
             }
         });
 
-
-        /* enable location and permissions */
-//        enableLocationSettings();
-//        resolutionForResult = registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), result -> {
-//            if (result.getResultCode() == RESULT_OK) {
-//                getLocation();
-//            } else {
-//                /* permissions not Granted */
-//                Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
    }
 
     private void setCarTypeAdapter() {

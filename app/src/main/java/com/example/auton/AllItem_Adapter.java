@@ -2,7 +2,6 @@ package com.example.auton;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class AllItem_Adapter extends RecyclerView.Adapter<AllItem_Adapter.ViewHold> {
-    private ArrayList<Amplifier_ModelClass> dataList;
     private final Context context;
+    private ArrayList<Amplifier_ModelClass> dataList;
 
 
     public AllItem_Adapter(Context fragment, ArrayList<Amplifier_ModelClass> dataList) {
@@ -27,6 +26,7 @@ public class AllItem_Adapter extends RecyclerView.Adapter<AllItem_Adapter.ViewHo
         this.context = fragment;
 
     }
+
     @NonNull
     @Override
     public AllItem_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,19 +34,19 @@ public class AllItem_Adapter extends RecyclerView.Adapter<AllItem_Adapter.ViewHo
         return new AllItem_Adapter.ViewHold(view);
     }
 
-    public void onBindViewHolder(AllItem_Adapter.ViewHold holder, int position){
-        Amplifier_ModelClass ss=dataList.get(position);
+    public void onBindViewHolder(AllItem_Adapter.ViewHold holder, int position) {
+        Amplifier_ModelClass ss = dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
         holder.desc.setText(ss.getModel());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
-        String model= ss.getModel();
+        String model = ss.getModel();
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent i = new Intent(context.getApplicationContext(), fulldetails_AndroidScreen.class);
-                i.putExtra("key",model);
+                i.putExtra("key", model);
                 context.startActivity(i);
             }
         });
@@ -55,7 +55,7 @@ public class AllItem_Adapter extends RecyclerView.Adapter<AllItem_Adapter.ViewHo
     public void filterList(ArrayList<ScreensSpeakers_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
-       // dataList = filteredlist;
+        // dataList = filteredlist;
         // below line is to notify our adapter
         // as change in recycler view data.
         notifyDataSetChanged();
@@ -69,14 +69,15 @@ public class AllItem_Adapter extends RecyclerView.Adapter<AllItem_Adapter.ViewHo
     public class ViewHold extends RecyclerView.ViewHolder {
         ImageView productImg;
         CardView cardView;
-        TextView manufacturer,desc,price;
+        TextView manufacturer, desc, price;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            manufacturer=itemView.findViewById(R.id.amplifierManufacturer);
-            desc=itemView.findViewById(R.id.amplifierDesc);
-            productImg=itemView.findViewById(R.id.amplifierImg);
-            price=itemView.findViewById(R.id.amplifier_Price);
-            cardView=itemView.findViewById(R.id.cvAmplifier);
+            manufacturer = itemView.findViewById(R.id.amplifierManufacturer);
+            desc = itemView.findViewById(R.id.amplifierDesc);
+            productImg = itemView.findViewById(R.id.amplifierImg);
+            price = itemView.findViewById(R.id.amplifier_Price);
+            cardView = itemView.findViewById(R.id.cvAmplifier);
         }
     }
 }

@@ -17,8 +17,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapter2.ViewHold> {
-    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
+    private ArrayList<Accessories_ModelClass> dataList;
 
 
     public AirFreshner_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
@@ -26,6 +26,7 @@ public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapt
         this.context = fragment;
 
     }
+
     @NonNull
     @Override
     public AirFreshner_Adapter2.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,13 +34,13 @@ public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapt
         return new AirFreshner_Adapter2.ViewHold(view);
     }
 
-    public void onBindViewHolder(AirFreshner_Adapter2.ViewHold holder, int position){
-        Accessories_ModelClass ss=dataList.get(position);
+    public void onBindViewHolder(AirFreshner_Adapter2.ViewHold holder, int position) {
+        Accessories_ModelClass ss = dataList.get(position);
         holder.manufacturer.setText(ss.getManufacturer());
-        holder.desc.setText(ss.getModel()+ss.getDuration()+ss.getFragrence());
+        holder.desc.setText(ss.getModel() + ss.getDuration() + ss.getFragrence());
         holder.price.setText(ss.getPrice());
         Glide.with(context).load(ss.getImage()).into(holder.productImg);
-        String model= ss.getModel();
+        String model = ss.getModel();
         if (Integer.parseInt(ss.getQuantity()) == 0) {
             holder.tvStatus.setVisibility(View.VISIBLE);
             holder.cardView.setAlpha(0.5F);
@@ -48,7 +49,7 @@ public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapt
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), fulldetails_AirFreshner.class);
-                i.putExtra("key",model);
+                i.putExtra("key", model);
                 context.startActivity(i);
             }
         });
@@ -72,13 +73,14 @@ public class AirFreshner_Adapter2 extends RecyclerView.Adapter<AirFreshner_Adapt
         ImageView productImg;
         CardView cardView;
         TextView manufacturer, desc, price, tvStatus;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            manufacturer=itemView.findViewById(R.id.airfreshnerManufacturer);
-            desc=itemView.findViewById(R.id.airfreshnerDesc);
-            productImg=itemView.findViewById(R.id.airfreshnerImg);
-            price=itemView.findViewById(R.id.airfreshnerPrice);
-            cardView=itemView.findViewById(R.id.cvAirfreshner);
+            manufacturer = itemView.findViewById(R.id.airfreshnerManufacturer);
+            desc = itemView.findViewById(R.id.airfreshnerDesc);
+            productImg = itemView.findViewById(R.id.airfreshnerImg);
+            price = itemView.findViewById(R.id.airfreshnerPrice);
+            cardView = itemView.findViewById(R.id.cvAirfreshner);
             tvStatus = itemView.findViewById(R.id.tvStatus);
         }
     }

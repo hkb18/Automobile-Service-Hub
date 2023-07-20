@@ -3,15 +3,13 @@ package com.example.auton;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -25,15 +23,13 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class user_Dashboard_Fragment extends Fragment {
-    Button book,cancel,view;
-    TextView invisibleusername;
-    ImageSlider imageSlider;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    Button book, cancel, view;
+    TextView invisibleusername;
+    ImageSlider imageSlider;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -74,45 +70,45 @@ public class user_Dashboard_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_user__dashboard, container, false);
+        View v = inflater.inflate(R.layout.fragment_user__dashboard, container, false);
 
-        invisibleusername=v.findViewById(R.id.invisibleusername);
+        invisibleusername = v.findViewById(R.id.invisibleusername);
         invisibleusername.setText(mParam2);//username in mParam2
 
         imageSlider = v.findViewById(R.id.imageSlider);
-      ArrayList<SlideModel>slideModels=new ArrayList<>();
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.service1, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.service2, ScaleTypes.FIT));
        /* slideModels.add(new SlideModel(R.drawable.car_icon, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.service_icon, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.view, ScaleTypes.FIT));*/
 
-        imageSlider.setImageList(slideModels,ScaleTypes.FIT);
+        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
-        book=v.findViewById(R.id.btn_BookService);
+        book = v.findViewById(R.id.btn_BookService);
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Intent i = new Intent(getContext(), user_Book_Service.class);
                 Intent i = new Intent(getContext(), user_Select_Service_Type.class);
-                i.putExtra("Username",mParam2);
+                i.putExtra("Username", mParam2);
                 startActivity(i);
             }
         });
-        view=v.findViewById(R.id.btn_ViewService);
+        view = v.findViewById(R.id.btn_ViewService);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(),user_View_Booked_Service.class);
-                intent.putExtra("Username",mParam2);
+                Intent intent = new Intent(getContext(), user_View_Booked_Service.class);
+                intent.putExtra("Username", mParam2);
                 startActivity(intent);
             }
         });
-        cancel=v.findViewById(R.id.btn_CancelService);
+        cancel = v.findViewById(R.id.btn_CancelService);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(),user_Delete_Service.class);
+                Intent intent = new Intent(getContext(), user_Delete_Service.class);
                 startActivity(intent);
             }
         });

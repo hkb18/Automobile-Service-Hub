@@ -1,7 +1,16 @@
 package com.example.auton;
 
 public class Feedback_ModelClass {
-    private String Username,Feedback,Key;
+    private String Username, Feedback, Key;
+
+    public Feedback_ModelClass() {
+    }
+
+    public Feedback_ModelClass(String username, String feedback, String key) {
+        Username = username;
+        Feedback = feedback;
+        Key = key;
+    }
 
     public String getUsername() {
         return Username;
@@ -24,15 +33,6 @@ public class Feedback_ModelClass {
     }
 
     public void setKey(String key) {
-        Key = key;
-    }
-
-    public Feedback_ModelClass() {
-    }
-
-    public Feedback_ModelClass(String username, String feedback, String key) {
-        Username = username;
-        Feedback = feedback;
         Key = key;
     }
 }

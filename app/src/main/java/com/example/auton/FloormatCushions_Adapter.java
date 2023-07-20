@@ -35,7 +35,7 @@ public class FloormatCushions_Adapter extends RecyclerView.Adapter<FloormatCushi
     @Override
     public void onBindViewHolder(@NonNull ViewHold holder, int position) {
 
-       holder.androidScreen.setText(dataList.get(position).getName());
+        holder.androidScreen.setText(dataList.get(position).getName());
 
 
         if (dataList.get(position).getSelected()) {
@@ -49,14 +49,14 @@ public class FloormatCushions_Adapter extends RecyclerView.Adapter<FloormatCushi
         }
 
         holder.androidScreen.setOnClickListener(v -> {
-            for (int i=0; i<dataList.size(); i++){
+            for (int i = 0; i < dataList.size(); i++) {
                 dataList.get(i).setSelected(false);
             }
             dataList.get(position).setSelected(true);
             notifyDataSetChanged();
 
             user_View_FloormatsCushions.floormatCushions_interface.onClickItem(dataList.get(position).getName());
-            // use interface and show data in recycler view
+
 
         });
 
@@ -70,13 +70,12 @@ public class FloormatCushions_Adapter extends RecyclerView.Adapter<FloormatCushi
 
     public class ViewHold extends RecyclerView.ViewHolder {
         MaterialButton androidScreen;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
             androidScreen = itemView.findViewById(R.id.materialBtn);
         }
     }
-
-
 
 
 }

@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class MicroFibres_ModelClass {
-    String Brand,Color,Dimension,FabricType,Image,MaterialType,Model,Price,Quantity;
+    String Brand, Color, Dimension, FabricType, Image, MaterialType, Model, Price, Quantity;
 
     public MicroFibres_ModelClass() {
     }

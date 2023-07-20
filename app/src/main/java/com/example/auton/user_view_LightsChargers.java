@@ -1,12 +1,12 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.auton.databinding.ActivityUserViewLightsChargersBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -17,51 +17,53 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class user_view_LightsChargers extends AppCompatActivity implements LightsChargers_Interface{
-    private ActivityUserViewLightsChargersBinding binding;
+public class user_view_LightsChargers extends AppCompatActivity implements LightsChargers_Interface {
     static LightsChargers_Interface lightsChargersInterface;
     DatabaseReference databaseReference;
     String ccpModelStr;
-    private ArrayList<materialButton> list=new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> accessoriesList=new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> chargersList=new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> hidList=new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> projectorsList=new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> mobileholdersList=new ArrayList<>();
+    private ActivityUserViewLightsChargersBinding binding;
+    private ArrayList<materialButton> list = new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> chargersList = new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> hidList = new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> projectorsList = new ArrayList<>();
+    private ArrayList<Accessories_ModelClass> mobileholdersList = new ArrayList<>();
     private MobileHolder_Adapter mobileHolderAdapter;
     private HID_Adapter hidAdapter;
     private Projectors_Adapter projectorsAdapter;
     private Charger_Adapter chargerAdapter;
-    private  LightsChargers_Adapter lightsChargers_adapter;
+    private LightsChargers_Adapter lightsChargers_adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityUserViewLightsChargersBinding.inflate(getLayoutInflater());
+        binding = ActivityUserViewLightsChargersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        lightsChargersInterface=this;//interface
+        lightsChargersInterface = this;//interface
 
-        binding.rvLightsChargers.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        lightsChargers_adapter=new LightsChargers_Adapter(this,list);
+        binding.rvLightsChargers.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        lightsChargers_adapter = new LightsChargers_Adapter(this, list);
         binding.rvLightsChargers.setAdapter(lightsChargers_adapter);
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
-                materialButton button1=new materialButton();
+                materialButton button1 = new materialButton();
                 button1.setName("All");
                 button1.setSelected(true);
                 list.add(button1);
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    materialButton button=new materialButton();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    materialButton button = new materialButton();
                     button.setName(dataSnapshot.getKey());
                     button.setSelected(false);
                     list.add(button);
                 }
                 lightsChargers_adapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(user_view_LightsChargers.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
@@ -77,20 +79,21 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
         databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child("Chargers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 chargersList.clear();
+                chargersList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Accessories_ModelClass ap = dataSnapshot.getValue(Accessories_ModelClass.class);
                     chargersList.add(ap);
                 }
 
-                chargerAdapter =new Charger_Adapter(user_view_LightsChargers.this,chargersList, snapshot.getKey());
+                chargerAdapter = new Charger_Adapter(user_view_LightsChargers.this, chargersList, snapshot.getKey());
                 binding.rvItemsChargers.setAdapter(chargerAdapter);
 
                 chargerAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -109,14 +112,15 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
                     hidList.add(ap);
                 }
 
-                hidAdapter =new HID_Adapter(user_view_LightsChargers.this,hidList, snapshot.getKey());
+                hidAdapter = new HID_Adapter(user_view_LightsChargers.this, hidList, snapshot.getKey());
                 binding.rvItemsHID.setAdapter(hidAdapter);
 
                 hidAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -135,14 +139,15 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
                     projectorsList.add(ap);
                 }
 
-                projectorsAdapter =new Projectors_Adapter(user_view_LightsChargers.this,projectorsList, snapshot.getKey());
+                projectorsAdapter = new Projectors_Adapter(user_view_LightsChargers.this, projectorsList, snapshot.getKey());
                 binding.rvItemsProjectors.setAdapter(projectorsAdapter);
 
                 projectorsAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -161,14 +166,15 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
                     mobileholdersList.add(ap);
                 }
 
-                mobileHolderAdapter =new MobileHolder_Adapter(user_view_LightsChargers.this,mobileholdersList, snapshot.getKey());
+                mobileHolderAdapter = new MobileHolder_Adapter(user_view_LightsChargers.this, mobileholdersList, snapshot.getKey());
                 binding.rvItemsMobileHolders.setAdapter(mobileHolderAdapter);
 
                 mobileHolderAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -181,17 +187,17 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
 
     @Override
     public void onClickItem(String Model) {
-        if (Model.equalsIgnoreCase("All")){
+        if (Model.equalsIgnoreCase("All")) {
             binding.rv.setVisibility(View.GONE);
             binding.scrollViewItems.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             binding.rv.setVisibility(View.VISIBLE);
             binding.scrollViewItems.setVisibility(View.GONE);
             binding.rv.setLayoutManager(new LinearLayoutManager(this));
             databaseReference.child("Accessories").child("LIGHTS_CHARGERS").child(Model).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (Model.equalsIgnoreCase("Chargers")){
+                    if (Model.equalsIgnoreCase("Chargers")) {
                         accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
@@ -199,8 +205,7 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
                         }
                         binding.rv.setAdapter(chargerAdapter);
                         chargerAdapter.notifyDataSetChanged();
-                    }
-                    else if (Model.equalsIgnoreCase("HID")) {
+                    } else if (Model.equalsIgnoreCase("HID")) {
                         accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
@@ -208,8 +213,7 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
                         }
                         binding.rv.setAdapter(hidAdapter);
                         hidAdapter.notifyDataSetChanged();
-                    }
-                    else if (Model.equalsIgnoreCase("Projectors")) {
+                    } else if (Model.equalsIgnoreCase("Projectors")) {
                         accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
@@ -217,8 +221,7 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
                         }
                         binding.rv.setAdapter(projectorsAdapter);
                         projectorsAdapter.notifyDataSetChanged();
-                    }
-                    else if (Model.equalsIgnoreCase("MobileHolder")) {
+                    } else if (Model.equalsIgnoreCase("MobileHolder")) {
                         accessoriesList.clear();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Accessories_ModelClass ss = dataSnapshot.getValue(Accessories_ModelClass.class);
@@ -231,7 +234,7 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 

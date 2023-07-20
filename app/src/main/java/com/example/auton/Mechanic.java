@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class Mechanic {
-    private String ContactNo,Email,Name,Workshop;
+    private String ContactNo, Email, Name, Workshop;
 
     public Mechanic(String contactNo, String email, String name, String workshop) {
         ContactNo = contactNo;

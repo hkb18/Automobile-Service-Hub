@@ -1,13 +1,13 @@
 package com.example.auton;
 
 public class Speaker_ModelClass {
-    private String Color,Diameter,Frequency,Image,Manufacturer,PowerOutput,Price,Quality,Sensitivity,SpeakerType,Model;
+    private String Color, Diameter, Frequency, Image, Manufacturer, PowerOutput, Price, Quality, Sensitivity, SpeakerType, Model;
 
     public Speaker_ModelClass() {
     }
 
-    public Speaker_ModelClass(String model,String color, String diameter, String frequency, String image, String manufacturer, String powerOutput, String price, String quality, String sensitivity, String speakerType) {
-        Model=model;
+    public Speaker_ModelClass(String model, String color, String diameter, String frequency, String image, String manufacturer, String powerOutput, String price, String quality, String sensitivity, String speakerType) {
+        Model = model;
         Color = color;
         Diameter = diameter;
         Frequency = frequency;

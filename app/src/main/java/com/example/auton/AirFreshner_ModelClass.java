@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class AirFreshner_ModelClass {
-    String Image,Model,ItemForm,Color,Dimenension,Weight,Manufacturer,Duration,Fragrence,Price,Quantity;
+    String Image, Model, ItemForm, Color, Dimenension, Weight, Manufacturer, Duration, Fragrence, Price, Quantity;
 
     public AirFreshner_ModelClass() {
     }

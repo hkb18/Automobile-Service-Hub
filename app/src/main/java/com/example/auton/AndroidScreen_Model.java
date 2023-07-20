@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class AndroidScreen_Model {
-    private  String Image;
+    private String Image;
 
     public AndroidScreen_Model() {
     }

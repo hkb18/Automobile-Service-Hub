@@ -5,10 +5,11 @@ import java.util.Date;
 import java.util.Locale;
 
 public class cart_ModelClass {
-    String model,manufacturer,price,quantity,image,username,key, productKey, totalQty,mainName,subName;
+    String model, manufacturer, price, quantity, image, username, key, productKey, totalQty, mainName, subName;
 
     String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
     String date = currentDate;
+
     public cart_ModelClass() {
     }
 

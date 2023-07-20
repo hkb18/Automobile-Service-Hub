@@ -7,25 +7,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.auton.databinding.FragmentWorkshopProfileBinding;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,15 +23,13 @@ import com.google.firebase.database.ValueEventListener;
  * create an instance of this fragment.
  */
 public class workshop_Profile_Fragment extends Fragment {
-    private FragmentWorkshopProfileBinding binding;
-    DatabaseReference databaseReference;
-    SharedPreferences sh;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    DatabaseReference databaseReference;
+    SharedPreferences sh;
+    private FragmentWorkshopProfileBinding binding;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -81,25 +69,25 @@ public class workshop_Profile_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding=FragmentWorkshopProfileBinding.inflate(getLayoutInflater());
+        binding = FragmentWorkshopProfileBinding.inflate(getLayoutInflater());
 
-        sh=requireContext().getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
-        String s1=sh.getString("Username","");
+        sh = requireContext().getSharedPreferences("MySharedPreferences", MODE_PRIVATE); // to store data for temp time
+        String s1 = sh.getString("Username", "");
 
-        binding.userprofileName.setText("Hi "+ s1);
+        binding.userprofileName.setText("Hi " + s1);
 
         binding.btnUpdateProfile.setOnClickListener(view -> {
             Intent i = new Intent(getContext(), workshop_UpdateProfile.class);
             startActivity(i);
         });
         binding.btnFeedback.setOnClickListener(view -> {
-            Intent i = new Intent(getContext(),feedback.class);
-            i.putExtra("activity","workshop");
+            Intent i = new Intent(getContext(), feedback.class);
+            i.putExtra("activity", "workshop");
             startActivity(i);
         });
 
         //  LOGOUT
-        AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         binding.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,12 +102,12 @@ public class workshop_Profile_Fragment extends Fragment {
                                 SharedPreferences loginPref;
                                 SharedPreferences.Editor loginPrefEditor;
                                 loginPref = requireActivity().getSharedPreferences("login", MODE_PRIVATE);
-                                loginPrefEditor =loginPref.edit();
+                                loginPrefEditor = loginPref.edit();
                                 loginPrefEditor.putBoolean("isLogin", false);
                                 loginPrefEditor.apply();
 
                                 Toast.makeText(getContext(), "You have been Logged Out", Toast.LENGTH_SHORT).show();
-                                Intent i =new Intent(getContext(),MainActivity.class);
+                                Intent i = new Intent(getContext(), MainActivity.class);
                                 startActivity(i);
                             }
                         })
@@ -130,14 +118,15 @@ public class workshop_Profile_Fragment extends Fragment {
                                 Toast.makeText(getContext(), "You choose no action for Alertbox", Toast.LENGTH_SHORT).show();
                             }
                         });
-                AlertDialog alert=builder.create();
+                AlertDialog alert = builder.create();
                 alert.setTitle("User Logout");
                 alert.show();
             }
+
             private void finish() {
             }
         });
 
-        return  binding.getRoot();
+        return binding.getRoot();
     }
 }

@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class BackCushion_ModelClass {
-    String Image,Model,Color,Dimenension,Weight,Manufacturer,Price,Quantity;
+    String Image, Model, Color, Dimenension, Weight, Manufacturer, Price, Quantity;
 
     public BackCushion_ModelClass() {
     }

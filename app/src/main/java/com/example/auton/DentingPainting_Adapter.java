@@ -6,20 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class DentingPainting_Adapter extends RecyclerView.Adapter<DentingPainting_Adapter.ViewHold> {
-    private ArrayList<DentingPainting_ModelClass> dataList;
     private final Context context;
+    private ArrayList<DentingPainting_ModelClass> dataList;
 
 
     public DentingPainting_Adapter(Context fragment, ArrayList<DentingPainting_ModelClass> dataList) {
@@ -27,6 +23,7 @@ public class DentingPainting_Adapter extends RecyclerView.Adapter<DentingPaintin
         this.context = fragment;
 
     }
+
     @NonNull
     @Override
     public DentingPainting_Adapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,8 +31,8 @@ public class DentingPainting_Adapter extends RecyclerView.Adapter<DentingPaintin
         return new DentingPainting_Adapter.ViewHold(view);
     }
 
-    public void onBindViewHolder(DentingPainting_Adapter.ViewHold holder, int position){
-        DentingPainting_ModelClass ss=dataList.get(position);
+    public void onBindViewHolder(DentingPainting_Adapter.ViewHold holder, int position) {
+        DentingPainting_ModelClass ss = dataList.get(position);
         holder.servicename.setText(ss.getServiceName());
         holder.wtsincluded.setText(ss.getWtsIncluded());
         holder.price.setText(ss.getPrice());
@@ -43,9 +40,9 @@ public class DentingPainting_Adapter extends RecyclerView.Adapter<DentingPaintin
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), user_Book_Service.class);
-                i.putExtra("Service",ss.getServiceName());
-                i.putExtra("servicetype","Denting and Painting");
-                i.putExtra("Price",ss.getPrice());
+                i.putExtra("Service", ss.getServiceName());
+                i.putExtra("servicetype", "Denting and Painting");
+                i.putExtra("Price", ss.getPrice());
                 context.startActivity(i);
             }
         });
@@ -54,7 +51,7 @@ public class DentingPainting_Adapter extends RecyclerView.Adapter<DentingPaintin
     public void filterList(ArrayList<DentingPainting_ModelClass> filteredlist) {
         // below line is to add our filtered
         // list in our course array list.
-       // dataList = filteredlist;
+        // dataList = filteredlist;
         // below line is to notify our adapter
         // as change in recycler view data.
         notifyDataSetChanged();
@@ -67,15 +64,15 @@ public class DentingPainting_Adapter extends RecyclerView.Adapter<DentingPaintin
 
     public class ViewHold extends RecyclerView.ViewHolder {
         Button buynow;
-        CardView cardView;
-        TextView servicename,wtsincluded,price;
+        TextView servicename, wtsincluded, price;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
 
-            wtsincluded=itemView.findViewById(R.id.dentingpaintingWtsIncluded);
-            servicename=itemView.findViewById(R.id.dentingpaintingServiceName);
-            price=itemView.findViewById(R.id.dentingpaintingPrice);
-            buynow=itemView.findViewById(R.id.btn_dentingpaintingBuyNow);
+            wtsincluded = itemView.findViewById(R.id.dentingpaintingWtsIncluded);
+            servicename = itemView.findViewById(R.id.dentingpaintingServiceName);
+            price = itemView.findViewById(R.id.dentingpaintingPrice);
+            buynow = itemView.findViewById(R.id.btn_dentingpaintingBuyNow);
         }
     }
 }

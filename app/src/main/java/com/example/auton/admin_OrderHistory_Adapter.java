@@ -20,7 +20,6 @@ public class admin_OrderHistory_Adapter extends RecyclerView.Adapter<admin_Order
     private ArrayList<OrderHistory_ModelClass> dataList;
 
 
-
     public admin_OrderHistory_Adapter(Activity user_cart_fragment, ArrayList<OrderHistory_ModelClass> list) {
         this.context = user_cart_fragment;
         this.dataList = list;
@@ -59,7 +58,7 @@ public class admin_OrderHistory_Adapter extends RecyclerView.Adapter<admin_Order
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        TextView manufacturer, model, qty, price,username;
+        TextView manufacturer, model, qty, price, username;
         ImageView imageView;
 
         public ViewHold(@NonNull View itemView) {

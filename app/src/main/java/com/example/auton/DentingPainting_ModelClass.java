@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class DentingPainting_ModelClass {
-    String Price,ServiceName,WtsIncluded;
+    String Price, ServiceName, WtsIncluded;
 
     public DentingPainting_ModelClass() {
     }

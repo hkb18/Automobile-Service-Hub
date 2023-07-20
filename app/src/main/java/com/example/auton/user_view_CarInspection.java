@@ -1,11 +1,11 @@
 package com.example.auton;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityUserViewCarInspectionBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -17,17 +17,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class user_view_CarInspection extends AppCompatActivity {
+    DatabaseReference databaseReference;
     private ActivityUserViewCarInspectionBinding binding;
     private CarInspection_Adapter carInspectionAdapter;
-    private ArrayList<CarInspection_ModelClass> carinspectionList=new ArrayList<>();
-    DatabaseReference databaseReference;
+    private ArrayList<CarInspection_ModelClass> carinspectionList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityUserViewCarInspectionBinding.inflate(getLayoutInflater());
+        binding = ActivityUserViewCarInspectionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         binding.rvCarInspection.setAdapter(carInspectionAdapter);
 
@@ -43,14 +44,15 @@ public class user_view_CarInspection extends AppCompatActivity {
                     carinspectionList.add(ss);
                 }
 
-                carInspectionAdapter =new CarInspection_Adapter(user_view_CarInspection.this,carinspectionList);
+                carInspectionAdapter = new CarInspection_Adapter(user_view_CarInspection.this, carinspectionList);
                 binding.rvCarInspection.setAdapter(carInspectionAdapter);
 
                 carInspectionAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

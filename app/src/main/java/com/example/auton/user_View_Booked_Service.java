@@ -63,40 +63,6 @@ public class user_View_Booked_Service extends AppCompatActivity implements ViewB
         });
 
         //  SEARCH
-/*
-        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // creating a new array list to filter our data.
-                ArrayList<Worshop_View_Service_modelClass> filteredlist = new ArrayList<>();
-
-                // running a for loop to compare elements.
-                for (Worshop_View_Service_modelClass item : list) {
-                    // checking if the entered string matched with any item of our recycler view.
-                    if (item.getDate().toLowerCase().contains(newText.toLowerCase())) {
-                        // if the item is matched we are
-                        // adding it to our filtered list.
-                        filteredlist.add(item);
-                    }
-                }
-                if (filteredlist.isEmpty()) {
-                    // if no item is added in filtered list we are
-                    // displaying a toast message as no data found.
-                    Toast.makeText(getApplicationContext(), "No Data Found..", Toast.LENGTH_SHORT).show();
-                } else {
-                    // at last we are passing that filtered
-                    // list to our adapter class.
-                    myAdapter.filterList(filteredlist);
-                }
-                return false;
-            }
-        });
-*/
     }
 
     @Override

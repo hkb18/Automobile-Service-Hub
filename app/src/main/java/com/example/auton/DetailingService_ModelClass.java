@@ -1,7 +1,7 @@
 package com.example.auton;
 
 public class DetailingService_ModelClass {
-    String Price,AdditionalServices,ServiceName,ValueaddingService;
+    String Price, AdditionalServices, ServiceName, ValueaddingService;
 
     public DetailingService_ModelClass() {
     }

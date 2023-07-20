@@ -1,11 +1,11 @@
 package com.example.auton;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityUserViewDetailingServiceBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -17,17 +17,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class user_view_DetailingService extends AppCompatActivity {
+    DatabaseReference databaseReference;
     private ActivityUserViewDetailingServiceBinding binding;
     private DetailingService_Adapter detailingServiceAdapter;
-    private ArrayList<DetailingService_ModelClass> detailingList=new ArrayList<>();
-    DatabaseReference databaseReference;
+    private ArrayList<DetailingService_ModelClass> detailingList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityUserViewDetailingServiceBinding.inflate(getLayoutInflater());
+        binding = ActivityUserViewDetailingServiceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
         binding.rvDetailingService.setAdapter(detailingServiceAdapter);
 
@@ -43,14 +44,15 @@ public class user_view_DetailingService extends AppCompatActivity {
                     detailingList.add(ss);
                 }
 
-                detailingServiceAdapter =new DetailingService_Adapter(user_view_DetailingService.this,detailingList);
+                detailingServiceAdapter = new DetailingService_Adapter(user_view_DetailingService.this, detailingList);
                 binding.rvDetailingService.setAdapter(detailingServiceAdapter);
 
                 detailingServiceAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Error loading data"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error loading data" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

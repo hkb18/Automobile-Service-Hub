@@ -1,14 +1,11 @@
 package com.example.auton;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.auton.databinding.ActivityAdminAddBodyTypeBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -16,23 +13,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 
 public class admin_AddBodyType extends AppCompatActivity {
-    private ActivityAdminAddBodyTypeBinding binding;
     DatabaseReference databaseReference;
-    String bodytypeStr,priceStr;
+    String bodytypeStr, priceStr;
+    private ActivityAdminAddBodyTypeBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityAdminAddBodyTypeBinding.inflate(getLayoutInflater());
+        binding = ActivityAdminAddBodyTypeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         binding.btnAddCarBodyType.setOnClickListener(v -> {
-            bodytypeStr=binding.carBodyType.getText().toString();
-            priceStr=binding.carBodyTypePrice.getText().toString();
-            if(priceStr.isEmpty()||bodytypeStr.isEmpty()) {
+            bodytypeStr = binding.carBodyType.getText().toString();
+            priceStr = binding.carBodyTypePrice.getText().toString();
+            if (priceStr.isEmpty() || bodytypeStr.isEmpty()) {
                 Toast.makeText(admin_AddBodyType.this, "Please enter all details", Toast.LENGTH_SHORT).show();
             } else {
                 databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {

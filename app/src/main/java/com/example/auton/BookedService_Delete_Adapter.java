@@ -50,7 +50,7 @@ public class BookedService_Delete_Adapter extends RecyclerView.Adapter<BookedSer
 
                 Toast.makeText(context, "Deleted service", Toast.LENGTH_SHORT).show();
             });
-        }else {
+        } else {
             holder.carBrand.setText(bookedService.getCarBrand());
             holder.carModel.setText(bookedService.getCarModel());
             holder.serviceType.setText(bookedService.getServiceType());
@@ -81,7 +81,7 @@ public class BookedService_Delete_Adapter extends RecyclerView.Adapter<BookedSer
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        TextView carBrand, carModel, serviceType, date, latitude, longitude, servicetime, serviceName, username,tv;
+        TextView carBrand, carModel, serviceType, date, latitude, longitude, servicetime, serviceName, username, tv;
         Button delete;
 
 

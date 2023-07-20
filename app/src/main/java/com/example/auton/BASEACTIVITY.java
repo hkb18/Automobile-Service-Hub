@@ -27,27 +27,7 @@ import com.google.android.gms.location.Priority;
 abstract class BASEACTIVITY extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
     LocationManager locationManager;
-    double longitudeBest=0.0, latitudeBest=0.0;
-    private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (checkLocation()) {
-            toggleBestUpdates();
-        }
-        resolutionForResult = registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), result -> {
-            if (result.getResultCode() == RESULT_OK) {
-                if (checkLocation()) {
-                    toggleBestUpdates();
-                }
-            } else {
-                /* permissions not Granted */
-                Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+    double longitudeBest = 0.0, latitudeBest = 0.0;
     //  MAP
     private final LocationListener locationListenerBest = new LocationListener() {
         public void onLocationChanged(Location location) {
@@ -70,6 +50,28 @@ abstract class BASEACTIVITY extends AppCompatActivity {
 
         }
     };
+    private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (checkLocation()) {
+            toggleBestUpdates();
+        }
+        resolutionForResult = registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                if (checkLocation()) {
+                    toggleBestUpdates();
+                }
+            } else {
+                /* permissions not Granted */
+                Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private boolean checkLocation() {
         if (!isLocationEnabled()) showAlert();
         return isLocationEnabled();
@@ -99,6 +101,7 @@ abstract class BASEACTIVITY extends AppCompatActivity {
     private boolean isLocationEnabled() {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -115,10 +118,11 @@ abstract class BASEACTIVITY extends AppCompatActivity {
             }
         }
     }
+
     public void toggleBestUpdates() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // Check Permissions Now
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE    );
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 60 * 1000, 10, locationListenerBest);
         }

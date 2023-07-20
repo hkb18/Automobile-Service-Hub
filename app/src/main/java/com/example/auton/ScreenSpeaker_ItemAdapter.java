@@ -1,35 +1,30 @@
 package com.example.auton;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
 
 public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeaker_ItemAdapter.ViewHold> {
-    private ArrayList<Accessories_ModelClass> dataList;
     private final Context context;
+    private ArrayList<Accessories_ModelClass> dataList;
     private String name;
 
 
     public ScreenSpeaker_ItemAdapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;
         this.context = fragment;
-        name=key;
+        name = key;
 
     }
+
     @NonNull
     @Override
     public ScreenSpeaker_ItemAdapter.ViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,11 +32,11 @@ public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeake
         return new ScreenSpeaker_ItemAdapter.ViewHold(view);
     }
 
-    public void onBindViewHolder(ScreenSpeaker_ItemAdapter.ViewHold holder,int position){
+    public void onBindViewHolder(ScreenSpeaker_ItemAdapter.ViewHold holder, int position) {
 
         holder.textView.setText(name);
-        holder.recyclerView.setLayoutManager(new GridLayoutManager(context,2));
-        holder.recyclerView.setAdapter(new AndroidScreen_ItemAdapter(context,dataList));
+        holder.recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
+        holder.recyclerView.setAdapter(new AndroidScreen_ItemAdapter(context, dataList));
     }
 
     public void filterList(ArrayList<Accessories_ModelClass> filteredlist) {
@@ -61,10 +56,11 @@ public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeake
     public class ViewHold extends RecyclerView.ViewHolder {
         TextView textView;
         RecyclerView recyclerView;
+
         public ViewHold(@NonNull View itemView) {
             super(itemView);
-            textView=itemView.findViewById(R.id.tvTitle);
-            recyclerView=itemView.findViewById(R.id.rv);
+            textView = itemView.findViewById(R.id.tvTitle);
+            recyclerView = itemView.findViewById(R.id.rv);
         }
     }
 }

@@ -1,9 +1,5 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.auton.databinding.ActivityAdminAddCarsBinding;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,7 +30,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class admin_AddCars extends AppCompatActivity {
-    private ActivityAdminAddCarsBinding binding;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
     StorageReference storageReference;
@@ -38,20 +37,21 @@ public class admin_AddCars extends AppCompatActivity {
     String sysTime;
     String fileName;
     DatabaseReference databaseReference;
-    String brandStr,priceStr;
+    String brandStr, priceStr;
+    private ActivityAdminAddCarsBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityAdminAddCarsBinding.inflate(getLayoutInflater());
+        binding = ActivityAdminAddCarsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         progressBar = new ProgressBar(this);
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         binding.btnAddCar.setOnClickListener(v -> {
-            brandStr=binding.carBrand.getText().toString();
-//            bodytypeStr=binding.carBodyType.getText().toString();
-            priceStr=binding.carPrice.getText().toString();
-            if(priceStr.isEmpty()||brandStr.isEmpty()) {
+            brandStr = binding.carBrand.getText().toString();
+            priceStr = binding.carPrice.getText().toString();
+            if (priceStr.isEmpty() || brandStr.isEmpty()) {
                 Toast.makeText(admin_AddCars.this, "Please enter all details", Toast.LENGTH_SHORT).show();
             } else {
                 databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -75,22 +75,24 @@ public class admin_AddCars extends AppCompatActivity {
             selectImage();
         });
     }
-    private void selectImage(){
-        Intent intent=new Intent();
+
+    private void selectImage() {
+        Intent intent = new Intent();
         intent.setType("image/+");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,100);
+        startActivityForResult(intent, 100);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==100 && data != null && data.getData() != null){
-            imageUri=data.getData();
+        if (requestCode == 100 && data != null && data.getData() != null) {
+            imageUri = data.getData();
             binding.ivCar.setImageURI(imageUri);
         }
     }
+
     private void uploadImage() {
         if (imageUri != null) {
             progressDialog = new ProgressDialog(this);
@@ -121,25 +123,22 @@ public class admin_AddCars extends AppCompatActivity {
                 }
             });
             uploadtoFirebase(imageUri);
-        }
-        else {
+        } else {
             Toast.makeText(this, "Please select Image", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     private void uploadtoFirebase(Uri uri) {
-        storageReference=storageReference.child("images/").child(fileName);
+        storageReference = storageReference.child("images/").child(fileName);
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                       // sysTime=String.valueOf(System.currentTimeMillis());
                         databaseReference.child("CAR").child(brandStr).child("Image").setValue(uri.toString());
                         databaseReference.child("CAR").child(brandStr).child("Brand").setValue(brandStr);
-//                        databaseReference.child("CAR").child(brandStr).child("BodyType").setValue(bodytypeStr);
                         databaseReference.child("CAR").child(brandStr).child("Price").setValue(priceStr);
 
                         Toast.makeText(admin_AddCars.this, "Uploaded Successfully ", Toast.LENGTH_SHORT).show();

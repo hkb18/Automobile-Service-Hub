@@ -1,21 +1,20 @@
 package com.example.auton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,16 +35,16 @@ import java.util.Locale;
 
 public class admin_add_BassTubes extends AppCompatActivity {
     DatabaseReference databaseReference;
-    Button addBasstubes,select;
+    Button addBasstubes, select;
     ProgressDialog progressDialog;
     ProgressBar progressBar;
     ImageView imageView;
     StorageReference storageReference;
     Uri imageUri;
     String fileName;
-    TextInputEditText textInputEditTextModel,textInputEditTextDimension,textInputEditTextPowerOutput,textInputEditTextFrequency,textInputEditTextSalientFeature,textInputEditTextColor,
-            textInputEditTextSensitivity,textInputEditTextWeight,textInputEditTextDesign,textInputEditTextManufacturer,textInputEditTextPrice,textInputEditTextQuantity;
-    String modelStr,dimensionStr,poweroutputStr,frequencyStr,salientfeatureStr,colorStr,sensitivityStr,designStr,weightStr,manufacturerStr,priceStr,quantityStr;
+    TextInputEditText textInputEditTextModel, textInputEditTextDimension, textInputEditTextPowerOutput, textInputEditTextFrequency, textInputEditTextSalientFeature, textInputEditTextColor,
+            textInputEditTextSensitivity, textInputEditTextWeight, textInputEditTextDesign, textInputEditTextManufacturer, textInputEditTextPrice, textInputEditTextQuantity;
+    String modelStr, dimensionStr, poweroutputStr, frequencyStr, salientfeatureStr, colorStr, sensitivityStr, designStr, weightStr, manufacturerStr, priceStr, quantityStr;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -54,61 +53,61 @@ public class admin_add_BassTubes extends AppCompatActivity {
         setContentView(R.layout.activity_admin_add_bass_tubes);
 
         progressBar = new ProgressBar(this);
-        textInputEditTextModel=findViewById(R.id.basstubes_Model);
-        textInputEditTextDimension=findViewById(R.id.basstubes_Dimensions);
-        textInputEditTextPowerOutput=findViewById(R.id.basstubes_PowerOutput);
-        textInputEditTextFrequency=findViewById(R.id.basstubes_Frequency);
-        textInputEditTextSalientFeature=findViewById(R.id.basstubes_SalientFeature);
-        textInputEditTextSensitivity=findViewById(R.id.basstubes_Sensitivity);
-        textInputEditTextWeight=findViewById(R.id.basstubes_Weight);
-        textInputEditTextColor=findViewById(R.id.basstubes_Color);
-        textInputEditTextDesign=findViewById(R.id.basstubes_Design);
-        textInputEditTextManufacturer=findViewById(R.id.basstubes_Manufacturer);
-        textInputEditTextPrice=findViewById(R.id.basstubes_Price);
-        textInputEditTextQuantity=findViewById(R.id.basstubes_Quantity);
-        imageView=findViewById(R.id.ivBassTubes);
-        select=findViewById(R.id.btn_selectImgBassTubes);
-        addBasstubes=findViewById(R.id.btn_bass);
+        textInputEditTextModel = findViewById(R.id.basstubes_Model);
+        textInputEditTextDimension = findViewById(R.id.basstubes_Dimensions);
+        textInputEditTextPowerOutput = findViewById(R.id.basstubes_PowerOutput);
+        textInputEditTextFrequency = findViewById(R.id.basstubes_Frequency);
+        textInputEditTextSalientFeature = findViewById(R.id.basstubes_SalientFeature);
+        textInputEditTextSensitivity = findViewById(R.id.basstubes_Sensitivity);
+        textInputEditTextWeight = findViewById(R.id.basstubes_Weight);
+        textInputEditTextColor = findViewById(R.id.basstubes_Color);
+        textInputEditTextDesign = findViewById(R.id.basstubes_Design);
+        textInputEditTextManufacturer = findViewById(R.id.basstubes_Manufacturer);
+        textInputEditTextPrice = findViewById(R.id.basstubes_Price);
+        textInputEditTextQuantity = findViewById(R.id.basstubes_Quantity);
+        imageView = findViewById(R.id.ivBassTubes);
+        select = findViewById(R.id.btn_selectImgBassTubes);
+        addBasstubes = findViewById(R.id.btn_bass);
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         addBasstubes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                modelStr=textInputEditTextModel.getText().toString();
-                dimensionStr=textInputEditTextDimension.getText().toString();
-                poweroutputStr=textInputEditTextPowerOutput.getText().toString();
-                frequencyStr=textInputEditTextFrequency.getText().toString();
-                salientfeatureStr=textInputEditTextSalientFeature.getText().toString();
-                colorStr=textInputEditTextColor.getText().toString();
-                weightStr=textInputEditTextWeight.getText().toString();
-                sensitivityStr=textInputEditTextSensitivity.getText().toString();
-                designStr=textInputEditTextDesign.getText().toString();
-                manufacturerStr=textInputEditTextManufacturer.getText().toString();
-                priceStr=textInputEditTextPrice.getText().toString();
-                quantityStr=textInputEditTextQuantity.getText().toString();
+                modelStr = textInputEditTextModel.getText().toString();
+                dimensionStr = textInputEditTextDimension.getText().toString();
+                poweroutputStr = textInputEditTextPowerOutput.getText().toString();
+                frequencyStr = textInputEditTextFrequency.getText().toString();
+                salientfeatureStr = textInputEditTextSalientFeature.getText().toString();
+                colorStr = textInputEditTextColor.getText().toString();
+                weightStr = textInputEditTextWeight.getText().toString();
+                sensitivityStr = textInputEditTextSensitivity.getText().toString();
+                designStr = textInputEditTextDesign.getText().toString();
+                manufacturerStr = textInputEditTextManufacturer.getText().toString();
+                priceStr = textInputEditTextPrice.getText().toString();
+                quantityStr = textInputEditTextQuantity.getText().toString();
 
-                if(TextUtils.isEmpty(modelStr)|| dimensionStr.isEmpty() || poweroutputStr.isEmpty() || frequencyStr.isEmpty() || salientfeatureStr.isEmpty() || colorStr.isEmpty() || weightStr.isEmpty() ||sensitivityStr.isEmpty() ||designStr.isEmpty() || manufacturerStr.isEmpty() || priceStr.isEmpty() || quantityStr.isEmpty()) {
+                if (TextUtils.isEmpty(modelStr) || dimensionStr.isEmpty() || poweroutputStr.isEmpty() || frequencyStr.isEmpty() || salientfeatureStr.isEmpty() || colorStr.isEmpty() || weightStr.isEmpty() || sensitivityStr.isEmpty() || designStr.isEmpty() || manufacturerStr.isEmpty() || priceStr.isEmpty() || quantityStr.isEmpty()) {
                     Toast.makeText(admin_add_BassTubes.this, "Please enter all details", Toast.LENGTH_SHORT).show();
                 } else {
                     databaseReference.child("Accessories").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.hasChild(modelStr) && snapshot.hasChild(manufacturerStr)){
-                                Toast.makeText(admin_add_BassTubes.this,"Already existing Model",Toast.LENGTH_SHORT).show();
-                                Intent i=new Intent(getApplicationContext(),admin_HomePage.class);
+                            if (snapshot.hasChild(modelStr) && snapshot.hasChild(manufacturerStr)) {
+                                Toast.makeText(admin_add_BassTubes.this, "Already existing Model", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(getApplicationContext(), admin_HomePage.class);
                                 startActivity(i);
-                            }
-                            else {
+                            } else {
                                 uploadImage();
 
                                 Toast.makeText(admin_add_BassTubes.this, "Value Entered", Toast.LENGTH_SHORT).show();
-                                Intent i=new Intent(getApplicationContext(),admin_add_ScreenSpeaker.class);
+                                Intent i = new Intent(getApplicationContext(), admin_add_ScreenSpeaker.class);
                                 startActivity(i);
-                            }}
+                            }
+                        }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(admin_add_BassTubes.this, "error"+error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(admin_add_BassTubes.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -124,19 +123,20 @@ public class admin_add_BassTubes extends AppCompatActivity {
             }
         });
     }
-    private void selectImage(){
-        Intent intent=new Intent();
+
+    private void selectImage() {
+        Intent intent = new Intent();
         intent.setType("image/+");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,100);
+        startActivityForResult(intent, 100);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==100 && data != null && data.getData() != null){
-            imageUri=data.getData();
+        if (requestCode == 100 && data != null && data.getData() != null) {
+            imageUri = data.getData();
             imageView.setImageURI(imageUri);
         }
     }
@@ -173,8 +173,7 @@ public class admin_add_BassTubes extends AppCompatActivity {
                 }
             });
             uploadtoFirebase(imageUri);
-        }
-        else {
+        } else {
             Toast.makeText(this, "Please select Image", Toast.LENGTH_SHORT).show();
         }
 
@@ -184,30 +183,15 @@ public class admin_add_BassTubes extends AppCompatActivity {
 
 
         //storageReference= storageReference.child(System.currentTimeMillis()+"."+getFileExtension(uri));
-        storageReference=storageReference.child("images/").child(fileName);
+        storageReference = storageReference.child("images/").child(fileName);
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        AndroidScreen_Model model= new AndroidScreen_Model(uri.toString());
-//                        String modelid=databaseReference.push().getKey();//to generate random key
-                        /*databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Image").setValue(uri.toString());
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Model").setValue(modelStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Dimension").setValue(dimensionStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("PowerOutput").setValue(poweroutputStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Frequency").setValue(frequencyStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("SalientFeature").setValue(salientfeatureStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Sensitivity").setValue(sensitivityStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Weight").setValue(weightStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Color").setValue(colorStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Design").setValue(designStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Manufacturer").setValue(manufacturerStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Price").setValue(priceStr);
-                        databaseReference.child("Accessories").child("SCREENS_SPEAKERS").child("BassTubes").child(modelStr).child("Quantity").setValue(quantityStr);
-*/
-                        Accessories_ModelClass modelClass=new Accessories_ModelClass();
+                        AndroidScreen_Model model = new AndroidScreen_Model(uri.toString());
+                        Accessories_ModelClass modelClass = new Accessories_ModelClass();
                         modelClass.setBoxIncluded("");
                         // modelClass.setBoxIncludes();
                         modelClass.setBrand("");
