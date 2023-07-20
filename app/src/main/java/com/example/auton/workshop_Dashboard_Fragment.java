@@ -249,7 +249,7 @@ public class workshop_Dashboard_Fragment extends Fragment implements ViewBookedS
                 final String tempLong = snapshot.child("longitude").getValue(String.class);
                 final String tempName = snapshot.child("Name").getValue(String.class);
 
-                Intent intent = new Intent(requireActivity(), MapsActivity_Workshop.class);
+                Intent intent = new Intent(requireContext(), MapsActivity_Workshop.class);
                 intent.putExtra("longitude", tempLong);
                 intent.putExtra("latitude", tempLat);
                 intent.putExtra("userLongitude", userLong);
