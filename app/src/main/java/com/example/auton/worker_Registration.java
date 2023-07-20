@@ -98,7 +98,7 @@ public class worker_Registration extends BASEACTIVITY implements mapinterface {
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     if (snapshot.hasChild(usernameStr)) {
                                         Toast.makeText(worker_Registration.this, "Already existing User", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(getApplicationContext(), workshop_Login.class);
+                                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(i);
                                     } else {
                                         databaseReference.child("Workshop_Profile").child(usernameStr).child("Username").setValue(usernameStr);
