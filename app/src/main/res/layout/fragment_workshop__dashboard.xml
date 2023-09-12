@@ -7,19 +7,19 @@
     tools:context=".workshop_Dashboard_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-   <!-- <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <!-- <RelativeLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:elevation="5dp"
-            app:lottie_autoPlay="true"
-            app:lottie_rawRes="@raw/example" />
-    </RelativeLayout>-->
+         <com.airbnb.lottie.LottieAnimationView
+             android:id="@+id/lottie"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+             android:elevation="5dp"
+             app:lottie_autoPlay="true"
+             app:lottie_rawRes="@raw/example" />
+     </RelativeLayout>-->
     <!--FOR TRANSPARANCY: android:background="@android:color/transparent"-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBookedService"

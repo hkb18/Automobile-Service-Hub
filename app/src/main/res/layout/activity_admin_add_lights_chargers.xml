@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +16,7 @@
         android:textColor="@color/white"
         android:text="admin add lights &amp; chargers"
         android:textSize="24dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +35,7 @@
             android:textStyle="bold"
             android:textAllCaps="true"
             android:text="HID"
-            android:id="@+id/btn_HID"/>
+            android:id="@+id/btn_HID" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +55,7 @@
             android:textStyle="bold"
             android:textAllCaps="true"
             android:text="projectors"
-            android:id="@+id/btn_Projectors"/>
+            android:id="@+id/btn_Projectors" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,7 +75,7 @@
             android:textStyle="bold"
             android:textAllCaps="true"
             android:text="chargers"
-            android:id="@+id/btn_Chargers"/>
+            android:id="@+id/btn_Chargers" />
     </LinearLayout>
 
     <LinearLayout
@@ -96,7 +95,7 @@
             android:textStyle="bold"
             android:textAllCaps="true"
             android:text="mobile holder"
-            android:id="@+id/btn_MobileHolder"/>
+            android:id="@+id/btn_MobileHolder" />
     </LinearLayout>
 
 </LinearLayout>

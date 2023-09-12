@@ -11,10 +11,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -24,7 +26,7 @@
                 android:textSize="24dp"
                 android:text="admin add denting &amp; painting"
                 android:layout_marginBottom="25dp"
-                android:gravity="center"/>
+                android:gravity="center" />
 
             <!-- Service Name -->
             <LinearLayout
@@ -34,17 +36,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Service Name"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/serviceName"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -56,20 +60,21 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter What's Included"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/wtsIncluded"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
-
 
 
             <!-- Price -->
@@ -80,17 +85,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Amount"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/price"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -105,7 +112,7 @@
                 android:textColor="@color/white"
                 android:backgroundTint="@color/summersky"
                 android:text="add service"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true" />
 
         </LinearLayout>
     </ScrollView>

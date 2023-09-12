@@ -1,5 +1,5 @@
 public class Protective_ModelClass {
-    String Image,Model,Dimension,Color,Weight,MaterialType,FitType,Feature,Manufacturer,Price,Quantity;
+    String Image, Model, Dimension, Color, Weight, MaterialType, FitType, Feature, Manufacturer, Price, Quantity;
 
     public Protective_ModelClass() {
     }

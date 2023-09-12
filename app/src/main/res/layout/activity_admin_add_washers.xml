@@ -11,6 +11,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,7 +23,7 @@
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:text="Detailing"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <!-- Manufacturer -->
             <LinearLayout
@@ -32,17 +33,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Manufacturer"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/washersManufacturer"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -54,17 +57,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Model"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/washersModel"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -76,17 +81,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Weight"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/washersWeight"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -98,17 +105,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Max Pressure"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/washersMaxPressure"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -120,17 +129,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Hose Length"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/washersHoseLength"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -142,17 +153,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Dimensions"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/washersDimensions"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -164,17 +177,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Color"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/washersColor"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -186,17 +201,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Power Output"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/washersPowerOutput"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -209,17 +226,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Amount"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/washersPrice"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -231,17 +250,19 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="5dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Enter Quantity"
                     app:hintTextColor="@color/white"
                     android:textColorHint="@color/white">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/washersQuantity"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -252,15 +273,17 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:layout_marginBottom="5dp">
+
                 <ImageView
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:id="@+id/ivWashers"/>
+                    android:id="@+id/ivWashers" />
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/btn_selectImgWashers"
-                    android:text="SELECT IMAGE"/>
+                    android:text="SELECT IMAGE" />
             </LinearLayout>
 
             <Button
@@ -272,7 +295,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/summersky"
-                android:text="ADD"/>
+                android:text="ADD" />
         </LinearLayout>
     </ScrollView>
 

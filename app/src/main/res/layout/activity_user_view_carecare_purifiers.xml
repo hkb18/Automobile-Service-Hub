@@ -14,7 +14,7 @@
         tools:listitem="@layout/screen_speaker_layout"
         tools:itemCount="7"
         android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="25dp"
@@ -22,12 +22,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/rv"
         android:visibility="gone"
-        tools:listitem="@layout/screen_speaker_items_layout"/>
+        tools:listitem="@layout/screen_speaker_items_layout" />
 
     <ScrollView
         android:id="@+id/scrollViewItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsAirpurifier"
-                tools:listitem="@layout/airpurifier_layout2"/>
+                tools:listitem="@layout/airpurifier_layout2" />
 
             <!--        cleaning kit-->
             <androidx.recyclerview.widget.RecyclerView
@@ -46,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsCleaningKit"
-                tools:listitem="@layout/cleaningkit_layout"/>
+                tools:listitem="@layout/cleaningkit_layout" />
 
             <!--        cleansers-->
             <androidx.recyclerview.widget.RecyclerView
@@ -54,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsCleansers"
-                tools:listitem="@layout/cleansers_layout"/>
+                tools:listitem="@layout/cleansers_layout" />
 
             <!--      detailing-->
             <androidx.recyclerview.widget.RecyclerView
@@ -62,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsDetailing"
-                tools:listitem="@layout/detailing_layout"/>
+                tools:listitem="@layout/detailing_layout" />
 
             <!--microfibres-->
             <androidx.recyclerview.widget.RecyclerView
@@ -70,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsMicroFibres"
-                tools:listitem="@layout/microfiber_layout"/>
+                tools:listitem="@layout/microfiber_layout" />
 
             <!--washers-->
             <androidx.recyclerview.widget.RecyclerView
@@ -78,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsWashers"
-                tools:listitem="@layout/washer_layout"/>
+                tools:listitem="@layout/washer_layout" />
 
             <!--wiperblades-->
             <androidx.recyclerview.widget.RecyclerView
@@ -86,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsWiperBlades"
-                tools:listitem="@layout/wiperblades_layout"/>
+                tools:listitem="@layout/wiperblades_layout" />
 
         </LinearLayout>
 

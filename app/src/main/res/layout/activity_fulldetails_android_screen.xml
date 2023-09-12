@@ -23,17 +23,18 @@
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:padding="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="10dp"
-                >
+                android:padding="10dp">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
-                    android:id="@+id/androidscreenImg"/>
+                    android:id="@+id/androidscreenImg" />
 
                 <!--MANUFACTURER-->
                 <LinearLayout
@@ -41,16 +42,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Manufacturer:"/>
+                        android:text="Manufacturer:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenManufacturer"/>
+                        android:id="@+id/androidscreenManufacturer" />
                 </LinearLayout>
 
                 <!--MODEL-->
@@ -59,16 +62,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Model:"/>
+                        android:text="Model:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenModel"/>
+                        android:id="@+id/androidscreenModel" />
                 </LinearLayout>
 
                 <!--DIMENSION-->
@@ -77,16 +82,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Dimenison:"/>
+                        android:text="Dimenison:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenDimension"/>
+                        android:id="@+id/androidscreenDimension" />
                 </LinearLayout>
 
                 <!--DISPLAY TYPE-->
@@ -95,16 +102,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Display Type:"/>
+                        android:text="Display Type:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenDisplayType"/>
+                        android:id="@+id/androidscreenDisplayType" />
                 </LinearLayout>
 
                 <!--RAM-->
@@ -113,16 +122,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="RAM:"/>
+                        android:text="RAM:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenRAM"/>
+                        android:id="@+id/androidscreenRAM" />
                 </LinearLayout>
 
                 <!--ROM-->
@@ -131,16 +142,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="ROM:"/>
+                        android:text="ROM:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenROM"/>
+                        android:id="@+id/androidscreenROM" />
                 </LinearLayout>
 
                 <!--OS TYPE-->
@@ -149,16 +162,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="OS Type:"/>
+                        android:text="OS Type:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenOSType"/>
+                        android:id="@+id/androidscreenOSType" />
                 </LinearLayout>
 
                 <!--SCREENSIZE-->
@@ -167,16 +182,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="ScreenSize:"/>
+                        android:text="ScreenSize:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenScreenSize"/>
+                        android:id="@+id/androidscreenScreenSize" />
                 </LinearLayout>
 
                 <!--WEIGHT-->
@@ -185,16 +202,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Weight:"/>
+                        android:text="Weight:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenWeight"/>
+                        android:id="@+id/androidscreenWeight" />
                 </LinearLayout>
 
                 <!--PRICE-->
@@ -203,22 +222,26 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Price:"/>
+                        android:text="Price:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/androidscreenPrice"/>
+                        android:id="@+id/androidscreenPrice" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -227,7 +250,7 @@
                         android:text="add to cart"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="@color/summersky"/>
+                        android:backgroundTint="@color/summersky" />
 
                     <Button
                         android:layout_width="0dp"
@@ -237,7 +260,7 @@
                         android:text="buy now"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="@color/buynow"/>
+                        android:backgroundTint="@color/buynow" />
                 </LinearLayout>
             </LinearLayout>
 

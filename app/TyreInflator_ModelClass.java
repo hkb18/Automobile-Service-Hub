@@ -1,5 +1,5 @@
 public class TyreInflator_ModelClass {
-    String Image,Model,Dimension,Color,Weight,MaxVoltage,ItemIncluded,Voltage,Brand,Price,Quantity;
+    String Image, Model, Dimension, Color, Weight, MaxVoltage, ItemIncluded, Voltage, Brand, Price, Quantity;
 
     public TyreInflator_ModelClass() {
     }

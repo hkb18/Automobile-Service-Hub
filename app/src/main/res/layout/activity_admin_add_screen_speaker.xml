@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,16 +7,17 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".admin_add_ScreenSpeaker">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textColor="@color/white"
-    android:textStyle="bold"
-    android:textAllCaps="true"
-    android:text="admin add screens &amp; speakers"
-    android:gravity="center"
-    android:textSize="24dp"
-    android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:text="admin add screens &amp; speakers"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:layout_marginBottom="15dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,8 +36,7 @@
             android:backgroundTint="@color/summersky"
             android:text="ANDROID SCREEN"
             android:gravity="center"
-            android:id="@+id/btn_AndroidScreens"
-            />
+            android:id="@+id/btn_AndroidScreens" />
 
         <!-- BASS TUBES -->
         <Button
@@ -49,7 +48,7 @@
             android:backgroundTint="@color/summersky"
             android:text="BASS TUBES"
             android:gravity="center"
-            android:id="@+id/btn_BassTubes"/>
+            android:id="@+id/btn_BassTubes" />
     </LinearLayout>
 
     <LinearLayout
@@ -69,7 +68,7 @@
             android:backgroundTint="@color/summersky"
             android:text="SPEAKERS"
             android:gravity="center"
-            android:id="@+id/btn_Speakers"/>
+            android:id="@+id/btn_Speakers" />
         <!-- VACUUM CLEANERS -->
         <Button
             android:layout_width="0dp"
@@ -80,7 +79,7 @@
             android:backgroundTint="@color/summersky"
             android:text="VACUUM CLEANERS"
             android:gravity="center"
-            android:id="@+id/btn_VacuumCleaners"/>
+            android:id="@+id/btn_VacuumCleaners" />
 
     </LinearLayout>
 
@@ -101,7 +100,7 @@
             android:backgroundTint="@color/summersky"
             android:text="AMPLIFIERS"
             android:gravity="center"
-            android:id="@+id/btn_amplifier"/>
+            android:id="@+id/btn_amplifier" />
 
     </LinearLayout>
 </LinearLayout>

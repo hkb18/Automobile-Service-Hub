@@ -23,16 +23,18 @@
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:padding="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
-                    android:id="@+id/airfreshnerImg"/>
+                    android:id="@+id/airfreshnerImg" />
 
                 <!--MANUFACTURER-->
                 <LinearLayout
@@ -40,16 +42,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Manufacturer:"/>
+                        android:text="Manufacturer:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/airfreshnerManufacturer"/>
+                        android:id="@+id/airfreshnerManufacturer" />
                 </LinearLayout>
 
                 <!--MODEL-->
@@ -58,16 +62,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Model:"/>
+                        android:text="Model:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/airfreshnerModel"/>
+                        android:id="@+id/airfreshnerModel" />
                 </LinearLayout>
 
                 <!--Duration-->
@@ -76,16 +82,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Duration:"/>
+                        android:text="Duration:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/airfreshnerDuration"/>
+                        android:id="@+id/airfreshnerDuration" />
                 </LinearLayout>
 
                 <!--Fragrence-->
@@ -94,16 +102,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Fragrence:"/>
+                        android:text="Fragrence:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/airfreshnerFragrence"/>
+                        android:id="@+id/airfreshnerFragrence" />
                 </LinearLayout>
 
                 <!--Items Form-->
@@ -112,16 +122,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Items Form:"/>
+                        android:text="Items Form:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/airfreshnerItemForm"/>
+                        android:id="@+id/airfreshnerItemForm" />
                 </LinearLayout>
 
                 <!--Color-->
@@ -130,16 +142,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Color:"/>
+                        android:text="Color:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/airfreshnerColor"/>
+                        android:id="@+id/airfreshnerColor" />
                 </LinearLayout>
 
                 <!--DIMENSION-->
@@ -148,16 +162,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Dimenison:"/>
+                        android:text="Dimenison:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/airfreshnerDimensions"/>
+                        android:id="@+id/airfreshnerDimensions" />
                 </LinearLayout>
 
                 <!--WEIGHT-->
@@ -166,16 +182,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Weight:"/>
+                        android:text="Weight:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/airfreshnerWeight"/>
+                        android:id="@+id/airfreshnerWeight" />
                 </LinearLayout>
 
                 <!--PRICE-->
@@ -184,16 +202,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Price:"/>
+                        android:text="Price:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/airfreshnerPrice"/>
+                        android:id="@+id/airfreshnerPrice" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -201,6 +221,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -209,7 +230,7 @@
                         android:text="add to cart"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="@color/summersky"/>
+                        android:backgroundTint="@color/summersky" />
 
                     <Button
                         android:layout_width="0dp"
@@ -219,7 +240,7 @@
                         android:text="buy now"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="@color/buynow"/>
+                        android:backgroundTint="@color/buynow" />
                 </LinearLayout>
             </LinearLayout>
 

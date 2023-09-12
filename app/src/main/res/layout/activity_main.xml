@@ -107,11 +107,12 @@
                 android:padding="10dp"
                 android:textColorHint="@color/white"
                 app:hintTextColor="@color/white">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/username"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--<com.google.android.material.textfield.TextInputLayout
@@ -127,7 +128,7 @@
                     android:textColor="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>-->
 
-        <!--PASSWORD-->
+            <!--PASSWORD-->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,28 +140,29 @@
                 android:padding="10dp"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="22dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:id="@+id/password"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
-           <!-- <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:endIconMode="password_toggle"
-                android:hint="PASSWORD"
-                app:hintTextColor="@color/white"
-                android:textColorHint="@color/white">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="textPassword"
-                    android:id="@+id/password"
-                    android:textColor="@color/white"/>
-            </com.google.android.material.textfield.TextInputLayout>-->
+            <!-- <com.google.android.material.textfield.TextInputLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 app:endIconMode="password_toggle"
+                 android:hint="PASSWORD"
+                 app:hintTextColor="@color/white"
+                 android:textColorHint="@color/white">
+                 <com.google.android.material.textfield.TextInputEditText
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:inputType="textPassword"
+                     android:id="@+id/password"
+                     android:textColor="@color/white"/>
+             </com.google.android.material.textfield.TextInputLayout>-->
 
             <Button
                 android:layout_width="match_parent"
@@ -174,7 +176,7 @@
                 android:textColor="@color/white"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/summersky" />
-<!--            android:backgroundTint="#8294C4"-->
+            <!--            android:backgroundTint="#8294C4"-->
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -187,7 +189,7 @@
         android:textStyle="bold"
         android:id="@+id/signin"
         android:textColor="@color/white"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp" />
 
 
     <TextView
@@ -199,7 +201,7 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="16dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp" />
 
     <!--<TextView
         android:layout_width="match_parent"

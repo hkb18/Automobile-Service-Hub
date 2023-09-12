@@ -23,17 +23,18 @@
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:padding="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="10dp"
-                >
+                android:padding="10dp">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
-                    android:id="@+id/basstubesImg"/>
+                    android:id="@+id/basstubesImg" />
 
                 <!--MANUFACTURER-->
                 <LinearLayout
@@ -41,16 +42,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Manufacturer:"/>
+                        android:text="Manufacturer:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesManufacturer"/>
+                        android:id="@+id/basstubesManufacturer" />
                 </LinearLayout>
 
                 <!--MODEL-->
@@ -59,16 +62,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Model:"/>
+                        android:text="Model:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesModel"/>
+                        android:id="@+id/basstubesModel" />
                 </LinearLayout>
 
                 <!--Dimension-->
@@ -77,16 +82,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Dimension:"/>
+                        android:text="Dimension:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesDimension"/>
+                        android:id="@+id/basstubesDimension" />
                 </LinearLayout>
 
                 <!--Salient Feature-->
@@ -95,16 +102,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Salient Feature:"/>
+                        android:text="Salient Feature:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesSalientFeature"/>
+                        android:id="@+id/basstubesSalientFeature" />
                 </LinearLayout>
 
                 <!--Power Output-->
@@ -113,16 +122,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Power Output:"/>
+                        android:text="Power Output:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesPowerOutput"/>
+                        android:id="@+id/basstubesPowerOutput" />
                 </LinearLayout>
 
                 <!--Frequency-->
@@ -131,16 +142,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Frequency:"/>
+                        android:text="Frequency:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesFrequency"/>
+                        android:id="@+id/basstubesFrequency" />
                 </LinearLayout>
 
                 <!--Sensitivity-->
@@ -149,16 +162,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Sensitivity:"/>
+                        android:text="Sensitivity:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesSensitivity"/>
+                        android:id="@+id/basstubesSensitivity" />
                 </LinearLayout>
 
                 <!--WEIGHT-->
@@ -167,16 +182,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Weight:"/>
+                        android:text="Weight:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesWeight"/>
+                        android:id="@+id/basstubesWeight" />
                 </LinearLayout>
 
                 <!--Color-->
@@ -185,16 +202,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Color:"/>
+                        android:text="Color:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesColor"/>
+                        android:id="@+id/basstubesColor" />
                 </LinearLayout>
 
                 <!--Design-->
@@ -203,16 +222,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Design:"/>
+                        android:text="Design:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesDesign"/>
+                        android:id="@+id/basstubesDesign" />
                 </LinearLayout>
 
                 <!--PRICE-->
@@ -221,16 +242,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Price:"/>
+                        android:text="Price:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/basstubesPrice"/>
+                        android:id="@+id/basstubesPrice" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -238,6 +261,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -246,7 +270,7 @@
                         android:text="add to cart"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="@color/summersky"/>
+                        android:backgroundTint="@color/summersky" />
 
                     <Button
                         android:layout_width="0dp"
@@ -256,7 +280,7 @@
                         android:text="buy now"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="@color/buynow"/>
+                        android:backgroundTint="@color/buynow" />
                 </LinearLayout>
             </LinearLayout>
 

@@ -16,7 +16,7 @@
         android:textStyle="bold"
         android:textSize="25dp"
         android:text="WORKSHOP LOGIN"
-        android:gravity="center"/>
+        android:gravity="center" />
 
     <!-- USERNAME -->
     <LinearLayout
@@ -26,19 +26,21 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp">
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="CONTACT NUMBER"
             app:hintTextColor="@color/white"
             android:textColorHint="@color/white">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="number"
                 android:maxLength="10"
                 android:id="@+id/workshopName"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -50,6 +52,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp">
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -57,20 +60,22 @@
             android:hint="PASSWORD"
             app:hintTextColor="@color/white"
             android:textColorHint="@color/white">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
                 android:id="@+id/password"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/summersky"
         android:textColor="@color/white"
         android:id="@+id/button_WorkshopLogin"
-        android:text="Login"/>
+        android:text="Login" />
 
 </LinearLayout>

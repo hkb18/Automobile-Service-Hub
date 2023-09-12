@@ -23,16 +23,18 @@
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:padding="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
-                    android:id="@+id/detailinigImg"/>
+                    android:id="@+id/detailinigImg" />
 
                 <!--Brand-->
                 <LinearLayout
@@ -40,16 +42,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Brand:"/>
+                        android:text="Brand:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/detailingBrand"/>
+                        android:id="@+id/detailingBrand" />
                 </LinearLayout>
 
                 <!--Box Includes-->
@@ -58,16 +62,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Box Includes:"/>
+                        android:text="Box Includes:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/detailingBoxIncludes"/>
+                        android:id="@+id/detailingBoxIncludes" />
                 </LinearLayout>
 
                 <!--DIMENSION-->
@@ -76,16 +82,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Dimenison:"/>
+                        android:text="Dimenison:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/detailinigDimensions"/>
+                        android:id="@+id/detailinigDimensions" />
                 </LinearLayout>
 
                 <!--Item Form-->
@@ -94,16 +102,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Item Form:"/>
+                        android:text="Item Form:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/detailingItemForm"/>
+                        android:id="@+id/detailingItemForm" />
                 </LinearLayout>
 
                 <!--Volume-->
@@ -112,16 +122,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Volume:"/>
+                        android:text="Volume:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/detailingVolume"/>
+                        android:id="@+id/detailingVolume" />
                 </LinearLayout>
 
                 <!--WEIGHT-->
@@ -130,16 +142,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Weight:"/>
+                        android:text="Weight:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/detailinigWeight"/>
+                        android:id="@+id/detailinigWeight" />
                 </LinearLayout>
 
                 <!--PRICE-->
@@ -148,16 +162,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Price:"/>
+                        android:text="Price:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/detailinigPrice"/>
+                        android:id="@+id/detailinigPrice" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -165,6 +181,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -173,7 +190,7 @@
                         android:text="add to cart"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="@color/summersky"/>
+                        android:backgroundTint="@color/summersky" />
 
                     <Button
                         android:layout_width="0dp"
@@ -183,7 +200,7 @@
                         android:text="buy now"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="@color/buynow"/>
+                        android:backgroundTint="@color/buynow" />
                 </LinearLayout>
             </LinearLayout>
 

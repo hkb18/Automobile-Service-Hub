@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/home"
+    <item
+        android:id="@+id/home"
         android:icon="@drawable/home_icon"
-        android:title="Home"/>
+        android:title="Home" />
 
-    <item android:id="@+id/cart"
+    <item
+        android:id="@+id/cart"
         android:icon="@drawable/cart_checkout_icon"
-        android:title="Cart"
-        />
+        android:title="Cart" />
 
-   <!-- <item android:id="@+id/accessory"
-          android:icon="@drawable/accessory_icon"
-          android:title="Accessories"
-    />-->
-    <item android:id="@+id/accessory"
+    <!-- <item android:id="@+id/accessory"
+           android:icon="@drawable/accessory_icon"
+           android:title="Accessories"
+     />-->
+    <item
+        android:id="@+id/accessory"
         android:icon="@drawable/shopping_bag"
-        android:title="Accessories"
-        />
+        android:title="Accessories" />
 
-    <item android:id="@+id/profile"
+    <item
+        android:id="@+id/profile"
         android:icon="@drawable/profile_icon"
-        android:title="My Profile"
-        />
+        android:title="My Profile" />
 
 </menu>

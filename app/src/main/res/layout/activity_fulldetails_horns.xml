@@ -23,16 +23,18 @@
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:padding="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
-                    android:id="@+id/hornsImg"/>
+                    android:id="@+id/hornsImg" />
 
                 <!--MANUFACTURER-->
                 <LinearLayout
@@ -40,16 +42,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Manufacturer:"/>
+                        android:text="Manufacturer:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsManufacturer"/>
+                        android:id="@+id/hornsManufacturer" />
                 </LinearLayout>
 
                 <!--MODEL-->
@@ -58,16 +62,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Model:"/>
+                        android:text="Model:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsModel"/>
+                        android:id="@+id/hornsModel" />
                 </LinearLayout>
 
                 <!--Feature-->
@@ -76,16 +82,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Feature:"/>
+                        android:text="Feature:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsFeature"/>
+                        android:id="@+id/hornsFeature" />
                 </LinearLayout>
 
                 <!--Voltage-->
@@ -94,16 +102,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Voltage:"/>
+                        android:text="Voltage:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsVoltage"/>
+                        android:id="@+id/hornsVoltage" />
                 </LinearLayout>
 
                 <!--Noise Level-->
@@ -112,16 +122,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Noise Level:"/>
+                        android:text="Noise Level:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsNoiseLevel"/>
+                        android:id="@+id/hornsNoiseLevel" />
                 </LinearLayout>
 
                 <!--Color-->
@@ -130,16 +142,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Color:"/>
+                        android:text="Color:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsColor"/>
+                        android:id="@+id/hornsColor" />
                 </LinearLayout>
 
                 <!--DIMENSION-->
@@ -148,16 +162,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Dimenison:"/>
+                        android:text="Dimenison:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsDimensions"/>
+                        android:id="@+id/hornsDimensions" />
                 </LinearLayout>
 
                 <!--WEIGHT-->
@@ -166,16 +182,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Weight:"/>
+                        android:text="Weight:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsWeight"/>
+                        android:id="@+id/hornsWeight" />
                 </LinearLayout>
 
                 <!--Material Type-->
@@ -184,16 +202,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Material Type:"/>
+                        android:text="Material Type:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsMaterialType"/>
+                        android:id="@+id/hornsMaterialType" />
                 </LinearLayout>
 
                 <!--Fit Type-->
@@ -202,16 +222,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Fit Type:"/>
+                        android:text="Fit Type:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsFitType"/>
+                        android:id="@+id/hornsFitType" />
                 </LinearLayout>
 
                 <!--PRICE-->
@@ -220,16 +242,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Price:"/>
+                        android:text="Price:" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:id="@+id/hornsPrice"/>
+                        android:id="@+id/hornsPrice" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -237,6 +261,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
+
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -245,7 +270,7 @@
                         android:text="add to cart"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="@color/summersky"/>
+                        android:backgroundTint="@color/summersky" />
 
                     <Button
                         android:layout_width="0dp"
@@ -255,7 +280,7 @@
                         android:text="buy now"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:backgroundTint="@color/buynow"/>
+                        android:backgroundTint="@color/buynow" />
                 </LinearLayout>
             </LinearLayout>
 

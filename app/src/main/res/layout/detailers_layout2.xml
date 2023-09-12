@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -19,36 +20,39 @@
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:padding="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp"
-                >
+                android:padding="10dp">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:layout_gravity="center"
-                    android:id="@+id/detailersImg"/>
+                    android:id="@+id/detailersImg" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="manufacturer"
-                    android:id="@+id/detailersManufacturer"/>
+                    android:id="@+id/detailersManufacturer" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="desc"
-                    android:id="@+id/detailersDesc"/>
+                    android:id="@+id/detailersDesc" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="price"
-                    android:id="@+id/detailersPrice"/>
+                    android:id="@+id/detailersPrice" />
             </LinearLayout>
 
             <TextView
@@ -59,7 +63,7 @@
                 android:layout_gravity="center"
                 android:visibility="gone"
                 android:textColor="#DD2C00"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

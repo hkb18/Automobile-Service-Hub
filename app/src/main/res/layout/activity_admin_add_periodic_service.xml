@@ -9,59 +9,63 @@
     tools:context=".admin_add_PeriodicService">
 
     <TextView
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:textColor="@color/white"
-           android:textAllCaps="true"
-           android:textStyle="bold"
-           android:textSize="26dp"
-           android:text="add periodic services"
-           android:layout_marginBottom="25dp"
-           android:gravity="center"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="26dp"
+        android:text="add periodic services"
+        android:layout_marginBottom="25dp"
+        android:gravity="center" />
 
-       <!-- Service Name -->
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="5dp"
-           android:layout_marginLeft="30dp"
-           android:layout_marginRight="30dp"
-           android:layout_marginBottom="5dp">
-           <com.google.android.material.textfield.TextInputLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:hint="Enter Service Name"
-               app:hintTextColor="@color/white"
-               android:textColorHint="@color/white">
-               <com.google.android.material.textfield.TextInputEditText
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:id="@+id/serviceName"
-                   android:textColor="@color/white"/>
-           </com.google.android.material.textfield.TextInputLayout>
-       </LinearLayout>
+    <!-- Service Name -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="5dp">
 
-       <!-- Essential Services  -->
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="5dp"
-           android:layout_marginLeft="30dp"
-           android:layout_marginRight="30dp"
-           android:layout_marginBottom="5dp">
-           <com.google.android.material.textfield.TextInputLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="Enter All Essential Services"
-               app:hintTextColor="@color/white"
-               android:textColorHint="@color/white">
-               <com.google.android.material.textfield.TextInputEditText
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:id="@+id/essentialServices"
-                   android:textColor="@color/white"/>
-           </com.google.android.material.textfield.TextInputLayout>
-       </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter Service Name"
+            app:hintTextColor="@color/white"
+            android:textColorHint="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/serviceName"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <!-- Essential Services  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="5dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter All Essential Services"
+            app:hintTextColor="@color/white"
+            android:textColorHint="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/essentialServices"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <!-- Performance Services  -->
     <LinearLayout
@@ -71,17 +75,19 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="5dp">
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter All Performance Services"
             app:hintTextColor="@color/white"
             android:textColorHint="@color/white">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/performanceServices"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -93,54 +99,57 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="5dp">
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter All Additional Services"
             app:hintTextColor="@color/white"
             android:textColorHint="@color/white">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/additionalServices"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
-       <!-- Price -->
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="5dp"
-           android:layout_marginLeft="30dp"
-           android:layout_marginRight="30dp"
-           android:layout_marginBottom="5dp">
-           <com.google.android.material.textfield.TextInputLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:hint="Enter Amount"
-               app:hintTextColor="@color/white"
-               android:textColorHint="@color/white">
-               <com.google.android.material.textfield.TextInputEditText
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:id="@+id/price"
-                   android:textColor="@color/white"/>
-           </com.google.android.material.textfield.TextInputLayout>
-       </LinearLayout>
+    <!-- Price -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="5dp">
 
-       <Button
-           android:id="@+id/btn_addService"
-           android:layout_marginTop="5dp"
-           android:layout_marginBottom="10dp"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center"
-           android:textColor="@color/white"
-           android:backgroundTint="@color/summersky"
-           android:text="add service"
-           android:textAllCaps="true"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter Amount"
+            app:hintTextColor="@color/white"
+            android:textColorHint="@color/white">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/price"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_addService"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/summersky"
+        android:text="add service"
+        android:textAllCaps="true" />
 
 
 </LinearLayout>

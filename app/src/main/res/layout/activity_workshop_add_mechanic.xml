@@ -8,15 +8,16 @@
     android:gravity="center"
     android:background="@drawable/theme_bg"
     tools:context=".workshop_AddMechanic">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textAllCaps="true"
-    android:text="workshop add mechanic"
-    android:textColor="@color/white"
-    android:textStyle="bold"
-    android:textSize="22dp"
-    android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:text="workshop add mechanic"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="22dp"
+        android:gravity="center" />
     <!-- MECHANIC NAME -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,17 +26,19 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp">
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Mechanic Name"
             app:hintTextColor="@color/white"
             android:textColorHint="@color/white">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/mechanicName"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     <!-- EMAIL ID-->
@@ -46,18 +49,20 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp">
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Email id"
             app:hintTextColor="@color/white"
             android:textColorHint="@color/white">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
                 android:id="@+id/mechanicEmailId"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     <!-- CONTACT NUMBER -->
@@ -68,19 +73,21 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp">
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Contact Number"
             app:hintTextColor="@color/white"
             android:textColorHint="@color/white">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="phone"
                 android:maxLength="10"
                 android:id="@+id/mechanicContactNumber"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -92,27 +99,29 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp">
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Password"
             app:hintTextColor="@color/white"
             android:textColorHint="@color/white">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
                 android:id="@+id/mechanicPassword"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Mechanic"
         android:textColor="@color/white"
         android:id="@+id/btn_AddMechanic"
-        android:backgroundTint="@color/summersky"
-        />
+        android:backgroundTint="@color/summersky" />
 
 </LinearLayout>

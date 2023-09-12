@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/home"
+    <item
+        android:id="@+id/home"
         android:icon="@drawable/home_icon"
-        android:title="Home"/>
+        android:title="Home" />
 
-    <item android:id="@+id/service"
+    <item
+        android:id="@+id/service"
         android:icon="@drawable/service_icon"
-        android:title="Accessories"
-        />
+        android:title="Accessories" />
 
-    <item android:id="@+id/workshop"
+    <item
+        android:id="@+id/workshop"
         android:icon="@drawable/car_repair_icon"
-        android:title="Service"
-        />
+        android:title="Service" />
 
-    <item android:id="@+id/profile"
+    <item
+        android:id="@+id/profile"
         android:icon="@drawable/profile_icon"
-        android:title="Profiles"
-        />
+        android:title="Profiles" />
 </menu>

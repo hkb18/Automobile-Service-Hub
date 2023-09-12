@@ -1,5 +1,5 @@
 public class Toolkits_ModelClass {
-    String Image,Model,Dimension,Color,Weight,ItemIncluded,Brand,Price,Quantity;
+    String Image, Model, Dimension, Color, Weight, ItemIncluded, Brand, Price, Quantity;
 
     public Toolkits_ModelClass() {
     }

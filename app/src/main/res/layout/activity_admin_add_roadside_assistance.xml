@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +16,7 @@
         android:textColor="@color/white"
         android:text="admin add roadside assistance"
         android:textSize="24dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +35,7 @@
             android:textStyle="bold"
             android:textAllCaps="true"
             android:text="tyre Infators"
-            android:id="@+id/btn_TyreInfators"/>
+            android:id="@+id/btn_TyreInfators" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +55,7 @@
             android:textStyle="bold"
             android:textAllCaps="true"
             android:text="Toolkits"
-            android:id="@+id/btn_Toolkits"/>
+            android:id="@+id/btn_Toolkits" />
     </LinearLayout>
 
 </LinearLayout>

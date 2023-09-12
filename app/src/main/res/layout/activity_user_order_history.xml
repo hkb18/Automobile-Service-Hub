@@ -7,15 +7,16 @@
     android:background="@drawable/theme_bg"
     android:orientation="vertical"
     tools:context=".user_orderHistory">
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/btn_Date"
-    android:text="SELECT DATE"
-    android:textColor="@color/white"
-    android:backgroundTint="@color/summersky"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_Date"
+        android:text="SELECT DATE"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/summersky"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -25,7 +26,7 @@
         app:layout_constraintEnd_toStartOf="@id/btn_Date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/btn_Date"/>
+        app:layout_constraintBottom_toBottomOf="@id/btn_Date" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvOrderHistory"

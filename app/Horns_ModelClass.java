@@ -1,5 +1,5 @@
 public class Horns_ModelClass {
-    String Image,Model,Dimension,Color,Weight,MaterialType,Voltage,NoiseLevel,FitType,Feature,Manufacturer,Price,Quantity;
+    String Image, Model, Dimension, Color, Weight, MaterialType, Voltage, NoiseLevel, FitType, Feature, Manufacturer, Price, Quantity;
 
     public Horns_ModelClass() {
     }

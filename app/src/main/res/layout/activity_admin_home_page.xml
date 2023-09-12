@@ -7,6 +7,7 @@
     tools:context=".admin_HomePage"
     android:orientation="vertical"
     android:background="@drawable/theme_bg">
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -15,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,7 +24,8 @@
             android:textSize="16dp"
             android:textColor="@color/black"
             android:text="automobile service hub"
-            android:textAllCaps="true"/>
+            android:textAllCaps="true" />
+
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
@@ -30,16 +33,18 @@
             android:id="@+id/imageviewLogout"
             android:padding="5dp"
             android:src="@drawable/user_logout_icon"
-            android:layout_gravity="end"/>
+            android:layout_gravity="end" />
     </androidx.appcompat.widget.Toolbar>
-   <FrameLayout
-       android:layout_marginTop="50dp"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:id="@+id/fragment_container_admin"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+    <FrameLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_container_admin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,6 +56,6 @@
         app:labelVisibilityMode="selected"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,37 +9,42 @@
     tools:context=".admin_ManageWorkshop_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/linearlayout_AddWorkshop">
-    <ImageView
-        android:id="@+id/image_viewAdd"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="100dp"
-        android:src="@drawable/add_account_icon"/>
-    <TextView
-        android:id="@+id/admin_Add_workshop"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="Add Workshop"
-        android:textSize="22dp"
-        android:gravity="center"
-        android:textColor="@color/black"/>
-</LinearLayout>
+        android:id="@+id/linearlayout_AddWorkshop">
+
+        <ImageView
+            android:id="@+id/image_viewAdd"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/add_account_icon" />
+
+        <TextView
+            android:id="@+id/admin_Add_workshop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Add Workshop"
+            android:textSize="22dp"
+            android:gravity="center"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:id="@+id/linearlayout_DeleteWorkshop">
+
         <ImageView
             android:id="@+id/image_viewDel"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="100dp"
-            android:src="@drawable/delete_user_icon"/>
+            android:src="@drawable/delete_user_icon" />
+
         <TextView
             android:id="@+id/admin_Del_workshop"
             android:layout_width="wrap_content"
@@ -48,21 +53,22 @@
             android:text="Delete Workshop"
             android:textSize="22dp"
             android:gravity="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:id="@+id/linearlayout_AddCar"
-        >
+        android:id="@+id/linearlayout_AddCar">
+
         <ImageView
             android:id="@+id/image_addCar"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="100dp"
-            android:src="@drawable/addcar"/>
+            android:src="@drawable/addcar" />
+
         <TextView
             android:id="@+id/admin_addCar"
             android:layout_width="wrap_content"
@@ -71,21 +77,22 @@
             android:text="Add Car Brand"
             android:textSize="22dp"
             android:gravity="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:id="@+id/linearlayout_AddCarBodyType"
-        >
+        android:id="@+id/linearlayout_AddCarBodyType">
+
         <ImageView
             android:id="@+id/image_addCaBodyTyper"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="100dp"
-            android:src="@drawable/addcar"/>
+            android:src="@drawable/addcar" />
+
         <TextView
             android:id="@+id/admin_addCarBodyType"
             android:layout_width="wrap_content"
@@ -94,21 +101,22 @@
             android:text="Add Car Body Type"
             android:textSize="22dp"
             android:gravity="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:id="@+id/linearlayout_AddService"
-        >
+        android:id="@+id/linearlayout_AddService">
+
         <ImageView
             android:id="@+id/image_addService"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="100dp"
-            android:src="@drawable/addcar"/>
+            android:src="@drawable/addcar" />
+
         <TextView
             android:id="@+id/admin_addService"
             android:layout_width="wrap_content"
@@ -117,7 +125,7 @@
             android:text="Add Service"
             android:textSize="22dp"
             android:gravity="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </LinearLayout>

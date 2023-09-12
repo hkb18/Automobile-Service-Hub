@@ -16,7 +16,7 @@
         tools:listitem="@layout/screen_speaker_layout"
         tools:itemCount="7"
         android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="25dp"
@@ -24,12 +24,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/rv"
         android:visibility="gone"
-        tools:listitem="@layout/screen_speaker_items_layout"/>
+        tools:listitem="@layout/screen_speaker_items_layout" />
 
     <ScrollView
         android:id="@+id/scrollViewItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsAirFreshner"
-                tools:listitem="@layout/air_freshner_layout"/>
+                tools:listitem="@layout/air_freshner_layout" />
 
             <!--back cushions-->
             <androidx.recyclerview.widget.RecyclerView
@@ -49,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsBackCushions"
-                tools:listitem="@layout/back_cushions_layout"/>
+                tools:listitem="@layout/back_cushions_layout" />
 
             <!--mats-->
             <androidx.recyclerview.widget.RecyclerView
@@ -57,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsMats"
-                tools:listitem="@layout/mats_layout"/>
+                tools:listitem="@layout/mats_layout" />
 
             <!--neck cushions-->
             <androidx.recyclerview.widget.RecyclerView
@@ -65,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rvItemsNeckCushions"
-                tools:listitem="@layout/neck_cushions_layout"/>
+                tools:listitem="@layout/neck_cushions_layout" />
 
         </LinearLayout>
 
