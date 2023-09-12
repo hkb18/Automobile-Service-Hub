@@ -20,7 +20,7 @@ public class user_view_ACServiceRepair extends AppCompatActivity {
     DatabaseReference databaseReference;
     private ActivityUserViewAcserviceRepairBinding binding;
     private ACServiceRepair_Adapter acservicerepairAdapter;
-    private ArrayList<ACServiceRepair_ModelClass> acservicerepairList = new ArrayList<>();
+    private final ArrayList<ACServiceRepair_ModelClass> acservicerepairList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

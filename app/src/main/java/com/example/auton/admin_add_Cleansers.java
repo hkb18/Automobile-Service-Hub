@@ -72,7 +72,7 @@ public class admin_add_Cleansers extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(admin_add_Cleansers.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(admin_add_Cleansers.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }

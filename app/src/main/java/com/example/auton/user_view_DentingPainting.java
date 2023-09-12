@@ -20,7 +20,7 @@ public class user_view_DentingPainting extends AppCompatActivity {
     DatabaseReference databaseReference;
     private ActivityUserViewDentingPaintingBinding binding;
     private DentingPainting_Adapter dentingPaintingAdapter;
-    private ArrayList<DentingPainting_ModelClass> dentingpaintingList = new ArrayList<>();
+    private final ArrayList<DentingPainting_ModelClass> dentingpaintingList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

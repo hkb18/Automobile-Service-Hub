@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Amplifier_Adapter2 extends RecyclerView.Adapter<Amplifier_Adapter2.ViewHold> {
     private final Context context;
-    private ArrayList<Accessories_ModelClass> dataList;
+    private final ArrayList<Accessories_ModelClass> dataList;
 
 
     public Amplifier_Adapter2(Context fragment, ArrayList<Accessories_ModelClass> dataList) {

@@ -20,7 +20,7 @@ public class user_View_PeriodicService extends AppCompatActivity {
     DatabaseReference databaseReference;
     private ActivityUserViewPeriodicServiceBinding binding;
     private PeriodicService_Adapter periodicServiceAdapter;
-    private ArrayList<PeriodicService_ModelClass> periodicserviceList = new ArrayList<>();
+    private final ArrayList<PeriodicService_ModelClass> periodicserviceList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

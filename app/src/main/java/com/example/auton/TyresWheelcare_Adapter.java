@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class TyresWheelcare_Adapter extends RecyclerView.Adapter<TyresWheelcare_Adapter.ViewHold> {
     private final Context context;
-    private ArrayList<TyresWheelcare_ModelClass> dataList;
+    private final ArrayList<TyresWheelcare_ModelClass> dataList;
 
 
     public TyresWheelcare_Adapter(Context fragment, ArrayList<TyresWheelcare_ModelClass> dataList) {

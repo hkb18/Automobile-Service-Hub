@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class CarInspection_Adapter extends RecyclerView.Adapter<CarInspection_Adapter.ViewHold> {
     private final Context context;
-    private ArrayList<CarInspection_ModelClass> dataList;
+    private final ArrayList<CarInspection_ModelClass> dataList;
 
 
     public CarInspection_Adapter(Context fragment, ArrayList<CarInspection_ModelClass> dataList) {

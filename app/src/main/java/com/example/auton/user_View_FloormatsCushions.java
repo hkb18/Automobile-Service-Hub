@@ -22,16 +22,16 @@ public class user_View_FloormatsCushions extends AppCompatActivity implements Fl
     DatabaseReference databaseReference;
     String ccpModelStr;
     private ActivityUserViewFloormatsCushionsBinding binding;
-    private ArrayList<materialButton> list = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
+    private final ArrayList<materialButton> list = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
     private AirFreshner_Adapter airFreshnerAdapter;
     private BackCushions_Adapter backCushionsAdapter;
     private Mats_Adapter matsAdapter;
     private NeckCushions_Adapter neckCushionsAdapter;
-    private ArrayList<Accessories_ModelClass> airfreshnerList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> backcushionList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> matsList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> neckcushionList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> airfreshnerList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> backcushionList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> matsList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> neckcushionList = new ArrayList<>();
     private FloormatCushions_Adapter floormatCushionsAdapter;
 
     @Override

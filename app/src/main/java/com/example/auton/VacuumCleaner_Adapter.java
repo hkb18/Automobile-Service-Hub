@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class VacuumCleaner_Adapter extends RecyclerView.Adapter<VacuumCleaner_Adapter.ViewHold> {
     private final Context context;
     private ArrayList<Accessories_ModelClass> dataList;
-    private String name;
+    private final String name;
 
     public VacuumCleaner_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;

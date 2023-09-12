@@ -91,7 +91,7 @@ public class Workshop_BookedService_Adapter extends RecyclerView.Adapter<Worksho
     }
 
     public class ViewHold extends RecyclerView.ViewHolder {
-        TextView carBrand, carModel, serviceType, date, latitude, longitude, servicetime, serviceName, username, ServiceReject,contactno;
+        TextView carBrand, carModel, serviceType, date, latitude, longitude, servicetime, serviceName, username, ServiceReject, contactno;
         Button accept, delete;
         LinearLayout linearLayout;
 

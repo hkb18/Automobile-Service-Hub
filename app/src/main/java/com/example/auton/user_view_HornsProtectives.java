@@ -22,10 +22,10 @@ public class user_view_HornsProtectives extends AppCompatActivity implements Hor
     DatabaseReference databaseReference;
     String ccpModelStr;
     private ActivityUserViewHornsProtectivesBinding binding;
-    private ArrayList<materialButton> list = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> hornsList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> protectivesList = new ArrayList<>();
+    private final ArrayList<materialButton> list = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> hornsList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> protectivesList = new ArrayList<>();
     private Horns_Adapter hornsAdapter;
     private HornsProtectives_Adapter hornsProtectives_adapter;
     private Protectives_Adapter protectivesAdapter;

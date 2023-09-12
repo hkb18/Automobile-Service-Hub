@@ -21,10 +21,10 @@ public class user_view_RoadsideAssistance extends AppCompatActivity implements H
     static HornsProtectives_Interface hornsProtectivesInterface;
     DatabaseReference databaseReference;
     private ActivityUserViewRoadsideAssistanceBinding binding;
-    private ArrayList<materialButton> list = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> toolkitList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> tyreinflatorList = new ArrayList<>();
+    private final ArrayList<materialButton> list = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> toolkitList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> tyreinflatorList = new ArrayList<>();
     private Toolkit_Adapter toolkitAdapter;
     private RoadsideAssistance_Adapter roadsideAssistanceAdapter;
     private TyreInflator_Adapter tyreInflatorAdapter;

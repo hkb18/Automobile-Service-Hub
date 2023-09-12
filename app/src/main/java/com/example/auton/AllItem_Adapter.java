@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class AllItem_Adapter extends RecyclerView.Adapter<AllItem_Adapter.ViewHold> {
     private final Context context;
-    private ArrayList<Amplifier_ModelClass> dataList;
+    private final ArrayList<Amplifier_ModelClass> dataList;
 
 
     public AllItem_Adapter(Context fragment, ArrayList<Amplifier_ModelClass> dataList) {

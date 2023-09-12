@@ -20,7 +20,7 @@ public class user_view_CarspaCleaning extends AppCompatActivity {
     DatabaseReference databaseReference;
     private ActivityUserViewCarspaCleaningBinding binding;
     private CarspaCleaning_Adapter carspaCleaningAdapter;
-    private ArrayList<CarspaCleaning_ModelClass> carspaCleaningList = new ArrayList<>();
+    private final ArrayList<CarspaCleaning_ModelClass> carspaCleaningList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

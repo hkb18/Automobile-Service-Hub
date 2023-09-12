@@ -22,8 +22,8 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
     DatabaseReference databaseReference;
     String ccpModelStr;
     private ActivityUserViewCarecarePurifiersBinding binding;
-    private ArrayList<materialButton> list = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
+    private final ArrayList<materialButton> list = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
     private AirPurifier_Adapter airpurifierAdapter;
     private CleaningKit_Adapter cleaningKitAdapter;
     private Cleansers_Adapter cleansersAdapter;
@@ -31,13 +31,13 @@ public class user_View_Carecare_Purifiers extends AppCompatActivity implements C
     private MicroFibres_Adapter microFibresAdapter;
     private Washers_Adapter washersAdapter;
     private WiperBlades_Adapter wiperBladesAdapter;
-    private ArrayList<Accessories_ModelClass> airpurifierList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> cleaningkitList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> cleansersList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> detailingList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> microfibresList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> washersList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> wiperbladesList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> airpurifierList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> cleaningkitList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> cleansersList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> detailingList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> microfibresList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> washersList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> wiperbladesList = new ArrayList<>();
     private CarecarePurifiers_Adapter carecarePurifiers_adapter;
 
     @Override

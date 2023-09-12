@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class ScreenSpeaker_ItemAdapter extends RecyclerView.Adapter<ScreenSpeaker_ItemAdapter.ViewHold> {
     private final Context context;
     private ArrayList<Accessories_ModelClass> dataList;
-    private String name;
+    private final String name;
 
 
     public ScreenSpeaker_ItemAdapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {

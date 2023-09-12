@@ -23,13 +23,13 @@ public class user_View_Screens_Speakers extends AppCompatActivity implements And
     String androidscreenModelStr;
     DatabaseReference databaseReference;
     private ActivityUserViewScreensSpeakersBinding binding; //no need for findviewbyid
-    private ArrayList<materialButton> list = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> androidscreenList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> amplifierList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> basstubesList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> speakerList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> vacuumcleanersList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
+    private final ArrayList<materialButton> list = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> androidscreenList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> amplifierList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> basstubesList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> speakerList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> vacuumcleanersList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
     private ScreensSpeakersAdapter adapter;
     private ScreenSpeaker_ItemAdapter ssAdapter;        //ANDROID SCREEN
     private Amplifier_Adapter amplifierAdapter;

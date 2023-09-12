@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class AndroidScreen_ItemAdapter extends RecyclerView.Adapter<AndroidScreen_ItemAdapter.ViewHold> {
     private final Context context;
-    private ArrayList<Accessories_ModelClass> dataList;
+    private final ArrayList<Accessories_ModelClass> dataList;
 
     public AndroidScreen_ItemAdapter(Context fragment, ArrayList<Accessories_ModelClass> dataList) {
         this.dataList = dataList;

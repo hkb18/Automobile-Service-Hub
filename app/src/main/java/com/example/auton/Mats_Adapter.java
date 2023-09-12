@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Mats_Adapter extends RecyclerView.Adapter<Mats_Adapter.ViewHold> {
     private final Context context;
     private ArrayList<Accessories_ModelClass> dataList;
-    private String title;
+    private final String title;
 
     public Mats_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;

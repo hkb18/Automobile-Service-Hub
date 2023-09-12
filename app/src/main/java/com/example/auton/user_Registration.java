@@ -29,14 +29,14 @@ public class user_Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_registration);
-        signUp = (Button) findViewById(R.id.button_UserSignUp);
-        signIn = (Button) findViewById(R.id.button_UserLogin);
-        textInputEditText1 = (TextInputEditText) findViewById(R.id.fullName);
-        textInputEditText2 = (TextInputEditText) findViewById(R.id.emailId);
-        textInputEditText3 = (TextInputEditText) findViewById(R.id.contactNumber);
-        textInputEditText4 = (TextInputEditText) findViewById(R.id.username);
-        textInputEditText5 = (TextInputEditText) findViewById(R.id.password);
-        textInputEditText6 = (TextInputEditText) findViewById(R.id.confirmPassword);
+        signUp = findViewById(R.id.button_UserSignUp);
+        signIn = findViewById(R.id.button_UserLogin);
+        textInputEditText1 = findViewById(R.id.fullName);
+        textInputEditText2 = findViewById(R.id.emailId);
+        textInputEditText3 = findViewById(R.id.contactNumber);
+        textInputEditText4 = findViewById(R.id.username);
+        textInputEditText5 = findViewById(R.id.password);
+        textInputEditText6 = findViewById(R.id.confirmPassword);
 
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
@@ -89,7 +89,7 @@ public class user_Registration extends AppCompatActivity {
 
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
-                                        Toast.makeText(user_Registration.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(user_Registration.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -114,7 +114,7 @@ public class user_Registration extends AppCompatActivity {
 
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
-                                        Toast.makeText(user_Registration.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(user_Registration.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }

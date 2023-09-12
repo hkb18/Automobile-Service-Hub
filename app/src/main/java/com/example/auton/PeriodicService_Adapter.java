@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class PeriodicService_Adapter extends RecyclerView.Adapter<PeriodicService_Adapter.ViewHold> {
     private final Context context;
-    private ArrayList<PeriodicService_ModelClass> dataList;
+    private final ArrayList<PeriodicService_ModelClass> dataList;
 
 
     public PeriodicService_Adapter(Context fragment, ArrayList<PeriodicService_ModelClass> dataList) {

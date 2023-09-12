@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class AirFreshner_Adapter extends RecyclerView.Adapter<AirFreshner_Adapter.ViewHold> {
     private final Context context;
     private ArrayList<Accessories_ModelClass> dataList;
-    private String title;
+    private final String title;
 
     public AirFreshner_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;

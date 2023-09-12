@@ -20,7 +20,7 @@ public class user_view_CarInspection extends AppCompatActivity {
     DatabaseReference databaseReference;
     private ActivityUserViewCarInspectionBinding binding;
     private CarInspection_Adapter carInspectionAdapter;
-    private ArrayList<CarInspection_ModelClass> carinspectionList = new ArrayList<>();
+    private final ArrayList<CarInspection_ModelClass> carinspectionList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -30,10 +30,10 @@ public class user_Update_Password extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_update_password);
 
-        changedPassword = (TextInputEditText) findViewById(R.id.confirmPassword);
+        changedPassword = findViewById(R.id.confirmPassword);
         buttonPasswdUpdate = findViewById(R.id.btn_UpdatePasswd);
-        confirmNewPassword = (TextInputEditText) findViewById(R.id.confirmNewPassword);
-        password = (TextInputEditText) findViewById(R.id.password);
+        confirmNewPassword = findViewById(R.id.confirmNewPassword);
+        password = findViewById(R.id.password);
 
         buttonPasswdUpdate.setOnClickListener(new View.OnClickListener() {
             @Override

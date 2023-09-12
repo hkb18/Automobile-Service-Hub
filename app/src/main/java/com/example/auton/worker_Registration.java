@@ -42,16 +42,16 @@ public class worker_Registration extends BASEACTIVITY implements mapinterface {
         setContentView(R.layout.activity_worker_registration);
 
         mapinterface = this;
-        signUp = (Button) findViewById(R.id.button_WorkshopSignUp);
-        signIn = (Button) findViewById(R.id.button_WorkshopLogin);
-        location = (Button) findViewById(R.id.LOCATION);
-        textInputEditText1 = (TextInputEditText) findViewById(R.id.companyName);
-        tvlocation = (TextView) findViewById(R.id.tvLocation);
-        textInputEditText2 = (TextInputEditText) findViewById(R.id.emailId);
-        textInputEditText3 = (TextInputEditText) findViewById(R.id.contactNumber);
-        textInputEditText4 = (TextInputEditText) findViewById(R.id.username);
-        textInputEditText5 = (TextInputEditText) findViewById(R.id.password);
-        textInputEditText6 = (TextInputEditText) findViewById(R.id.confirmPassword);
+        signUp = findViewById(R.id.button_WorkshopSignUp);
+        signIn = findViewById(R.id.button_WorkshopLogin);
+        location = findViewById(R.id.LOCATION);
+        textInputEditText1 = findViewById(R.id.companyName);
+        tvlocation = findViewById(R.id.tvLocation);
+        textInputEditText2 = findViewById(R.id.emailId);
+        textInputEditText3 = findViewById(R.id.contactNumber);
+        textInputEditText4 = findViewById(R.id.username);
+        textInputEditText5 = findViewById(R.id.password);
+        textInputEditText6 = findViewById(R.id.confirmPassword);
 
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
@@ -116,7 +116,7 @@ public class worker_Registration extends BASEACTIVITY implements mapinterface {
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-                                    Toast.makeText(worker_Registration.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(worker_Registration.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
 

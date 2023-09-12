@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Washers_Adapter extends RecyclerView.Adapter<Washers_Adapter.ViewHold> {
     private final Context context;
     private ArrayList<Accessories_ModelClass> dataList;
-    private String title;
+    private final String title;
 
     public Washers_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;

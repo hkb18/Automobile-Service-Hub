@@ -28,10 +28,10 @@ public class workshop_Update_passwd extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workshop_update_passwd);
-        changedPassword = (TextInputEditText) findViewById(R.id.confirmPassword);
+        changedPassword = findViewById(R.id.confirmPassword);
         buttonPasswdUpdate = findViewById(R.id.btn_UpdatePasswd);
-        confirmNewPassword = (TextInputEditText) findViewById(R.id.confirmNewPassword);
-        password = (TextInputEditText) findViewById(R.id.password);
+        confirmNewPassword = findViewById(R.id.confirmNewPassword);
+        password = findViewById(R.id.password);
 
         buttonPasswdUpdate.setOnClickListener(new View.OnClickListener() {
             @Override

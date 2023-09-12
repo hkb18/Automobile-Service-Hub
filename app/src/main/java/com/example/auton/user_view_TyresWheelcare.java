@@ -20,7 +20,7 @@ public class user_view_TyresWheelcare extends AppCompatActivity {
     DatabaseReference databaseReference;
     private ActivityUserViewTyresWheelcareBinding binding;
     private TyresWheelcare_Adapter tyresWheelcareAdapter;
-    private ArrayList<TyresWheelcare_ModelClass> tyreswheelcareList = new ArrayList<>();
+    private final ArrayList<TyresWheelcare_ModelClass> tyreswheelcareList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

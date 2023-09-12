@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class Batteries_Adapter extends RecyclerView.Adapter<Batteries_Adapter.ViewHold> {
     private final Context context;
-    private ArrayList<Batteries_ModelClass> dataList;
+    private final ArrayList<Batteries_ModelClass> dataList;
 
 
     public Batteries_Adapter(Context fragment, ArrayList<Batteries_ModelClass> dataList) {

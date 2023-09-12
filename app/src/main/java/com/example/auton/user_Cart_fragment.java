@@ -5,17 +5,15 @@ import static android.content.Context.MODE_PRIVATE;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.auton.databinding.FragmentUserCartBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -31,15 +29,15 @@ import java.util.ArrayList;
  * Use the {@link user_Cart_fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class user_Cart_fragment extends Fragment implements OnClickInterface{
+public class user_Cart_fragment extends Fragment implements OnClickInterface {
     private FragmentUserCartBinding binding;
     private Cart_Adapter cart_adapter;
-    ArrayList<cart_ModelClass> list=new ArrayList<>();
+    ArrayList<cart_ModelClass> list = new ArrayList<>();
     DatabaseReference databaseReference;
     SharedPreferences sh;
     String s1;
-    Integer qty=0;
-    Integer totalQty =0;
+    Integer qty = 0;
+    Integer totalQty = 0;
     public static OnClickInterface onClickInterface;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -86,23 +84,23 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding=FragmentUserCartBinding.inflate(getLayoutInflater());
+        binding = FragmentUserCartBinding.inflate(getLayoutInflater());
 
-        onClickInterface=this;
+        onClickInterface = this;
 
-        sh=requireContext().getSharedPreferences("MySharedPreferences",MODE_PRIVATE); // to store data for temp time
-        s1=sh.getString("Username","");
+        sh = requireContext().getSharedPreferences("MySharedPreferences", MODE_PRIVATE); // to store data for temp time
+        s1 = sh.getString("Username", "");
 
-        binding.rvCart.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false));
-        cart_adapter=new Cart_Adapter(requireActivity(),list);
+        binding.rvCart.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
+        cart_adapter = new Cart_Adapter(requireActivity(), list);
         binding.rvCart.setAdapter(cart_adapter);
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
         databaseReference.child("CART").child(s1).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
-                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     list.add(dataSnapshot.getValue(cart_ModelClass.class));
                     cart_adapter.notifyDataSetChanged();
                 }
@@ -110,25 +108,25 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(requireContext(), "Error:"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
         binding.btnCheckout.setOnClickListener(view -> {
-           if(list.size() != 0){
-               int totalPrice = 0;
-               for(int i=0; i<list.size(); i++){
-                   totalPrice = totalPrice+ (Integer.parseInt(list.get(i).getPrice()) * Integer.parseInt(list.get(i).getQuantity()));
-               }
+            if (list.size() != 0) {
+                int totalPrice = 0;
+                for (int i = 0; i < list.size(); i++) {
+                    totalPrice = totalPrice + (Integer.parseInt(list.get(i).getPrice()) * Integer.parseInt(list.get(i).getQuantity()));
+                }
 
-               Intent i = new Intent(requireContext(), RazorPay.class);
-               i.putExtra("totalPrice", String.valueOf(totalPrice));
-               i.putExtra("activity", "cart");
-               i.putExtra("key", "");
-               startActivity(i);
-           } else {
-               Toast.makeText(requireContext(), "Cart is empty", Toast.LENGTH_SHORT).show();
-           }
+                Intent i = new Intent(requireContext(), RazorPay.class);
+                i.putExtra("totalPrice", String.valueOf(totalPrice));
+                i.putExtra("activity", "cart");
+                i.putExtra("key", "");
+                startActivity(i);
+            } else {
+                Toast.makeText(requireContext(), "Cart is empty", Toast.LENGTH_SHORT).show();
+            }
 
         });
 
@@ -144,20 +142,20 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
 
     @Override
     public void add(String quantity, int position) {
-        if(!TextUtils.isEmpty(list.get(position).getModel().trim())){
+        if (!TextUtils.isEmpty(list.get(position).getModel().trim())) {
             databaseReference.child("Accessories").child(list.get(position).getMainName()).child(list.get(position).getSubName()).child(list.get(position).getModel()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     Accessories_ModelClass modelClass = snapshot.getValue(Accessories_ModelClass.class);
                     try {
-                        qty=Integer.parseInt(quantity);
-                        totalQty= Integer.parseInt(modelClass.getQuantity());
+                        qty = Integer.parseInt(quantity);
+                        totalQty = Integer.parseInt(modelClass.getQuantity());
                         qty++;
-                        if(qty> totalQty){
+                        if (qty > totalQty) {
                             Toast.makeText(requireContext(), "Not enough products", Toast.LENGTH_SHORT).show();
                             qty--;
                         }
-                        list.get(position).setQuantity(""+qty);
+                        list.get(position).setQuantity("" + qty);
 
                         cart_adapter.notifyDataSetChanged();
                         databaseReference.child("CART").child(s1).child(list.get(position).getModel()).setValue(list.get(position));
@@ -177,14 +175,14 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     Accessories_ModelClass modelClass = snapshot.getValue(Accessories_ModelClass.class);
                     try {
-                        qty=Integer.parseInt(quantity);
-                        totalQty= Integer.parseInt(modelClass.getQuantity());
+                        qty = Integer.parseInt(quantity);
+                        totalQty = Integer.parseInt(modelClass.getQuantity());
                         qty++;
-                        if(qty> totalQty){
+                        if (qty > totalQty) {
                             Toast.makeText(requireContext(), "Not enough products", Toast.LENGTH_SHORT).show();
                             qty--;
                         }
-                        list.get(position).setQuantity(""+qty);
+                        list.get(position).setQuantity("" + qty);
 
                         cart_adapter.notifyDataSetChanged();
                         databaseReference.child("CART").child(s1).child(list.get(position).getProductKey()).setValue(list.get(position));
@@ -201,23 +199,22 @@ public class user_Cart_fragment extends Fragment implements OnClickInterface{
         }
 
 
-
-           }
+    }
 
     @Override
     public void remove(String quantity, int position) {
         try {
-            Integer qty=Integer.parseInt(quantity);
+            Integer qty = Integer.parseInt(quantity);
             qty--;
-            if (qty<=1){
-                qty=1;
+            if (qty <= 1) {
+                qty = 1;
             }
-            list.get(position).setQuantity(""+qty);
+            list.get(position).setQuantity("" + qty);
             cart_adapter.notifyDataSetChanged();
 
-            if(!TextUtils.isEmpty(list.get(position).getModel().trim())){
+            if (!TextUtils.isEmpty(list.get(position).getModel().trim())) {
                 databaseReference.child("CART").child(s1).child(list.get(position).getModel()).setValue(list.get(position));
-            } else  {
+            } else {
                 databaseReference.child("CART").child(s1).child(list.get(position).getProductKey()).setValue(list.get(position));
             }
         } catch (NumberFormatException e) {

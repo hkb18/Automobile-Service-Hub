@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class ACServiceRepair_Adapter extends RecyclerView.Adapter<ACServiceRepair_Adapter.ViewHold> {
     private final Context context;
-    private ArrayList<ACServiceRepair_ModelClass> dataList;
+    private final ArrayList<ACServiceRepair_ModelClass> dataList;
 
 
     public ACServiceRepair_Adapter(Context fragment, ArrayList<ACServiceRepair_ModelClass> dataList) {

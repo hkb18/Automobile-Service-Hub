@@ -20,7 +20,7 @@ public class user_view_Batteries extends AppCompatActivity {
     DatabaseReference databaseReference;
     private ActivityUserViewBatteriesBinding binding;
     private Batteries_Adapter batteriesAdapter;
-    private ArrayList<Batteries_ModelClass> batteriesList = new ArrayList<>();
+    private final ArrayList<Batteries_ModelClass> batteriesList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

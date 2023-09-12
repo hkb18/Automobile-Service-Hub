@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Speaker_Adapter extends RecyclerView.Adapter<Speaker_Adapter.ViewHold> {
     private final Context context;
     private ArrayList<Accessories_ModelClass> dataList;
-    private String name;
+    private final String name;
 
     public Speaker_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;

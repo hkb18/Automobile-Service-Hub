@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class BassTubes_Adapter extends RecyclerView.Adapter<BassTubes_Adapter.ViewHold> {
     private final Context context;
     private ArrayList<Accessories_ModelClass> dataList;
-    private String name;
+    private final String name;
 
     public BassTubes_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;

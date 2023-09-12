@@ -81,7 +81,7 @@ public class workshop_AddMechanic extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(workshop_AddMechanic.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(workshop_AddMechanic.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

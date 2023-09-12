@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Projectors_Adapter extends RecyclerView.Adapter<Projectors_Adapter.ViewHold> {
     private final Context context;
     private ArrayList<Accessories_ModelClass> dataList;
-    private String title;
+    private final String title;
 
     public Projectors_Adapter(Context fragment, ArrayList<Accessories_ModelClass> dataList, String key) {
         this.dataList = dataList;

@@ -71,7 +71,7 @@ public class MapsActivity_Workshop extends FragmentActivity implements OnMapRead
     private Geocoder geocoder;
     private GoogleMap mMap;
     private ActivityMaps2Binding binding;
-    private int ACCESS_LOCATION_REQUEST_CODE = 100;
+    private final int ACCESS_LOCATION_REQUEST_CODE = 100;
     private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
 
     @Override

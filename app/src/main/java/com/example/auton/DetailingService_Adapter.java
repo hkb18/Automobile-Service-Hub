@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DetailingService_Adapter extends RecyclerView.Adapter<DetailingService_Adapter.ViewHold> {
     private final Context context;
-    private ArrayList<DetailingService_ModelClass> dataList;
+    private final ArrayList<DetailingService_ModelClass> dataList;
 
 
     public DetailingService_Adapter(Context fragment, ArrayList<DetailingService_ModelClass> dataList) {

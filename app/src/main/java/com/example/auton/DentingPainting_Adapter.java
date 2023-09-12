@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class DentingPainting_Adapter extends RecyclerView.Adapter<DentingPainting_Adapter.ViewHold> {
     private final Context context;
-    private ArrayList<DentingPainting_ModelClass> dataList;
+    private final ArrayList<DentingPainting_ModelClass> dataList;
 
 
     public DentingPainting_Adapter(Context fragment, ArrayList<DentingPainting_ModelClass> dataList) {

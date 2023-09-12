@@ -84,7 +84,7 @@ public class admin_Add_Workshop extends BASEACTIVITY implements mapinterface {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(admin_Add_Workshop.this, "error" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(admin_Add_Workshop.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {

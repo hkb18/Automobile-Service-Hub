@@ -45,7 +45,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     private Geocoder geocoder;
     private GoogleMap mMap;
     private ActivityMaps2Binding binding;
-    private int ACCESS_LOCATION_REQUEST_CODE = 100;
+    private final int ACCESS_LOCATION_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,7 +159,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapLongClick(@NonNull LatLng latLng) {
-        Log.d(TAG, "onMapLongClick: " + latLng.toString());
+        Log.d(TAG, "onMapLongClick: " + latLng);
         mMap.clear();
         try {
             List<Address> addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);

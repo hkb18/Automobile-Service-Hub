@@ -20,7 +20,7 @@ public class user_view_DetailingService extends AppCompatActivity {
     DatabaseReference databaseReference;
     private ActivityUserViewDetailingServiceBinding binding;
     private DetailingService_Adapter detailingServiceAdapter;
-    private ArrayList<DetailingService_ModelClass> detailingList = new ArrayList<>();
+    private final ArrayList<DetailingService_ModelClass> detailingList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

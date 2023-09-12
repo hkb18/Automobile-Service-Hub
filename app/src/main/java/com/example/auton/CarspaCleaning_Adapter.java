@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class CarspaCleaning_Adapter extends RecyclerView.Adapter<CarspaCleaning_Adapter.ViewHold> {
     private final Context context;
-    private ArrayList<CarspaCleaning_ModelClass> dataList;
+    private final ArrayList<CarspaCleaning_ModelClass> dataList;
 
 
     public CarspaCleaning_Adapter(Context fragment, ArrayList<CarspaCleaning_ModelClass> dataList) {

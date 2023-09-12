@@ -22,12 +22,12 @@ public class user_view_LightsChargers extends AppCompatActivity implements Light
     DatabaseReference databaseReference;
     String ccpModelStr;
     private ActivityUserViewLightsChargersBinding binding;
-    private ArrayList<materialButton> list = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> chargersList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> hidList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> projectorsList = new ArrayList<>();
-    private ArrayList<Accessories_ModelClass> mobileholdersList = new ArrayList<>();
+    private final ArrayList<materialButton> list = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> accessoriesList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> chargersList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> hidList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> projectorsList = new ArrayList<>();
+    private final ArrayList<Accessories_ModelClass> mobileholdersList = new ArrayList<>();
     private MobileHolder_Adapter mobileHolderAdapter;
     private HID_Adapter hidAdapter;
     private Projectors_Adapter projectorsAdapter;

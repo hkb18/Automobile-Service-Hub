@@ -1,13 +1,5 @@
 package com.example.auton;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.IntentSenderRequest;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -25,13 +17,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.IntentSenderRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.example.auton.databinding.ActivityUserBookServiceBinding;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -52,22 +46,22 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class user_Book_Service extends AppCompatActivity implements AdapterView.OnItemSelectedListener,mapinterface {
+public class user_Book_Service extends AppCompatActivity implements AdapterView.OnItemSelectedListener, mapinterface {
     private ActivityUserBookServiceBinding binding;
     int totalPrice;
-    String s1="",getPriceServiceTypeStr,carmodelPriceStr="",carbodytypePriceStr="",modelstr,datestr,timestr,locationstr,currentlocationstr,servicenameStr,serviceStr,brandStr,username,latitudeStr,longitudeStr;
+    String s1 = "", getPriceServiceTypeStr, carmodelPriceStr = "", carbodytypePriceStr = "", modelstr, datestr, timestr, locationstr, currentlocationstr, servicenameStr, serviceStr, brandStr, username, latitudeStr, longitudeStr;
     private static final int PERMISSIONS_REQUEST_LOCATION = 123;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
     LocationManager locationManager;
-    double longitudeBest=0.0, latitudeBest=0.0;
+    double longitudeBest = 0.0, latitudeBest = 0.0;
     private ActivityResultLauncher<IntentSenderRequest> resolutionForResult;
-    String[] time={"Morning","Afternoon","Evening"};
-    private int mYear,mMonth,mDay;
+    String[] time = {"Morning", "Afternoon", "Evening"};
+    private int mYear, mMonth, mDay;
     DatabaseReference databaseReference;
     static mapinterface mapinterface;
 
     CountDownTimer mCountDownTimer;
-    int i=0;
+    int i = 0;
 
     //  MAP
     private final LocationListener locationListenerBest = new LocationListener() {
@@ -91,6 +85,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 
         }
     };
+
     private boolean checkLocation() {
         if (!isLocationEnabled()) showAlert();
         return isLocationEnabled();
@@ -119,6 +114,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
     private boolean isLocationEnabled() {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -135,10 +131,11 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
             }
         }
     }
+
     public void toggleBestUpdates() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // Check Permissions Now
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE    );
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 60 * 1000, 10, locationListenerBest);
         }
@@ -147,19 +144,19 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityUserBookServiceBinding.inflate(getLayoutInflater());
+        binding = ActivityUserBookServiceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://auton-648f3-default-rtdb.firebaseio.com/");
 
 
         binding.progressBar.setProgress(i);
-        mCountDownTimer=new CountDownTimer(5000,1000) {
+        mCountDownTimer = new CountDownTimer(5000, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
                 i++;
-                binding.progressBar.setProgress((int)i*100/(5000/1000));
+                binding.progressBar.setProgress(i * 100 / (5000 / 1000));
 
             }
 
@@ -174,11 +171,11 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         mCountDownTimer.start();
 
 
-        Bundle extras=getIntent().getExtras();
-        username= extras.getString("Username");
-        servicenameStr=extras.getString("Service");
-        serviceStr=extras.getString("servicetype");
-        getPriceServiceTypeStr=extras.getString("Price");
+        Bundle extras = getIntent().getExtras();
+        username = extras.getString("Username");
+        servicenameStr = extras.getString("Service");
+        serviceStr = extras.getString("servicetype");
+        getPriceServiceTypeStr = extras.getString("Price");
 
         binding.tvServiceType.setText(servicenameStr);
         binding.tvService.setText(serviceStr);
@@ -189,28 +186,28 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 
 
         // MAP
-        mapinterface=this;
+        mapinterface = this;
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (checkLocation()) {
             toggleBestUpdates();
         }
         resolutionForResult = registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), result -> {
-                    if (result.getResultCode() == RESULT_OK) {
-                        if (checkLocation()) {
-                            toggleBestUpdates();
-                        }
-                    } else {
-                        /* permissions not Granted */
-                        Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            if (result.getResultCode() == RESULT_OK) {
+                if (checkLocation()) {
+                    toggleBestUpdates();
+                }
+            } else {
+                /* permissions not Granted */
+                Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         setCarBrandAdapter();
 
         setCarTypeAdapter();
 
         binding.serviceTime.setOnItemSelectedListener(this);
-        ArrayAdapter ac=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,time);
+        ArrayAdapter ac = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, time);
         ac.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.serviceTime.setAdapter(ac);
 
@@ -219,17 +216,17 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
             @Override
             public void onClick(View view) {
 
-                    if(longitudeBest!=0.0 || latitudeBest!=0.0) {
-                        Intent i = new Intent(getApplicationContext(), MapsActivity2.class);
-                        i.putExtra("longitude", String.valueOf(longitudeBest));
-                        i.putExtra("latitude", String.valueOf(latitudeBest));
-                        i.putExtra("activity","user");
-                        startActivity(i);
+                if (longitudeBest != 0.0 || latitudeBest != 0.0) {
+                    Intent i = new Intent(getApplicationContext(), MapsActivity2.class);
+                    i.putExtra("longitude", String.valueOf(longitudeBest));
+                    i.putExtra("latitude", String.valueOf(latitudeBest));
+                    i.putExtra("activity", "user");
+                    startActivity(i);
 
 
-                    }else {
-                        Toast.makeText(user_Book_Service.this, "not able to get permission", Toast.LENGTH_SHORT).show();
-                    }
+                } else {
+                    Toast.makeText(user_Book_Service.this, "not able to get permission", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -238,22 +235,21 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
             @Override
             public void onClick(View view) {
 
-                if(view==binding.buttonDate)
-                {
-                    final Calendar c=Calendar.getInstance();
-                    mYear=c.get(Calendar.YEAR);
-                    mMonth=c.get(Calendar.MONTH);
-                    mDay=c.get(Calendar.DAY_OF_MONTH);
+                if (view == binding.buttonDate) {
+                    final Calendar c = Calendar.getInstance();
+                    mYear = c.get(Calendar.YEAR);
+                    mMonth = c.get(Calendar.MONTH);
+                    mDay = c.get(Calendar.DAY_OF_MONTH);
                     long minDate = c.getTimeInMillis();
 
 
-                    DatePickerDialog datePickerDialog=new DatePickerDialog(user_Book_Service.this, new DatePickerDialog.OnDateSetListener() {
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(user_Book_Service.this, new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int monthofYear, int dayofMonth) {
-                            binding.edittextDate.setText(dayofMonth +"-"+(monthofYear+1)+"-"+year);
-                            datestr=binding.edittextDate.getText().toString();
+                            binding.edittextDate.setText(dayofMonth + "-" + (monthofYear + 1) + "-" + year);
+                            datestr = binding.edittextDate.getText().toString();
                         }
-                    },mYear,mMonth,mDay);
+                    }, mYear, mMonth, mDay);
                     datePickerDialog.getDatePicker().setMinDate(minDate);
                     datePickerDialog.show();
                 }
@@ -265,62 +261,62 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
             @Override
             public void onClick(View v) {
 
-                    //  SPINNER
-                    brandStr = binding.carBrand.getSelectedItem().toString();
-                    modelstr = binding.carModel.getSelectedItem().toString();
-                    timestr = binding.serviceTime.getSelectedItem().toString();
-                    locationstr = currentlocationstr;
+                //  SPINNER
+                brandStr = binding.carBrand.getSelectedItem().toString();
+                modelstr = binding.carModel.getSelectedItem().toString();
+                timestr = binding.serviceTime.getSelectedItem().toString();
+                locationstr = currentlocationstr;
 
                 if (datestr.isEmpty()) {
-                        Toast.makeText(getApplicationContext(), "Enter date", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Enter date", Toast.LENGTH_SHORT).show();
                 }
-                    databaseReference.child("Service").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Handler handler;
-                            handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    totalPrice=Integer.parseInt(carbodytypePriceStr)+Integer.parseInt(carmodelPriceStr)+Integer.parseInt(getPriceServiceTypeStr);
-                                    Intent i = new Intent(getApplicationContext(), RazorPay.class);
-                                    i.putExtra("activity", "bookService");
-                                    i.putExtra("Username", s1);
-                                    i.putExtra("CarBrand", brandStr);
-                                    i.putExtra("CarModel", modelstr);
-                                    i.putExtra("ServiceType", servicenameStr);
-                                    i.putExtra("ServiceName", serviceStr);
-                                    i.putExtra("Date", datestr);
-                                    i.putExtra("ServiceTime", timestr);
-                                    i.putExtra("Latitude", latitudeStr);
-                                    i.putExtra("Longitude", longitudeStr);
-                                    i.putExtra("totalPrice", String.valueOf(totalPrice));
-                                    startActivity(i);
-                                }
-                            }, 2000);
-                        }
+                databaseReference.child("Service").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Handler handler;
+                        handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                totalPrice = Integer.parseInt(carbodytypePriceStr) + Integer.parseInt(carmodelPriceStr) + Integer.parseInt(getPriceServiceTypeStr);
+                                Intent i = new Intent(getApplicationContext(), RazorPay.class);
+                                i.putExtra("activity", "bookService");
+                                i.putExtra("Username", s1);
+                                i.putExtra("CarBrand", brandStr);
+                                i.putExtra("CarModel", modelstr);
+                                i.putExtra("ServiceType", servicenameStr);
+                                i.putExtra("ServiceName", serviceStr);
+                                i.putExtra("Date", datestr);
+                                i.putExtra("ServiceTime", timestr);
+                                i.putExtra("Latitude", latitudeStr);
+                                i.putExtra("Longitude", longitudeStr);
+                                i.putExtra("totalPrice", String.valueOf(totalPrice));
+                                startActivity(i);
+                            }
+                        }, 2000);
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(user_Book_Service.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(user_Book_Service.this, "error" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
-   }
+    }
 
     private void setCarTypeAdapter() {
-        ArrayList<String> carbodyType=new ArrayList<>();
-        ArrayList<carBodyType> cbtPrice=new ArrayList<>();
+        ArrayList<String> carbodyType = new ArrayList<>();
+        ArrayList<carBodyType> cbtPrice = new ArrayList<>();
         databaseReference.child("CAR_BODYTYPE").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 carbodyType.clear();
                 cbtPrice.clear();
-                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     carbodyType.add(dataSnapshot.getKey());
-                    carBodyType carBodyType=dataSnapshot.getValue(carBodyType.class);
+                    carBodyType carBodyType = dataSnapshot.getValue(carBodyType.class);
                     cbtPrice.add(carBodyType);
                 }
                 ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(user_Book_Service.this, R.layout.simple_spinner_item, carbodyType);
@@ -331,9 +327,10 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                         /*String[] modelss=models[position];
                         ArrayAdapter<String> modelAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, modelss);
                         carmodel.setAdapter(modelAdapter);*/
-                        carbodytypePriceStr= cbtPrice.get(position).getPrice();
+                        carbodytypePriceStr = cbtPrice.get(position).getPrice();
 
                     }
+
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
                     }
@@ -348,16 +345,16 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
     }
 
     private void setCarBrandAdapter() {
-        ArrayList<String> carBrand=new ArrayList<>();
-        ArrayList<carModel> model=new ArrayList<>();
+        ArrayList<String> carBrand = new ArrayList<>();
+        ArrayList<carModel> model = new ArrayList<>();
         databaseReference.child("CAR").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 carBrand.clear();
                 model.clear();
-                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     carBrand.add(dataSnapshot.getKey());
-                    carModel model1=dataSnapshot.getValue(carModel.class);
+                    carModel model1 = dataSnapshot.getValue(carModel.class);
                     model.add(model1);
                 }
                 ArrayAdapter<String> brandAdapter = new ArrayAdapter<>(user_Book_Service.this, R.layout.simple_spinner_item, carBrand);
@@ -368,9 +365,10 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
                         /*String[] modelss=models[position];
                         ArrayAdapter<String> modelAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, modelss);
                         carmodel.setAdapter(modelAdapter);*/
-                       carmodelPriceStr= model.get(position).getPrice();
+                        carmodelPriceStr = model.get(position).getPrice();
 
                     }
+
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
                     }
@@ -387,7 +385,7 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
 
     private void enableLocationSettings() {
 
-        LocationRequest locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10*1000)
+        LocationRequest locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10 * 1000)
                 .setWaitForAccurateLocation(false)
                 .setMinUpdateIntervalMillis(3000)
                 .setMaxUpdateDelayMillis(100)
@@ -436,21 +434,22 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         }*/
 
     }
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id)
-    {
+
+    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
         //Toast.makeText(getApplicationContext(),brand[position],Toast.LENGTH_LONG).show();
     }
+
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
 
     @Override
-    public void location(String latitude,String longitude) {
+    public void location(String latitude, String longitude) {
 
-        latitudeStr=latitude;
-        longitudeStr=longitude;
-        Log.e("", "latitude: "+latitude+"  Longitude:"+longitude );
-        getAddress( Double.parseDouble(latitude) ,Double.parseDouble(longitude) );
+        latitudeStr = latitude;
+        longitudeStr = longitude;
+        Log.e("", "latitude: " + latitude + "  Longitude:" + longitude);
+        getAddress(Double.parseDouble(latitude), Double.parseDouble(longitude));
     }
 
     ///to get place details from lat n log
@@ -464,9 +463,9 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
             //add = add + "\n" + obj.getCountryCode();
             add = add + "\n" + obj.getAdminArea();
             add = add + "\n" + obj.getPostalCode();
-           // add = add + "\n" + obj.getSubAdminArea();
+            // add = add + "\n" + obj.getSubAdminArea();
             add = add + "\n" + obj.getLocality();
-           // add = add + "\n" + obj.getSubThoroughfare();
+            // add = add + "\n" + obj.getSubThoroughfare();
 
             Log.v("IGA", "Address" + add);
 
@@ -481,8 +480,9 @@ public class user_Book_Service extends AppCompatActivity implements AdapterView.
         }
     }
 }
-class carModel{
-    String Brand,Image,Price;
+
+class carModel {
+    String Brand, Image, Price;
 
     public carModel() {
     }
@@ -518,8 +518,8 @@ class carModel{
     }
 }
 
-class carBodyType{
-    String BodyType,Price;
+class carBodyType {
+    String BodyType, Price;
 
     public carBodyType() {
     }

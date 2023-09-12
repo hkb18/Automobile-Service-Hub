@@ -1,13 +1,14 @@
 package com.example.auton;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class starting_page extends AppCompatActivity {
-TextView textViewfullname,textViewcontactno,textViewemaiid,textViewusername,textViewpassword,textViewconfirmpassword;
-String fullname,contactno,emailid,username,passwd,confirmpasswd;
+    TextView textViewfullname, textViewcontactno, textViewemaiid, textViewusername, textViewpassword, textViewconfirmpassword;
+    String fullname, contactno, emailid, username, passwd, confirmpasswd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
